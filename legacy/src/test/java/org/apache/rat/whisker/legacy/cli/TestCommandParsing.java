@@ -20,7 +20,9 @@ package org.apache.rat.whisker.legacy.cli;
 
 import junit.framework.TestCase;
 
+import org.apache.commons.cli.AlreadySelectedException;
 import org.apache.commons.cli.ParseException;
+import org.apache.rat.whisker.legacy.app.Act;
 import org.apache.rat.whisker.legacy.app.Whisker;
 
 /**
@@ -41,6 +43,40 @@ public class TestCommandParsing extends TestCase {
     @Override
     protected void setUp() throws Exception {
         subject = new Main(new Whisker());
+    }
+
+    public void testGenerateAndAuditAreMutuallyExclusive() throws Exception {
+        try {
+            subject.configure(
+                args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH", 
+                        longOpt(CommandLineOption.ACT_TO_AUDIT.getLongName()),
+                        longOpt(CommandLineOption.ACT_TO_GENERATE.getLongName())));
+            
+            fail("Expected audit and generate to together to throw exception");
+        } catch (AlreadySelectedException e) {
+            // expected
+        }
+    }
+    
+    public void testSetGenerateAct() throws Exception {
+        checkSetActForOption(Act.GENERATE, CommandLineOption.ACT_TO_GENERATE);
+    }
+    
+    public void testSetAuditAct() throws Exception {
+        checkSetActForOption(Act.AUDIT, CommandLineOption.ACT_TO_AUDIT);
+    }
+
+    /**
+     * @param act
+     * @param option
+     * @throws ParseException
+     */
+    private void checkSetActForOption(Act act, CommandLineOption option)
+            throws ParseException {
+        assertEquals(act + " arg should set property on Whisker", act, subject.configure(
+                args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH", longOpt(option.getLongName()))).getAct());
+        assertEquals(act + "Audit arg should set property on Whisker", act, subject.configure(
+                args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH", shortOpt(option.getShortName()))).getAct());
     }
 
     
@@ -100,7 +136,7 @@ public class TestCommandParsing extends TestCase {
      */
     private void exerciseLicenseDescriptor(String aPath, String arg)
             throws ParseException {
-        assertEquals("Long license descriptor arg should set property on Whisker", aPath, subject.configure(args(arg, aPath)).getLicenseDescriptor());
+        assertEquals("License descriptor arg should set property on Whisker", aPath, subject.configure(args(arg, aPath, longOpt(CommandLineOption.ACT_TO_AUDIT.getLongName()))).getLicenseDescriptor());
     }
     
     private String[] args(String ...strings) {

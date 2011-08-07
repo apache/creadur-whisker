@@ -32,7 +32,7 @@ public class Whisker {
 
     
     
-    private Act act = Act.GENERATE;
+    private Act act = Act.TEMPLATE;
     private String base = "app";
     private String licenseDescriptor = "org/apache/rat/whisker/samples/james/james.xml";
 
@@ -85,7 +85,7 @@ public class Whisker {
         switch (act) {
             case REPORT:
                 return report();
-            case VALIDATE:
+            case AUDIT:
                 return validate();
             case TEMPLATE:
                 return template();

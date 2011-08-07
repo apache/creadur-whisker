@@ -21,6 +21,7 @@ package org.apache.rat.whisker.legacy.cli;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
+import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
 
 /**
@@ -28,17 +29,27 @@ import org.apache.commons.cli.Options;
  */
 public enum CommandLineOption {
     
-    LICENSE_DESCRIPTION("license-descriptor", 'l', "use given license descriptor", true, "file");
+    LICENSE_DESCRIPTION("license-descriptor", 'l', "use given license descriptor", true, "file", false),
+    ACT_TO_GENERATE("generate", 'g', "generate license and notice", false, null, true),
+    ACT_TO_AUDIT("audit", 'a', "report audit details", false, null, true);
     
     /**
      * Creates options for the command line.
      * @return not null
      */
     public static Options options() {
-        Options options = new Options();
+        final Options options = new Options();
+        final OptionGroup acts = new OptionGroup();
+        acts.setRequired(true);
         for (final CommandLineOption option: values()) {
-            options.addOption(option.create());
+            final Option cliOption = option.create();
+            if (option.isAct) {
+                acts.addOption(cliOption);
+            } else {
+                options.addOption(cliOption);
+            }
         }
+        options.addOptionGroup(acts);
         return options;
     }
 
@@ -48,17 +59,20 @@ public enum CommandLineOption {
     private final String description;
     private final boolean required;
     private final String argument;
+    private final boolean isAct;
     
     private CommandLineOption(final String longName, 
             final char shortName, 
             final String description, 
             final boolean required,
-            final String argument) {
+            final String argument,
+            final boolean isAct) {
         this.longName = longName;
         this.shortName = shortName;
         this.description = description;
         this.required = required;
         this.argument = argument;
+        this.isAct = isAct;
     }
     
     public String getLongName() {
@@ -91,5 +105,13 @@ public enum CommandLineOption {
      */
     public String getOptionValue(CommandLine commandLine) {
         return commandLine.getOptionValue(getShortName());
+    }
+
+    /**
+     * @param commandLine
+     * @return
+     */
+    public boolean isSetOn(CommandLine commandLine) {
+        return commandLine.hasOption(getShortName());
     }
 }

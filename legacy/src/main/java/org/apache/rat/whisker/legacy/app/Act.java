@@ -24,7 +24,7 @@ package org.apache.rat.whisker.legacy.app;
 public enum Act {
     
     GENERATE,
-    VALIDATE,
+    AUDIT,
     REPORT,
     TEMPLATE
 
