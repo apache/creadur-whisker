@@ -22,7 +22,6 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.rat.whisker.legacy.app.Act;
@@ -38,8 +37,6 @@ public class Main {
      * 
      */
     private static final String APP_NAME = "apache-rat-whisker";
-    public static final String LICENSE_DESCRIPTOR_LONG_OPT = "license-descriptor";
-    public static final char LICENSE_DESCRIPTOR_SHORT_OPT = 'l';
     
     /**
      * Returns okay to system.
@@ -73,19 +70,6 @@ public class Main {
     public CommandLine parse(final String[] args) throws ParseException {
         return parser().parse(options(), args);
     }
-    
-    /**
-     * @return not null
-     */
-    @SuppressWarnings("static-access")
-    private Options options() {
-        return new Options().addOption(OptionBuilder
-                .withDescription("use given license descriptor")
-                .hasArg().withArgName("file")
-                .withLongOpt(LICENSE_DESCRIPTOR_LONG_OPT)
-                .isRequired()
-                .create(LICENSE_DESCRIPTOR_SHORT_OPT));
-    }
 
     public Whisker configure(final String[] args) throws ParseException {
         return configure(parse(args));
@@ -97,7 +81,7 @@ public class Main {
      * @return not null
      */
     private Whisker configure(final CommandLine commandLine) {
-        whisker.setLicenseDescriptor(commandLine.getOptionValue(LICENSE_DESCRIPTOR_SHORT_OPT));
+        whisker.setLicenseDescriptor(CommandLineOption.LICENSE_DESCRIPTION.getOptionValue(commandLine));
         return whisker.setBase("war").setAct(Act.GENERATE);
     }
 
@@ -118,5 +102,13 @@ public class Main {
     private void help() {
         final HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp(APP_NAME, options());
+    }
+
+    /**
+     * Builds options for the command line.
+     * @return not null
+     */
+    private Options options() {
+        return CommandLineOption.options();
     }
 }

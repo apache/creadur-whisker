@@ -18,16 +18,24 @@
  */
 package org.apache.rat.whisker.legacy.cli;
 
+import junit.framework.TestCase;
+
 import org.apache.commons.cli.ParseException;
 import org.apache.rat.whisker.legacy.app.Whisker;
-
-import junit.framework.TestCase;
 
 /**
  *
  */
 public class TestCommandParsing extends TestCase {
     
+    /**
+     * 
+     */
+    private static final String LONG_OPT = "--";
+    /**
+     * 
+     */
+    private static final String SHORT_OPT = "-";
     private Main subject;
 
     @Override
@@ -56,14 +64,32 @@ public class TestCommandParsing extends TestCase {
      * @param aPath
      */
     private void exerciseShortLicenseDescriptionWithPath(String aPath) throws Exception {
-        exerciseLicenseDescriptor(aPath, "-" + Main.LICENSE_DESCRIPTOR_SHORT_OPT);
+        exerciseLicenseDescriptor(aPath, shortOpt(CommandLineOption.LICENSE_DESCRIPTION.getShortName()));
+    }
+
+
+    /**
+     * @param licenseDescriptorShortOpt
+     * @return
+     */
+    private String shortOpt(char licenseDescriptorShortOpt) {
+        return SHORT_OPT + licenseDescriptorShortOpt;
     }
     
     /**
      * @param aPath
      */
     private void exerciseLongLicenseDescriptionWithPath(String aPath) throws Exception {
-        exerciseLicenseDescriptor(aPath, "--" + Main.LICENSE_DESCRIPTOR_LONG_OPT);
+        exerciseLicenseDescriptor(aPath, longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()));
+    }
+
+
+    /**
+     * @param licenseDescriptorLongOpt
+     * @return
+     */
+    private String longOpt(String licenseDescriptorLongOpt) {
+        return LONG_OPT + licenseDescriptorLongOpt;
     }
 
 
