@@ -19,7 +19,13 @@
 package org.apache.rat.whisker.legacy.app;
 
 
+import java.io.IOException;
+
 import org.apache.rat.whisker.legacy.out.Engine;
+import org.apache.rat.whisker.legacy.out.LicenseAnalyst;
+import org.apache.rat.whisker.legacy.out.Work;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
 
 /**
  * 
@@ -27,7 +33,18 @@ import org.apache.rat.whisker.legacy.out.Engine;
 public class WhiskerVelocity extends Whisker {
 
     protected void doGenerate() throws Exception {
-        new Engine().write(getLicenseDescriptor());
+        new Engine().merge(new LicenseAnalyst().validate(load(getLicenseDescriptor())));
+    }
+    
+    /**
+     * @param resource
+     * @return
+     * @throws JDOMException
+     * @throws IOException
+     */
+    private Work load(final String resource) throws JDOMException,
+            IOException {
+        return new Work(new SAXBuilder().build(getClass().getClassLoader().getResourceAsStream(resource)));
     }
     
     /**
@@ -35,7 +52,7 @@ public class WhiskerVelocity extends Whisker {
      */
     @Override
     protected void doValidate() throws Exception {
-        new Engine().check(getLicenseDescriptor(), directories());
+        new Engine().merge(new LicenseAnalyst(directories()).analyse(load(getLicenseDescriptor())));
     }
 
     /**

@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Collection;
 
-
 import org.apache.rat.whisker.legacy.out.LicenseAnalyst.ResourceDefinitionException;
 import org.apache.rat.whisker.legacy.scan.Directory;
 import org.apache.velocity.VelocityContext;
@@ -33,7 +32,6 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.log.LogChute;
 import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
 
 /**
  * Wraps velocity engine.
@@ -90,8 +88,8 @@ public class Engine implements LogChute {
     /**
      * 
      */
-    public void write(final String resource) throws Exception {
-        merge(TEMPLATES, context(resource));
+    public void merge(final Work work) throws Exception {
+        merge(TEMPLATES, context(work));
     }
 
     private void merge(final String[] names, final VelocityContext context) throws ResourceNotFoundException, ParseErrorException, MethodInvocationException, JDOMException, IOException {
@@ -122,24 +120,13 @@ public class Engine implements LogChute {
      * @throws JDOMException 
      * @throws ResourceDefinitionException 
      */
-    private VelocityContext context(final String resource) throws JDOMException, IOException, ResourceDefinitionException {
-        final Work work = new LicenseAnalyst().validate(load(resource));
+    private VelocityContext context(final Work work) throws JDOMException, IOException, ResourceDefinitionException {
         VelocityContext context = new VelocityContext();
         context.put("work", work);
         context.put("indent", new Indentation());
         return context;
     }
 
-    /**
-     * @param resource
-     * @return
-     * @throws JDOMException
-     * @throws IOException
-     */
-    private Work load(final String resource) throws JDOMException,
-            IOException {
-        return new Work(new SAXBuilder().build(getClass().getClassLoader().getResourceAsStream(resource)));
-    }
 
     /**
      * Returns full template path.
@@ -171,8 +158,8 @@ public class Engine implements LogChute {
      * @param withBase
      * @throws Exception 
      */
-    public void check(String licenseDescriptor, Collection<Directory> withBase) throws Exception {
-        merge(MISSING_LICENSE_REPORT_TEMPLATE, context(new LicenseAnalyst(withBase).analyse(load(licenseDescriptor))));
+    public void merge(LicenseAnalyst analyst) throws Exception {
+        merge(MISSING_LICENSE_REPORT_TEMPLATE, context(analyst));
     }
 
     /**
