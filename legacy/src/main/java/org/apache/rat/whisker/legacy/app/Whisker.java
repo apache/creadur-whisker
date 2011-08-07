@@ -155,4 +155,10 @@ public class Whisker {
     protected Collection<Directory> fileSystem() throws IOException {
         return new FromFileSystem().withBase(getBase());
     }
+
+    @Override
+    public String toString() {
+        return "Whisker [act=" + act + ", base=" + base
+                + ", licenseDescriptor=" + licenseDescriptor + "]";
+    }
 }
