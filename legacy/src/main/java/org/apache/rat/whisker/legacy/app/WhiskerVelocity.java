@@ -35,7 +35,7 @@ public class WhiskerVelocity extends Whisker {
      */
     @Override
     protected void doValidate() throws Exception {
-        new Engine().check(getLicenseDescriptor(), fileSystem());
+        new Engine().check(getLicenseDescriptor(), directories());
     }
 
     /**
@@ -43,7 +43,7 @@ public class WhiskerVelocity extends Whisker {
      */
     @Override
     protected void doReport() throws Exception {
-        new Engine().write(fileSystem());
+        new Engine().write(directories());
     }
 
     /**
@@ -51,6 +51,6 @@ public class WhiskerVelocity extends Whisker {
      */
     @Override
     protected void doTemplateGeneration() throws Exception {
-        new Engine().generateTemplate(fileSystem());
+        new Engine().generateTemplate(directories());
     }    
 }

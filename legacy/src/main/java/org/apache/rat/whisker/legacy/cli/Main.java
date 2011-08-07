@@ -81,13 +81,14 @@ public class Main {
      * @return not null
      */
     private Whisker configure(final CommandLine commandLine) {
+        whisker.setSource(CommandLineOption.SOURCE.getOptionValue(commandLine));
         whisker.setLicenseDescriptor(CommandLineOption.LICENSE_DESCRIPTION.getOptionValue(commandLine));
         if (CommandLineOption.ACT_TO_AUDIT.isSetOn(commandLine)) {
             whisker.setAct(Act.AUDIT);
         } else if (CommandLineOption.ACT_TO_GENERATE.isSetOn(commandLine)) {
             whisker.setAct(Act.GENERATE);
         }
-        return whisker.setBase("war");
+        return whisker;
     }
 
     public int run(final String[] args) throws Exception {

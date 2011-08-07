@@ -79,6 +79,28 @@ public class TestCommandParsing extends TestCase {
                 args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH", shortOpt(option.getShortName()))).getAct());
     }
 
+    public void testSetSourceByCli() throws Exception {
+        checkSourceWithPath("/some/path");
+        checkSourceWithPath("/");
+        checkSourceWithPath("relative");
+    }
+    
+    /**
+     * @param aPath
+     */
+    private void checkSourceWithPath(String aPath) throws Exception {
+        checkSource(aPath, shortOpt(CommandLineOption.SOURCE.getShortName()));
+        checkSource(aPath, longOpt(CommandLineOption.SOURCE.getLongName()));
+    }
+
+    
+    private void checkSource(String aPath, String arg) throws ParseException {
+        assertEquals("Source arg should set property on Whisker", aPath, 
+                subject.configure(args(arg, aPath, 
+                        longOpt(CommandLineOption.ACT_TO_AUDIT.getLongName()),
+                        shortOpt(CommandLineOption.LICENSE_DESCRIPTION.getShortName()), "Whatever/bin")).getSource());
+    }
+    
     
     public void testSetLicenseDescriptorShortByCLI() throws Exception {
         exerciseShortLicenseDescriptionWithPath("/some/path");

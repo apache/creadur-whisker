@@ -30,24 +30,22 @@ import org.apache.rat.whisker.legacy.scan.FromFileSystem;
  */
 public class Whisker {
 
-    
-    
     private Act act = Act.TEMPLATE;
-    private String base = "app";
+    private String source = "app";
     private String licenseDescriptor = "org/apache/rat/whisker/samples/james/james.xml";
 
     /**
      * @return the base
      */
-    public String getBase() {
-        return base;
+    public String getSource() {
+        return source;
     }
 
     /**
-     * @param base the base to set
+     * @param source the base to set
      */
-    public Whisker setBase(String base) {
-        this.base = base;
+    public Whisker setSource(String source) {
+        this.source = source;
         return this;
     }
 
@@ -152,13 +150,13 @@ public class Whisker {
      * @return
      * @throws IOException
      */
-    protected Collection<Directory> fileSystem() throws IOException {
-        return new FromFileSystem().withBase(getBase());
+    protected Collection<Directory> directories() throws IOException {
+        return new FromFileSystem().withBase(getSource());
     }
 
     @Override
     public String toString() {
-        return "Whisker [act=" + act + ", base=" + base
+        return "Whisker [act=" + act + ", base=" + source
                 + ", licenseDescriptor=" + licenseDescriptor + "]";
     }
 }

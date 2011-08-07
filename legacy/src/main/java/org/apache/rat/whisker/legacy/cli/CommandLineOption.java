@@ -30,6 +30,7 @@ import org.apache.commons.cli.Options;
 public enum CommandLineOption {
     
     LICENSE_DESCRIPTION("license-descriptor", 'l', "use given license descriptor", true, "file", false),
+    SOURCE("source", 's', "application source", false, "dir", false),
     ACT_TO_GENERATE("generate", 'g', "generate license and notice", false, null, true),
     ACT_TO_AUDIT("audit", 'a', "report audit details", false, null, true);
     
