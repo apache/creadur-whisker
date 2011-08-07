@@ -23,9 +23,18 @@ package org.apache.rat.whisker.legacy.app;
  */
 public enum Act {
     
-    GENERATE,
-    AUDIT,
-    REPORT,
-    TEMPLATE
+    GENERATE(false),
+    AUDIT(true),
+    REPORT(true),
+    TEMPLATE(true);
 
+    private final boolean isSourceRequired;
+
+    private Act(boolean isSourceRequired) {
+        this.isSourceRequired = isSourceRequired;
+    }
+
+    public boolean isSourceRequired() {
+        return isSourceRequired;
+    }
 }

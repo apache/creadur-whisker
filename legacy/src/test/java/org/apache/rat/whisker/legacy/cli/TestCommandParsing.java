@@ -74,15 +74,28 @@ public class TestCommandParsing extends TestCase {
     private void checkSetActForOption(Act act, CommandLineOption option)
             throws ParseException {
         assertEquals(act + " arg should set property on Whisker", act, subject.configure(
-                args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH", longOpt(option.getLongName()))).getAct());
+                args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH", 
+                        shortOpt(CommandLineOption.SOURCE.getShortName()), "path", longOpt(option.getLongName()))).getAct());
         assertEquals(act + "Audit arg should set property on Whisker", act, subject.configure(
-                args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH", shortOpt(option.getShortName()))).getAct());
+                args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH", 
+                        shortOpt(CommandLineOption.SOURCE.getShortName()), "path", shortOpt(option.getShortName()))).getAct());
     }
 
     public void testSetSourceByCli() throws Exception {
         checkSourceWithPath("/some/path");
         checkSourceWithPath("/");
         checkSourceWithPath("relative");
+    }
+    
+    public void testAuditRequiresSource() throws Exception {
+        try {
+            subject.configure(args( 
+                    longOpt(CommandLineOption.ACT_TO_AUDIT.getLongName()),
+                    shortOpt(CommandLineOption.LICENSE_DESCRIPTION.getShortName()), "some/path"));
+            fail("Audit requires source");
+        } catch (ParseException e) {
+            // Expected
+        }
     }
     
     /**
@@ -158,7 +171,8 @@ public class TestCommandParsing extends TestCase {
      */
     private void exerciseLicenseDescriptor(String aPath, String arg)
             throws ParseException {
-        assertEquals("License descriptor arg should set property on Whisker", aPath, subject.configure(args(arg, aPath, longOpt(CommandLineOption.ACT_TO_AUDIT.getLongName()))).getLicenseDescriptor());
+        assertEquals("License descriptor arg should set property on Whisker", aPath, 
+                subject.configure(args(arg, aPath, longOpt(CommandLineOption.ACT_TO_GENERATE.getLongName()))).getLicenseDescriptor());
     }
     
     private String[] args(String ...strings) {

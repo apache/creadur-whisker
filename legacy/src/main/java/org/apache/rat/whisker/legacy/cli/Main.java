@@ -22,6 +22,7 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.MissingOptionException;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.rat.whisker.legacy.app.Act;
@@ -79,14 +80,19 @@ public class Main {
      * Configures the application from the command line given.
      * @param parse commandLine not null
      * @return not null
+     * @throws MissingOptionException 
      */
-    private Whisker configure(final CommandLine commandLine) {
+    private Whisker configure(final CommandLine commandLine) throws MissingOptionException {
         whisker.setSource(CommandLineOption.SOURCE.getOptionValue(commandLine));
         whisker.setLicenseDescriptor(CommandLineOption.LICENSE_DESCRIPTION.getOptionValue(commandLine));
         if (CommandLineOption.ACT_TO_AUDIT.isSetOn(commandLine)) {
             whisker.setAct(Act.AUDIT);
         } else if (CommandLineOption.ACT_TO_GENERATE.isSetOn(commandLine)) {
             whisker.setAct(Act.GENERATE);
+        }
+        
+        if (whisker.getSource() == null && whisker.getAct().isSourceRequired()) {
+            throw new MissingOptionException("-" + CommandLineOption.SOURCE.getShortName() + " " + CommandLineOption.SOURCE.getDescription());
         }
         return whisker;
     }

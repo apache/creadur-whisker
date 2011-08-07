@@ -29,10 +29,10 @@ import org.apache.rat.whisker.legacy.scan.FromFileSystem;
  * 
  */
 public class Whisker {
-
-    private Act act = Act.TEMPLATE;
-    private String source = "app";
-    private String licenseDescriptor = "org/apache/rat/whisker/samples/james/james.xml";
+    
+    private Act act;
+    private String source;
+    private String licenseDescriptor;
 
     /**
      * @return the base
