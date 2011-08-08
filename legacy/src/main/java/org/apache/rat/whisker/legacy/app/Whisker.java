@@ -18,7 +18,11 @@
  */
 package org.apache.rat.whisker.legacy.app;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Collection;
 
 import org.apache.rat.whisker.legacy.scan.Directory;
@@ -33,6 +37,8 @@ public class Whisker {
     private Act act;
     private String source;
     private String licenseDescriptor;
+    
+    private ResourceLoader loader = new FileLoader();
 
     /**
      * @return the base
@@ -154,9 +160,46 @@ public class Whisker {
         return new FromFileSystem().withBase(getSource());
     }
 
+    
+    
     @Override
     public String toString() {
         return "Whisker [act=" + act + ", base=" + source
                 + ", licenseDescriptor=" + licenseDescriptor + "]";
+    }
+    
+
+    /**
+     * @param resource
+     * @return
+     */
+    public InputStream resourceAsStream(final String resource) {
+        return loader.load(resource);
+    }
+    
+    
+    public interface ResourceLoader {
+        InputStream load(final String resource);
+    }
+    
+    public static class ClassPathLoader implements ResourceLoader {
+
+        @Override
+        public InputStream load(String resource) {
+            return getClass().getClassLoader().getResourceAsStream(resource);
+        }
+    }
+    
+    public static class FileLoader implements ResourceLoader {
+
+        @Override
+        public InputStream load(String resource) {
+            try {
+                return new FileInputStream(new File(resource));
+            } catch (FileNotFoundException e) {
+                return null;
+            }
+        }
+        
     }
 }

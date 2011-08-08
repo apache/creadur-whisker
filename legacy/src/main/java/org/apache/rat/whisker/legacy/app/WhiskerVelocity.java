@@ -20,6 +20,7 @@ package org.apache.rat.whisker.legacy.app;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.apache.rat.whisker.legacy.out.Engine;
 import org.apache.rat.whisker.legacy.out.LicenseAnalyst;
@@ -44,9 +45,14 @@ public class WhiskerVelocity extends Whisker {
      */
     private Work load(final String resource) throws JDOMException,
             IOException {
-        return new Work(new SAXBuilder().build(getClass().getClassLoader().getResourceAsStream(resource)));
+        final InputStream resourceAsStream = resourceAsStream(resource);
+        if (resourceAsStream == null) {
+            throw new IllegalArgumentException("Cannot load " + resource);
+        }
+        return new Work(new SAXBuilder().build(resourceAsStream));
     }
-    
+
+
     /**
      * @see org.apache.rat.whisker.legacy.app.Whisker#doValidate()
      */
@@ -70,4 +76,5 @@ public class WhiskerVelocity extends Whisker {
     protected void doTemplateGeneration() throws Exception {
         new Engine().generateTemplate(directories());
     }    
+
 }
