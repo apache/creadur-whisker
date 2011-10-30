@@ -34,7 +34,7 @@ documentation.
 
 * How Does Whisker Work?
  
-  Licensing meta-data describe the legal qualities of the components 
+  Licensing {{{./meta-data.html} meta-data}} describe the legal qualities of the components 
   assembled. 
  
 * What Does Whisker Do?
