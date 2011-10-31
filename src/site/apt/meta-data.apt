@@ -27,6 +27,17 @@ Whisker Meta-Data Model
 
  or read on.
 
+* Breakdown
+
+ The meta data relates licensing information about the contents of an assembled release
+ efficiently. It break down into three sections:
+ 
+ [[I]] Licenses, notices and organisations each described here once (then reused);
+ 
+ [[I]] Primary license, notice and organisation for the application released; and
+ 
+ [[I]] Contents of each directory, grouped by organisation and license. 
+ 
 * Described By DTD 
 
  Useful for visual editors.
