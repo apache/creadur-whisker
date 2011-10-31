@@ -122,6 +122,99 @@ Whisker Meta-Data Model
 ]>
 ----------------------------------------
 
+
+* Some More Advanced Features Explained
+
+** Templates For License Families
+
+ Some familiar open source licenses (for example, 
+ the {{{http://www.opensource.org/licenses/BSD-3-Clause}BSD 3-Clause License}}) are better understood
+ as families of licenses. Each family is based on a parameterised template. When the license is used, 
+ an appropriate value is substituted for each parameter.
+ 
+ Whisker supports template licenses with parameter substitution. Parameter names are defined by <<<parameter-name>>> elements
+ within a <<<template>>> block. 
+
++------------------------------------------------------------------------+
+        <license ...
+            <template>
+                <parameter-name>foo</parameter-name>
+                ...
+            </template>
+            ...
++------------------------------------------------------------------------+ 
+ 
+ Each <<<$\{parameter name\}>>> within the license <<<text>>> will be substituted by 
+ the <<<value>>> with matching <<<name>>> within a <<<parameter>>> in a <<<license-parameters>>> block. When referring
+ to a template license, this block is required. All parameter names defined must have exactly one value specified.
+
++------------------------------------------------------------------------+
+    <license-parameters>
+      <parameter>
+        <name>foo</name>
+        <value>bar</value>
+      </parameter>
+      ...
++------------------------------------------------------------------------+
+
+ 
+*** A Template Example 
+
+ This simple template example features a <<<Hello, World>>> license. 
+ Source is {{{./examples/template-license.xml}here}}.
+
++------------------------------------------------------------------------+
+<manifest>
+    <licenses>
+        <!-- A template license -->
+        <license id='TL1' name='A Template License'>
+            <!-- 
+                Parameter names in this section.
+                Values must be set for all parameters. 
+                                                -->
+            <template>
+                <!-- ${FOO} will be substituted wherever it occurs -->
+                <parameter-name>FOO</parameter-name>
+                <!-- ${BAR} will be substituted wherever it occurs -->
+                <parameter-name>BAR</parameter-name>
+            </template>
+            <!-- Wherever ${FOO} and ${BAR} are found will be substituted.-->
+            <text>
+                ${BAR}, ${FOO}.            
+            </text>
+        </license>
+    </licenses>
+    ...
+    <within dir='.'>
+        <with-license id='TL1'>
+            <!-- 
+                When a template license is referenced,
+                a license-parameter block must exist
+                and contain one value for each defined
+                parameter 
+                                                        -->
+            <license-parameters>
+                <parameter>
+                    <!-- Replace ${FOO} with 'world' -->
+                    <name>FOO</name>
+                    <value>world</value>
+                </parameter>
+                <parameter>
+                    <!-- Replace ${BAR} with 'Hello' -->
+                    <name>BAR</name>
+                    <value>hello</value>
+                </parameter>
+            </license-parameters>
+            <!--
+                After substituting values for parameters,
+                the license reads: Hello, world.
+                                                        -->                                        
+        </with-license>
+    </within>
+</manifest>
++------------------------------------------------------------------------+
+
+
 * A Sample 
 
   Describes components assembled into the {{{http://james.apache.org}Apache James}} 

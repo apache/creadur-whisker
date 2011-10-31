@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied.  See the License for the
+  specific language governing permissions and limitations
+  under the License.    
+-->
+<!DOCTYPE manifest [
+
+<!ELEMENT manifest (licenses, notices, organisations, 
+    primary-license, primary-notice?, primary-organisation?, within*)>
+<!-- Collects license descriptions -->    
+<!ELEMENT licenses (license*)>
+<!-- Describes a copyright license -->
+<!ELEMENT license (template?, text)>
+<!ATTLIST license name CDATA #REQUIRED>
+<!ATTLIST license url CDATA #IMPLIED>
+<!ATTLIST license id ID #REQUIRED>
+<!-- Some licenses require a link to source code -->
+<!ATTLIST license requires-source (yes|no) "no">
+<!-- The words expressing the license -->
+<!ELEMENT text (#PCDATA)>
+<!-- Template license families have parameterised license wording -->
+<!ELEMENT template (parameter-name+)>
+<!-- The name of a parameter to be substituted -->
+<!ELEMENT parameter-name (#PCDATA)>
+
+<!-- Collects notice descriptions -->
+<!ELEMENT notices (notice*)>
+<!-- Describes notice text to be preserved -->
+<!ELEMENT notice (#PCDATA)>
+<!ATTLIST notice id ID #REQUIRED>
+
+<!-- Collections organisation descriptions -->
+<!ELEMENT organisations (organisation*)>
+<!-- Descibres an upstream organisation -->
+<!ELEMENT organisation EMPTY>
+<!ATTLIST organisation id ID #REQUIRED>
+<!ATTLIST organisation name CDATA #REQUIRED>
+<!ATTLIST organisation url CDATA #IMPLIED>
+
+<!-- The primary license for the application -->
+<!ELEMENT primary-license EMPTY>
+<!-- References the license by id attribute -->
+<!ATTLIST primary-license id IDREF #REQUIRED>
+
+<!-- The text of the application's primary notice -->
+<!ELEMENT primary-notice (#PCDATA)>
+
+<!-- The organisation responsible for the application -->
+<!ELEMENT primary-organisation EMPTY>
+<!-- References the organisation by id attribute -->
+<!ATTLIST primary-organisation id IDREF #REQUIRED>
+
+<!-- Collects the resources within a directory-->
+<!ELEMENT within (public-domain?, with-license*)>
+<!ATTLIST within dir CDATA #REQUIRED>
+
+<!-- Collects resources sharing licensing qualities -->
+<!ELEMENT with-license (copyright-notice?, license-parameters?, by-organisation*)>
+<!-- Refers to a license defined above by ID -->
+<!ATTLIST with-license id IDREF #REQUIRED>
+<!-- A copyright claim -->
+<!ELEMENT copyright-notice (#PCDATA)>
+<!-- Values substituted into the text of template licenses -->
+<!ELEMENT license-parameters (parameter*)>
+<!ELEMENT parameter (name, value)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT value (#PCDATA)>
+
+<!-- Collects resources in the public domain -->
+<!ELEMENT public-domain (by-organisation*)>
+
+<!-- Collects resources issued by an upstream organisation -->
+<!ELEMENT by-organisation (resource*)>
+<!ATTLIST by-organisation id IDREF #REQUIRED>
+
+<!-- Contained in the application release -->
+<!ELEMENT resource EMPTY>
+<!ATTLIST resource name CDATA #REQUIRED>
+<!ATTLIST resource sha1 CDATA #IMPLIED>
+<!ATTLIST resource notice IDREF #IMPLIED>
+<!ATTLIST resource source CDATA #IMPLIED>
+]>
+<manifest>
+    <licenses>
+        <!-- A template license -->
+        <license id='TL1' name='A Template License'>
+            <!-- 
+                Parameter names in this section.
+                Values must be set for all parameters. 
+                                                -->
+            <template>
+                <!-- ${FOO} will be substituted wherever it occurs -->
+                <parameter-name>FOO</parameter-name>
+                <!-- ${BAR} will be substituted wherever it occurs -->
+                <parameter-name>BAR</parameter-name>
+            </template>
+            <!-- Wherever ${FOO} and ${BAR} are found will be substituted.-->
+            <text>
+                ${BAR}, ${FOO}.            
+            </text>
+        </license>
+    </licenses>
+    <notices/>
+    <organisations>
+        <organisation id='example.org' name='An Example Organisation'/>
+    </organisations>
+    <primary-license id='TL1'/>
+    <within dir='.'>
+        <with-license id='TL1'>
+            <!-- 
+                When a template license is referenced,
+                a license-parameter block must exist
+                and contain one value for each defined
+                parameter 
+                                                        -->
+            <license-parameters>
+                <parameter>
+                    <!-- Replace ${FOO} with 'world' -->
+                    <name>FOO</name>
+                    <value>world</value>
+                </parameter>
+                <parameter>
+                    <!-- Replace ${BAR} with 'Hello' -->
+                    <name>BAR</name>
+                    <value>hello</value>
+                </parameter>
+            </license-parameters>
+            <!--
+                After substituting values for parameters,
+                the license reads: Hello, world.
+                                                        --> 
+        </with-license>
+    </within>
+</manifest>
