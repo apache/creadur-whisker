@@ -19,7 +19,15 @@
 ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Described By DTD 
+Whisker Meta-Data Model
+
+ Jump into
+
+%{toc|section=1|fromDepth=2|toDepth=3}
+
+ or read on.
+
+* Described By DTD 
 
  Useful for visual editors.
 
@@ -103,9 +111,12 @@ Described By DTD
 ]>
 ----------------------------------------
 
-Example 
+* A Sample 
 
-----------------------------------------
+  Describes components assembled into the {{{http://james.apache.org}Apache James}} 
+{{{http://james.apache.org/server}mail server}}.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <licenses>
@@ -1017,12 +1028,12 @@ used (note that this software is not included in the distribution):
   * The PBE Encryption facilities require the Java Cryptography 
     extensions: http://java.sun.com/javase/technologies/security/.
 
----------------------------------
+ ---------------------------------
 
 Distributions of this software may include software developed by
 The Apache Software Foundation (http://www.apache.org/).
 
----------------------------------
+ ---------------------------------
 
 
 ICU License - ICU 1.8.1 and later
@@ -1501,3 +1512,4 @@ All rights reserved.
         </with-license>
     </within>
 </manifest>
+---------------------------------------------------------------------------------------------------------------------------------------------
