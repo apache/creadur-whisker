@@ -42,7 +42,7 @@ Whisker Meta-Data Model
 
  Useful for visual editors.
 
-----------------------------------------
++------------------------------------------------------------------------+
 <!DOCTYPE manifest [
 
 <!ELEMENT manifest (licenses, notices, organisations, 
@@ -120,7 +120,7 @@ Whisker Meta-Data Model
 <!ATTLIST resource notice IDREF #IMPLIED>
 <!ATTLIST resource source CDATA #IMPLIED>
 ]>
-----------------------------------------
++------------------------------------------------------------------------+
 
 
 * Some More Advanced Features Explained
@@ -220,7 +220,7 @@ Whisker Meta-Data Model
   Describes components assembled into the {{{http://james.apache.org}Apache James}} 
 {{{http://james.apache.org/server}mail server}}.
 
----------------------------------------------------------------------------------------------------------------------------------------------
++------------------------------------------------------------------------+
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <licenses>
@@ -1616,4 +1616,4 @@ All rights reserved.
         </with-license>
     </within>
 </manifest>
----------------------------------------------------------------------------------------------------------------------------------------------
++------------------------------------------------------------------------+
