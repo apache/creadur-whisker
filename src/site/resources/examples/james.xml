@@ -1,48 +1,22 @@
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~
-~~  Licensed to the Apache Software Foundation (ASF) under one
-~~  or more contributor license agreements.  See the NOTICE file
-~~  distributed with this work for additional information
-~~  regarding copyright ownership.  The ASF licenses this file
-~~  to you under the Apache License, Version 2.0 (the
-~~  "License"); you may not use this file except in compliance
-~~  with the License.  You may obtain a copy of the License at
-~~
-~~    http://www.apache.org/licenses/LICENSE-2.0
-~~
-~~  Unless required by applicable law or agreed to in writing,
-~~  software distributed under the License is distributed on an
-~~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-~~  KIND, either express or implied.  See the License for the
-~~  specific language governing permissions and limitations
-~~  under the License.    
-~~
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
 
-Whisker Meta-Data Model
+    http://www.apache.org/licenses/LICENSE-2.0
 
- Jump into
-
-%{toc|section=1|fromDepth=2|toDepth=3}
-
- or read on.
-
-* Breakdown
-
- The meta data relates licensing information about the contents of an assembled release
- efficiently. It break down into three sections:
- 
- [[I]] Licenses, notices and organisations each described here once (then reused);
- 
- [[I]] Primary license, notice and organisation for the application released; and
- 
- [[I]] Contents of each directory, grouped by organisation and license. 
- 
-* Described By DTD 
-
- Useful for visual editors.
-
-+------------------------------------------------------------------------+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied.  See the License for the
+  specific language governing permissions and limitations
+  under the License.    
+-->
 <!DOCTYPE manifest [
 
 <!ELEMENT manifest (licenses, notices, organisations, 
@@ -120,109 +94,6 @@ Whisker Meta-Data Model
 <!ATTLIST resource notice IDREF #IMPLIED>
 <!ATTLIST resource source CDATA #IMPLIED>
 ]>
-+------------------------------------------------------------------------+
-
-
-* Some More Advanced Features Explained
-
-** Templates For License Families
-
- Some familiar open source licenses (for example, 
- the {{{http://www.opensource.org/licenses/BSD-3-Clause}BSD 3-Clause License}}) are better understood
- as families of licenses. Each family is based on a parameterised template. When the license is used, 
- an appropriate value is substituted for each parameter.
- 
- Whisker supports template licenses with parameter substitution. Parameter names are defined by <<<parameter-name>>> elements
- within a <<<template>>> block. 
-
-+------------------------------------------------------------------------+
-        <license ...
-            <template>
-                <parameter-name>foo</parameter-name>
-                ...
-            </template>
-            ...
-+------------------------------------------------------------------------+ 
- 
- Each <<<$\{parameter name\}>>> within the license <<<text>>> will be substituted by 
- the <<<value>>> with matching <<<name>>> within a <<<parameter>>> in a <<<license-parameters>>> block. When referring
- to a template license, this block is required. All parameter names defined must have exactly one value specified.
-
-+------------------------------------------------------------------------+
-    <license-parameters>
-      <parameter>
-        <name>foo</name>
-        <value>bar</value>
-      </parameter>
-      ...
-+------------------------------------------------------------------------+
-
- 
-*** A Template Example 
-
- This simple template example features a <<<Hello, World>>> license. 
- Source is {{{./examples/template-license.xml}here}}.
-
-+------------------------------------------------------------------------+
-<manifest>
-    <licenses>
-        <!-- A template license -->
-        <license id='TL1' name='A Template License'>
-            <!-- 
-                Parameter names in this section.
-                Values must be set for all parameters. 
-                                                -->
-            <template>
-                <!-- ${FOO} will be substituted wherever it occurs -->
-                <parameter-name>FOO</parameter-name>
-                <!-- ${BAR} will be substituted wherever it occurs -->
-                <parameter-name>BAR</parameter-name>
-            </template>
-            <!-- Wherever ${FOO} and ${BAR} are found will be substituted.-->
-            <text>
-                ${BAR}, ${FOO}.            
-            </text>
-        </license>
-    </licenses>
-    ...
-    <within dir='.'>
-        <with-license id='TL1'>
-            <!-- 
-                When a template license is referenced,
-                a license-parameter block must exist
-                and contain one value for each defined
-                parameter 
-                                                        -->
-            <license-parameters>
-                <parameter>
-                    <!-- Replace ${FOO} with 'world' -->
-                    <name>FOO</name>
-                    <value>world</value>
-                </parameter>
-                <parameter>
-                    <!-- Replace ${BAR} with 'Hello' -->
-                    <name>BAR</name>
-                    <value>hello</value>
-                </parameter>
-            </license-parameters>
-            <!--
-                After substituting values for parameters,
-                the license reads: Hello, world.
-                                                        -->                                        
-        </with-license>
-    </within>
-</manifest>
-+------------------------------------------------------------------------+
-
-
-* A Sample 
-
-  Describes components assembled into the {{{http://james.apache.org}Apache James}} 
-  {{{http://james.apache.org/server}mail server}}.
-  Find the source {{{./examples/james.xml}here}}.
-
-+------------------------------------------------------------------------+
-<?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <licenses>
         <license 
@@ -1133,12 +1004,12 @@ used (note that this software is not included in the distribution):
   * The PBE Encryption facilities require the Java Cryptography 
     extensions: http://java.sun.com/javase/technologies/security/.
 
- ---------------------------------
+---------------------------------
 
 Distributions of this software may include software developed by
 The Apache Software Foundation (http://www.apache.org/).
 
- ---------------------------------
+---------------------------------
 
 
 ICU License - ICU 1.8.1 and later
@@ -1617,4 +1488,3 @@ All rights reserved.
         </with-license>
     </within>
 </manifest>
-+------------------------------------------------------------------------+
