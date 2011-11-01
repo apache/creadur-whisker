@@ -125,6 +125,79 @@ Whisker Meta-Data Model
 
 * Some More Advanced Features Explained
 
+** Public Domain
+
+ Some contemporary laws make it surprisingly difficult for an author to place a work in the public domain. 
+ See <<<{{{http://creativecommons.org} creativecommons.org}}>>>
+ for {{{http://creativecommons.org/about/cc0} more}} 
+ {{{http://creativecommons.org/weblog/entry/23830} explanation}}.
+ 
+ Whisker supports works in the public domain through <<<public-domain>>> blocks <<<within>>> a directory. 
+ A <<<resource>>> in the public domain should be grouped <<<by-organisation>>> within the <<<public-domain>>>
+ block.
+ 
++------------------------------------------------------------------------+
+
+    <within dir='.'>
+        <public-domain>
+            <by-organisation id='An Author'>
+                <resource name='A Work In The Public Domain'/>
+            </by-organisation>
+        </public-domain>
+    </within>
+
++------------------------------------------------------------------------+
+
+*** A Public Domain Example
+
+ This simple example illustrates how <Guide to the Lakes> by William Wordsworth
+ (now in the public domain) may be indicated. 
+ Source is {{{./examples/public-domain.xml}here}}.
+
++------------------------------------------------------------------------+
+<manifest>
+    <licenses>
+        <license id='LICENSE' name='A License'>
+            <text>The words of the license</text>
+        </license>
+    </licenses>
+    <notices/>
+    <organisations>
+        <organisation id="ORG" name='An Organisation'/>
+        <!-- 
+        The original author must still be credited
+        even for works in the public domain.
+        Copyrights to the works of William Wordsworth 
+        (1770-1850)
+        have now expired. 
+                                              -->
+        <organisation id="WilliamWordsworth" name='William Wordsworth'/>
+    </organisations>
+    <primary-license id='LICENSE'/>
+    <primary-organisation id='ORG'/>
+    
+    <within dir='.'>
+        <!-- 
+            The public domain block should be included
+            when the directory contains a resources 
+            in the public domain. 
+                     -->
+        <public-domain>
+            <by-organisation id='WilliamWordsworth'>
+            <!-- 
+                Copyrights to 'Guide to the Lakes'
+                by William Wordsworth have now expired.
+                It is in the public domain.
+                         -->
+                <resource name='Guide to the Lakes'/>
+            </by-organisation>
+        </public-domain>
+    </within>
+</manifest>
+
++------------------------------------------------------------------------+
+
+
 ** Templates For License Families
 
  Some familiar open source licenses (for example, 
