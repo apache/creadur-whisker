@@ -460,6 +460,13 @@ All rights reserved.
 </manifest>
 +------------------------------------------------------------------------+
 
+** Source Links
+
+ Some weak copyleft licenses (for example, the {{{http://www.opensource.org/licenses/CDDL-1.0} CDDL 1.0}}) 
+ require that distributions either include the source, or a link to the source. Not every 
+ artifact distributed under these licenses embeds this information. 
+ 
+ Whisker supports source links for a <<<resource>>> through the optional <<<source>>> attribute. 
 
 * A Sample 
 
