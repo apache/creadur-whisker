@@ -38,6 +38,70 @@ Whisker Meta-Data Model
  
  [[I]] Contents of each directory, grouped by organisation and license. 
  
+* Some Objects Modeled
+
+** {Section I} - Licenses, Notices and Organisations 
+
+[meta-data-section1.png] Section I
+ 
+ License, notice and organisations are define independently. Each can then be efficiently 
+ referenced in many places by simple <<<id>>>. Each <<<id>>> must be a unique <<<ID>>> (in xml terms). Adopting
+ a regular naming convention is recommended. Some typical conventions:
+ 
+  * use the domain name as the <<<id>>> for an organisation;
+  
+  * use the {{{http://www.opensource.org} Open Source Initiative}} code as the <<<id>>> 
+    for an open source license
+ 
+ Note that <<<organisation>>> includes any entity attributed as creator. Including (for example)
+ 
+  * the name of an author;
+  
+  * a pseudonym;
+  
+  * a corporation;
+  
+  * a development community;
+  
+  * the Apache Software Foundation.
+
+** {Section II} - Primary Details
+
+ The primary license, notice and organisation associated with the work reference data in {{{Section I}Section I}} by <<<id>>>. 
+ This is the collective copyright for the act of composition. The components aggregated in the distribution
+ are detailed in {{{Section III}Section III}}.
+  
+** {Section III} - Contents
+
+ This final section groups resources contained in each directory by organisation and license. 
+
+[meta-data-section3.png] Section III
+
+ The deep nesting groups the resources contained in each directory by license and organisation
+ to reduce duplication. Licenses, notices and organisations are linked by <<<id>>> to the definitions
+ in {{{Section I} Section I}}.
+
+ Directories are modeled using a flat structure without nesting. Paths are relative to the
+ root directory of the distribution (indicated by '.') and separated by <<<//>>>. 
+
++------------------------------------------------------------------------+
+
+    <within dir='.'>
+        <with-license ...
+    </within>
+    <within dir='WEB-INF'>
+        <with-license ...
+    </within>
+    <within dir='WEB-INF/conf'>
+        <with-license ...
+    </within>
+    <within dir='WEB-INF/lib'>
+        <with-license ...    
+    </within>
+
++------------------------------------------------------------------------+
+
+ 
 * Described By DTD 
 
  Useful for visual editors.
