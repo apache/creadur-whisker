@@ -19,57 +19,24 @@
 package org.apache.rat.whisker.model;
 
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
-
-import org.jdom.Element;
 
 /**
  * 
  */
 public class ByOrganisation implements Comparable<ByOrganisation> {
-
-    
-    /**
-     * @param element
-     * @param organisations
-     * @return
-     */
-    private static Organisation organisation(Element element,
-            Map<String, Organisation> organisations) {
-        return organisations.get(element.getAttributeValue("id"));
-    }
-   
-    /**
-     * @param element
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    private static Collection<Resource> resources(Element element) {
-        final Collection<Resource> resources = new TreeSet<Resource>();
-        for (Element resourceElement: (List<Element>) element.getChildren("resource")) {
-            resources.add(new Resource(resourceElement));
-        }
-        return Collections.unmodifiableCollection(resources);
-    }
     
     private final Organisation organisation;
     private final Collection<Resource> resources;
     
-    public ByOrganisation(Element element, Map<String, Organisation> organisations) {
-        this(element, organisation(element, organisations));
-    }
-
+    
     /**
-     * @param element
-     * @param organisation
+     * @param resources not null
+     * @param organisation not null
      */
-    public ByOrganisation(Element element, Organisation organisation) {
+    public ByOrganisation(final Organisation organisation, final Collection<Resource> resources) {
         super();
         this.organisation = organisation;
-        this.resources = resources(element);
+        this.resources = resources;
     }
 
     public String getName() {
@@ -133,18 +100,6 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
     @Override
     public int compareTo(ByOrganisation other) {
         return getName().compareTo(other.getName());
-    }
-
-    @SuppressWarnings("unchecked")
-    static Collection<ByOrganisation> byOrganisation(
-            Element element, Map<String, Organisation> organisations) {
-        final Collection<ByOrganisation> results = new TreeSet<ByOrganisation>();
-        if (element != null) {
-            for (final Element byOrgElement: (List<Element>) element.getChildren("by-organisation")) {
-                results.add(new ByOrganisation(byOrgElement, organisations));
-            }
-        }
-        return Collections.unmodifiableCollection(results);
     }
 
     /**

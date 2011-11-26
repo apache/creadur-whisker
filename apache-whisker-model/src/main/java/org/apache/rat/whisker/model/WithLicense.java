@@ -19,56 +19,36 @@
 package org.apache.rat.whisker.model;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.jdom.Element;
 
 /**
  * 
  */
 public class WithLicense implements Comparable<WithLicense> {
     
-    /**
-     * @param element
-     * @param licenses
-     * @return
-     */
-    private static License license(Element element,
-            Map<String, License> licenses) {
-        return licenses.get(element.getAttributeValue("id"));
-    }
     
     private final License license;
-    private final Element element;
     private final Collection<ByOrganisation> organisations;
-    
-    public WithLicense(final Element element, final Map<String, License> licenses,
-            Map<String, Organisation> organisations) {
-        this(license(element, licenses), element, ByOrganisation.byOrganisation(element, organisations));
-    }
+    private final String copyrightNotice;
+    private final Map<String, String> parameters;
         /**
      * @param license
      * @param element
      */
-    public WithLicense(License license, Element element, 
+    public WithLicense(License license,     
+            final String copyrightNotice,
+            final Map<String, String> parameters,
             final Collection<ByOrganisation> organisations) {
         super();
         this.license = license;
-        this.element = element;
+        this.copyrightNotice = copyrightNotice;
+        this.parameters = parameters;
         this.organisations = organisations;
     }
 
     public String getCopyrightNotice() {
-        final String result;
-        final Element copyrightNoticeElement = element.getChild("copyright-notice");
-        if (copyrightNoticeElement == null) {
-            result = null;
-        } else {
-            result = copyrightNoticeElement.getTextTrim();
-        }
-        return result;
+        return copyrightNotice;
     }
     
     public String getName() {
@@ -84,41 +64,14 @@ public class WithLicense implements Comparable<WithLicense> {
     }
     
     public String getText() throws LicenseTemplateException {
-        return license.getText(parameters());
+        return license.getText(parameters);
     }
     
-    /**
-     * @return
-     * @throws LicenseTemplateException 
-     */
-    @SuppressWarnings("unchecked")
-    private Map<String, String> parameters() throws LicenseTemplateException {
-        final Map<String, String> results = new HashMap<String, String>();
-        final Element licenseParametersElement = element.getChild("license-parameters");
-        if (licenseParametersElement != null) {
-            for (Element parameterElement: (List<Element>) licenseParametersElement.getChildren("parameter")) {
-                final String name = parameterElement.getChild("name").getTextTrim();
-                if (results.containsKey(name)) {
-                    throw LicenseTemplateException.duplicateParameterName(name);
-                }
-                results.put(name, 
-                        parameterElement.getChild("value").getTextTrim());
-            }   
-        }
-        return results;
-    }
-
     public Collection<ByOrganisation> getOrganisations() {
         return organisations;
     }
+
     
-    /**
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "WithLicense [element=" + element + "]";
-    }
 
     /**
      * TODO: incompatible with equals?

@@ -20,60 +20,53 @@ package org.apache.rat.whisker.model;
 
 import java.util.Map;
 
-import org.jdom.Element;
-
 /**
  * 
  */
 public class Organisation implements Comparable<Organisation> {
 
-    private final Element element;
-
-    /**
-     * @param element
-     */
-    public Organisation(Element element) {
+    private final String id;
+    private final String name;
+    private final String url;
+    
+    private Organisation(String id, String name, String url) {
         super();
-        this.element = element;
+        this.id = id;
+        this.name = name;
+        this.url = url;
     }
 
     /**
      * @param organisationsById
      */
     public Organisation storeIn(Map<String, Organisation> organisationsById) {
-        organisationsById.put(element.getAttributeValue("id"), this);
+        organisationsById.put(id, this);
         return this;
     }
     
     public String getName() {
-        return element.getAttributeValue("name");
+        return name;
     }
 
     public String getURL() {
-        return element.getAttributeValue("url");
+        return url;
     }
 
     /**
      * @return
      */
     public String getId() {
-        return element.getAttributeValue("id");
+        return id;
     }
 
-    /**
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((element == null) ? 0 : element.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
 
-    /**
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -83,7 +76,12 @@ public class Organisation implements Comparable<Organisation> {
         if (getClass() != obj.getClass())
             return false;
         Organisation other = (Organisation) obj;
-        return getId().equals(other.getId());
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
     }
 
     /**
@@ -92,7 +90,5 @@ public class Organisation implements Comparable<Organisation> {
     @Override
     public int compareTo(Organisation other) {
         return getName().compareTo(other.getName());
-    }
-    
-    
+    }    
 }

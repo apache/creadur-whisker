@@ -18,126 +18,36 @@
  */
 package org.apache.rat.whisker.model;
 
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 
-import org.jdom.Document;
-import org.jdom.Element;
 
 /**
  * 
  */
 public class Work {
-
-
-    /**
-     * @param document
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    private static Map<String, Organisation> mapOrganisations(Document document) {
-        final Map<String, Organisation> organisationsById = new HashMap<String, Organisation>();
-        
-        for (final Element element: 
-            (List<Element>) document.getRootElement().getChild("organisations").getChildren("organisation")) {
-            new Organisation(element).storeIn(organisationsById);
-        }
-        return Collections.unmodifiableMap(organisationsById);
-    }
-
-
-    /**
-     * @param document
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    private static Map<String, License> mapLicenses(Document document) {
-        Map<String, License> results = new HashMap<String, License>();
-        for (final Element element: (List<Element>) document.getRootElement().getChild("licenses").getChildren()) {
-            new License(element).storeIn(results);
-        }
-        return Collections.unmodifiableMap(results);
-    }
     
-    
-    /**
-     * @param document
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    private static Map<String, String> mapNotices(Document document) {
-        Map<String, String> results = new HashMap<String, String>();
-        for (final Element element: (List<Element>) document.getRootElement().getChild("notices").getChildren()) {
-            results.put(element.getAttributeValue("id"), element.getTextTrim());
-        }
-        return results;
-    }
-
-    
-    /**
-     * @param document
-     * @return
-     */
-    private static License primaryLicense(final Document document, final Map<String, License> licenses) {
-        return licenses.get(document.getRootElement().getChild("primary-license").getAttributeValue("id"));
-    }
-    
-    private static String primaryNotice(final Document document) {
-        final String result;
-        final Element primaryNoticeElement = document.getRootElement().getChild("primary-notice");
-        if (primaryNoticeElement == null) {
-            result = null;
-        } else {
-            result = primaryNoticeElement.getText()
-                .replace("${year}", Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
-        }
-        return result;
-    }
-
-
-    /**
-     * @param document
-     * @return
-     */
-    private static String primaryOrganisationId(Document document) {
-        final String result;
-        final Element primaryOrganisationElement = document.getRootElement().getChild("primary-organisation");
-        if (primaryOrganisationElement == null) {
-            result = null;
-        } else {
-            result = primaryOrganisationElement.getAttributeValue("id");
-        }
-        return result;
-    }
-    
-    private final Document document;
     private final License primaryLicense;
     private final String primaryOrganisationId;
     private final String primaryNotice;
     private final Map<String, License> licenses;
     private final Map<String, String> notices;
-    private final Map<String, Organisation> organisations;
+    private final Collection<WithinDirectory> contents;
     
-    /**
-     * @param document
-     */
-    public Work(Document document) {
+    private Work(License primaryLicense, String primaryOrganisationId,
+            String primaryNotice, Map<String, License> licenses,
+            Map<String, String> notices,
+            Map<String, Organisation> organisations,
+            Collection<WithinDirectory> contents) {
         super();
-        this.document = document;
-        this.licenses = mapLicenses(document);
-        this.notices = mapNotices(document);
-        this.primaryLicense = primaryLicense(document, this.licenses);
-        this.primaryNotice = primaryNotice(document);
-        this.organisations = mapOrganisations(document);
-        this.primaryOrganisationId = primaryOrganisationId(document);
+        this.primaryLicense = primaryLicense;
+        this.primaryOrganisationId = primaryOrganisationId;
+        this.primaryNotice = primaryNotice;
+        this.licenses = licenses;
+        this.notices = notices;
+        this.contents = contents;
     }
-
 
     /**
      * @return the primaryNotice
@@ -166,17 +76,8 @@ public class Work {
         return primaryLicense;
     }
     
-    @SuppressWarnings("unchecked")
     public Collection<WithinDirectory> getContents() {
-        final Collection<WithinDirectory> results = new TreeSet<WithinDirectory>();
-        for (Element element: (List<Element>)document.getRootElement().getChildren("within")) {
-            if (results.add(directory(element))) {
-                // OK System.out.println("Ok");
-            } else {
-                throw new IllegalArgumentException("Duplicate directory " + element.getAttribute("dir"));
-            }
-        }
-        return results;
+        return contents;
     }
     
     public boolean isPrimary( final License license) {
@@ -199,11 +100,6 @@ public class Work {
         return collator.isOnlyLicense(getPrimaryLicense()) && collator.isOnlyOrganisation(primaryOrganisationId);
     }
     
-    private WithinDirectory directory(final Element element) {
-        return new WithinDirectory(element, this.licenses, this.organisations);
-    }
-
-    
     public void traverse(final Visitor visitor) {
         for (final WithinDirectory directory: getContents()) {
             directory.accept(visitor);
@@ -217,9 +113,5 @@ public class Work {
             }
         }
     }
-    public Collection<Resource> getResourcesRequiringSourceLinks() {
-        final ResourceSourceAuditor auditor = new ResourceSourceAuditor();
-        traverse(auditor);
-        return auditor.getResourcesRequiringSourceLinks();
-    }
+
 }

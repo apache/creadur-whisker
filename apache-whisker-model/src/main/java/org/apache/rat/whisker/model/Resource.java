@@ -18,8 +18,6 @@
  */
 package org.apache.rat.whisker.model;
 
-import org.apache.commons.lang.StringUtils;
-import org.jdom.Element;
 
 /**
  * 
@@ -29,12 +27,6 @@ public class Resource implements Comparable<Resource>{
     private final String name;
     private final String noticeId;
     private final String source;
-
-    public Resource(final Element element) {
-        this(StringUtils.trim(element.getAttributeValue("name")), 
-                StringUtils.trim(element.getAttributeValue("notice")),
-                        StringUtils.trim(element.getAttributeValue("source")));
-    }
     
     /**
      * @param name

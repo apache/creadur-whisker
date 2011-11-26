@@ -20,30 +20,35 @@ package org.apache.rat.whisker.model;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.jdom.Element;
 
 /**
  * 
  */
 public class License implements Comparable<License> {
 
-    private final Element element;
-
-    /**
-     * @param element
-     */
-    public License(Element element) {
-        super();
-        this.element = element;
-    }
+    private final boolean isSourceRequired;
+    private final String baseText;
+    private final Collection<String> expectedParameters;
+    private final String id;
+    private final String url;
+    private final String name;
     
+    private License(boolean isSourceRequired, String baseText,
+            Collection<String> expectedParameters, String id, String url,
+            String name) {
+        super();
+        this.isSourceRequired = isSourceRequired;
+        this.baseText = baseText;
+        this.expectedParameters = expectedParameters;
+        this.id = id;
+        this.url = url;
+        this.name = name;
+    }
+
     public boolean isSourceRequired() {
-        return "yes".equalsIgnoreCase(this.element.getAttributeValue("requires-source"));
+        return isSourceRequired;
     }
     
     public String getText() throws LicenseTemplateException {
@@ -51,7 +56,7 @@ public class License implements Comparable<License> {
     }
     
     public String getText(final Map<String, String> parameters) throws LicenseTemplateException {
-        return substituteInto(validate(parameters), element.getChild("text").getText());
+        return substituteInto(validate(parameters), baseText);
     }
 
     /**
@@ -65,7 +70,6 @@ public class License implements Comparable<License> {
             return validate(Collections.EMPTY_MAP);
         }
         
-        final Collection<String> expectedParameters = expectedParameters();
         if (expectedParameters.isEmpty() && parameters != null && !parameters.isEmpty()) {
             throw LicenseTemplateException.notLicenseTemplate(parameters, getName());
         }
@@ -86,18 +90,6 @@ public class License implements Comparable<License> {
             final Collection<String> expectedParameters) {
         final Set<String> keySet = parameters.keySet();
         return (keySet.containsAll(expectedParameters) && expectedParameters.containsAll(keySet));
-    }
-
-    @SuppressWarnings("unchecked")
-    private Collection<String> expectedParameters() {
-        final Collection<String> results = new HashSet<String>();
-        final Element templateElement = element.getChild("template");
-        if (templateElement != null) {
-            for (Element parameterNameElement: (List<Element>) templateElement.getChildren("parameter-name")) {
-                results.add(parameterNameElement.getTextTrim());
-            }
-        }
-        return results;
     }
     
     private String variable(final String parameterName) {
@@ -128,29 +120,21 @@ public class License implements Comparable<License> {
      * @return
      */
     public String getId() {
-        return element.getAttributeValue("id");
-    }
-
-    /**
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "License [element=" + element + "]";
+        return id;
     }
 
     /**
      * @return
      */
     public String getURL() {
-        return element.getAttributeValue("url");
+        return url;
     }
 
     /**
      * @return
      */
     public String getName() {
-        return element.getAttributeValue("name");
+        return name;
     }
 
     /**
@@ -183,6 +167,10 @@ public class License implements Comparable<License> {
     public int compareTo(License other) {
         return getName().compareTo(other.getName());
     }
-    
+
+    @Override
+    public String toString() {
+        return "License [id=" + id + ", name=" + name + "]";
+    }
     
 }

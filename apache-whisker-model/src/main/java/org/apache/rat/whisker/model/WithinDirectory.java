@@ -18,13 +18,8 @@
  */
 package org.apache.rat.whisker.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
-import org.jdom.Element;
 
 /**
  * 
@@ -32,47 +27,19 @@ import org.jdom.Element;
 public class WithinDirectory implements Comparable<WithinDirectory> {
 
 
-    /**
-     * @param organisations
-     * @param element
-     * @return
-     */
-    private static Collection<ByOrganisation> publicDomain(
-            Map<String, Organisation> organisations, Element element) {
-        return ByOrganisation.byOrganisation(element.getChild("public-domain"), organisations);
-    }
-
-
-    /**
-     * @param licenses
-     * @param element
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    private static Collection<WithLicense> licenses(Map<String, License> licenses,
-            Map<String, Organisation> organisations, Element element) {
-        final List<WithLicense> results = new ArrayList<WithLicense>();
-        for (Element withLicenseElement: (List<Element>) element.getChildren("with-license")) {
-            results.add(new WithLicense(withLicenseElement, licenses, organisations));
-        }
-        Collections.sort(results);
-        return results;
-    }
-
-    
-    private final Element element;
     private final Collection<WithLicense> licenses;
     private final Collection<ByOrganisation> publicDomain;
+    private final String name;
      
     /**
      * @param element
      */
-    public WithinDirectory(Element element, Map<String, License> licenses, 
-            Map<String, Organisation> organisations) {
+    public WithinDirectory(final String name, final Collection<WithLicense> licenses, 
+            Collection<ByOrganisation> publicDomain) {
         super();
-        this.element = element;
-        this.licenses = licenses(licenses, organisations, element);
-        this.publicDomain = publicDomain(organisations, element);
+        this.name = name;
+        this.licenses = licenses;
+        this.publicDomain = publicDomain;
     }
     
     /**
@@ -83,7 +50,7 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
     }
 
     public String getName() {
-        return element.getAttributeValue("dir");
+        return name;
     }
     
     public Collection<WithLicense> getLicenses() {
