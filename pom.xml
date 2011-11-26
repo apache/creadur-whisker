@@ -71,16 +71,35 @@
   </dependencyManagement>
 
   <modules>
+    <module>apache-whisker-model</module>
   </modules>
 
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <target.jdk>1.5</target.jdk>
   </properties>
+
+  <!-- ================================ Build information -->
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>${target.jdk}</source>
+            <target>${target.jdk}</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  
 
   <!-- ================================ Project information -->
   
-  <name>Apache Rat::Whisker</name>
+  <name>Apache Rat Whisker</name>
   <description>Apache Whisker wrangles legal documentation for composed applications.</description>
   <url>http://rat.apache.org/whisker</url>
   <inceptionYear>2011</inceptionYear>
