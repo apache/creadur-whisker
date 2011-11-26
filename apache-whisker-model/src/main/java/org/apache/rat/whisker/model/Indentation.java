@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.legacy.out;
+package org.apache.rat.whisker.model;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -16,48 +16,50 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.legacy.scan;
+package org.apache.rat.whisker.model;
 
-import java.util.Set;
-import java.util.TreeSet;
+import org.apache.commons.lang.StringUtils;
+import org.jdom.Element;
 
 /**
  * 
  */
-public class Directory implements Comparable<Directory> {
+public class Resource implements Comparable<Resource>{
 
-    private String name;
-    private Set<String> contents = new TreeSet<String>();
-  
+    private final String name;
+    private final String noticeId;
+    private final String source;
+
+    public Resource(final Element element) {
+        this(StringUtils.trim(element.getAttributeValue("name")), 
+                StringUtils.trim(element.getAttributeValue("notice")),
+                        StringUtils.trim(element.getAttributeValue("source")));
+    }
     
+    /**
+     * @param name
+     */
+    public Resource(String name, final String noticeId, final String source) {
+        super();
+        this.name = name;
+        this.noticeId = noticeId;
+        this.source = source;
+    }
+
     /**
      * @return the name
      */
     public String getName() {
         return name;
     }
+
     /**
-     * @param name the name to set
+     * @return the noticeId
      */
-    public Directory setName(String name) {
-        this.name = name;
-        return this;
+    public String getNoticeId() {
+        return noticeId;
     }
-    
-    /**
-     * @return the contents
-     */
-    public Set<String> getContents() {
-        return contents;
-    }
-    
-    /**
-     * @param contents the contents to set
-     */
-    public void setContents(Set<String> contents) {
-        this.contents = contents;
-    }
-    
+
     /**
      * @see java.lang.Object#hashCode()
      */
@@ -68,7 +70,7 @@ public class Directory implements Comparable<Directory> {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
-    
+
     /**
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -80,7 +82,7 @@ public class Directory implements Comparable<Directory> {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Directory other = (Directory) obj;
+        Resource other = (Resource) obj;
         if (name == null) {
             if (other.name != null)
                 return false;
@@ -88,31 +90,43 @@ public class Directory implements Comparable<Directory> {
             return false;
         return true;
     }
-    
+
     /**
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        return "Directory [name=" + name + "]";
+        return "Resource [name=" + name + "]";
     }
-    
-    /**
-     * @param name
-     */
-    public void addResource(String name) {
-        contents.add(name);
-    }
-    
+
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
     @Override
-    public int compareTo(Directory other) {
-        if (other == null) {
-            return -1;
+    public int compareTo(Resource other) {
+        return getName().compareTo(other.getName());
+    }
+
+    /**
+     * @param visitor
+     */
+    public void accept(Visitor visitor) {
+        if (visitor != null && visitor.traverseResource()) {
+            visitor.visit(this);
         }
-        return this.name.compareTo(other.name);
+    }
+
+    /**
+     * @return the source
+     */
+    public String getSource() {
+        return source;
+    }
+
+    /**
+     * @return
+     */
+    public boolean hasSource() {
+        return getSource() != null && !"".equals(getSource());
     }
 }
-
