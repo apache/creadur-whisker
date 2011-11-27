@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.legacy.scan;
+package org.apache.rat.whisker.scan;
 
 import java.io.File;
 import java.io.IOException;
