@@ -26,7 +26,7 @@ import junit.framework.TestCase;
 /**
  * 
  */
-public class JDomBuilderTest extends TestCase {
+public class JDomBuilderResourceTest extends TestCase {
 
     private JDomBuilder subject;
     
@@ -89,7 +89,7 @@ public class JDomBuilderTest extends TestCase {
                     .setAttribute("notice", "notice")
                     .setAttribute("source", "source"));
             fail("Expected IllegalArgument throw when elements is not named 'resource'");  
-        } catch (IllegalArgumentException e) {
+        } catch (UnexpectedElementException e) {
             //expected
         } catch (Throwable t) {
             fail("Expected IllegalArgument throw when elements is not named 'resource' but " + t + " was instead");
