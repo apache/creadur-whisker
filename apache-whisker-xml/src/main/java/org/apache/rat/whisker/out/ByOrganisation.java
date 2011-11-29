@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
+import org.apache.rat.whisker.fromxml.JDomBuilder;
+import org.apache.rat.whisker.model.Resource;
 import org.jdom.Element;
 
 /**
@@ -50,7 +52,7 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
     private static Collection<Resource> resources(Element element) {
         final Collection<Resource> resources = new TreeSet<Resource>();
         for (Element resourceElement: (List<Element>) element.getChildren("resource")) {
-            resources.add(new Resource(resourceElement));
+            resources.add(new JDomBuilder().resource(resourceElement));
         }
         return Collections.unmodifiableCollection(resources);
     }
@@ -145,17 +147,5 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
             }
         }
         return Collections.unmodifiableCollection(results);
-    }
-
-    /**
-     * @param visitor
-     */
-    public void accept(Visitor visitor) {
-        if (visitor != null && visitor.traverseByOrganisation()) {
-            visitor.visit(this);
-            for (final Resource resource: getResources()) {
-                resource.accept(visitor);
-            }
-        }
     }
 }

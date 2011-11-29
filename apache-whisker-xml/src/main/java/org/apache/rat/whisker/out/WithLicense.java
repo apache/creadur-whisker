@@ -129,18 +129,6 @@ public class WithLicense implements Comparable<WithLicense> {
         return getName().compareTo(other.getName());
     }
     
-
-    /**
-     * @param visitor
-     */
-    public void accept(Visitor visitor) {
-        if (visitor != null && visitor.traverseWithLicense()) {
-            visitor.visit(this);
-            for (final ByOrganisation organisation: getOrganisations()) {
-                organisation.accept(visitor);
-            }
-        }
-    }
     /**
      * @return
      */

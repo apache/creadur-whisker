@@ -129,25 +129,5 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
     public boolean isNamed(String directoryName) {
         return getName().equals(directoryName);
     }
-
-
-    /**
-     * @param visitor
-     */
-    public void accept(Visitor visitor) {
-        if (visitor != null) {      
-            visitor.visit(this);
-            if (visitor.traversePublicDomain()) {
-                for (final ByOrganisation organisation: getPublicDomain()) {
-                    organisation.accept(visitor);
-                }        
-            }
-    
-            for (final WithLicense license: getLicenses()) {
-                license.accept(visitor);
-            }
-        }
-    }
-    
     
 }

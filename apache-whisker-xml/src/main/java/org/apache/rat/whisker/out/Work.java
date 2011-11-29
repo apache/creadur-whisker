@@ -24,7 +24,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeSet;
 
 import org.jdom.Document;
@@ -146,18 +145,6 @@ public class Work {
         return primaryNotice;
     }
 
-    public Map<String, Collection<Resource>> getResourceNotices() {
-        final NoticeCollator collator = new NoticeCollator();
-        traverse(collator);
-        return collator.resourceNotices(this.notices);
-    }
-    
-    public Set<String> getOtherNotices() {
-        final NoticeCollator collator = new NoticeCollator();
-        traverse(collator);
-        return collator.notices(notices);
-    }
-
     public License license(final String id) {
         return licenses.get(id);
     }
@@ -187,39 +174,8 @@ public class Work {
         return byOrganisation.getId().equals(primaryOrganisationId);
     }
     
-    public boolean isOnlyPrimary (final WithinDirectory directory) {
-        final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
-        directory.accept(collator);
-        return collator.isOnlyLicense(getPrimaryLicense()) && collator.isOnlyOrganisation(primaryOrganisationId);
-    }
-    
-    public boolean isOnlyPrimary (final WithLicense license) {
-        final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
-        license.accept(collator);
-        return collator.isOnlyLicense(getPrimaryLicense()) && collator.isOnlyOrganisation(primaryOrganisationId);
-    }
-    
     private WithinDirectory directory(final Element element) {
         return new WithinDirectory(element, this.licenses, this.organisations);
     }
 
-    
-    public void traverse(final Visitor visitor) {
-        for (final WithinDirectory directory: getContents()) {
-            directory.accept(visitor);
-        }
-    }
-   
-    public void traverseDirectory(final Visitor visitor, final String directoryName) {
-        for (final WithinDirectory directory: getContents()) {
-            if (directory.isNamed(directoryName)) {
-                directory.accept(visitor);
-            }
-        }
-    }
-    public Collection<Resource> getResourcesRequiringSourceLinks() {
-        final ResourceSourceAuditor auditor = new ResourceSourceAuditor();
-        traverse(auditor);
-        return auditor.getResourcesRequiringSourceLinks();
-    }
 }
