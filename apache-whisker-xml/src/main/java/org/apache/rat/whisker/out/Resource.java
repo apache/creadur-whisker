@@ -18,7 +18,7 @@
  */
 package org.apache.rat.whisker.out;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jdom.Element;
 
 /**
