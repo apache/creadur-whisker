@@ -45,18 +45,7 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
         return organisations.get(element.getAttributeValue("id"));
     }
    
-    /**
-     * @param element
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    private static Collection<Resource> resources(Element element) {
-        final Collection<Resource> resources = new TreeSet<Resource>();
-        for (Element resourceElement: (List<Element>) element.getChildren("resource")) {
-            resources.add(new JDomBuilder().resource(resourceElement));
-        }
-        return Collections.unmodifiableCollection(resources);
-    }
+
     
     private final Organisation organisation;
     private final Collection<Resource> resources;
@@ -72,7 +61,7 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
     public ByOrganisation(Element element, Organisation organisation) {
         super();
         this.organisation = organisation;
-        this.resources = resources(element);
+        this.resources = new JDomBuilder().collectResources(element);
     }
 
     public String getName() {

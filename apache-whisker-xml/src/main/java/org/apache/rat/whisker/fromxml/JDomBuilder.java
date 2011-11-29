@@ -18,6 +18,11 @@
  */
 package org.apache.rat.whisker.fromxml;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.TreeSet;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rat.whisker.model.Organisation;
 import org.apache.rat.whisker.model.Resource;
@@ -77,4 +82,16 @@ public class JDomBuilder {
         }
     }
 
+    /**
+     * @param element
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public Collection<Resource> collectResources(Element element) {
+        final Collection<Resource> resources = new TreeSet<Resource>();
+        for (Element resourceElement: (List<Element>) element.getChildren("resource")) {
+            resources.add(new JDomBuilder().resource(resourceElement));
+        }
+        return Collections.unmodifiableCollection(resources);
+    }
 }
