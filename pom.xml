@@ -73,6 +73,7 @@
   <modules>
     <module>apache-whisker-model</module>
     <module>apache-whisker-scan</module>
+    <module>apache-whisker-xml</module>
   </modules>
 
 
