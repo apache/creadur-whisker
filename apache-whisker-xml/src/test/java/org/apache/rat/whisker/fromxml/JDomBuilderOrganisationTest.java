@@ -18,6 +18,7 @@
  */
 package org.apache.rat.whisker.fromxml;
 
+import org.apache.rat.whisker.model.Organisation;
 import org.jdom.Element;
 
 import junit.framework.TestCase;
@@ -39,6 +40,16 @@ public class JDomBuilderOrganisationTest extends TestCase {
         super.tearDown();
     }
 
+    public void testOrganisationSetsIdNameUrl() throws Exception {
+        final Organisation result = subject.organisation(
+                new Element("organisation")
+                .setAttribute("name", "a name")
+                .setAttribute("url", "an url")
+                .setAttribute("id", "an id"));
+        assertNotNull("Builder should build an organisation", result);
+        
+    }
+    
     public void testThrowIllegalArgumentWhenResourceIsNotOrganisation() throws Exception {
         try {
             subject.organisation(

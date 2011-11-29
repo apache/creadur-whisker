@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
+import org.apache.rat.whisker.fromxml.JDomBuilder;
+import org.apache.rat.whisker.model.Organisation;
 import org.jdom.Document;
 import org.jdom.Element;
 
@@ -45,7 +47,7 @@ public class Work {
         
         for (final Element element: 
             (List<Element>) document.getRootElement().getChild("organisations").getChildren("organisation")) {
-            new Organisation(element).storeIn(organisationsById);
+            new JDomBuilder().organisation(element).storeIn(organisationsById);
         }
         return Collections.unmodifiableMap(organisationsById);
     }

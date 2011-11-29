@@ -68,7 +68,10 @@ public class JDomBuilder {
      */
     public Organisation organisation(Element element) throws UnexpectedElementException {
         if (ORGANISATION_ELEMENT_NAME.equals(element.getName())) {
-            return null;
+            return new Organisation(
+                    element.getAttributeValue("id"), 
+                    element.getAttributeValue("name"), 
+                    element.getAttributeValue("url"));
         } else {
             throw unexpectedElementException(element, ORGANISATION_ELEMENT_NAME);
         }
