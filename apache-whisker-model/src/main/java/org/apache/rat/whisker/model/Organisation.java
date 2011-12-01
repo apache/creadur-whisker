@@ -29,7 +29,7 @@ public class Organisation implements Comparable<Organisation> {
     private final String name;
     private final String url;
     
-    private Organisation(String id, String name, String url) {
+    public Organisation(String id, String name, String url) {
         super();
         this.id = id;
         this.name = name;

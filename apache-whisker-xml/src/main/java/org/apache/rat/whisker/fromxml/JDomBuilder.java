@@ -21,6 +21,7 @@ package org.apache.rat.whisker.fromxml;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeSet;
 
 import org.apache.commons.lang3.StringUtils;
@@ -93,5 +94,21 @@ public class JDomBuilder {
             resources.add(new JDomBuilder().resource(resourceElement));
         }
         return Collections.unmodifiableCollection(resources);
+    }
+
+    /**
+     * Finds the organisation linked by ID from the given element.
+     * @param element modelled ByOrganisation, not null
+     * @param organisationsById organisations identified, not null
+     * @throws MissingIDException when the linked organisation is not found in the given collection
+     */
+    public Organisation organisation(final Element element,
+            final Map<String, Organisation> organisationsById) throws MissingIDException {
+        final String id = element.getAttributeValue("id");
+        if (organisationsById.containsKey(id)) {
+            return organisationsById.get(id);
+        } else {
+            throw new MissingIDException(ORGANISATION_ELEMENT_NAME, element.getName(), id);
+        }
     }
 }

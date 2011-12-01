@@ -19,11 +19,14 @@
 package org.apache.rat.whisker.fromxml;
 
 import java.util.Collection;
-
-import org.apache.rat.whisker.model.Resource;
-import org.jdom.Element;
+import java.util.Collections;
+import java.util.HashMap;
 
 import junit.framework.TestCase;
+
+import org.apache.rat.whisker.model.Organisation;
+import org.apache.rat.whisker.model.Resource;
+import org.jdom.Element;
 
 /**
  * 
@@ -65,6 +68,48 @@ public class JDomBuilderByOrganisationTest extends TestCase {
         checkCollectResourcesNumbered(4);
     }
 
+    public void testOrganisationByIdThrowsIllegalArgumentWhenOrganisationsEmpty() throws Exception {
+        try {
+            subject.organisation(
+                    new Element("by-organisation").setAttribute("id", "some id"), 
+                    Collections.unmodifiableMap(new HashMap<String, Organisation>()));
+            fail("Expected MissingIDException to be thrown when organisation isn't found in map");
+        } catch (MissingIDException e) {
+            // expected
+        } catch (Throwable t) {
+            fail("Expected MissingIDException to be thrown when organisation isn't found in map but instead " 
+                    + t + " was thrown");
+        }
+    }
+
+    public void testOrganisationByIdThrowsIllegalArgumentWhenOrganisationsMissing() throws Exception {
+        try {
+            final HashMap<String, Organisation> map = new HashMap<String, Organisation>();
+            new Organisation("BOGUS", "name", "url").storeIn(map);
+            subject.organisation(
+                    new Element("by-organisation").setAttribute("id", "some id"), 
+                    Collections.unmodifiableMap(map));
+            fail("Expected MissingIDException to be thrown when organisation isn't found in map");
+        } catch (MissingIDException e) {
+            // expected
+        } catch (Throwable t) {
+            fail("Expected MissingIDException to be thrown when organisation isn't found in map but instead " 
+                    + t + " was thrown");
+        }
+    }
+
+    public void testOrganisationByIdFindsOrganisationsPresent() throws Exception {
+        final String idValue = "some id";
+        final HashMap<String, Organisation> map = new HashMap<String, Organisation>();
+        final Organisation expected = new Organisation(idValue, "name", "url");
+        expected.storeIn(map);
+        assertEquals("", expected,
+                subject.organisation(
+                        new Element("by-organisation").setAttribute("id", idValue), 
+                        Collections.unmodifiableMap(map)));
+    }
+
+    
     /**
      * @param numberOfResources
      */

@@ -35,23 +35,11 @@ import org.jdom.Element;
 public class ByOrganisation implements Comparable<ByOrganisation> {
 
     
-    /**
-     * @param element
-     * @param organisations
-     * @return
-     */
-    private static Organisation organisation(Element element,
-            Map<String, Organisation> organisations) {
-        return organisations.get(element.getAttributeValue("id"));
-    }
-   
-
-    
     private final Organisation organisation;
     private final Collection<Resource> resources;
     
     public ByOrganisation(Element element, Map<String, Organisation> organisations) {
-        this(element, organisation(element, organisations));
+        this(element, new JDomBuilder().organisation(element, organisations));
     }
 
     /**
