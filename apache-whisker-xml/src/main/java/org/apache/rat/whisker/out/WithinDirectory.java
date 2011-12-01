@@ -26,6 +26,7 @@ import java.util.Map;
 
 import org.apache.rat.whisker.fromxml.JDomBuilder;
 import org.apache.rat.whisker.model.ByOrganisation;
+import org.apache.rat.whisker.model.License;
 import org.apache.rat.whisker.model.Organisation;
 import org.jdom.Element;
 
