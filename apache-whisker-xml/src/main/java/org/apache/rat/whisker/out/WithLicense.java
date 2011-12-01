@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.rat.whisker.fromxml.JDomBuilder;
+import org.apache.rat.whisker.model.ByOrganisation;
 import org.apache.rat.whisker.model.Organisation;
 import org.jdom.Element;
 
@@ -47,7 +49,7 @@ public class WithLicense implements Comparable<WithLicense> {
     
     public WithLicense(final Element element, final Map<String, License> licenses,
             Map<String, Organisation> organisations) {
-        this(license(element, licenses), element, ByOrganisation.byOrganisation(element, organisations));
+        this(license(element, licenses), element, new JDomBuilder().collectByOrganisations(element, organisations));
     }
         /**
      * @param license

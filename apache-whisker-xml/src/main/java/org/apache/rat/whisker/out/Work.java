@@ -27,6 +27,7 @@ import java.util.Map;
 import java.util.TreeSet;
 
 import org.apache.rat.whisker.fromxml.JDomBuilder;
+import org.apache.rat.whisker.model.ByOrganisation;
 import org.apache.rat.whisker.model.Organisation;
 import org.jdom.Document;
 import org.jdom.Element;

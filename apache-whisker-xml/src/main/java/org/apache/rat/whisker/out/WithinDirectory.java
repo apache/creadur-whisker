@@ -24,6 +24,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.rat.whisker.fromxml.JDomBuilder;
+import org.apache.rat.whisker.model.ByOrganisation;
 import org.apache.rat.whisker.model.Organisation;
 import org.jdom.Element;
 
@@ -40,7 +42,7 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
      */
     private static Collection<ByOrganisation> publicDomain(
             Map<String, Organisation> organisations, Element element) {
-        return ByOrganisation.byOrganisation(element.getChild("public-domain"), organisations);
+        return new JDomBuilder().collectByOrganisations(element.getChild("public-domain"), organisations);
     }
 
 
