@@ -24,6 +24,7 @@ import java.util.HashMap;
 
 import junit.framework.TestCase;
 
+import org.apache.rat.whisker.model.ByOrganisation;
 import org.apache.rat.whisker.model.Organisation;
 import org.apache.rat.whisker.model.Resource;
 import org.jdom.Element;
@@ -103,12 +104,138 @@ public class JDomBuilderByOrganisationTest extends TestCase {
         final HashMap<String, Organisation> map = new HashMap<String, Organisation>();
         final Organisation expected = new Organisation(idValue, "name", "url");
         expected.storeIn(map);
-        assertEquals("", expected,
+        assertEquals("Expected organisation with matching ID to be found", expected,
                 subject.organisation(
                         new Element("by-organisation").setAttribute("id", idValue), 
                         Collections.unmodifiableMap(map)));
     }
 
+    public void testByOrganisationBuildsFromOrganisationAndElementWith3ChildResources() throws Exception {
+        checkOrganisationAndElementBuild(3);
+    }
+
+
+    public void testByOrganisationBuildsFromOrganisationAndElementWith5ChildResources() throws Exception {
+        checkOrganisationAndElementBuild(5);
+    }
+
+    public void testByOrganisationBuildsFromOrganisationAndElementWith10ChildResources() throws Exception {
+        checkOrganisationAndElementBuild(10);
+    }
+    
+    
+    /**
+     * @param numberOfChildResources
+     */
+    private void checkOrganisationAndElementBuild(
+            final int numberOfChildResources) {
+        final Element byOrganisation = withChildResources(numberOfChildResources);
+        final String idValue = "some id";
+        final Organisation input = new Organisation(idValue, "name", "url");
+        final ByOrganisation result = subject.byOrganisation(byOrganisation, input);
+        assertNotNull("Expected builder to build", result);
+        assertNotNull("Expected resources to be built", result.getResources());
+        assertNotNull("Expected organisation to be set", result.getOrganisation());
+        assertEquals("Expected number of resources built matches children", numberOfChildResources, result.getResources().size());
+        assertEquals("Expected organisation to be set to input", input, result.getOrganisation());
+    }
+
+    public void testByOrganisationBuildsFromMapAndElementWith1ChildResources() throws Exception {
+        checkElementAndMapBuild(1);
+    }
+
+    
+    public void testByOrganisationBuildsFromMapAndElementWith5ChildResources() throws Exception {
+        checkElementAndMapBuild(5);
+    }
+    
+    public void testByOrganisationBuildsFromMapAndElementWith10ChildResources() throws Exception {
+        checkElementAndMapBuild(10);
+    }
+
+    public void testByOrganisationCollectiveOneChild()throws Exception {
+        checkCollectByOrganisations(1);
+    }
+
+    public void testByOrganisationCollective2Children()throws Exception {
+        checkCollectByOrganisations(2);
+    }
+
+    public void testByOrganisationCollective5Child()throws Exception {
+        checkCollectByOrganisations(5);
+    }
+
+    public void testByOrganisationCollective3Child()throws Exception {
+        checkCollectByOrganisations(3);
+    }
+    
+    public void testByOrganisationCollective7Child()throws Exception {
+        checkCollectByOrganisations(7);
+    }
+
+    
+    /**
+     * @param numberOfChildren
+     */
+    private void checkCollectByOrganisations(final int numberOfChildren) {
+        final Element parent = new Element("with-license");
+        final String idValue = "some id";
+        final HashMap<String, Organisation> map = new HashMap<String, Organisation>();
+        for (int i=0;i<numberOfChildren;i++) {
+            final String nextIdValue = idValue + i;
+            parent.addContent(withChildResources(10, nextIdValue));
+            new Organisation(nextIdValue, "name" + i, "url").storeIn(map);
+        }
+        final Collection<ByOrganisation> results = subject.collectByOrganisations(parent, map);
+        assertNotNull("Builder should build something", results);
+        assertEquals("Expected an by-organisation in collection per child", numberOfChildren, results.size());
+    }
+    
+    public void testByOrganisationEmptyCollective()throws Exception {
+        final Element parent = new Element("with-license");
+        final Organisation input = new Organisation("id", "name", "url");
+        final HashMap<String, Organisation> map = new HashMap<String, Organisation>();
+        input.storeIn(map);
+        final Collection<ByOrganisation> results = subject.collectByOrganisations(parent, map);
+        assertNotNull("Builder should build something", results);
+        assertTrue("No children so expected an empty collection", results.isEmpty());
+    }
+
+    
+    public void testByOrganisationCollectiveUnmodifiable()throws Exception {
+        final Element parent = new Element("with-license");
+        final Organisation input = new Organisation("id", "name", "url");
+        final HashMap<String, Organisation> map = new HashMap<String, Organisation>();
+        input.storeIn(map);
+        final Collection<ByOrganisation> results = subject.collectByOrganisations(parent, map);
+        assertNotNull("Builder should build something", results);
+        try {
+            results.clear();
+            fail("Expected collection to be unmodifiable");
+        } catch (UnsupportedOperationException e) {
+            //expected
+        }
+    }
+
+    
+    /**
+     * @param numberOfChildResources
+     */
+    private void checkElementAndMapBuild(final int numberOfChildResources) {
+        final Element byOrganisation = withChildResources(numberOfChildResources);
+        final String idValue = "some id";
+        final Organisation input = new Organisation(idValue, "name", "url");
+        final HashMap<String, Organisation> map = new HashMap<String, Organisation>();
+        input.storeIn(map);
+        final ByOrganisation result = subject.byOrganisation(byOrganisation, map);
+        assertNotNull("Expected builder to build", result);
+        assertNotNull("Expected resources to be built", result.getResources());
+        assertNotNull("Expected organisation to be set", result.getOrganisation());
+        assertEquals("Expected number of resources built matches children", numberOfChildResources, result.getResources().size());
+        assertEquals("Expected organisation to be set to input", input, result.getOrganisation());
+    }
+    
+    
     
     /**
      * @param numberOfResources
@@ -123,12 +250,20 @@ public class JDomBuilderByOrganisationTest extends TestCase {
      * @return
      */
     private Element withChildResources(int children) {
-        final Element result = new Element("by-organisation");
+        return withChildResources(children, "some id");
+    }
+
+    /**
+     * @param children
+     * @param idValue
+     * @return
+     */
+    private Element withChildResources(int children, final String idValue) {
+        final Element result = new Element("by-organisation").setAttribute("id", idValue);
         for (int i=0;i<children;i++) {
                 result.addContent(new Element("resource").setAttribute("name", "name" + i))
                 .addContent(new Element("whatever"));
         }
         return result;
     }
-    
 }

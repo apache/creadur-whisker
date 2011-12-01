@@ -22,9 +22,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.rat.whisker.model.ByOrganisation;
 import org.apache.rat.whisker.model.Organisation;
 import org.apache.rat.whisker.model.Resource;
 import org.jdom.Element;
@@ -100,7 +102,7 @@ public class JDomBuilder {
      * Finds the organisation linked by ID from the given element.
      * @param element modelled ByOrganisation, not null
      * @param organisationsById organisations identified, not null
-     * @throws MissingIDException when the linked organisation is not found in the given collection
+     * @throws MissingIDException when the linked organisation is not found in the given map
      */
     public Organisation organisation(final Element element,
             final Map<String, Organisation> organisationsById) throws MissingIDException {
@@ -110,5 +112,45 @@ public class JDomBuilder {
         } else {
             throw new MissingIDException(ORGANISATION_ELEMENT_NAME, element.getName(), id);
         }
+    }
+    
+    /**
+     * Builds a by-organisation model from xml.
+     * @param element not null
+     * @param organisation not null
+     * @return not null
+     */
+    public ByOrganisation byOrganisation(final Element element, final Organisation organisation) {
+        return new ByOrganisation(organisation, collectResources(element));
+    }
+
+    /**
+     * Builds a by-organisation model from xml.
+     * @param byOrganisation not null
+     * @param organisationsById not null 
+     * @return not null
+     * @throws MissingIDException when the linked organisation is not found in the given map
+     */
+    public ByOrganisation byOrganisation(final Element byOrganisation, 
+            final Map<String, Organisation> organisationsById) throws MissingIDException  {
+        return byOrganisation(byOrganisation, organisation(byOrganisation, organisationsById));
+    }
+
+    /**
+     * Collects by-organisation children.
+     * @param parent not null
+     * @param map not null
+     * @return unmodifiable set sort by natural order, not null
+     */
+    @SuppressWarnings("unchecked")
+    public SortedSet<ByOrganisation> collectByOrganisations(final Element parent, 
+            final Map<String, Organisation> map) {
+        final SortedSet<ByOrganisation> results = new TreeSet<ByOrganisation>();
+        if (parent != null) {
+            for (final Element byOrgElement: (List<Element>) parent.getChildren("by-organisation")) {
+                results.add(byOrganisation(byOrgElement, map));
+            }
+        }
+        return Collections.unmodifiableSortedSet(results);
     }
 }

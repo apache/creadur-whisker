@@ -99,7 +99,7 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
      */
     @Override
     public int compareTo(ByOrganisation other) {
-        return getName().compareTo(other.getName());
+        return organisation.compareTo(other.getOrganisation());
     }
 
     /**
@@ -112,5 +112,11 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
                 resource.accept(visitor);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "ByOrganisation [organisation=" + organisation + ", resources="
+                + resources + "]";
     }
 }

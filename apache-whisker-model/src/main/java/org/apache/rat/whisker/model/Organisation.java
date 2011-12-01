@@ -89,6 +89,13 @@ public class Organisation implements Comparable<Organisation> {
      */
     @Override
     public int compareTo(Organisation other) {
-        return getName().compareTo(other.getName());
+        final int nameDifference = getName().compareTo(other.getName());
+        return nameDifference == 0 ? getId().compareTo(other.getId()) : nameDifference;
+    }
+
+    @Override
+    public String toString() {
+        return "Organisation [id=" + id + ", name=" + name + ", url=" + url
+                + "]";
     }    
 }
