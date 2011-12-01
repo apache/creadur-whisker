@@ -35,13 +35,13 @@ public class License implements Comparable<License> {
     private final String url;
     private final String name;
     
-    private License(boolean isSourceRequired, String baseText,
+    public License(boolean isSourceRequired, String baseText,
             Collection<String> expectedParameters, String id, String url,
             String name) {
         super();
         this.isSourceRequired = isSourceRequired;
         this.baseText = baseText;
-        this.expectedParameters = expectedParameters;
+        this.expectedParameters = Collections.unmodifiableCollection(expectedParameters);
         this.id = id;
         this.url = url;
         this.name = name;
@@ -57,6 +57,10 @@ public class License implements Comparable<License> {
     
     public String getText(final Map<String, String> parameters) throws LicenseTemplateException {
         return substituteInto(validate(parameters), baseText);
+    }
+    
+    public Collection<String> getExpectedParameters() {
+        return expectedParameters;
     }
 
     /**

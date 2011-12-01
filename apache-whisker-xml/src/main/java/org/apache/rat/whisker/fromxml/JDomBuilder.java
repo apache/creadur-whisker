@@ -20,6 +20,7 @@ package org.apache.rat.whisker.fromxml;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
@@ -27,6 +28,7 @@ import java.util.TreeSet;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rat.whisker.model.ByOrganisation;
+import org.apache.rat.whisker.model.License;
 import org.apache.rat.whisker.model.Organisation;
 import org.apache.rat.whisker.model.Resource;
 import org.jdom.Element;
@@ -152,5 +154,32 @@ public class JDomBuilder {
             }
         }
         return Collections.unmodifiableSortedSet(results);
+    }
+
+    /**
+     * Builds a license model from xml.
+     * @param element not null
+     * @return not null
+     */
+    public License license(Element element) {
+        final Element text = element.getChild("text");
+        return new License("yes".equalsIgnoreCase(element.getAttributeValue("requires-source")), 
+                text == null ? "" : text.getText(), 
+                expectedParameters(element), 
+                element.getAttributeValue("id"), 
+                element.getAttributeValue("url"),
+                element.getAttributeValue("name"));
+    }
+    
+    @SuppressWarnings("unchecked")
+    private Collection<String> expectedParameters(final Element element) {
+        final Collection<String> results = new HashSet<String>();
+        final Element templateElement = element.getChild("template");
+        if (templateElement != null) {
+            for (Element parameterNameElement: (List<Element>) templateElement.getChildren("parameter-name")) {
+                results.add(parameterNameElement.getTextTrim());
+            }
+        }
+        return results;
     }
 }
