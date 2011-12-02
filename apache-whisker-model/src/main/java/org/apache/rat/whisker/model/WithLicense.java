@@ -74,12 +74,11 @@ public class WithLicense implements Comparable<WithLicense> {
     
 
     /**
-     * TODO: incompatible with equals?
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
     @Override
     public int compareTo(WithLicense other) {
-        return getName().compareTo(other.getName());
+        return license.compareTo(other.getLicense());
     }
     
 

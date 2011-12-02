@@ -35,15 +35,6 @@ import org.jdom.Element;
  */
 public class WithLicense implements Comparable<WithLicense> {
     
-    /**
-     * @param element
-     * @param licenses
-     * @return
-     */
-    private static License license(Element element,
-            Map<String, License> licenses) {
-        return licenses.get(element.getAttributeValue("id"));
-    }
     
     private final License license;
     private final Element element;
@@ -51,7 +42,7 @@ public class WithLicense implements Comparable<WithLicense> {
     
     public WithLicense(final Element element, final Map<String, License> licenses,
             Map<String, Organisation> organisations) {
-        this(license(element, licenses), element, new JDomBuilder().collectByOrganisations(element, organisations));
+        this(new JDomBuilder().license(element, licenses), element, new JDomBuilder().collectByOrganisations(element, organisations));
     }
         /**
      * @param license

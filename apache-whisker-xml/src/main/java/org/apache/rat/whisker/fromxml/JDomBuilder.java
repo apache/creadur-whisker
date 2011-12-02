@@ -182,4 +182,19 @@ public class JDomBuilder {
         }
         return results;
     }
+
+    /**
+     * Finds the license with an id matching that referenced by the element.
+     * @param element not null
+     * @param licenses not null
+     * @return not null
+     */
+    public License license(final Element element, final Map<String, License> licenses) {
+        final String id = element.getAttributeValue("id");
+        if (licenses.containsKey(id)) {
+            return licenses.get(id);
+        } else {
+            throw new MissingIDException("license", element.getName(), id);
+        }
+    }
 }
