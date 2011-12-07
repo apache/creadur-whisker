@@ -18,17 +18,18 @@
  */
 package org.apache.rat.whisker.fromxml;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import junit.framework.TestCase;
 
 import org.apache.rat.whisker.model.License;
 import org.apache.rat.whisker.model.Organisation;
 import org.apache.rat.whisker.model.WithLicense;
 import org.jdom.CDATA;
 import org.jdom.Element;
-
-import junit.framework.TestCase;
 
 /**
  * 
@@ -267,5 +268,40 @@ public class JDomBuilderWithLicenseTest extends TestCase {
         } catch (DuplicateElementException e) {
             // expected
         }
+    }
+    
+    public void testBuildCollectWithLicenses() throws Exception {
+        for (int i=0; i<256; i++) {
+            checkCollectWithLicenses(i);
+        }
+    }
+
+    /**
+     * @param numberOfWithLicenses
+     */
+    private void checkCollectWithLicenses(final int numberOfWithLicenses) {
+        final String id = "an ID";
+        final Map<String, License> licenses = new HashMap<String, License>();
+        final Map<String, Organisation> organisations = new HashMap<String, Organisation>();
+        final Element parent = new Element("within");
+        
+        for(int i=0;i<numberOfWithLicenses;i++) {
+            addWithLicense(id + i, licenses, parent);            
+        }
+        
+        final Collection<WithLicense> results = subject.withLicenses(licenses, organisations, parent);
+        assertNotNull("Builder should build", results);
+        assertEquals("Builder should build one with-license for each child", numberOfWithLicenses, results.size());
+    }
+
+    /**
+     * @param id
+     * @param licenses
+     * @param parent
+     */
+    private void addWithLicense(final String id,
+            final Map<String, License> licenses, final Element parent) {
+        addLicenseTo(licenses, id);
+        parent.addContent(new Element("with-license").setAttribute("id", id));
     }
 }

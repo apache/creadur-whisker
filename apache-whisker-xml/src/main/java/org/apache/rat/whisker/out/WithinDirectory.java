@@ -18,10 +18,7 @@
  */
 package org.apache.rat.whisker.out;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.rat.whisker.fromxml.JDomBuilder;
@@ -47,23 +44,6 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
         return new JDomBuilder().collectByOrganisations(element.getChild("public-domain"), organisations);
     }
 
-
-    /**
-     * @param licenses
-     * @param element
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    private static Collection<WithLicense> licenses(Map<String, License> licenses,
-            Map<String, Organisation> organisations, Element element) {
-        final List<WithLicense> results = new ArrayList<WithLicense>();
-        for (Element withLicenseElement: (List<Element>) element.getChildren("with-license")) {
-            results.add(new JDomBuilder().withLicense(withLicenseElement, licenses, organisations));
-        }
-        Collections.sort(results);
-        return results;
-    }
-
     
     private final Element element;
     private final Collection<WithLicense> licenses;
@@ -76,7 +56,7 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
             Map<String, Organisation> organisations) {
         super();
         this.element = element;
-        this.licenses = licenses(licenses, organisations, element);
+        this.licenses = new JDomBuilder().withLicenses(licenses, organisations, element);
         this.publicDomain = publicDomain(organisations, element);
     }
     

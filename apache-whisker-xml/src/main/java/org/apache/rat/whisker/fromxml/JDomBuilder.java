@@ -18,6 +18,7 @@
  */
 package org.apache.rat.whisker.fromxml;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -252,6 +253,24 @@ public class JDomBuilder {
                         parameterElement.getChild("value").getTextTrim());
             }   
         }
+        return results;
+    }
+
+    /**
+     * Collects child with-licenses.
+     * @param licenses not null
+     * @param organisations not null
+     * @param parent not null
+     * @return not null, possibly empty
+     */
+    @SuppressWarnings("unchecked")
+    public Collection<WithLicense> withLicenses(Map<String, License> licenses,
+            Map<String, Organisation> organisations, Element parent) {
+        final List<WithLicense> results = new ArrayList<WithLicense>();
+        for (Element withLicenseElement: (List<Element>) parent.getChildren("with-license")) {
+            results.add(new JDomBuilder().withLicense(withLicenseElement, licenses, organisations));
+        }
+        Collections.sort(results);
         return results;
     }
 
