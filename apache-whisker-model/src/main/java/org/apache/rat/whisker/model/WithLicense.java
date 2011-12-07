@@ -19,6 +19,7 @@
 package org.apache.rat.whisker.model;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
 
@@ -43,8 +44,8 @@ public class WithLicense implements Comparable<WithLicense> {
         super();
         this.license = license;
         this.copyrightNotice = copyrightNotice;
-        this.parameters = parameters;
-        this.organisations = organisations;
+        this.parameters = Collections.unmodifiableMap(parameters);
+        this.organisations = Collections.unmodifiableCollection(organisations);
     }
 
     public String getCopyrightNotice() {
@@ -71,7 +72,9 @@ public class WithLicense implements Comparable<WithLicense> {
         return organisations;
     }
 
-    
+    public Map<String, String> getParameters() {
+        return parameters;
+    }
 
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)

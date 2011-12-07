@@ -28,6 +28,7 @@ import org.apache.rat.whisker.fromxml.JDomBuilder;
 import org.apache.rat.whisker.model.ByOrganisation;
 import org.apache.rat.whisker.model.License;
 import org.apache.rat.whisker.model.Organisation;
+import org.apache.rat.whisker.model.WithLicense;
 import org.jdom.Element;
 
 /**
@@ -57,7 +58,7 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
             Map<String, Organisation> organisations, Element element) {
         final List<WithLicense> results = new ArrayList<WithLicense>();
         for (Element withLicenseElement: (List<Element>) element.getChildren("with-license")) {
-            results.add(new WithLicense(withLicenseElement, licenses, organisations));
+            results.add(new JDomBuilder().withLicense(withLicenseElement, licenses, organisations));
         }
         Collections.sort(results);
         return results;

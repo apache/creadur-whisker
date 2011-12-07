@@ -19,9 +19,9 @@
 package org.apache.rat.whisker.fromxml;
 
 /**
- * Indicates that an unexpected element occured in the xml.
+ * Indicates that an unexpected element occurred in the xml.
  */
-public class UnexpectedElementException extends IllegalArgumentException {
+public class UnexpectedElementException extends InvalidXmlException {
 
     /**  */
     private static final long serialVersionUID = -4801232871203301470L;

@@ -116,8 +116,9 @@ public class License implements Comparable<License> {
     /**
      * @param results
      */
-    public void storeIn(final Map<String, License> map) {
+    public License storeIn(final Map<String, License> map) {
         map.put(getId(), this);
+        return this;
     }
 
     /** 

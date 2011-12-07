@@ -20,6 +20,7 @@ package org.apache.rat.whisker.fromxml;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,7 @@ import org.apache.rat.whisker.model.ByOrganisation;
 import org.apache.rat.whisker.model.License;
 import org.apache.rat.whisker.model.Organisation;
 import org.apache.rat.whisker.model.Resource;
+import org.apache.rat.whisker.model.WithLicense;
 import org.jdom.Element;
 
 /**
@@ -188,8 +190,9 @@ public class JDomBuilder {
      * @param element not null
      * @param licenses not null
      * @return not null
+     * @throws MissingIDException when referenced license isn't found in the collection
      */
-    public License license(final Element element, final Map<String, License> licenses) {
+    public License license(final Element element, final Map<String, License> licenses) throws MissingIDException {
         final String id = element.getAttributeValue("id");
         if (licenses.containsKey(id)) {
             return licenses.get(id);
@@ -197,4 +200,59 @@ public class JDomBuilder {
             throw new MissingIDException("license", element.getName(), id);
         }
     }
+
+    /**
+     * Builds a with-license model from xml.
+     * @param element not null
+     * @param licenses not null
+     * @param organisations not null
+     * @return
+     * @throws MissingIDException when referenced license isn't found in the collection
+     */
+    public WithLicense withLicense(Element element,
+            Map<String, License> licenses,
+            Map<String, Organisation> organisations) throws MissingIDException  {
+        return new WithLicense(license(element, licenses), copyrightNotice(element), 
+                parameters(element), collectByOrganisations(element, organisations));
+    }
+    
+    /**
+     * Extracts copyright notice content from with-license.
+     * @param element not null
+     * @return not null
+     */
+    private String copyrightNotice(final Element element) {
+        final String result;
+        final Element copyrightNoticeElement = element.getChild("copyright-notice");
+        if (copyrightNoticeElement == null) {
+            result = null;
+        } else {
+            result = copyrightNoticeElement.getTextTrim();
+        }
+        return result;
+    }
+
+    /**
+     * Builds a list of parameter values by name.
+     * @param element not null
+     * @return parameter values indexed by value, not null
+     * @throws DuplicateElementException when two parameters shared the same name
+     */
+    @SuppressWarnings("unchecked")
+    public Map<String, String> parameters(Element element) throws DuplicateElementException {
+        final Map<String, String> results = new HashMap<String, String>();
+        final Element licenseParametersElement = element.getChild("license-parameters");
+        if (licenseParametersElement != null) {
+            for (Element parameterElement: (List<Element>) licenseParametersElement.getChildren("parameter")) {
+                final String name = parameterElement.getChild("name").getTextTrim();
+                if (results.containsKey(name)) {
+                    throw new DuplicateElementException("Duplicate parameter '" + name + "'");
+                }
+                results.put(name, 
+                        parameterElement.getChild("value").getTextTrim());
+            }   
+        }
+        return results;
+    }
+
 }

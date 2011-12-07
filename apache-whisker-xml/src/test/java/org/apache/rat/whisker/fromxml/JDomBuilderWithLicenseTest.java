@@ -23,6 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.rat.whisker.model.License;
+import org.apache.rat.whisker.model.Organisation;
+import org.apache.rat.whisker.model.WithLicense;
+import org.jdom.CDATA;
 import org.jdom.Element;
 
 import junit.framework.TestCase;
@@ -55,11 +58,10 @@ public class JDomBuilderWithLicenseTest extends TestCase {
             // expected
         }
     }
-
-    @SuppressWarnings("unchecked")
+    
     public void testLicenseFromListThrowsMissingIDWhenIDsAreMismatched() throws Exception {        
         final Map<String, License> licenses = new HashMap<String, License>();
-        new License(false, "", Collections.EMPTY_LIST, "noise", "noise url", "name").storeIn(licenses);
+        addLicenseTo(licenses, "noise");
         try {
             subject.license(new Element("with-license").setAttribute("id", "id"), licenses);
             fail("Throw an exception when the ID is missing");
@@ -68,17 +70,202 @@ public class JDomBuilderWithLicenseTest extends TestCase {
         }
     }
     
-    @SuppressWarnings("unchecked")
     public void testLicenseFromListFindsLicense() throws Exception {
         final String id = "id";
         
         final Map<String, License> licenses = new HashMap<String, License>();
+        @SuppressWarnings("unchecked")
         final License expected = new License(false, "", Collections.EMPTY_LIST, id, "url", "name");
         expected.storeIn(licenses);
-        new License(false, "", Collections.EMPTY_LIST, "noise", "noise url", "name").storeIn(licenses);
+        addLicenseTo(licenses, "noise");
         
         final License output = subject.license(new Element("with-license").setAttribute("id", id), licenses);
         assertNotNull("Expected builder to build", output);
         assertEquals("Expected license to be found", expected, output);
+    }
+
+    /**
+     * @param licenses
+     * @param id
+     * @return 
+     */
+    @SuppressWarnings("unchecked")
+    private License addLicenseTo(final Map<String, License> licenses,
+            final String id) {
+        return new License(false, "", Collections.EMPTY_LIST, id, "noise url", "name").storeIn(licenses);
+    }
+
+    public void testBuildLicenseFromElementWithCopyrightNotice() throws Exception {
+        checkSetCopyrightNotice("Some Copyright Text", "Some Copyright Text");
+    }
+
+    public void testBuildLicenseFromElementWithCopyrightNoticeTrimSpaces() throws Exception {
+        checkSetCopyrightNotice("  Some Copyright Text  ", "Some Copyright Text");
+    }
+    
+    /**
+     * @param copyrightNotice
+     * @param expectCopyrightNotice
+     */
+    private void checkSetCopyrightNotice(final String copyrightNotice,
+            final String expectCopyrightNotice) {
+        final String id = "an ID";
+        final Map<String, License> licenses = new HashMap<String, License>();
+        final Map<String, Organisation> organisations = new HashMap<String, Organisation>();
+        addLicenseTo(licenses, id);
+        final WithLicense output = subject.withLicense(
+                new Element("with-license")
+                    .setAttribute("id", id)
+                    .addContent(new Element("copyright-notice").setContent(new CDATA(copyrightNotice)))
+                , licenses, organisations);
+        assertNotNull("Expected builder to build", output);
+        assertEquals("Builder should set copyright notice from xml", expectCopyrightNotice, output.getCopyrightNotice());
+    }
+    
+    public void testBuildLicenseFromElementNoCopyrightNoticeNoParameters() throws Exception {
+        checkWithElementJustId("some id");
+        checkWithElementJustId("id");
+        checkWithElementJustId("  some id  ");
+        checkWithElementJustId("");
+    }
+    
+    /**
+     * @param id
+     */
+    private void checkWithElementJustId(final String id) {
+        final Map<String, License> licenses = new HashMap<String, License>();
+        final Map<String, Organisation> organisations = new HashMap<String, Organisation>();
+        final License expected = addLicenseTo(licenses, id);
+        final WithLicense output = subject.withLicense(new Element("with-license").setAttribute("id", id), licenses, organisations);
+        assertNotNull("Expected builder to build", output);
+        assertEquals("Expected builder to find license and set it", expected, output.getLicense());
+    }
+    
+
+    public void testBuildLicenseWithParametersIsEmptyWhenNoParameters() throws Exception {
+        final Map<String, String> results = subject.parameters(
+                new Element("with-license")
+                .addContent(new Element("license-parameters")));
+        assertNotNull("Expected builder to build parameters", results);
+        assertTrue("When there are no parameters, map should be empty", results.isEmpty());
+    }
+ 
+    
+    public void testBuildLicenseWithOneParameter() throws Exception {
+        checkBuildLicenseWithParameters(1);
+    }
+
+
+    public void testBuildLicenseWithTwoParameters() throws Exception {
+        checkBuildLicenseWithParameters(2);
+    }
+
+    public void testBuildLicenseWith3Parameters() throws Exception {
+        checkBuildLicenseWithParameters(3);
+    }
+   
+    public void testBuildLicenseWith4Parameters() throws Exception {
+        checkBuildLicenseWithParameters(4);
+    }
+    
+    public void testBuildLicenseWith7Parameters() throws Exception {
+        checkBuildLicenseWithParameters(7);
+    }
+    
+    public void testBuildLicenseWith11Parameters() throws Exception {
+        checkBuildLicenseWithParameters(11);
+    }
+
+    public void testBuildLicenseWith101Parameters() throws Exception {
+        checkBuildLicenseWithParameters(101);
+    }
+    
+    /**
+     * @param numberOfParameters
+     */
+    private void checkBuildLicenseWithParameters(final int numberOfParameters) {
+        final Element licenseParametersElement = new Element("license-parameters");
+        for (int i=0;i<numberOfParameters; i++) {
+            licenseParametersElement
+            .addContent(new Element("parameter")
+                .addContent(new Element("name").addContent(new CDATA(name(i))))
+                .addContent(new Element("value").addContent(new CDATA(value(i)))));
+        }
+        final Element input = new Element("with-license")
+            .addContent(licenseParametersElement);
+        final Map<String, String> results = 
+            subject.parameters(input);
+        assertNotNull("Expected builder to build parameters", results);
+        assertEquals("Expected builder to add one name, value pair per parameter", numberOfParameters, results.size());
+        for (int i=0;i<numberOfParameters;i++) {
+            assertEquals("Value indexed by name", results.get(name(i)), value(i));
+        }
+    }
+
+    public void testWithLicenseBuildWithParameters() throws Exception {
+        for (int i=0;i<128;i++) {
+            checkBuildWithLicenseWithParameters(i);
+        }
+    }
+
+    
+    /**
+     * @param numberOfParameters
+     */
+    private void checkBuildWithLicenseWithParameters(final int numberOfParameters) {
+        final String id = "some id";
+        final Map<String, License> licenses = new HashMap<String, License>();
+        final Map<String, Organisation> organisations = new HashMap<String, Organisation>();
+        addLicenseTo(licenses, id);
+        final Element licenseParametersElement = new Element("license-parameters");
+        for (int i=0;i<numberOfParameters; i++) {
+            licenseParametersElement
+            .addContent(new Element("parameter")
+                .addContent(new Element("name").addContent(new CDATA(name(i))))
+                .addContent(new Element("value").addContent(new CDATA(value(i)))));
+        }
+        final Element input = new Element("with-license").setAttribute("id", id)
+            .addContent(licenseParametersElement);
+        final Map<String, String> results = 
+            subject.withLicense(input, licenses, organisations).getParameters();
+        assertNotNull("Expected builder to build parameters", results);
+        assertEquals("Expected builder to add one name, value pair per parameter", numberOfParameters, results.size());
+        for (int i=0;i<numberOfParameters;i++) {
+            assertEquals("Value indexed by name", results.get(name(i)), value(i));
+        }
+    }
+
+    
+    /**
+     * @param i
+     * @return
+     */
+    private String name(int i) {
+        return "name" + i;
+    }
+
+    /**
+     * @param i
+     * @return
+     */
+    private String value(int i) {
+        return "value" + i;
+    }
+    
+    public void testBuildLicenseWithParametersThrowsExceptionWhenParameterIsDuplicated() throws Exception {
+        try {
+            subject.parameters(
+                    new Element("with-license")
+                        .addContent(new Element("license-parameters")
+                            .addContent(new Element("parameter")
+                                .addContent(new Element("name").addContent(new CDATA("A parameter name")))
+                                .addContent(new Element("value").addContent(new CDATA("A parameter value"))))
+                            .addContent(new Element("parameter")
+                                .addContent(new Element("name").addContent(new CDATA("A parameter name")))
+                                .addContent(new Element("value").addContent(new CDATA("A parameter value"))))));
+            fail("When element contains duplicate definitions of the same parameter, the build should throw an exception");
+        } catch (DuplicateElementException e) {
+            // expected
+        }
     }
 }

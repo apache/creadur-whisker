@@ -21,7 +21,7 @@ package org.apache.rat.whisker.fromxml;
 /**
  * Indicates that the element linked by ID is missing.
  */
-public class MissingIDException extends IllegalArgumentException {
+public class MissingIDException extends InvalidXmlException {
 
     private static final long serialVersionUID = 2226669867694728783L;
     private final String linkedElement;
