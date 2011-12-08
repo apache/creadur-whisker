@@ -30,6 +30,7 @@ import org.apache.rat.whisker.fromxml.JDomBuilder;
 import org.apache.rat.whisker.model.ByOrganisation;
 import org.apache.rat.whisker.model.License;
 import org.apache.rat.whisker.model.Organisation;
+import org.apache.rat.whisker.model.WithinDirectory;
 import org.jdom.Document;
 import org.jdom.Element;
 
@@ -179,7 +180,7 @@ public class Work {
     }
     
     private WithinDirectory directory(final Element element) {
-        return new WithinDirectory(element, this.licenses, this.organisations);
+        return new JDomBuilder().withinDirectory(element, this.licenses, this.organisations);
     }
 
 }
