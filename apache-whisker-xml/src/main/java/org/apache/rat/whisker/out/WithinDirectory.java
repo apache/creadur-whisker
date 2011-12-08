@@ -34,16 +34,6 @@ import org.jdom.Element;
 public class WithinDirectory implements Comparable<WithinDirectory> {
 
 
-    /**
-     * @param organisations
-     * @param element
-     * @return
-     */
-    private static Collection<ByOrganisation> publicDomain(
-            Map<String, Organisation> organisations, Element element) {
-        return new JDomBuilder().collectByOrganisations(element.getChild("public-domain"), organisations);
-    }
-
     
     private final Element element;
     private final Collection<WithLicense> licenses;
@@ -57,7 +47,7 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
         super();
         this.element = element;
         this.licenses = new JDomBuilder().withLicenses(licenses, organisations, element);
-        this.publicDomain = publicDomain(organisations, element);
+        this.publicDomain = new JDomBuilder().publicDomain(organisations, element);
     }
     
     /**

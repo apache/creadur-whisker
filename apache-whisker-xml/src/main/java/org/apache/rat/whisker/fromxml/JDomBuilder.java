@@ -34,6 +34,7 @@ import org.apache.rat.whisker.model.License;
 import org.apache.rat.whisker.model.Organisation;
 import org.apache.rat.whisker.model.Resource;
 import org.apache.rat.whisker.model.WithLicense;
+import org.apache.rat.whisker.model.WithinDirectory;
 import org.jdom.Element;
 
 /**
@@ -272,6 +273,31 @@ public class JDomBuilder {
         }
         Collections.sort(results);
         return results;
+    }
+
+    /**
+     * Collects child organisations of public domain.
+     * @param organisations not null
+     * @param parent not null
+     * @return not null, possibly null
+     */
+    public Collection<ByOrganisation> publicDomain(
+            final Map<String, Organisation> organisations, final Element parent) {
+        return new JDomBuilder().collectByOrganisations(parent.getChild("public-domain"), organisations);
+    }
+
+    /**
+     * Builds a within directory model from XML.
+     * @param element not null
+     * @param licenses not null
+     * @param organisations not null
+     * @return not null
+     */
+    public WithinDirectory withinDirectory(Element element,
+            Map<String, License> licenses,
+            Map<String, Organisation> organisations) {
+        return new WithinDirectory(element.getAttributeValue("dir"), 
+                withLicenses(licenses, organisations, element), publicDomain(organisations, element));
     }
 
 }
