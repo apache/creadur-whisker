@@ -45,22 +45,6 @@ public class Work {
      * @return
      */
     @SuppressWarnings("unchecked")
-    private static Map<String, Organisation> mapOrganisations(Document document) {
-        final Map<String, Organisation> organisationsById = new HashMap<String, Organisation>();
-        
-        for (final Element element: 
-            (List<Element>) document.getRootElement().getChild("organisations").getChildren("organisation")) {
-            new JDomBuilder().organisation(element).storeIn(organisationsById);
-        }
-        return Collections.unmodifiableMap(organisationsById);
-    }
-
-
-    /**
-     * @param document
-     * @return
-     */
-    @SuppressWarnings("unchecked")
     private static Map<String, License> mapLicenses(Document document) {
         Map<String, License> results = new HashMap<String, License>();
         for (final Element element: (List<Element>) document.getRootElement().getChild("licenses").getChildren()) {
@@ -138,7 +122,7 @@ public class Work {
         this.notices = mapNotices(document);
         this.primaryLicense = primaryLicense(document, this.licenses);
         this.primaryNotice = primaryNotice(document);
-        this.organisations = mapOrganisations(document);
+        this.organisations = new JDomBuilder().mapOrganisations(document);
         this.primaryOrganisationId = primaryOrganisationId(document);
     }
 

@@ -35,6 +35,7 @@ import org.apache.rat.whisker.model.Organisation;
 import org.apache.rat.whisker.model.Resource;
 import org.apache.rat.whisker.model.WithLicense;
 import org.apache.rat.whisker.model.WithinDirectory;
+import org.jdom.Document;
 import org.jdom.Element;
 
 /**
@@ -298,6 +299,25 @@ public class JDomBuilder {
             Map<String, Organisation> organisations) {
         return new WithinDirectory(element.getAttributeValue("dir"), 
                 withLicenses(licenses, organisations, element), publicDomain(organisations, element));
+    }
+
+    /**
+     * Collection organisation definitions within document.
+     * @param document, not null
+     * @return organisations indexed by id, not null possibly empty
+     */
+    public Map<String, Organisation> mapOrganisations(Document document) {
+        final Map<String, Organisation> organisationsById = new HashMap<String, Organisation>();
+        
+        final Element childOrganisations = document.getRootElement().getChild("organisations");
+        if (childOrganisations != null) {
+            @SuppressWarnings("unchecked")
+            final List<Element> organisations = (List<Element>) childOrganisations.getChildren("organisation");
+            for (final Element element: organisations) {
+                new JDomBuilder().organisation(element).storeIn(organisationsById);
+            }
+        }
+        return Collections.unmodifiableMap(organisationsById);
     }
 
 }
