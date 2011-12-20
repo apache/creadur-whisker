@@ -302,7 +302,7 @@ public class JDomBuilder {
     }
 
     /**
-     * Collection organisation definitions within document.
+     * Collects organisation definitions within document.
      * @param document, not null
      * @return organisations indexed by id, not null possibly empty
      */
@@ -318,6 +318,25 @@ public class JDomBuilder {
             }
         }
         return Collections.unmodifiableMap(organisationsById);
+    }
+
+    /**
+     * Collects license definitions within document.
+     * @param document, not null
+     * @return licenses, indexed by id, not null, possibly empty
+     */
+    public Map<String, License> mapLicenses(Document document) {
+        final Map<String, License> results = new HashMap<String, License>();
+        final Element licensesChild = document.getRootElement().getChild("licenses");
+        if (licensesChild != null) {
+            @SuppressWarnings("unchecked")
+            final List<Element> children = (List<Element>) licensesChild.getChildren();
+            for (final Element element: children) {
+                new JDomBuilder().license(element).storeIn(results);
+            }
+        }
+        return Collections.unmodifiableMap(results);
+
     }
 
 }

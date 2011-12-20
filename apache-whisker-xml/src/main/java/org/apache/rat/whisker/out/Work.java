@@ -38,20 +38,6 @@ import org.jdom.Element;
  * 
  */
 public class Work {
-
-
-    /**
-     * @param document
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    private static Map<String, License> mapLicenses(Document document) {
-        Map<String, License> results = new HashMap<String, License>();
-        for (final Element element: (List<Element>) document.getRootElement().getChild("licenses").getChildren()) {
-            new JDomBuilder().license(element).storeIn(results);
-        }
-        return Collections.unmodifiableMap(results);
-    }
     
     
     /**
@@ -118,7 +104,7 @@ public class Work {
     public Work(Document document) {
         super();
         this.document = document;
-        this.licenses = mapLicenses(document);
+        this.licenses = new JDomBuilder().mapLicenses(document);
         this.notices = mapNotices(document);
         this.primaryLicense = primaryLicense(document, this.licenses);
         this.primaryNotice = primaryNotice(document);
