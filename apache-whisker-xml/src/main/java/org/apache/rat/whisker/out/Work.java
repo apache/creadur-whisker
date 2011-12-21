@@ -20,7 +20,6 @@ package org.apache.rat.whisker.out;
 
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
@@ -37,21 +36,6 @@ import org.jdom.Element;
  * 
  */
 public class Work {
-    
-    
-    /**
-     * @param document
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    private static Map<String, String> mapNotices(Document document) {
-        Map<String, String> results = new HashMap<String, String>();
-        for (final Element element: (List<Element>) document.getRootElement().getChild("notices").getChildren()) {
-            results.put(element.getAttributeValue("id"), element.getTextTrim());
-        }
-        return results;
-    }
-
     
     private static String primaryNotice(final Document document) {
         final String result;
@@ -96,7 +80,7 @@ public class Work {
         super();
         this.document = document;
         this.licenses = new JDomBuilder().mapLicenses(document);
-        this.notices = mapNotices(document);
+        this.notices = new JDomBuilder().mapNotices(document);
         this.primaryLicense = new JDomBuilder().primaryLicense(document, this.licenses);
         this.primaryNotice = primaryNotice(document);
         this.organisations = new JDomBuilder().mapOrganisations(document);

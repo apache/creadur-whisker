@@ -27,6 +27,7 @@ import junit.framework.TestCase;
 
 import org.apache.rat.whisker.model.License;
 import org.apache.rat.whisker.model.Organisation;
+import org.jdom.CDATA;
 import org.jdom.Document;
 import org.jdom.Element;
 
@@ -48,6 +49,55 @@ public class JDomBuilderWorkTest extends TestCase {
         super.tearDown();
     }
 
+
+    public void testMapNoticesIsEmptyWhenDocumentHasNoNotices() throws Exception {
+        final Map<String, String> results = subject.mapNotices(new Document().setRootElement(new Element("manifest")));
+        assertNotNull("Builder should build something", results);
+        assertTrue("Should be empty when no licenses present", results.isEmpty());
+    }
+    
+    public void testMapNoticesExpectedToBeImmutable() throws Exception {
+        final Map<String, String> results = 
+            subject.mapNotices(new Document().setRootElement(new Element("manifest")));
+        assertNotNull("Expected builder to build something", results);
+        try {
+            results.put("whatever", "next");
+            fail("Expected map to be immutable");
+        } catch (UnsupportedOperationException e) {
+            // Expected
+        }
+    }
+
+    
+    public void testMapNoticesFindsNoticesDefinedInDocument() throws Exception {
+        for (int i=0; i<256; i++) {
+            checkMapNoticesWith(i);
+        }
+    }
+
+    /**
+     * @param numberOfLicenses
+     */
+    private void checkMapNoticesWith(final int numberOfLicenses) {
+        final String baseId = "ID";
+        final String baseText = "Rhubarb Rhubarb";
+        final Document in = new Document();
+        final Element licenses = new Element("notices");
+        in.setRootElement(new Element("manifest").addContent(licenses));
+        for (int i=0;i<numberOfLicenses;i++) {
+            licenses.addContent(
+                    new Element("notice").setAttribute("id", combine(baseId, i)).addContent(new CDATA(combine(baseText, i))));
+        }
+        final Map<String, String> results = subject.mapNotices(in);
+        assertEquals("One license in map for each in the document", numberOfLicenses, results.size());
+        for (int i=0;i<numberOfLicenses;i++) {
+            final String next = results.get(combine(baseId, i));
+            assertNotNull("Expected organisation to be stored", next);
+            assertEquals("Expected correct organisation to be stored", next, combine(baseText, i));
+        }
+    }
+
+    
     public void testMapLicensesIsEmptyWhenDocumentHasNoLicenses() throws Exception {
         final Map<String, License> results = subject.mapLicenses(new Document().setRootElement(new Element("manifest")));
         assertNotNull("Builder should build something", results);

@@ -362,4 +362,23 @@ public class JDomBuilder {
         }
         return results;
     }
+
+    /**
+     * Collects notices in the given documents.
+     * @param document, not null
+     * @return notices indexed by id, not null possibly empty
+     */
+    public Map<String, String> mapNotices(Document document) {
+        final Map<String, String> results = new HashMap<String, String>();
+        final Element noticesElement = document.getRootElement().getChild("notices");
+        if (noticesElement != null){
+            @SuppressWarnings("unchecked")
+            final List<Element> children = (List<Element>) noticesElement.getChildren();
+            for (final Element element: children) {
+                results.put(element.getAttributeValue("id"), element.getTextTrim());
+            }
+        }
+        return Collections.unmodifiableMap(results);
+
+    }
 }
