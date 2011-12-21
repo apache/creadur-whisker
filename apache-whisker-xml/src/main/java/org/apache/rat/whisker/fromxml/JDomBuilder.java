@@ -400,4 +400,21 @@ public class JDomBuilder {
         }
         return result;
     }
+
+    /**
+     * Retrieves the ID of the primary organisation.
+     * @param document, not null
+     * @return the id of the primary organisation when set,
+     * otherwise null
+     */
+    public String primaryOrganisationId(final Document document) {
+        final String result;
+        final Element primaryOrganisationElement = document.getRootElement().getChild("primary-organisation");
+        if (primaryOrganisationElement == null) {
+            result = null;
+        } else {
+            result = primaryOrganisationElement.getAttributeValue("id");
+        }
+        return result;
+    }
 }

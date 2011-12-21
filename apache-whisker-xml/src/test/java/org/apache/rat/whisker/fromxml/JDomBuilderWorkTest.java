@@ -262,4 +262,18 @@ public class JDomBuilderWorkTest extends TestCase {
                 noticeBaseText + Calendar.getInstance().get(Calendar.YEAR), result);
     }
 
+    public void testFindPrimaryOrganisationIdReturnsNullWhenOrganisationUnset() throws Exception {
+        final String result = subject.primaryOrganisationId(new Document().setRootElement(new Element("manifest")));
+        assertNull("Primary organisation is optional, and null should be returned when unset", result);
+    }
+    
+    public void testFindPrimaryOrganisationIdWhenSet() throws Exception {
+        final String idValue = "An ID value";
+        final String result = subject.primaryOrganisationId(
+                new Document().setRootElement(
+                        new Element("manifest").addContent(
+                                new Element("primary-organisation").setAttribute("id", idValue))));
+        assertEquals("When set, builder should find value", idValue, result);
+    }
+    
 }

@@ -36,20 +36,6 @@ import org.jdom.Element;
  */
 public class Work {
 
-    /**
-     * @param document
-     * @return
-     */
-    private static String primaryOrganisationId(Document document) {
-        final String result;
-        final Element primaryOrganisationElement = document.getRootElement().getChild("primary-organisation");
-        if (primaryOrganisationElement == null) {
-            result = null;
-        } else {
-            result = primaryOrganisationElement.getAttributeValue("id");
-        }
-        return result;
-    }
     
     private final Document document;
     private final License primaryLicense;
@@ -70,7 +56,7 @@ public class Work {
         this.primaryLicense = new JDomBuilder().primaryLicense(document, this.licenses);
         this.primaryNotice = new JDomBuilder().primaryNotice(document);
         this.organisations = new JDomBuilder().mapOrganisations(document);
-        this.primaryOrganisationId = primaryOrganisationId(document);
+        this.primaryOrganisationId = new JDomBuilder().primaryOrganisationId(document);
     }
 
 
