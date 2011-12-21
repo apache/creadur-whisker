@@ -20,7 +20,6 @@ package org.apache.rat.whisker.out;
 
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,14 +52,6 @@ public class Work {
         return results;
     }
 
-    
-    /**
-     * @param document
-     * @return
-     */
-    private static License primaryLicense(final Document document, final Map<String, License> licenses) {
-        return licenses.get(document.getRootElement().getChild("primary-license").getAttributeValue("id"));
-    }
     
     private static String primaryNotice(final Document document) {
         final String result;
@@ -106,7 +97,7 @@ public class Work {
         this.document = document;
         this.licenses = new JDomBuilder().mapLicenses(document);
         this.notices = mapNotices(document);
-        this.primaryLicense = primaryLicense(document, this.licenses);
+        this.primaryLicense = new JDomBuilder().primaryLicense(document, this.licenses);
         this.primaryNotice = primaryNotice(document);
         this.organisations = new JDomBuilder().mapOrganisations(document);
         this.primaryOrganisationId = primaryOrganisationId(document);

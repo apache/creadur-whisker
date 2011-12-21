@@ -19,6 +19,8 @@
 package org.apache.rat.whisker.fromxml;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 import junit.framework.TestCase;
@@ -139,7 +141,7 @@ public class JDomBuilderWorkTest extends TestCase {
             assertEquals("Expected correct organisation to be stored", next.getName(), combine(baseName, i));
         }
     }
-
+    
     /**
      * @param baseId
      * @param i
@@ -147,5 +149,42 @@ public class JDomBuilderWorkTest extends TestCase {
      */
     private String combine(String base, int i) {
         return base + i;
+    }
+    
+    /**
+     * @param licenses
+     * @param id
+     * @return 
+     */
+    @SuppressWarnings("unchecked")
+    private License addLicenseTo(final Map<String, License> licenses,
+            final String id) {
+        return new License(false, "", Collections.EMPTY_LIST, id, "noise url", "name").storeIn(licenses);
+    }
+    
+    public void testPrimaryLicense() throws Exception {
+        final String id = "The primary ID";
+        final Map<String, License> licenses = new HashMap<String, License> ();
+        @SuppressWarnings("unchecked")
+        final License expected = new License(false, "", Collections.EMPTY_LIST, id, "url", "name");
+        expected.storeIn(licenses);
+        addLicenseTo(licenses, "noise");
+        final License result = subject.primaryLicense(new Document().setRootElement(new Element("manifest").
+                addContent(new Element("primary-license").setAttribute("id", id))), licenses);
+        assertNotNull("Builder should find primary license", result);
+        assertEquals("Builder should find primary licenser", expected, result);
+    }
+    
+    public void testThrowsMissingIDExceptionWhenPrimaryLicenseMissing() throws Exception {
+        final String id = "The primary ID";
+        final Map<String, License> licenses = new HashMap<String, License> ();
+        addLicenseTo(licenses, "noise");
+        try {
+            subject.primaryLicense(new Document().setRootElement(new Element("manifest").
+                addContent(new Element("primary-license").setAttribute("id", id))), licenses);
+            fail();
+        } catch (MissingIDException e) {
+            // expected
+        }
     }
 }

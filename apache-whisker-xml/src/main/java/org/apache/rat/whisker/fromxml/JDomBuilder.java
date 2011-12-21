@@ -43,6 +43,14 @@ import org.jdom.Element;
  */
 public class JDomBuilder {
     
+    /**
+     * 
+     */
+    private static final String LICENSE_ELEMENT_NAME = "license";
+    /**
+     * 
+     */
+    private static final String PRIMARY_LICENSE_NAME = "primary-license";
     /** Names the element representing an organisation */
     private static final String ORGANISATION_ELEMENT_NAME = "organisation";
     /** Names the element representing a resource */
@@ -200,7 +208,7 @@ public class JDomBuilder {
         if (licenses.containsKey(id)) {
             return licenses.get(id);
         } else {
-            throw new MissingIDException("license", element.getName(), id);
+            throw new MissingIDException(LICENSE_ELEMENT_NAME, element.getName(), id);
         }
     }
 
@@ -339,4 +347,19 @@ public class JDomBuilder {
 
     }
 
+    /**
+     * Finds the primary license for the given document from the given licenses.
+     * @param document not null
+     * @param licenses not null
+     * @return not null
+     */
+    public License primaryLicense(Document document,
+            Map<String, License> licenses) {
+        final String idAttributeValue = document.getRootElement().getChild(PRIMARY_LICENSE_NAME).getAttributeValue("id");
+        final License results = licenses.get(idAttributeValue);
+        if (results == null) {
+            throw new MissingIDException(LICENSE_ELEMENT_NAME, PRIMARY_LICENSE_NAME, idAttributeValue);
+        }
+        return results;
+    }
 }
