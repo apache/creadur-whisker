@@ -18,7 +18,6 @@
  */
 package org.apache.rat.whisker.out;
 
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -36,19 +35,6 @@ import org.jdom.Element;
  * 
  */
 public class Work {
-    
-    private static String primaryNotice(final Document document) {
-        final String result;
-        final Element primaryNoticeElement = document.getRootElement().getChild("primary-notice");
-        if (primaryNoticeElement == null) {
-            result = null;
-        } else {
-            result = primaryNoticeElement.getText()
-                .replace("${year}", Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
-        }
-        return result;
-    }
-
 
     /**
      * @param document
@@ -82,7 +68,7 @@ public class Work {
         this.licenses = new JDomBuilder().mapLicenses(document);
         this.notices = new JDomBuilder().mapNotices(document);
         this.primaryLicense = new JDomBuilder().primaryLicense(document, this.licenses);
-        this.primaryNotice = primaryNotice(document);
+        this.primaryNotice = new JDomBuilder().primaryNotice(document);
         this.organisations = new JDomBuilder().mapOrganisations(document);
         this.primaryOrganisationId = primaryOrganisationId(document);
     }

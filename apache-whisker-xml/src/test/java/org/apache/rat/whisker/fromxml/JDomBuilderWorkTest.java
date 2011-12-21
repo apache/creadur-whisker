@@ -19,6 +19,7 @@
 package org.apache.rat.whisker.fromxml;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -237,4 +238,28 @@ public class JDomBuilderWorkTest extends TestCase {
             // expected
         }
     }
+    
+    public void testPrimaryNoticeFindsNoticeText() throws Exception {
+        final String noticeText = "Some sort of notice";
+        final String result = subject.primaryNotice(new Document().setRootElement(
+                new Element("manifest").addContent(
+                        new Element("primary-notice").addContent(new CDATA(noticeText)))));
+        assertEquals("Expected builder to find the text of the primary notice element", noticeText, result);
+    }
+    
+    public void testPrimaryNoticeIsNullWhenThereIsNoNoticeText() throws Exception {
+        final String result = subject.primaryNotice(new Document().setRootElement(
+                new Element("manifest")));
+        assertNull("When there is no primary notice, expect null", result);
+    }
+
+    public void testPrimaryNoticeSubstitutesYearInNoticeText() throws Exception {
+        final String noticeBaseText = "Some sort of notice";
+        final String result = subject.primaryNotice(new Document().setRootElement(
+                new Element("manifest").addContent(
+                        new Element("primary-notice").addContent(new CDATA(noticeBaseText + "${year}")))));
+        assertEquals("Expected builder to find the text of the primary notice element", 
+                noticeBaseText + Calendar.getInstance().get(Calendar.YEAR), result);
+    }
+
 }

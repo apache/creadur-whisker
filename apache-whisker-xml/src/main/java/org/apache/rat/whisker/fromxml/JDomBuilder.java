@@ -19,6 +19,7 @@
 package org.apache.rat.whisker.fromxml;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -380,5 +381,23 @@ public class JDomBuilder {
         }
         return Collections.unmodifiableMap(results);
 
+    }
+
+    /**
+     * Retrieves the text of the primary notice.
+     * @param document, not null
+     * @return the text of the primary notice, 
+     * or null when there is no primary notice
+     */
+    public String primaryNotice(Document document) {
+        final String result;
+        final Element primaryNoticeElement = document.getRootElement().getChild("primary-notice");
+        if (primaryNoticeElement == null) {
+            result = null;
+        } else {
+            result = primaryNoticeElement.getText()
+                .replace("${year}", Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
+        }
+        return result;
     }
 }
