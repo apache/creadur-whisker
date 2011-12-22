@@ -367,7 +367,7 @@ public class JDomBuilder {
     /**
      * Collects notices in the given documents.
      * @param document, not null
-     * @return notices indexed by id, not null possibly empty
+     * @return notices indexed by id, immutable, not null, possibly empty
      */
     public Map<String, String> mapNotices(Document document) {
         final Map<String, String> results = new HashMap<String, String>();
@@ -416,5 +416,31 @@ public class JDomBuilder {
             result = primaryOrganisationElement.getAttributeValue("id");
         }
         return result;
+    }    
+
+    private WithinDirectory directory(final Element element, final Map<String, License> licenses,
+            final Map<String, Organisation> organisations) {
+        return new JDomBuilder().withinDirectory(element, licenses, organisations);
+    }
+
+    /**
+     * Collects contents of the document.
+     * @param document not null
+     * @return not null, possibly empty
+     * @throws DuplicateElementException when dir names are not unique
+     */
+    public Collection<WithinDirectory> collectContents(final Document document, final Map<String, License> licenses,
+            final Map<String, Organisation> organisations) throws DuplicateElementException {
+        final Collection<WithinDirectory> results = new TreeSet<WithinDirectory>();
+        @SuppressWarnings("unchecked")
+        final List<Element> children = document.getRootElement().getChildren("within");
+        for (Element element: children) {
+            if (results.add(directory(element, licenses, organisations))) {
+                // fine
+            } else {
+                throw new DuplicateElementException("Duplicate parameter '" + element.getAttribute("dir").getValue() + "'");
+            }
+        }
+        return results;
     }
 }

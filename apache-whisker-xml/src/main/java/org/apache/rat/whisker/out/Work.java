@@ -18,18 +18,13 @@
  */
 package org.apache.rat.whisker.out;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-import java.util.TreeSet;
 
 import org.apache.rat.whisker.fromxml.JDomBuilder;
 import org.apache.rat.whisker.model.ByOrganisation;
 import org.apache.rat.whisker.model.License;
 import org.apache.rat.whisker.model.Organisation;
-import org.apache.rat.whisker.model.WithinDirectory;
 import org.jdom.Document;
-import org.jdom.Element;
 
 /**
  * 
@@ -37,7 +32,6 @@ import org.jdom.Element;
 public class Work {
 
     
-    private final Document document;
     private final License primaryLicense;
     private final String primaryOrganisationId;
     private final String primaryNotice;
@@ -50,7 +44,6 @@ public class Work {
      */
     public Work(Document document) {
         super();
-        this.document = document;
         this.licenses = new JDomBuilder().mapLicenses(document);
         this.notices = new JDomBuilder().mapNotices(document);
         this.primaryLicense = new JDomBuilder().primaryLicense(document, this.licenses);
@@ -74,20 +67,7 @@ public class Work {
     public License getPrimaryLicense() {
         return primaryLicense;
     }
-    
-    @SuppressWarnings("unchecked")
-    public Collection<WithinDirectory> getContents() {
-        final Collection<WithinDirectory> results = new TreeSet<WithinDirectory>();
-        for (Element element: (List<Element>)document.getRootElement().getChildren("within")) {
-            if (results.add(directory(element))) {
-                // OK System.out.println("Ok");
-            } else {
-                throw new IllegalArgumentException("Duplicate directory " + element.getAttribute("dir"));
-            }
-        }
-        return results;
-    }
-    
+        
     public boolean isPrimary( final License license) {
         return this.primaryLicense.equals(license);
     }
@@ -96,8 +76,4 @@ public class Work {
         return byOrganisation.getId().equals(primaryOrganisationId);
     }
     
-    private WithinDirectory directory(final Element element) {
-        return new JDomBuilder().withinDirectory(element, this.licenses, this.organisations);
-    }
-
 }

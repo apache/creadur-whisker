@@ -20,14 +20,17 @@ package org.apache.rat.whisker.fromxml;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import junit.framework.TestCase;
 
 import org.apache.rat.whisker.model.License;
 import org.apache.rat.whisker.model.Organisation;
+import org.apache.rat.whisker.model.WithinDirectory;
 import org.jdom.CDATA;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -276,4 +279,58 @@ public class JDomBuilderWorkTest extends TestCase {
         assertEquals("When set, builder should find value", idValue, result);
     }
     
+    public void testCollectContentsReturneEmptyWhenDocumentHasNoContents() throws Exception {
+        final Collection<WithinDirectory> results = subject.collectContents(
+                new Document().setRootElement(new Element("manifest")), new HashMap<String, License>(),
+                new HashMap<String, Organisation>());
+        assertNotNull("Builder should build something", results);
+        assertTrue("Collection should be empty when there are no contents", results.isEmpty());
+    }
+    
+    
+    public void testCollectDirectoriesDefinedInDocument() throws Exception {
+        for (int i=1;i<256;i++) {
+            checkCollectDirectoriesWith(i);
+        };
+    }
+
+    /**
+     * @param numberOfDirectories
+     */
+    private void checkCollectDirectoriesWith(final int numberOfDirectories) {
+        final String baseDir = "/dir/path";
+        final Document in = new Document();
+        final Element rootElement = new Element("manifest");
+        in.setRootElement(rootElement);
+        for (int i=0;i<numberOfDirectories;i++) {
+            rootElement.addContent(
+                    new Element("within").setAttribute("dir", combine(baseDir, i)));
+        }
+        final Collection<WithinDirectory> results = subject.collectContents(in, new HashMap<String, License>(),
+                new HashMap<String, Organisation>());
+        assertEquals("One organisation in map for each in the document", numberOfDirectories, results.size());
+        final Collection<String> dirNames = new HashSet<String>();
+        for (final WithinDirectory within:results) {
+            dirNames.add(within.getName());
+        }
+        for (int i=0;i<numberOfDirectories;i++) {
+            assertTrue("", dirNames.contains(combine(baseDir,i)));
+        }
+    }
+    
+    public void testCollectDirectoriesThrowsDuplicateElementExceptionWhenDirAttributeDuplicated() throws Exception {
+        final String dir = "duplicate/path";
+        try {
+            subject.collectContents(
+                    new Document().setRootElement(
+                            new Element("manifest").addContent(
+                                    new Element("within").setAttribute("dir", dir)).addContent(
+                                            new Element("within").setAttribute("dir", dir))), 
+                    new HashMap<String, License>(),
+                    new HashMap<String, Organisation>());
+            fail("Collect should throw a DuplicateElementException when dir names are not unique");
+        } catch (DuplicateElementException e) {
+            // expected
+        }
+    }
 }
