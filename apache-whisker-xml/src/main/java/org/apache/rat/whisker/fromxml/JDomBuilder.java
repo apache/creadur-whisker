@@ -36,6 +36,7 @@ import org.apache.rat.whisker.model.Organisation;
 import org.apache.rat.whisker.model.Resource;
 import org.apache.rat.whisker.model.WithLicense;
 import org.apache.rat.whisker.model.WithinDirectory;
+import org.apache.rat.whisker.model.Work;
 import org.jdom.Document;
 import org.jdom.Element;
 
@@ -442,5 +443,22 @@ public class JDomBuilder {
             }
         }
         return results;
+    }
+    
+    /**
+     * Builds work from the given document.
+     * @param document not null
+     * @return not null
+     */
+    public Work build(final Document document) {
+        final Map<String, Organisation> organisations = mapOrganisations(document);
+        final Map<String, License> licenses = mapLicenses(document);
+        final Map<String, String> notices = mapNotices(document);
+        final License primaryLicense = primaryLicense(document, licenses);
+        final String primaryNotice = primaryNotice(document);
+        final String primaryOrganisationId = primaryOrganisationId(document);
+        final Collection<WithinDirectory> contents = collectContents(document, licenses, organisations); 
+        return new Work(primaryLicense, primaryOrganisationId, primaryNotice, 
+                licenses, notices, organisations, contents);
     }
 }
