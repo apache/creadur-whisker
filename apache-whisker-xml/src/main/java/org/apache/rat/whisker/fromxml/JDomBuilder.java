@@ -18,6 +18,8 @@
  */
 package org.apache.rat.whisker.fromxml;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -39,6 +41,8 @@ import org.apache.rat.whisker.model.WithinDirectory;
 import org.apache.rat.whisker.model.Work;
 import org.jdom.Document;
 import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
 
 /**
  * Builds a model from xml using JDOM.
@@ -460,5 +464,9 @@ public class JDomBuilder {
         final Collection<WithinDirectory> contents = collectContents(document, licenses, organisations); 
         return new Work(primaryLicense, primaryOrganisationId, primaryNotice, 
                 licenses, notices, organisations, contents);
+    }
+    
+    public Work build(final InputStream xmlStream) throws JDOMException, IOException {
+        return build(new SAXBuilder().build(xmlStream));
     }
 }

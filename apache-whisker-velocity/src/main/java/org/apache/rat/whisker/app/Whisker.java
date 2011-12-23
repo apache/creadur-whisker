@@ -27,7 +27,6 @@ import org.apache.rat.whisker.model.Work;
 import org.apache.rat.whisker.scan.Directory;
 import org.apache.rat.whisker.scan.FromFileSystem;
 import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
 
 
 /**
@@ -192,6 +191,6 @@ public class Whisker {
         if (resourceAsStream == null) {
             throw new IllegalArgumentException("Cannot load " + resource);
         }
-        return new JDomBuilder().build(new SAXBuilder().build(resourceAsStream));
+        return new JDomBuilder().build(resourceAsStream);
     }
 }
