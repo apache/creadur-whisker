@@ -18,9 +18,6 @@
  */
 package org.apache.rat.whisker.app;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
@@ -94,8 +91,6 @@ public class Whisker {
         return this;
     }
 
-    
-    
     /**
      * @return the act
      */
@@ -132,7 +127,7 @@ public class Whisker {
      * @throws Exception 
      */
     private Whisker template() throws Exception {
-        doTemplateGeneration();
+        engine.generateTemplate(directories());
         return this;
     }
 
@@ -140,7 +135,7 @@ public class Whisker {
      * @return
      */
     private Whisker report() throws Exception {
-        doReport();
+        engine.report(directories());
         return this;
     }
     
@@ -149,7 +144,7 @@ public class Whisker {
      * @throws Exception 
      */
     private Whisker generate() throws Exception {
-        doGenerate();
+        engine.generate(new LicenseAnalyst().validate(load(getLicenseDescriptor())));
         return this;
     }
 
@@ -158,7 +153,7 @@ public class Whisker {
      * @throws Exception 
      */
     private Whisker validate() throws Exception {
-        doValidate();
+        engine.validate(new LicenseAnalyst(directories()).analyse(load(getLicenseDescriptor())));
         return this;
     }
 
@@ -166,12 +161,10 @@ public class Whisker {
      * @return
      * @throws IOException
      */
-    protected Collection<Directory> directories() throws IOException {
+    private Collection<Directory> directories() throws IOException {
         return new FromFileSystem().withBase(getSource());
     }
 
-    
-    
     @Override
     public String toString() {
         return "Whisker [act=" + act + ", base=" + source
@@ -183,15 +176,11 @@ public class Whisker {
      * @param resource
      * @return
      */
-    public InputStream resourceAsStream(final String resource) {
+    private InputStream resourceAsStream(final String resource) {
         return loader.load(resource);
     }
     
     
-    protected void doGenerate() throws Exception {
-        engine.generate(new LicenseAnalyst().validate(load(getLicenseDescriptor())));
-    }
-
     /**
      * @param resource
      * @return
@@ -204,43 +193,5 @@ public class Whisker {
             throw new IllegalArgumentException("Cannot load " + resource);
         }
         return new JDomBuilder().build(new SAXBuilder().build(resourceAsStream));
-    }
-
-    protected void doValidate() throws Exception {
-        engine.validate(new LicenseAnalyst(directories()).analyse(load(getLicenseDescriptor())));
-    }
-
-    protected void doReport() throws Exception {
-        engine.report(directories());
-    }
-
-    protected void doTemplateGeneration() throws Exception {
-        engine.generateTemplate(directories());
-    }
-
-
-    public interface ResourceLoader {
-        InputStream load(final String resource);
-    }
-    
-    public static class ClassPathLoader implements ResourceLoader {
-
-        @Override
-        public InputStream load(String resource) {
-            return getClass().getClassLoader().getResourceAsStream(resource);
-        }
-    }
-    
-    public static class FileLoader implements ResourceLoader {
-
-        @Override
-        public InputStream load(String resource) {
-            try {
-                return new FileInputStream(new File(resource));
-            } catch (FileNotFoundException e) {
-                return null;
-            }
-        }
-        
     }
 }
