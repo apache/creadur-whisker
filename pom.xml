@@ -74,6 +74,7 @@
     <module>apache-whisker-model</module>
     <module>apache-whisker-scan</module>
     <module>apache-whisker-xml</module>
+    <module>apache-whisker-velocity</module>
   </modules>
 
 
