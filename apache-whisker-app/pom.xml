@@ -31,7 +31,7 @@
   </parent>
 
   <groupId>org.apache.rat.whisker</groupId>
-  <artifactId>apache-whisker-velocity</artifactId>
+  <artifactId>apache-whisker-app</artifactId>
   <packaging>jar</packaging>
 
   <dependencies>
@@ -89,8 +89,8 @@
   ================================  
   Project information
   -->
-  <name>Apache Whisker::Output(velocity)</name>
-  <description>Outputs results using velocity.</description>
+  <name>Apache Whisker::App</name>
+  <description>Whisker core application.</description>
   <url>http://rat.apache.org/whisker/apache-whisker-velocity</url>
 
 </project>
