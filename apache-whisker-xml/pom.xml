@@ -31,7 +31,7 @@
   </parent>
 
   <groupId>org.apache.rat.whisker</groupId>
-  <artifactId>apache-rat-whisker</artifactId>
+  <artifactId>apache-whisker-xml</artifactId>
   <packaging>jar</packaging>
 
   <dependencies>  
