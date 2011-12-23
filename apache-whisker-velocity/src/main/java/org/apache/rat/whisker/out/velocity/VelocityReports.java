@@ -38,7 +38,7 @@ import org.jdom.JDOMException;
 /**
  * Wraps velocity engine.
  */
-public class Engine implements LogChute {
+public class VelocityReports implements LogChute {
    
     private static final String[] TEMPLATES = {"LICENSE", "NOTICE"};
     private static final String[] DIRECTORIES_REPORT_TEMPLATE = {"DIRECTORIES"};
@@ -48,7 +48,7 @@ public class Engine implements LogChute {
     
     private final VelocityEngine engine;
              
-    public Engine() {
+    public VelocityReports() {
         engine = new VelocityEngine();
         engine.setProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM, this);
         engine.setProperty(VelocityEngine.RESOURCE_LOADER, "classpath");
@@ -139,7 +139,6 @@ public class Engine implements LogChute {
         return "org/apache/rat/whisker/template/velocity/" + name.toLowerCase() + ".vm";
     }
 
-    
     public void report(final Collection<Directory> directories) throws Exception {
         merge(DIRECTORIES_REPORT_TEMPLATE, context(directories));
     }
