@@ -89,7 +89,7 @@ public class Engine implements LogChute {
     /**
      * 
      */
-    public void merge(final Work work) throws Exception {
+    public void generate(final Work work) throws Exception {
         merge(TEMPLATES, context(work));
     }
 
@@ -139,7 +139,7 @@ public class Engine implements LogChute {
     }
 
     
-    public void write(final Collection<Directory> directories) throws Exception {
+    public void report(final Collection<Directory> directories) throws Exception {
         merge(DIRECTORIES_REPORT_TEMPLATE, context(directories));
     }
 
@@ -159,7 +159,7 @@ public class Engine implements LogChute {
      * @param withBase
      * @throws Exception 
      */
-    public void merge(LicenseAnalyst analyst) throws Exception {
+    public void validate(LicenseAnalyst analyst) throws Exception {
         merge(MISSING_LICENSE_REPORT_TEMPLATE, context(analyst));
     }
 

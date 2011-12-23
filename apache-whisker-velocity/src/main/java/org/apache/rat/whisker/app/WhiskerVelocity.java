@@ -19,63 +19,11 @@
 package org.apache.rat.whisker.app;
 
 
-import java.io.IOException;
-import java.io.InputStream;
 
-import org.apache.rat.whisker.fromxml.JDomBuilder;
-import org.apache.rat.whisker.out.velocity.Engine;
-import org.apache.rat.whisker.out.velocity.LicenseAnalyst;
-import org.apache.rat.whisker.model.Work;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
 
 /**
  * 
  */
-public class WhiskerVelocity extends Whisker {
-
-    protected void doGenerate() throws Exception {
-        new Engine().merge(new LicenseAnalyst().validate(load(getLicenseDescriptor())));
-    }
-    
-    /**
-     * @param resource
-     * @return
-     * @throws JDOMException
-     * @throws IOException
-     */
-    private Work load(final String resource) throws JDOMException,
-            IOException {
-        final InputStream resourceAsStream = resourceAsStream(resource);
-        if (resourceAsStream == null) {
-            throw new IllegalArgumentException("Cannot load " + resource);
-        }
-        return new JDomBuilder().build(new SAXBuilder().build(resourceAsStream));
-    }
-
-
-    /**
-     * @see org.apache.rat.whisker.legacy.app.Whisker#doValidate()
-     */
-    @Override
-    protected void doValidate() throws Exception {
-        new Engine().merge(new LicenseAnalyst(directories()).analyse(load(getLicenseDescriptor())));
-    }
-
-    /**
-     * @see org.apache.rat.whisker.legacy.app.Whisker#doReport()
-     */
-    @Override
-    protected void doReport() throws Exception {
-        new Engine().write(directories());
-    }
-
-    /**
-     * @see org.apache.rat.whisker.legacy.app.Whisker#doTemplateGeneration()
-     */
-    @Override
-    protected void doTemplateGeneration() throws Exception {
-        new Engine().generateTemplate(directories());
-    }    
+public class WhiskerVelocity extends Whisker {    
 
 }

@@ -25,8 +25,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Collection;
 
+import org.apache.rat.whisker.fromxml.JDomBuilder;
+import org.apache.rat.whisker.model.Work;
+import org.apache.rat.whisker.out.velocity.Engine;
+import org.apache.rat.whisker.out.velocity.LicenseAnalyst;
 import org.apache.rat.whisker.scan.Directory;
 import org.apache.rat.whisker.scan.FromFileSystem;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
 
 
 /**
@@ -136,22 +142,6 @@ public class Whisker {
         return this;
     }
 
-    protected void doTemplateGeneration() throws Exception {
-        throw new UnsupportedOperationException("Template generation is unsupported.");
-    }
-    
-    protected void doGenerate() throws Exception {
-        throw new UnsupportedOperationException("Generation is unsupported.");
-    }
-        
-    protected void doValidate() throws Exception {
-        throw new UnsupportedOperationException("Validation is unsupported.");
-    }
-
-    protected void doReport() throws Exception {
-        throw new UnsupportedOperationException("Reporting is unsupported.");        
-    }
-
     /**
      * @return
      * @throws IOException
@@ -178,6 +168,37 @@ public class Whisker {
     }
     
     
+    protected void doGenerate() throws Exception {
+        new Engine().generate(new LicenseAnalyst().validate(load(getLicenseDescriptor())));
+    }
+
+    /**
+     * @param resource
+     * @return
+     * @throws JDOMException
+     * @throws IOException
+     */
+    private Work load(final String resource) throws JDOMException, IOException {
+        final InputStream resourceAsStream = resourceAsStream(resource);
+        if (resourceAsStream == null) {
+            throw new IllegalArgumentException("Cannot load " + resource);
+        }
+        return new JDomBuilder().build(new SAXBuilder().build(resourceAsStream));
+    }
+
+    protected void doValidate() throws Exception {
+        new Engine().validate(new LicenseAnalyst(directories()).analyse(load(getLicenseDescriptor())));
+    }
+
+    protected void doReport() throws Exception {
+        new Engine().report(directories());
+    }
+
+    protected void doTemplateGeneration() throws Exception {
+        new Engine().generateTemplate(directories());
+    }
+
+
     public interface ResourceLoader {
         InputStream load(final String resource);
     }

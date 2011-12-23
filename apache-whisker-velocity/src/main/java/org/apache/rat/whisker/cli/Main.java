@@ -27,7 +27,6 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.rat.whisker.app.Act;
 import org.apache.rat.whisker.app.Whisker;
-import org.apache.rat.whisker.app.WhiskerVelocity;
 
 /**
  * Command line interface for whisker.
@@ -54,7 +53,7 @@ public class Main {
     }
     
     private static Whisker app() {
-        return new WhiskerVelocity();
+        return new Whisker();
     }
     
     private final Whisker whisker;
