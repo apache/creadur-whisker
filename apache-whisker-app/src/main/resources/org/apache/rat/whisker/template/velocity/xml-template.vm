@@ -1,0 +1,85 @@
+################################################################################
+##
+##  Licensed to the Apache Software Foundation (ASF) under one
+##  or more contributor license agreements.  See the NOTICE file
+##  distributed with this work for additional information
+##  regarding copyright ownership.  The ASF licenses this file
+##  to you under the Apache License, Version 2.0 (the
+##  "License"); you may not use this file except in compliance
+##  with the License.  You may obtain a copy of the License at
+## 
+##    http://www.apache.org/licenses/LICENSE-2.0
+## 
+##  Unless required by applicable law or agreed to in writing,
+##  software distributed under the License is distributed on an
+##  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+##  KIND, either express or implied.  See the License for the
+##  specific language governing permissions and limitations
+##  under the License.    
+## 
+#################################################################################
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE manifest [
+<!ELEMENT manifest (licenses, organisations, primary-license, primary-notice?, within*)>
+<!ELEMENT licenses (license*)>
+<!ELEMENT license (template?, text)>
+<!ATTLIST license name CDATA #REQUIRED>
+<!ATTLIST license url CDATA #IMPLIED>
+<!ATTLIST license id ID #REQUIRED>
+<!ELEMENT text (#PCDATA)>
+<!ELEMENT template (parameter-name+)>
+<!ELEMENT parameter-name (#PCDATA)>
+<!ELEMENT organisations (organisation*)>
+<!ELEMENT organisation EMPTY>
+<!ATTLIST organisation id ID #REQUIRED>
+<!ATTLIST organisation name CDATA #REQUIRED>
+<!ATTLIST organisation url CDATA #IMPLIED>
+<!ELEMENT primary-license EMPTY>
+<!ATTLIST primary-license id IDREF #REQUIRED>
+<!ELEMENT primary-notice (#PCDATA)>
+<!ELEMENT within (public-domain?, with-license*)>
+<!ATTLIST within dir CDATA #REQUIRED>
+<!ELEMENT with-license (copyright-notice?, license-parameters?, by-organisation*)>
+<!ATTLIST with-license id IDREF #REQUIRED>
+<!ELEMENT copyright-notice (#PCDATA)>
+<!ELEMENT license-parameters (parameter*)>
+<!ELEMENT parameter (name, value)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT value (#PCDATA)>
+<!ELEMENT public-domain (by-organisation*)>
+<!ELEMENT by-organisation (resource*)>
+<!ATTLIST by-organisation id IDREF #REQUIRED>
+<!ELEMENT resource EMPTY>
+<!ATTLIST resource name CDATA #REQUIRED>
+<!ATTLIST resource sha1 CDATA #IMPLIED>
+]>
+<manifest>
+    <licenses>
+        <license name='TODO: LICENSE' id ='Bogus'>
+                <text>
+TODO: REPLACE WITH PROPER LICENSE!
+            </text>
+        </license>
+    </licenses>
+    <organisations>
+        <organisation 
+            id='bogus.org' 
+            name='Replace This With Correct Orgs' 
+            url='http://bogus.example.org/'/>  
+    </organisations>
+    <primary-license id='Bogus'/>
+    
+    
+
+#foreach ( $dir in $dirs )
+    <within dir='$dir.Name'>
+        <with-license id='Bogus'>
+            <by-organisation id='bogus.org'>
+#foreach ( $resource in $dir.Contents )
+                <resource name='$resource'/>
+#end
+            </by-organisation>
+        </with-license>
+    </within>
+#end
+</manifest>
