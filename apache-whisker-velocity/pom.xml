@@ -66,6 +66,20 @@
       <artifactId>apache-whisker-scan</artifactId>
       <version>${project.version}</version>
     </dependency>
+
+    
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>apache-whisker-xml</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>apache-whisker-model</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     
   </dependencies>
 

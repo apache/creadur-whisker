@@ -23,6 +23,7 @@ import java.io.StringWriter;
 import java.util.Collection;
 
 import org.apache.rat.whisker.legacy.out.LicenseAnalyst.ResourceDefinitionException;
+import org.apache.rat.whisker.model.Work;
 import org.apache.rat.whisker.scan.Directory;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;

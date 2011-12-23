@@ -26,6 +26,9 @@ import java.util.TreeSet;
 
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.rat.whisker.model.Resource;
+import org.apache.rat.whisker.model.ResourceNamesCollator;
+import org.apache.rat.whisker.model.Work;
 import org.apache.rat.whisker.scan.Directory;
 
 /**
@@ -134,9 +137,9 @@ public class LicenseAnalyst {
      * @param error
      */
     private void addIssues(
-            Collection<Pair<org.apache.rat.whisker.legacy.out.WithinDirectory, Resource>> resources,
+            Collection<Pair<org.apache.rat.whisker.model.WithinDirectory, Resource>> resources,
             ResourceDefinitionError error) {
-        for (Pair<org.apache.rat.whisker.legacy.out.WithinDirectory, Resource> duplicate: resources) {
+        for (Pair<org.apache.rat.whisker.model.WithinDirectory, Resource> duplicate: resources) {
             getIssues(error).add(new ResourceDescription(duplicate.getLeft().getName(), duplicate.getRight().getName()));
         }
     }

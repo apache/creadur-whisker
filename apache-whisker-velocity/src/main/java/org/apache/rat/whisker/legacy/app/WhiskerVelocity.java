@@ -22,9 +22,10 @@ package org.apache.rat.whisker.legacy.app;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.apache.rat.whisker.fromxml.JDomBuilder;
 import org.apache.rat.whisker.legacy.out.Engine;
 import org.apache.rat.whisker.legacy.out.LicenseAnalyst;
-import org.apache.rat.whisker.legacy.out.Work;
+import org.apache.rat.whisker.model.Work;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
@@ -49,7 +50,7 @@ public class WhiskerVelocity extends Whisker {
         if (resourceAsStream == null) {
             throw new IllegalArgumentException("Cannot load " + resource);
         }
-        return new Work(new SAXBuilder().build(resourceAsStream));
+        return new JDomBuilder().build(new SAXBuilder().build(resourceAsStream));
     }
 
 

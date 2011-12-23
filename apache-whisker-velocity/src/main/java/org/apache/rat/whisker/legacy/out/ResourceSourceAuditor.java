@@ -24,6 +24,10 @@ import java.util.TreeSet;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.rat.whisker.model.Resource;
+import org.apache.rat.whisker.model.Visitor;
+import org.apache.rat.whisker.model.WithLicense;
+import org.apache.rat.whisker.model.WithinDirectory;
 
 /**
  * 
