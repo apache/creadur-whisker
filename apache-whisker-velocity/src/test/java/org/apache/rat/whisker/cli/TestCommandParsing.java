@@ -16,14 +16,14 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.legacy.cli;
+package org.apache.rat.whisker.cli;
 
 import junit.framework.TestCase;
 
 import org.apache.commons.cli.AlreadySelectedException;
 import org.apache.commons.cli.ParseException;
-import org.apache.rat.whisker.legacy.app.Act;
-import org.apache.rat.whisker.legacy.app.Whisker;
+import org.apache.rat.whisker.app.Act;
+import org.apache.rat.whisker.app.Whisker;
 
 /**
  *

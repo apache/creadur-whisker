@@ -16,14 +16,14 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.legacy.out;
+package org.apache.rat.whisker.out.velocity;
 
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Collection;
 
-import org.apache.rat.whisker.legacy.out.LicenseAnalyst.ResourceDefinitionException;
 import org.apache.rat.whisker.model.Work;
+import org.apache.rat.whisker.out.velocity.LicenseAnalyst.ResourceDefinitionException;
 import org.apache.rat.whisker.scan.Directory;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;

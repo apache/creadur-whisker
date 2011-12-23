@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.legacy.cli;
+package org.apache.rat.whisker.cli;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -25,9 +25,9 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.MissingOptionException;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.apache.rat.whisker.legacy.app.Act;
-import org.apache.rat.whisker.legacy.app.Whisker;
-import org.apache.rat.whisker.legacy.app.WhiskerVelocity;
+import org.apache.rat.whisker.app.Act;
+import org.apache.rat.whisker.app.Whisker;
+import org.apache.rat.whisker.app.WhiskerVelocity;
 
 /**
  * Command line interface for whisker.
