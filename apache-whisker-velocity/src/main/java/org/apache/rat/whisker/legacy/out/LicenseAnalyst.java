@@ -26,7 +26,7 @@ import java.util.TreeSet;
 
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.apache.rat.whisker.legacy.scan.Directory;
+import org.apache.rat.whisker.scan.Directory;
 
 /**
  * 

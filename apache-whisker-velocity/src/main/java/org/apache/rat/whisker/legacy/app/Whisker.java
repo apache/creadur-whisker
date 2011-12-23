@@ -25,8 +25,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Collection;
 
-import org.apache.rat.whisker.legacy.scan.Directory;
-import org.apache.rat.whisker.legacy.scan.FromFileSystem;
+import org.apache.rat.whisker.scan.Directory;
+import org.apache.rat.whisker.scan.FromFileSystem;
 
 
 /**
