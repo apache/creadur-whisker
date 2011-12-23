@@ -28,7 +28,6 @@ import java.util.Collection;
 import org.apache.rat.whisker.fromxml.JDomBuilder;
 import org.apache.rat.whisker.model.Work;
 import org.apache.rat.whisker.out.velocity.Engine;
-import org.apache.rat.whisker.out.velocity.LicenseAnalyst;
 import org.apache.rat.whisker.scan.Directory;
 import org.apache.rat.whisker.scan.FromFileSystem;
 import org.jdom.JDOMException;
