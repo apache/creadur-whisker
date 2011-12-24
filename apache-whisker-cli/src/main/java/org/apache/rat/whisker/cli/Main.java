@@ -37,7 +37,7 @@ public class Main {
     /**
      * 
      */
-    private static final String APP_NAME = "apache-rat-whisker";
+    private static final String APP_NAME = "apache-rat-whisker-cli";
     
     /**
      * Returns okay to system.
