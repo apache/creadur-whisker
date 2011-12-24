@@ -33,7 +33,6 @@ import org.apache.velocity.exception.ParseErrorException;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.log.LogChute;
-import org.jdom.JDOMException;
 
 /**
  * Wraps velocity engine.
@@ -94,7 +93,7 @@ public class VelocityReports implements LogChute {
         merge(TEMPLATES, context(work));
     }
 
-    private void merge(final String[] names, final VelocityContext context) throws ResourceNotFoundException, ParseErrorException, MethodInvocationException, JDOMException, IOException {
+    private void merge(final String[] names, final VelocityContext context) throws Exception {
         for (String name:names) {
             merge(name, context);
         }
@@ -110,7 +109,7 @@ public class VelocityReports implements LogChute {
      * @throws ParseErrorException 
      * @throws ResourceNotFoundException 
      */
-    private void merge(final String name, final VelocityContext context) throws ResourceNotFoundException, ParseErrorException, MethodInvocationException, JDOMException, IOException {
+    private void merge(final String name, final VelocityContext context) throws Exception {
         StringWriter writer = new StringWriter();
         engine.getTemplate(template(name)).merge(context, writer);
         System.out.println(writer);
@@ -122,7 +121,7 @@ public class VelocityReports implements LogChute {
      * @throws JDOMException 
      * @throws ResourceDefinitionException 
      */
-    private VelocityContext context(final Work work) throws JDOMException, IOException, ResourceDefinitionException {
+    private VelocityContext context(final Work work) throws Exception {
         VelocityContext context = new VelocityContext();
         context.put("work", work);
         context.put("indent", new Indentation());
@@ -181,7 +180,7 @@ public class VelocityReports implements LogChute {
      * @throws ParseErrorException 
      * @throws ResourceNotFoundException 
      */
-    public void generateTemplate(Collection<Directory> withBase) throws ResourceNotFoundException, ParseErrorException, MethodInvocationException, JDOMException, IOException {
+    public void generateTemplate(Collection<Directory> withBase) throws Exception {
         merge(XML_TEMPLATE, context(withBase));
     }
 }
