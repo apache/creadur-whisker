@@ -18,22 +18,40 @@
  */
 package org.apache.rat.whisker.plugin.maven;
 
+import java.io.File;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 
 
 /**
+ * Generates licensing related materials such as LICENSE and NOTICE documents
+ * for assembled applications.
  * @goal generate
  */
 public class GenerateMojo extends AbstractMojo {
 
+
+    /**
+     * This file contains a description of the licensing qualities of
+     * the expected contents of the assembled application.
+     * 
+     * @required
+     * @parameter expression="${apacheWhiskerDescriptor}"
+     */
+    private File descriptor;
+    
     /**
      * @see org.apache.maven.plugin.Mojo#execute()
-     * 
      */
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException { 
+        if (descriptor.exists()) {
+            
+        } else {
+            throw new MojoExecutionException("Whisker descriptor is missing: " + descriptor);
+        }
     }
 
 }
