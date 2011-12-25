@@ -23,6 +23,10 @@ import java.io.File;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.rat.whisker.app.Act;
+import org.apache.rat.whisker.app.Whisker;
+import org.apache.rat.whisker.app.load.StreamableResourceFactory;
+import org.apache.rat.whisker.out.velocity.VelocityEngine;
 
 
 /**
@@ -50,7 +54,13 @@ public class GenerateMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException { 
         if (descriptor.exists()) {
             if (descriptor.canRead()) {
-                 
+                 try {
+                    new Whisker().setLicenseDescriptor(new StreamableResourceFactory().streamFromFileResource(descriptor))
+                        .setEngine(new VelocityEngine())
+                        .setAct(Act.GENERATE).act();
+                } catch (Exception e) {
+                    throw new MojoExecutionException("Whisker failed to generate materials: " + e.getMessage(), e);
+                }
             } else {
                 throw new MojoExecutionException("Read permission requires on Whisker descriptor file: " + descriptor);
             }
