@@ -22,11 +22,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 
-import org.apache.rat.whisker.app.load.StreamableResourceFactory;
 import org.apache.rat.whisker.fromxml.JDomBuilder;
 import org.apache.rat.whisker.model.Work;
 import org.apache.rat.whisker.scan.Directory;
 import org.apache.rat.whisker.scan.FromFileSystem;
+import org.jdom.JDOMException;
 
 
 /**
@@ -36,7 +36,7 @@ public class Whisker {
     
     private Act act;
     private String source;
-    private String licenseDescriptor;
+    private StreamableResource licenseDescriptor;
     
     private AbstractEngine engine;
 
@@ -76,14 +76,14 @@ public class Whisker {
     /**
      * @return the licenseDescriptor
      */
-    public String getLicenseDescriptor() {
+    public StreamableResource getLicenseDescriptor() {
         return licenseDescriptor;
     }
 
     /**
      * @param licenseDescriptor the licenseDescriptor to set
      */
-    public Whisker setLicenseDescriptor(String licenseDescriptor) {
+    public Whisker setLicenseDescriptor(StreamableResource licenseDescriptor) {
         this.licenseDescriptor = licenseDescriptor;
         return this;
     }
@@ -174,8 +174,8 @@ public class Whisker {
      * @return
      * @throws IOException 
      */
-    private InputStream resourceAsStream(final String resource) throws IOException {
-        return new StreamableResourceFactory().streamFromClassPathResource(resource).open();
+    private InputStream resourceAsStream(final StreamableResource resource) throws IOException {
+        return resource.open();
     }
     
     
@@ -185,7 +185,7 @@ public class Whisker {
      * @throws JDOMException
      * @throws IOException
      */
-    private Work load(final String resource) throws Exception {
+    private Work load(final StreamableResource resource) throws Exception {
         final InputStream resourceAsStream = resourceAsStream(resource);
         if (resourceAsStream == null) {
             throw new IllegalArgumentException("Cannot load " + resource);

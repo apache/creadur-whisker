@@ -30,7 +30,7 @@ public class StreamableClassPathResource extends StreamableResource {
 
     /** The full name <strong>including path</strong> of a resource on the class path */
     private final String name;
-    
+  
     /**
      * Constructs an instance that streams the given class path resource
      * on demand.
@@ -42,6 +42,16 @@ public class StreamableClassPathResource extends StreamableResource {
         super();
         this.name = name;
     }
+
+    
+    /**
+     * Gets the location on the class path of the resource to be streamed.
+     * @return not null
+     */
+    public String getName() {
+        return name;
+    }
+
 
 
     /**

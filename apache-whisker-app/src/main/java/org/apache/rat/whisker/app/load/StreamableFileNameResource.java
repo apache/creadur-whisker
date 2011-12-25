@@ -43,6 +43,14 @@ public class StreamableFileNameResource extends StreamableResource {
         this.fileName = fileName;
     }
 
+    /**    
+     * Gets the file name of the resource to be streamed.
+     * @return full file name, not null
+     */
+    public String getFileName() {
+        return fileName;
+    }
+
     /**
      * @see org.apache.rat.whisker.app.StreamableResource#open()
      */

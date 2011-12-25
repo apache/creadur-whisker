@@ -27,6 +27,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.rat.whisker.app.Act;
 import org.apache.rat.whisker.app.Whisker;
+import org.apache.rat.whisker.app.load.StreamableResourceFactory;
 import org.apache.rat.whisker.out.velocity.VelocityEngine;
 
 /**
@@ -85,7 +86,9 @@ public class Main {
     private Whisker configure(final CommandLine commandLine) throws MissingOptionException {
         whisker.setEngine(new VelocityEngine());
         whisker.setSource(CommandLineOption.SOURCE.getOptionValue(commandLine));
-        whisker.setLicenseDescriptor(CommandLineOption.LICENSE_DESCRIPTION.getOptionValue(commandLine));
+        whisker.setLicenseDescriptor(
+                new StreamableResourceFactory().streamFromClassPathResource(
+                        CommandLineOption.LICENSE_DESCRIPTION.getOptionValue(commandLine)));
         if (CommandLineOption.ACT_TO_AUDIT.isSetOn(commandLine)) {
             whisker.setAct(Act.AUDIT);
         } else if (CommandLineOption.ACT_TO_GENERATE.isSetOn(commandLine)) {

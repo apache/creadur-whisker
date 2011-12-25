@@ -24,6 +24,7 @@ import org.apache.commons.cli.AlreadySelectedException;
 import org.apache.commons.cli.ParseException;
 import org.apache.rat.whisker.app.Act;
 import org.apache.rat.whisker.app.Whisker;
+import org.apache.rat.whisker.app.load.StreamableClassPathResource;
 
 /**
  *
@@ -172,7 +173,9 @@ public class TestCommandParsing extends TestCase {
     private void exerciseLicenseDescriptor(String aPath, String arg)
             throws ParseException {
         assertEquals("License descriptor arg should set property on Whisker", aPath, 
-                subject.configure(args(arg, aPath, longOpt(CommandLineOption.ACT_TO_GENERATE.getLongName()))).getLicenseDescriptor());
+                ((StreamableClassPathResource)subject.configure(
+                        args(arg, aPath, longOpt(CommandLineOption.ACT_TO_GENERATE.getLongName())))
+                            .getLicenseDescriptor()).getName());
     }
     
     private String[] args(String ...strings) {
