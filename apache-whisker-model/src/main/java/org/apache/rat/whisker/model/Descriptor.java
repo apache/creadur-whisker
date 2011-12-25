@@ -26,7 +26,7 @@ import java.util.Set;
 /**
  * 
  */
-public class Work {
+public class Descriptor {
     
     private final License primaryLicense;
     private final String primaryOrganisationId;
@@ -35,7 +35,7 @@ public class Work {
     private final Map<String, String> notices;
     private final Collection<WithinDirectory> contents;
     
-    public Work(License primaryLicense, String primaryOrganisationId,
+    public Descriptor(License primaryLicense, String primaryOrganisationId,
             String primaryNotice, Map<String, License> licenses,
             Map<String, String> notices,
             Map<String, Organisation> organisations,

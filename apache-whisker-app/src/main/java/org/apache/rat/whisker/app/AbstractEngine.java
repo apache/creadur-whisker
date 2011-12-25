@@ -20,7 +20,7 @@ package org.apache.rat.whisker.app;
 
 import java.util.Collection;
 
-import org.apache.rat.whisker.model.Work;
+import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
 
 /**
@@ -34,5 +34,5 @@ public abstract class AbstractEngine {
 
     public abstract AbstractEngine report(final Collection<Directory> directories) throws Exception;
     
-    public abstract AbstractEngine generate(final Work work) throws Exception;
+    public abstract AbstractEngine generate(final Descriptor work) throws Exception;
 }

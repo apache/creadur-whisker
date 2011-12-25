@@ -22,7 +22,7 @@ import java.util.Collection;
 
 import org.apache.rat.whisker.app.AbstractEngine;
 import org.apache.rat.whisker.app.LicenseAnalyst;
-import org.apache.rat.whisker.model.Work;
+import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
 
 /**
@@ -60,10 +60,10 @@ public class VelocityEngine extends AbstractEngine {
     }
 
     /**
-     * @see org.apache.rat.whisker.app.AbstractEngine#generate(org.apache.rat.whisker.model.Work)
+     * @see org.apache.rat.whisker.app.AbstractEngine#generate(org.apache.rat.whisker.model.Descriptor)
      */
     @Override
-    public AbstractEngine generate(Work work) throws Exception {
+    public AbstractEngine generate(Descriptor work) throws Exception {
         new VelocityReports().generate(work);
         return this;
     }

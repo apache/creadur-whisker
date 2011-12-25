@@ -27,7 +27,7 @@ import java.util.TreeSet;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.rat.whisker.model.Resource;
 import org.apache.rat.whisker.model.ResourceNamesCollator;
-import org.apache.rat.whisker.model.Work;
+import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
 
 /**
@@ -74,7 +74,7 @@ public class LicenseAnalyst {
         issues = buildIssueMap();
     }
 
-    public LicenseAnalyst analyse(final Work work) {
+    public LicenseAnalyst analyse(final Descriptor work) {
         if (directories == null) {
             final ResourceNamesCollator collator = new ResourceNamesCollator();
             work.traverse(collator);
@@ -114,7 +114,7 @@ public class LicenseAnalyst {
         return true;
     }
     
-    public Work validate(final Work work) throws ResourceDefinitionException {
+    public Descriptor validate(final Descriptor work) throws ResourceDefinitionException {
         analyse(work);
         if (isValid()) {
             return work;

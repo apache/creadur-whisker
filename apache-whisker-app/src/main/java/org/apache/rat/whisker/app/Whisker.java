@@ -23,7 +23,7 @@ import java.io.InputStream;
 import java.util.Collection;
 
 import org.apache.rat.whisker.fromxml.JDomBuilder;
-import org.apache.rat.whisker.model.Work;
+import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
 import org.apache.rat.whisker.scan.FromFileSystem;
 import org.jdom.JDOMException;
@@ -185,7 +185,7 @@ public class Whisker {
      * @throws JDOMException
      * @throws IOException
      */
-    private Work load(final StreamableResource resource) throws Exception {
+    private Descriptor load(final StreamableResource resource) throws Exception {
         final InputStream resourceAsStream = resourceAsStream(resource);
         if (resourceAsStream == null) {
             throw new IllegalArgumentException("Cannot load " + resource);

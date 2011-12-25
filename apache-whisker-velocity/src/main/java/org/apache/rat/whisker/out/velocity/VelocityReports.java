@@ -24,7 +24,7 @@ import java.util.Collection;
 
 import org.apache.rat.whisker.app.LicenseAnalyst;
 import org.apache.rat.whisker.app.ResourceDefinitionException;
-import org.apache.rat.whisker.model.Work;
+import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -89,7 +89,7 @@ public class VelocityReports implements LogChute {
     /**
      * 
      */
-    public void generate(final Work work) throws Exception {
+    public void generate(final Descriptor work) throws Exception {
         merge(TEMPLATES, context(work));
     }
 
@@ -121,7 +121,7 @@ public class VelocityReports implements LogChute {
      * @throws JDOMException 
      * @throws ResourceDefinitionException 
      */
-    private VelocityContext context(final Work work) throws Exception {
+    private VelocityContext context(final Descriptor work) throws Exception {
         VelocityContext context = new VelocityContext();
         context.put("work", work);
         context.put("indent", new Indentation());
