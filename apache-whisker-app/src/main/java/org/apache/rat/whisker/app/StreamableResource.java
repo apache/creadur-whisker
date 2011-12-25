@@ -18,20 +18,18 @@
  */
 package org.apache.rat.whisker.app;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
-public class FileLoader implements ResourceLoader {
+/**
+ * A resource capable of being opened as a stream.
+ */
+public abstract class StreamableResource {
 
-    @Override
-    public InputStream load(String resource) {
-        try {
-            return new FileInputStream(new File(resource));
-        } catch (FileNotFoundException e) {
-            return null;
-        }
-    }
-    
+    /**
+     * Opens the resource as a stream
+     * @return not null
+     * @throws IOException
+     */
+    public abstract InputStream open() throws IOException;
 }

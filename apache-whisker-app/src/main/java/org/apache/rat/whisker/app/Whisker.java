@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 
+import org.apache.rat.whisker.app.load.StreamableResourceFactory;
 import org.apache.rat.whisker.fromxml.JDomBuilder;
 import org.apache.rat.whisker.model.Work;
 import org.apache.rat.whisker.scan.Directory;
@@ -36,8 +37,6 @@ public class Whisker {
     private Act act;
     private String source;
     private String licenseDescriptor;
-    
-    private ResourceLoader loader = new FileLoader();
     
     private AbstractEngine engine;
 
@@ -173,9 +172,10 @@ public class Whisker {
     /**
      * @param resource
      * @return
+     * @throws IOException 
      */
-    private InputStream resourceAsStream(final String resource) {
-        return loader.load(resource);
+    private InputStream resourceAsStream(final String resource) throws IOException {
+        return new StreamableResourceFactory().streamFromClassPathResource(resource).open();
     }
     
     

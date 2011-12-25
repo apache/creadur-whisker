@@ -43,14 +43,19 @@ public class GenerateMojo extends AbstractMojo {
     private File descriptor;
     
     /**
+     * Generate licensing related materials such as LICENSE and NOTICE documents.
      * @see org.apache.maven.plugin.Mojo#execute()
      */
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException { 
         if (descriptor.exists()) {
-            
+            if (descriptor.canRead()) {
+                 
+            } else {
+                throw new MojoExecutionException("Read permission requires on Whisker descriptor file: " + descriptor);
+            }
         } else {
-            throw new MojoExecutionException("Whisker descriptor is missing: " + descriptor);
+            throw new MojoExecutionException("Whisker descriptor file is missing: " + descriptor);
         }
     }
 
