@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.app;
+package org.apache.rat.whisker.app.analysis;
 
 public enum ResourceDefinitionError {
     MISSING_LICENSE("Missing license(s)"),

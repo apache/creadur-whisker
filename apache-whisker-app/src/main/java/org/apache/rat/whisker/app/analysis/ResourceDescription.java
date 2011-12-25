@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.app;
+package org.apache.rat.whisker.app.analysis;
 
 public class ResourceDescription implements Comparable<ResourceDescription> {
     private final String directory;

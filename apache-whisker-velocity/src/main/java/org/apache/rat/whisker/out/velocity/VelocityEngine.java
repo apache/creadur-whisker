@@ -21,7 +21,7 @@ package org.apache.rat.whisker.out.velocity;
 import java.util.Collection;
 
 import org.apache.rat.whisker.app.AbstractEngine;
-import org.apache.rat.whisker.app.LicenseAnalyst;
+import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
 import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
 

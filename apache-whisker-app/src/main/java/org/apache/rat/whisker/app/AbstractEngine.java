@@ -20,6 +20,7 @@ package org.apache.rat.whisker.app;
 
 import java.util.Collection;
 
+import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
 import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
 
