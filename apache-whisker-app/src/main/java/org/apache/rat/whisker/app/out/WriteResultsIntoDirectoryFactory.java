@@ -20,11 +20,10 @@ package org.apache.rat.whisker.app.out;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.Writer;
 
+import org.apache.commons.io.output.FileWriterWithEncoding;
 import org.apache.rat.whisker.app.Result;
 import org.apache.rat.whisker.app.ResultWriterFactory;
 
@@ -47,6 +46,6 @@ public class WriteResultsIntoDirectoryFactory implements ResultWriterFactory  {
      */
     @Override
     public Writer writerFor(Result result) throws IOException {
-        return new BufferedWriter(new OutputStreamWriter(new FileOutputStream(result.within(directory)), encoding));
+        return new BufferedWriter(new FileWriterWithEncoding(result.within(directory), encoding));
     }
 }
