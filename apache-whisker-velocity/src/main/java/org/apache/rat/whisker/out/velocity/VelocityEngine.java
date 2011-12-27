@@ -21,6 +21,7 @@ package org.apache.rat.whisker.out.velocity;
 import java.util.Collection;
 
 import org.apache.rat.whisker.app.AbstractEngine;
+import org.apache.rat.whisker.app.ResultWriterFactory;
 import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
 import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
@@ -31,40 +32,40 @@ import org.apache.rat.whisker.scan.Directory;
 public class VelocityEngine extends AbstractEngine {
 
     /**
-     * @see org.apache.rat.whisker.app.AbstractEngine#generateTemplate(java.util.Collection)
+     * @see org.apache.rat.whisker.app.AbstractEngine#generateTemplate(java.util.Collection, ResultWriterFactory)
      */
     @Override
-    public AbstractEngine generateTemplate(Collection<Directory> withBase)
+    public AbstractEngine generateTemplate(Collection<Directory> withBase, ResultWriterFactory writerFactory)
             throws Exception {
-        new VelocityReports().generateTemplate(withBase);
+        new VelocityReports(writerFactory).generateTemplate(withBase);
         return this;
     }
 
     /**
-     * @see org.apache.rat.whisker.app.AbstractEngine#validate(org.apache.rat.whisker.app.LicenseAnalyst)
+     * @see org.apache.rat.whisker.app.AbstractEngine#validate(org.apache.rat.whisker.app.LicenseAnalyst, ResultWriterFactory)
      */
     @Override
-    public AbstractEngine validate(LicenseAnalyst analyst) throws Exception {
-        new VelocityReports().validate(analyst);
+    public AbstractEngine validate(LicenseAnalyst analyst, ResultWriterFactory writerFactory) throws Exception {
+        new VelocityReports(writerFactory).validate(analyst);
         return this;
     }
 
     /**
-     * @see org.apache.rat.whisker.app.AbstractEngine#report(java.util.Collection)
+     * @see org.apache.rat.whisker.app.AbstractEngine#report(java.util.Collection, ResultWriterFactory)
      */
     @Override
-    public AbstractEngine report(Collection<Directory> directories)
+    public AbstractEngine report(Collection<Directory> directories, ResultWriterFactory writerFactory)
             throws Exception {
-        new VelocityReports().report(directories);
+        new VelocityReports(writerFactory).report(directories);
         return this;
     }
 
     /**
-     * @see org.apache.rat.whisker.app.AbstractEngine#generate(org.apache.rat.whisker.model.Descriptor)
+     * @see org.apache.rat.whisker.app.AbstractEngine#generate(org.apache.rat.whisker.model.Descriptor, ResultWriterFactory)
      */
     @Override
-    public AbstractEngine generate(Descriptor work) throws Exception {
-        new VelocityReports().generate(work);
+    public AbstractEngine generate(Descriptor work, ResultWriterFactory writerFactory) throws Exception {
+        new VelocityReports(writerFactory).generate(work);
         return this;
     }
     

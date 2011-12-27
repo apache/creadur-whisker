@@ -18,26 +18,9 @@
  */
 package org.apache.rat.whisker.app;
 
-import java.util.Collection;
-
-import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
-import org.apache.rat.whisker.model.Descriptor;
-import org.apache.rat.whisker.scan.Directory;
-
 /**
  * 
  */
-public abstract class AbstractEngine {
-
-    public abstract AbstractEngine generateTemplate(Collection<Directory> withBase, 
-            ResultWriterFactory writerFactory) throws Exception;
-
-    public abstract AbstractEngine validate(LicenseAnalyst analyst, 
-            ResultWriterFactory writerFactory) throws Exception;
-
-    public abstract AbstractEngine report(final Collection<Directory> directories, 
-            ResultWriterFactory writerFactory) throws Exception;
-    
-    public abstract AbstractEngine generate(final Descriptor work, 
-            ResultWriterFactory writerFactory) throws Exception;
+public enum Result {
+    LICENSE, NOTICE, MISSING_LICENSE_REPORT, XML_TEMPLATE, DIRECTORIES_REPORT
 }

@@ -20,9 +20,11 @@ package org.apache.rat.whisker.app;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Writer;
 import java.util.Collection;
 
 import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
+import org.apache.rat.whisker.app.out.WriteResultsToSystemOutFactory;
 import org.apache.rat.whisker.fromxml.JDomBuilder;
 import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
@@ -38,8 +40,25 @@ public class Whisker {
     private Act act;
     private String source;
     private StreamableResource licenseDescriptor;
+    private ResultWriterFactory writerFactory = new WriteResultsToSystemOutFactory();
     
     private AbstractEngine engine;
+
+    /**
+     * Gets the factory that builds product {@link Writer}s.
+     * @return factory
+     */
+    public ResultWriterFactory getWriterFactory() {
+        return writerFactory;
+    }
+
+    /**
+     * Sets the factory that builds product {@link Writer}s.
+     * @param writerFactory not null
+     */
+    public void setWriterFactory(ResultWriterFactory writerFactory) {
+        this.writerFactory = writerFactory;
+    }
 
     /**
      * Gets the reporting engine.
@@ -125,7 +144,7 @@ public class Whisker {
      * @throws Exception 
      */
     private Whisker template() throws Exception {
-        engine.generateTemplate(directories());
+        engine.generateTemplate(directories(), getWriterFactory());
         return this;
     }
 
@@ -133,7 +152,7 @@ public class Whisker {
      * @return
      */
     private Whisker report() throws Exception {
-        engine.report(directories());
+        engine.report(directories(), getWriterFactory());
         return this;
     }
     
@@ -142,7 +161,7 @@ public class Whisker {
      * @throws Exception 
      */
     private Whisker generate() throws Exception {
-        engine.generate(new LicenseAnalyst().validate(load(getLicenseDescriptor())));
+        engine.generate(new LicenseAnalyst().validate(load(getLicenseDescriptor())), getWriterFactory());
         return this;
     }
 
@@ -151,7 +170,7 @@ public class Whisker {
      * @throws Exception 
      */
     private Whisker validate() throws Exception {
-        engine.validate(new LicenseAnalyst(directories()).analyse(load(getLicenseDescriptor())));
+        engine.validate(new LicenseAnalyst(directories()).analyse(load(getLicenseDescriptor())), getWriterFactory());
         return this;
     }
 

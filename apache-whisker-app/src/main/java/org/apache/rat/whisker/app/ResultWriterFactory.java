@@ -18,26 +18,19 @@
  */
 package org.apache.rat.whisker.app;
 
-import java.util.Collection;
-
-import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
-import org.apache.rat.whisker.model.Descriptor;
-import org.apache.rat.whisker.scan.Directory;
+import java.io.IOException;
+import java.io.Writer;
 
 /**
- * 
+ * Builds writers for results. 
  */
-public abstract class AbstractEngine {
+public interface ResultWriterFactory {
 
-    public abstract AbstractEngine generateTemplate(Collection<Directory> withBase, 
-            ResultWriterFactory writerFactory) throws Exception;
-
-    public abstract AbstractEngine validate(LicenseAnalyst analyst, 
-            ResultWriterFactory writerFactory) throws Exception;
-
-    public abstract AbstractEngine report(final Collection<Directory> directories, 
-            ResultWriterFactory writerFactory) throws Exception;
-    
-    public abstract AbstractEngine generate(final Descriptor work, 
-            ResultWriterFactory writerFactory) throws Exception;
+    /**
+     * Builds a writer for the given results.
+     * @param result not null
+     * @return not null
+     * @throws IOException when suitable writer cannot be constructed
+     */
+    public Writer writerFor(final Result result) throws IOException;
 }

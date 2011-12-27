@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Collection;
 
+import org.apache.rat.whisker.app.ResultWriterFactory;
 import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
 import org.apache.rat.whisker.app.analysis.ResourceDefinitionException;
 import org.apache.rat.whisker.model.Descriptor;
@@ -38,16 +39,17 @@ import org.apache.velocity.runtime.log.LogChute;
  * Wraps velocity engine.
  */
 public class VelocityReports implements LogChute {
-   
-    private static final String[] TEMPLATES = {"LICENSE", "NOTICE"};
-    private static final String[] DIRECTORIES_REPORT_TEMPLATE = {"DIRECTORIES"};
-    private static final String[] MISSING_LICENSE_REPORT_TEMPLATE = {"MISSING-LICENSE"};
-    private static final String[] XML_TEMPLATE = {"XML-TEMPLATE"};
-
     
+    private static final Product[] PRODUCTS_THAT_GENERATE_TEMPLATES = {Product.XML_TEMPLATE};
+    private static final Product[] PRODUCTS_THAT_VALIDATE = {Product.MISSING_LICENSE_REPORT_TEMPLATE};
+    private static final Product[] PRODUCTS_THAT_REPORT_ON_DIRECTORIES = {Product.DIRECTORIES_REPORT_TEMPLATE};
+    private static final Product[] PRODUCTS_THAT_GENERATE_LICENSING_MATERIALS = {Product.LICENSE, Product.NOTICE};
+    
+    private final ResultWriterFactory writerFactory;
     private final VelocityEngine engine;
              
-    public VelocityReports() {
+    public VelocityReports(final ResultWriterFactory writerFactory) {
+        this.writerFactory = writerFactory;
         engine = new VelocityEngine();
         engine.setProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM, this);
         engine.setProperty(VelocityEngine.RESOURCE_LOADER, "classpath");
@@ -90,12 +92,12 @@ public class VelocityReports implements LogChute {
      * 
      */
     public void generate(final Descriptor work) throws Exception {
-        merge(TEMPLATES, context(work));
+        merge(PRODUCTS_THAT_GENERATE_LICENSING_MATERIALS , context(work));
     }
 
-    private void merge(final String[] names, final VelocityContext context) throws Exception {
-        for (String name:names) {
-            merge(name, context);
+    private void merge(final Product[] products, final VelocityContext context) throws Exception {
+        for (final Product product:products) {
+            merge(product, context);
         }
     }
     
@@ -109,10 +111,8 @@ public class VelocityReports implements LogChute {
      * @throws ParseErrorException 
      * @throws ResourceNotFoundException 
      */
-    private void merge(final String name, final VelocityContext context) throws Exception {
-        StringWriter writer = new StringWriter();
-        engine.getTemplate(template(name)).merge(context, writer);
-        System.out.println(writer);
+    private void merge(final Product product, final VelocityContext context) throws Exception {
+        engine.getTemplate(template(product.getTemplate())).merge(context, product.writerFrom(writerFactory));
     }
 
     /**
@@ -139,7 +139,7 @@ public class VelocityReports implements LogChute {
     }
 
     public void report(final Collection<Directory> directories) throws Exception {
-        merge(DIRECTORIES_REPORT_TEMPLATE, context(directories));
+        merge(PRODUCTS_THAT_REPORT_ON_DIRECTORIES, context(directories));
     }
 
     /**
@@ -159,7 +159,7 @@ public class VelocityReports implements LogChute {
      * @throws Exception 
      */
     public void validate(LicenseAnalyst analyst) throws Exception {
-        merge(MISSING_LICENSE_REPORT_TEMPLATE, context(analyst));
+        merge(PRODUCTS_THAT_VALIDATE, context(analyst));
     }
 
     /**
@@ -181,6 +181,6 @@ public class VelocityReports implements LogChute {
      * @throws ResourceNotFoundException 
      */
     public void generateTemplate(Collection<Directory> withBase) throws Exception {
-        merge(XML_TEMPLATE, context(withBase));
+        merge(PRODUCTS_THAT_GENERATE_TEMPLATES, context(withBase));
     }
 }
