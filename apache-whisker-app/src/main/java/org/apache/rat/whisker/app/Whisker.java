@@ -24,7 +24,6 @@ import java.io.Writer;
 import java.util.Collection;
 
 import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
-import org.apache.rat.whisker.app.out.WriteResultsToSystemOutFactory;
 import org.apache.rat.whisker.fromxml.JDomBuilder;
 import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
@@ -40,7 +39,7 @@ public class Whisker {
     private Act act;
     private String source;
     private StreamableResource licenseDescriptor;
-    private ResultWriterFactory writerFactory = new WriteResultsToSystemOutFactory();
+    private ResultWriterFactory writerFactory;
     
     private AbstractEngine engine;
 
@@ -56,8 +55,9 @@ public class Whisker {
      * Sets the factory that builds product {@link Writer}s.
      * @param writerFactory not null
      */
-    public void setWriterFactory(ResultWriterFactory writerFactory) {
+    public Whisker setWriterFactory(ResultWriterFactory writerFactory) {
         this.writerFactory = writerFactory;
+        return this;
     }
 
     /**

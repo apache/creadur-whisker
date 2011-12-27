@@ -26,6 +26,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.rat.whisker.app.Act;
 import org.apache.rat.whisker.app.Whisker;
 import org.apache.rat.whisker.app.load.StreamableResourceFactory;
+import org.apache.rat.whisker.app.out.WriteResultsIntoDirectoryFactory;
 import org.apache.rat.whisker.out.velocity.VelocityEngine;
 
 
@@ -36,6 +37,18 @@ import org.apache.rat.whisker.out.velocity.VelocityEngine;
  */
 public class GenerateMojo extends AbstractMojo {
 
+    /**
+     * Destination for generated materials
+     *
+     * @parameter default-value="${project.build.directory}"
+     */
+    private File outputDirectory;
+    
+    /**
+     * The licensing materials will be encoding thus.
+     * @parameter expression="${outputEncoding}" default-value="${project.build.sourceEncoding}"
+     */
+    private String outputEncoding;
 
     /**
      * This file contains a description of the licensing qualities of
@@ -57,6 +70,7 @@ public class GenerateMojo extends AbstractMojo {
                  try {
                     new Whisker().setLicenseDescriptor(new StreamableResourceFactory().streamFromFileResource(descriptor))
                         .setEngine(new VelocityEngine())
+                        .setWriterFactory(new WriteResultsIntoDirectoryFactory(outputDirectory, outputEncoding))
                         .setAct(Act.GENERATE).act();
                 } catch (Exception e) {
                     throw new MojoExecutionException("Whisker failed to generate materials: " + e.getMessage(), e);

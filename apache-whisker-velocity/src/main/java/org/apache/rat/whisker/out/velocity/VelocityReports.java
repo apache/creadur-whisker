@@ -19,7 +19,6 @@
 package org.apache.rat.whisker.out.velocity;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.Collection;
 
 import org.apache.rat.whisker.app.ResultWriterFactory;

@@ -28,6 +28,7 @@ import org.apache.commons.cli.ParseException;
 import org.apache.rat.whisker.app.Act;
 import org.apache.rat.whisker.app.Whisker;
 import org.apache.rat.whisker.app.load.StreamableResourceFactory;
+import org.apache.rat.whisker.app.out.WriteResultsToSystemOutFactory;
 import org.apache.rat.whisker.out.velocity.VelocityEngine;
 
 /**
@@ -89,6 +90,7 @@ public class Main {
         whisker.setLicenseDescriptor(
                 new StreamableResourceFactory().streamFromClassPathResource(
                         CommandLineOption.LICENSE_DESCRIPTION.getOptionValue(commandLine)));
+        whisker.setWriterFactory(new WriteResultsToSystemOutFactory());
         if (CommandLineOption.ACT_TO_AUDIT.isSetOn(commandLine)) {
             whisker.setAct(Act.AUDIT);
         } else if (CommandLineOption.ACT_TO_GENERATE.isSetOn(commandLine)) {
