@@ -19,8 +19,10 @@
 package org.apache.rat.whisker.out.velocity;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.Collection;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.rat.whisker.app.ResultWriterFactory;
 import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
 import org.apache.rat.whisker.app.analysis.ResourceDefinitionException;
@@ -111,7 +113,9 @@ public class VelocityReports implements LogChute {
      * @throws ResourceNotFoundException 
      */
     private void merge(final Product product, final VelocityContext context) throws Exception {
-        engine.getTemplate(template(product.getTemplate())).merge(context, product.writerFrom(writerFactory));
+        final Writer writer = product.writerFrom(writerFactory);
+        engine.getTemplate(template(product.getTemplate())).merge(context, writer);
+        IOUtils.closeQuietly(writer);
     }
 
     /**
