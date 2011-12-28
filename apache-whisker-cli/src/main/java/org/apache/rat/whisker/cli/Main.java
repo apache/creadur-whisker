@@ -85,7 +85,7 @@ public class Main {
      * @throws MissingOptionException 
      */
     private Whisker configure(final CommandLine commandLine) throws MissingOptionException {
-        whisker.setEngine(new VelocityEngine());
+        whisker.setEngine(new VelocityEngine(new SystemLog()));
         whisker.setSource(CommandLineOption.SOURCE.getOptionValue(commandLine));
         whisker.setLicenseDescriptor(
                 new StreamableResourceFactory().streamFromClassPathResource(

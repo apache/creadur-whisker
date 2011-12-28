@@ -69,7 +69,7 @@ public class GenerateMojo extends AbstractMojo {
             if (descriptor.canRead()) {
                  try {
                     new Whisker().setLicenseDescriptor(new StreamableResourceFactory().streamFromFileResource(descriptor))
-                        .setEngine(new VelocityEngine())
+                        .setEngine(new VelocityEngine(new MojoToJCLLog(getLog())))
                         .setWriterFactory(new WriteResultsIntoDirectoryFactory(outputDirectory, outputEncoding))
                         .setAct(Act.GENERATE).act();
                 } catch (Exception e) {

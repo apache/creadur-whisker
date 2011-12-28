@@ -20,6 +20,7 @@ package org.apache.rat.whisker.out.velocity;
 
 import java.util.Collection;
 
+import org.apache.commons.logging.Log;
 import org.apache.rat.whisker.app.AbstractEngine;
 import org.apache.rat.whisker.app.ResultWriterFactory;
 import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
@@ -30,6 +31,13 @@ import org.apache.rat.whisker.scan.Directory;
  * 
  */
 public class VelocityEngine extends AbstractEngine {
+    
+    private final Log log;
+    
+    public VelocityEngine(Log log) {
+        super();
+        this.log = log;
+    }
 
     /**
      * @see org.apache.rat.whisker.app.AbstractEngine#generateTemplate(java.util.Collection, ResultWriterFactory)
@@ -37,8 +45,16 @@ public class VelocityEngine extends AbstractEngine {
     @Override
     public AbstractEngine generateTemplate(Collection<Directory> withBase, ResultWriterFactory writerFactory)
             throws Exception {
-        new VelocityReports(writerFactory).generateTemplate(withBase);
+        reporter(writerFactory).generateTemplate(withBase);
         return this;
+    }
+
+    /**
+     * @param writerFactory
+     * @return
+     */
+    private VelocityReports reporter(ResultWriterFactory writerFactory) {
+        return new VelocityReports(writerFactory, log);
     }
 
     /**
@@ -46,7 +62,7 @@ public class VelocityEngine extends AbstractEngine {
      */
     @Override
     public AbstractEngine validate(LicenseAnalyst analyst, ResultWriterFactory writerFactory) throws Exception {
-        new VelocityReports(writerFactory).validate(analyst);
+        reporter(writerFactory).validate(analyst);
         return this;
     }
 
@@ -56,7 +72,7 @@ public class VelocityEngine extends AbstractEngine {
     @Override
     public AbstractEngine report(Collection<Directory> directories, ResultWriterFactory writerFactory)
             throws Exception {
-        new VelocityReports(writerFactory).report(directories);
+        reporter(writerFactory).report(directories);
         return this;
     }
 
@@ -65,7 +81,7 @@ public class VelocityEngine extends AbstractEngine {
      */
     @Override
     public AbstractEngine generate(Descriptor work, ResultWriterFactory writerFactory) throws Exception {
-        new VelocityReports(writerFactory).generate(work);
+        reporter(writerFactory).generate(work);
         return this;
     }
     

@@ -23,6 +23,7 @@ import java.io.Writer;
 import java.util.Collection;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.logging.Log;
 import org.apache.rat.whisker.app.ResultWriterFactory;
 import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
 import org.apache.rat.whisker.app.analysis.ResourceDefinitionException;
@@ -48,9 +49,11 @@ public class VelocityReports implements LogChute {
     
     private final ResultWriterFactory writerFactory;
     private final VelocityEngine engine;
+    private final Log log;
              
-    public VelocityReports(final ResultWriterFactory writerFactory) {
+    public VelocityReports(final ResultWriterFactory writerFactory, final Log log) {
         this.writerFactory = writerFactory;
+        this.log = log;
         engine = new VelocityEngine();
         engine.setProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM, this);
         engine.setProperty(VelocityEngine.RESOURCE_LOADER, "classpath");
@@ -69,7 +72,19 @@ public class VelocityReports implements LogChute {
      */
     @Override
     public boolean isLevelEnabled(int level) {
-        return true;
+        switch (level) {
+            case DEBUG_ID:
+                return log.isDebugEnabled();
+            case TRACE_ID:
+                return log.isTraceEnabled();
+            case INFO_ID:
+                return log.isInfoEnabled();
+            case WARN_ID:
+                return log.isWarnEnabled();
+            case ERROR_ID:
+                return log.isErrorEnabled();
+        }
+        return false;
     }
 
     /**
@@ -77,7 +92,23 @@ public class VelocityReports implements LogChute {
      */
     @Override
     public void log(int level, String message) {
-        System.err.println(message);
+        switch (level) {
+            case DEBUG_ID:
+                log.debug(message);
+                break;
+            case TRACE_ID:
+                log.trace(message);
+                break;
+            case INFO_ID:
+                log.info(message);
+                break;
+            case WARN_ID:
+                log.warn(message);
+                break;
+            case ERROR_ID:
+                log.error(message);
+                break;
+        }
     }
 
     /**
@@ -85,9 +116,23 @@ public class VelocityReports implements LogChute {
      */
     @Override
     public void log(int level, String message, Throwable throwable) {
-        System.err.println(message);
-        throwable.printStackTrace();
-    }
+        switch (level) {
+            case DEBUG_ID:
+                log.debug(message, throwable);
+                break;
+            case TRACE_ID:
+                log.trace(message, throwable);
+                break;
+            case INFO_ID:
+                log.info(message, throwable);
+                break;
+            case WARN_ID:
+                log.warn(message, throwable);
+                break;
+            case ERROR_ID:
+                log.error(message, throwable);
+                break;
+        }    }
 
     /**
      * 
