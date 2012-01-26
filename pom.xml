@@ -137,4 +137,11 @@
     <maven>3.0.2</maven>
   </prerequisites>
 
+  <distributionManagement>
+    <site>
+      <id>apache.org</id>
+      <name>Apache Website</name>
+      <url>http://incubator.apache.org/rat/whisker</url>
+    </site>
+  </distributionManagement>
 </project>
