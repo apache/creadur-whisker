@@ -73,7 +73,7 @@
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>3.8.1</version>
+        <version>${junit.version}</version>
         <scope>test</scope>
       </dependency>
     </dependencies>
@@ -93,6 +93,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <target.jdk>1.5</target.jdk>
+    <junit.version>3.8.1</junit.version>
   </properties>
 
   <!-- ================================ Build information -->
