@@ -81,6 +81,6 @@
   -->
   <name>Apache Whisker::App</name>
   <description>Whisker core application.</description>
-  <url>http://rat.apache.org/whisker/apache-whisker-velocity</url>
+  <url>http://rat.apache.org/whisker/apache-whisker-app</url>
 
 </project>
