@@ -94,6 +94,14 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <target.jdk>1.5</target.jdk>
     <junit.version>3.8.1</junit.version>
+<!-- 
+    Custom distributions
+    ====================
+    override these values. You might do this by adding a profile to your local settings.xml.
+     -->
+    <whisker.site.url>file:stage</whisker.site.url>
+    <whisker.site.name>Whisker Incubating Website</whisker.site.name>
+    <whisker.site.id>org.apache.rat.whisker.incubating.site</whisker.site.id>   
   </properties>
 
   <!-- ================================ Build information -->
@@ -260,9 +268,9 @@
 
   <distributionManagement>
     <site>
-      <id>apache.org</id>
-      <name>Apache Website</name>
-      <url>http://incubator.apache.org/rat/whisker</url>
+        <id>${whisker.site.id}</id>
+        <name>${whisker.site.name}</name>
+        <url>${whisker.site.url}</url>
     </site>
-  </distributionManagement>
+  </distributionManagement>  
 </project>
