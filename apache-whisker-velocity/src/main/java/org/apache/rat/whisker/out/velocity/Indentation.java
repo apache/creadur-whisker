@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.rat.whisker.out.velocity;
 
@@ -25,37 +25,55 @@ import java.io.StringReader;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * 
+ * Manages indentation level.
  */
 public class Indentation {
 
-    
-    public String indent(final int indentation, final Object source) throws IOException {
+    /**
+     * Creates appropriate indentation, padding with spaces.
+     * @param indentation not null
+     * @param source not null
+     * @return appropriate indentation, not null
+     * @throws IOException when source cannot be read
+     */
+    public final String indent(
+            final int indentation, final Object source) throws IOException {
         return this.indent(indentation, source, ' ');
     }
-    
-    public String indent(final int indentation, final Object source, final char pad) throws IOException {
+
+    /**
+     * Creates appropriate indentation.
+     * @param indentation not null
+     * @param source not null
+     * @param pad padding
+     * @return appropriate indentation, not null
+     * @throws IOException when source cannot be read
+     */
+    public final String indent(
+            final int indentation, final Object source, final char pad)
+                throws IOException {
         final String result;
         if (source == null) {
             result = "";
-        } else {            
+        } else {
             result = prefixLine(source, StringUtils.repeat(pad, indentation));
         }
         return result;
     }
 
     /**
-     * TODO: Use indentation utility. Commons?
-     * @param source
-     * @param prefix
-     * @return
-     * @throws IOException
+     * Creates appropriate indentation.
+     * @param source not null
+     * @param prefix not null
+     * @return appropriate indentation, not null
+     * @throws IOException when source cannot be read
      */
     private String prefixLine(final Object source, final String prefix)
             throws IOException {
         final String result;
         final StringBuilder builder = new StringBuilder();
-        final BufferedReader lineReader = new BufferedReader(new StringReader(source.toString()));
+        final BufferedReader lineReader =
+            new BufferedReader(new StringReader(source.toString()));
         String line = lineReader.readLine();
         while (line != null) {
             builder.append('\n').append(prefix).append(line);

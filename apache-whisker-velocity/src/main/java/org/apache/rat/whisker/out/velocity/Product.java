@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.rat.whisker.out.velocity;
 
@@ -29,15 +29,39 @@ import org.apache.rat.whisker.app.ResultWriterFactory;
  */
 public enum Product {
 
-    NOTICE("NOTICE", Result.NOTICE), LICENSE("LICENSE", Result.LICENSE),
+    /**
+     * Produces a NOTICE report.
+     */
+    NOTICE("NOTICE", Result.NOTICE),
+    /**
+     * Produces a LICENSE report.
+     */
+    LICENSE("LICENSE", Result.LICENSE),
+    /**
+     * Produces a directories report.
+     */
     DIRECTORIES_REPORT_TEMPLATE("DIRECTORIES", Result.DIRECTORIES_REPORT),
-    MISSING_LICENSE_REPORT_TEMPLATE("MISSING-LICENSE", Result.MISSING_LICENSE_REPORT),
+    /**
+     * Produces a missing license report.
+     */
+    MISSING_LICENSE_REPORT_TEMPLATE(
+            "MISSING-LICENSE", Result.MISSING_LICENSE_REPORT),
+    /**
+     * Produces an xml template.
+     */
     XML_TEMPLATE("XML-TEMPLATE", Result.XML_TEMPLATE);
 
+    /** Not null. */
     private final String template;
+    /** Not null. */
     private final Result result;
-    
-    private Product(String template, Result result) {
+
+    /**
+     * Constructs a product.
+     * @param template not null
+     * @param result not null
+     */
+    private Product(final String template, final Result result) {
         this.template = template;
         this.result = result;
     }
@@ -57,14 +81,15 @@ public enum Product {
     public Result getResult() {
         return result;
     }
-    
+
     /**
      * Builds writer for this product.
      * @param writerFactory not null
      * @return not null
-     * @throws IOException
+     * @throws IOException when write fails
      */
-    public Writer writerFrom(final ResultWriterFactory writerFactory) throws IOException {
+    public Writer writerFrom(
+            final ResultWriterFactory writerFactory) throws IOException {
         return writerFactory.writerFor(getResult());
     }
 }

@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.rat.whisker.out.velocity;
 
@@ -28,63 +28,95 @@ import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
 
 /**
- * 
+ * Uses Apache Velocity to implement {@link AbstractEngine}.
+ *
+ * @see <a href='http://velocity.apache.org'>Apache Velocity</a>
  */
 public class VelocityEngine extends AbstractEngine {
-    
+    /** Not null. */
     private final Log log;
-    
-    public VelocityEngine(Log log) {
+
+    /**
+     * Constructs an engine running on Apache Velocity.
+     * @param log not null
+     */
+    public VelocityEngine(final Log log) {
         super();
         this.log = log;
     }
 
     /**
-     * @see org.apache.rat.whisker.app.AbstractEngine#generateTemplate(java.util.Collection, ResultWriterFactory)
+     * Generates a template, and writes result using given factory.
+     * @param withBase not null
+     * @param writerFactory not null
+     * @return this engine, not null
+     * @throws Exception when generation fails
+     * @see org.apache.rat.whisker.app.AbstractEngine#generateTemplate(
+     * java.util.Collection, ResultWriterFactory)
      */
     @Override
-    public AbstractEngine generateTemplate(Collection<Directory> withBase, ResultWriterFactory writerFactory)
-            throws Exception {
+    public final AbstractEngine generateTemplate(
+            final Collection<Directory> withBase,
+            final ResultWriterFactory writerFactory)
+                throws Exception {
         reporter(writerFactory).generateTemplate(withBase);
         return this;
     }
 
     /**
-     * @param writerFactory
-     * @return
+     * Creates a reporter for the given factory.
+     * @param writerFactory not null
+     * @return a reporter, not null
      */
-    private VelocityReports reporter(ResultWriterFactory writerFactory) {
+    private VelocityReports reporter(final ResultWriterFactory writerFactory) {
         return new VelocityReports(writerFactory, log);
     }
 
     /**
-     * @see org.apache.rat.whisker.app.AbstractEngine#validate(org.apache.rat.whisker.app.LicenseAnalyst, ResultWriterFactory)
+     * Generates a validation report, and writes result using given factory.
+     * @param analyst not null
+     * @param writerFactory not null
+     * @return this, not null
+     * @throws Exception when validation fails
+     * @see AbstractEngine#validate(LicenseAnalyst, ResultWriterFactory)
      */
     @Override
-    public AbstractEngine validate(LicenseAnalyst analyst, ResultWriterFactory writerFactory) throws Exception {
+    public final AbstractEngine validate(
+            final LicenseAnalyst analyst,
+            final ResultWriterFactory writerFactory) throws Exception {
         reporter(writerFactory).validate(analyst);
         return this;
     }
 
     /**
-     * @see org.apache.rat.whisker.app.AbstractEngine#report(java.util.Collection, ResultWriterFactory)
+     * Generates a directories report, and writes result using given factory.
+     * @param directories not null
+     * @param writerFactory not null
+     * @return this, not null
+     * @throws Exception when reporting fails
+     * @see AbstractEngine#report(java.util.Collection, ResultWriterFactory)
      */
     @Override
-    public AbstractEngine report(Collection<Directory> directories, ResultWriterFactory writerFactory)
-            throws Exception {
+    public final AbstractEngine report(
+            final Collection<Directory> directories,
+            final ResultWriterFactory writerFactory) throws Exception {
         reporter(writerFactory).report(directories);
         return this;
     }
 
     /**
-     * @see org.apache.rat.whisker.app.AbstractEngine#generate(org.apache.rat.whisker.model.Descriptor, ResultWriterFactory)
+     * Generates documents, and writes results using given factory.
+     * @param work not null
+     * @param writerFactory not null
+     * @return this, not null
+     * @throws Exception when generation fails.
+     * @see AbstractEngine#generate(Descriptor, ResultWriterFactory)
      */
     @Override
-    public AbstractEngine generate(Descriptor work, ResultWriterFactory writerFactory) throws Exception {
+    public final AbstractEngine generate(
+            final Descriptor work,
+            final ResultWriterFactory writerFactory) throws Exception {
         reporter(writerFactory).generate(work);
         return this;
     }
-    
-
-
 }

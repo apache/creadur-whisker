@@ -14,11 +14,10 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.rat.whisker.out.velocity;
 
-import java.io.IOException;
 import java.io.Writer;
 import java.util.Collection;
 
@@ -26,14 +25,10 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.rat.whisker.app.ResultWriterFactory;
 import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
-import org.apache.rat.whisker.app.analysis.ResourceDefinitionException;
 import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
-import org.apache.velocity.exception.MethodInvocationException;
-import org.apache.velocity.exception.ParseErrorException;
-import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.log.LogChute;
 
@@ -41,37 +36,60 @@ import org.apache.velocity.runtime.log.LogChute;
  * Wraps velocity engine.
  */
 public class VelocityReports implements LogChute {
-    
-    private static final Product[] PRODUCTS_THAT_GENERATE_TEMPLATES = {Product.XML_TEMPLATE};
-    private static final Product[] PRODUCTS_THAT_VALIDATE = {Product.MISSING_LICENSE_REPORT_TEMPLATE};
-    private static final Product[] PRODUCTS_THAT_REPORT_ON_DIRECTORIES = {Product.DIRECTORIES_REPORT_TEMPLATE};
-    private static final Product[] PRODUCTS_THAT_GENERATE_LICENSING_MATERIALS = {Product.LICENSE, Product.NOTICE};
-    
+    /** XML generation template. */
+    private static final Product[] PRODUCTS_THAT_GENERATE_TEMPLATES
+        = {Product.XML_TEMPLATE};
+    /** Missing license report. */
+    private static final Product[] PRODUCTS_THAT_VALIDATE
+        = {Product.MISSING_LICENSE_REPORT_TEMPLATE};
+    /** Directories report. */
+    private static final Product[] PRODUCTS_THAT_REPORT_ON_DIRECTORIES
+        = {Product.DIRECTORIES_REPORT_TEMPLATE};
+    /** Legal documents. */
+    private static final Product[] PRODUCTS_THAT_GENERATE_LICENSING_MATERIALS
+        = {Product.LICENSE, Product.NOTICE};
+
+    /** Makes writes, not null. */
     private final ResultWriterFactory writerFactory;
+    /** Merges templates, not null. */
     private final VelocityEngine engine;
+    /** Logs messages, not null. */
     private final Log log;
-             
-    public VelocityReports(final ResultWriterFactory writerFactory, final Log log) {
+
+    /**
+     * Constructs a reporter using Apache Velocity.
+     * @param writerFactory not null
+     * @param log not null
+     */
+    public VelocityReports(
+            final ResultWriterFactory writerFactory, final Log log) {
         this.writerFactory = writerFactory;
         this.log = log;
         engine = new VelocityEngine();
         engine.setProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM, this);
         engine.setProperty(VelocityEngine.RESOURCE_LOADER, "classpath");
-        engine.setProperty("classpath.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+        engine.setProperty("classpath.resource.loader.class",
+            "org.apache.velocity.runtime.resource.loader."
+                + "ClasspathResourceLoader");
         engine.init();
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
+     * Unused.
+     * @param services unused
+     * @see LogChute#init(RuntimeServices)
      */
     @Override
-    public void init(RuntimeServices services) throws Exception {}
+    public final void init(final RuntimeServices services) { }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
+     * Indicates whether logging is enabled.
+     * @param level at this level
+     * @return true when log level is enabled, false otherwise
+     * @see LogChute#isLevelEnabled(int)
      */
     @Override
-    public boolean isLevelEnabled(int level) {
+    public final boolean isLevelEnabled(final int level) {
         switch (level) {
             case DEBUG_ID:
                 return log.isDebugEnabled();
@@ -83,15 +101,19 @@ public class VelocityReports implements LogChute {
                 return log.isWarnEnabled();
             case ERROR_ID:
                 return log.isErrorEnabled();
+            default:
+                return false;
         }
-        return false;
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#log(int, java.lang.String)
+     * Logs a message.
+     * @param level at level
+     * @param message possibly null
+     * @see LogChute#log(int, String)
      */
     @Override
-    public void log(int level, String message) {
+    public final void log(final int level, final String message) {
         switch (level) {
             case DEBUG_ID:
                 log.debug(message);
@@ -108,14 +130,21 @@ public class VelocityReports implements LogChute {
             case ERROR_ID:
                 log.error(message);
                 break;
+            default:
+                log.trace(message);
         }
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#log(int, java.lang.String, java.lang.Throwable)
+     * Logs a message from Velocity.
+     * @param level log level
+     * @param message possibly null
+     * @param throwable possibly null
+     * @see LogChute#log(int, String, Throwable)
      */
     @Override
-    public void log(int level, String message, Throwable throwable) {
+    public final void log(final int level,
+            final String message, final Throwable throwable) {
         switch (level) {
             case DEBUG_ID:
                 log.debug(message, throwable);
@@ -132,45 +161,55 @@ public class VelocityReports implements LogChute {
             case ERROR_ID:
                 log.error(message, throwable);
                 break;
-        }    }
-
-    /**
-     * 
-     */
-    public void generate(final Descriptor work) throws Exception {
-        merge(PRODUCTS_THAT_GENERATE_LICENSING_MATERIALS , context(work));
+            default:
+                log.trace(message, throwable);
+        }
     }
 
-    private void merge(final Product[] products, final VelocityContext context) throws Exception {
-        for (final Product product:products) {
+    /**
+     * Reports on work.
+     * @param work not null
+     * @throws Exception when generation fails
+     */
+    public final void generate(final Descriptor work) throws Exception {
+        merge(PRODUCTS_THAT_GENERATE_LICENSING_MATERIALS, context(work));
+    }
+
+    /**
+     * Merges context with product templates, and writes results.
+     * @param products not null
+     * @param context not null
+     * @throws Exception when merger fails
+     */
+    private void merge(final Product[] products,
+            final VelocityContext context) throws Exception {
+        for (final Product product : products) {
             merge(product, context);
         }
     }
-    
+
     /**
-     * Merges template with given name.
-     * @param name not null
-     * @param work not null
-     * @throws IOException 
-     * @throws JDOMException 
-     * @throws MethodInvocationException 
-     * @throws ParseErrorException 
-     * @throws ResourceNotFoundException 
+     * Merges context with product template, and writes results.
+     * @param product not null
+     * @param context not null
+     * @throws Exception when generate fails
      */
-    private void merge(final Product product, final VelocityContext context) throws Exception {
+    private void merge(
+            final Product product, final VelocityContext context)
+                throws Exception {
         final Writer writer = product.writerFrom(writerFactory);
-        engine.getTemplate(template(product.getTemplate())).merge(context, writer);
+        engine.getTemplate(
+                template(product.getTemplate())).merge(context, writer);
         IOUtils.closeQuietly(writer);
     }
 
     /**
-     * @return
-     * @throws IOException 
-     * @throws JDOMException 
-     * @throws ResourceDefinitionException 
+     * Creates a context, and loads it for descriptor work.
+     * @param work not null
+     * @return not null
      */
-    private VelocityContext context(final Descriptor work) throws Exception {
-        VelocityContext context = new VelocityContext();
+    private VelocityContext context(final Descriptor work) {
+        final VelocityContext context = new VelocityContext();
         context.put("work", work);
         context.put("indent", new Indentation());
         return context;
@@ -178,57 +217,65 @@ public class VelocityReports implements LogChute {
 
 
     /**
-     * Returns full template path.
-     * @param string name not null
+     * Returns the full template path.
+     * @param name not null
      * @return not null
      */
-    private String template(String name) {
-        return "org/apache/rat/whisker/template/velocity/" + name.toLowerCase() + ".vm";
+    private String template(final String name) {
+        return "org/apache/rat/whisker/template/velocity/"
+                + name.toLowerCase() + ".vm";
     }
 
-    public void report(final Collection<Directory> directories) throws Exception {
+    /**
+     * Generates a directory report.
+     * @param directories not null
+     * @throws Exception when reporting fails
+     */
+    public final void report(
+            final Collection<Directory> directories) throws Exception {
         merge(PRODUCTS_THAT_REPORT_ON_DIRECTORIES, context(directories));
     }
 
     /**
-     * @param directories
-     * @return
+     * Creates a content, and loads it with the directories.
+     * @param directories not null
+     * @return not null
      */
-    private VelocityContext context(Collection<Directory> directories) {
-        VelocityContext context = new VelocityContext();
+    private VelocityContext context(
+            final Collection<Directory> directories) {
+        final VelocityContext context = new VelocityContext();
         context.put("dirs", directories);
         return context;
     }
 
-    
     /**
-     * @param licenseDescriptor
-     * @param withBase
-     * @throws Exception 
+     * Reports on analysis.
+     * @param analyst not null
+     * @throws Exception when validation fails
      */
-    public void validate(LicenseAnalyst analyst) throws Exception {
+    public final void validate(
+            final LicenseAnalyst analyst) throws Exception {
         merge(PRODUCTS_THAT_VALIDATE, context(analyst));
     }
 
     /**
-     * @param analyse
-     * @return
+     * Creates a context, and loads it with the analyst.
+     * @param analyst not null
+     * @return not null
      */
-    private VelocityContext context(LicenseAnalyst analyst) {
-        VelocityContext context = new VelocityContext();
+    private VelocityContext context(final LicenseAnalyst analyst) {
+        final VelocityContext context = new VelocityContext();
         context.put("analyst", analyst);
         return context;
     }
 
     /**
-     * @param withBase
-     * @throws IOException 
-     * @throws JDOMException 
-     * @throws MethodInvocationException 
-     * @throws ParseErrorException 
-     * @throws ResourceNotFoundException 
+     * Generates template.
+     * @param withBase not null
+     * @throws Exception when generation fails
      */
-    public void generateTemplate(Collection<Directory> withBase) throws Exception {
+    public final void generateTemplate(
+            final Collection<Directory> withBase) throws Exception {
         merge(PRODUCTS_THAT_GENERATE_TEMPLATES, context(withBase));
     }
 }
