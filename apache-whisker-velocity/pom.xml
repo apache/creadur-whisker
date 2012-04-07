@@ -25,12 +25,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.apache.rat.whisker</groupId>
+    <groupId>org.apache.creadur.whisker</groupId>
     <artifactId>apache-whisker</artifactId>
     <version>0.1-SNAPSHOT</version>
   </parent>
 
-  <groupId>org.apache.rat.whisker</groupId>
+  <groupId>org.apache.creadur.whisker</groupId>
   <artifactId>apache-whisker-velocity</artifactId>
   <packaging>jar</packaging>
 
@@ -88,6 +88,6 @@
   -->
   <name>Apache Whisker::Output(velocity)</name>
   <description>Outputs results using velocity.</description>
-  <url>http://rat.apache.org/whisker/apache-whisker-velocity</url>
+  <url>http://creadur.apache.org/whisker/apache-whisker-velocity</url>
 
 </project>
