@@ -243,9 +243,9 @@
   
   <!-- ================================ Project information -->
   
-  <name>Apache Rat Whisker</name>
+  <name>Apache Whisker</name>
   <description>Apache Whisker wrangles legal documentation for composed applications.</description>
-  <url>http://rat.apache.org/whisker</url>
+  <url>http://creadur.apache.org/whisker</url>
   <inceptionYear>2011</inceptionYear>
   
   <licenses>

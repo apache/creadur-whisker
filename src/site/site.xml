@@ -17,9 +17,9 @@
   specific language governing permissions and limitations
   under the License.    
 -->
-<project name="Apache Rat::Whisker">
+<project name="Apache Whisker">
   <body>
-    <menu name='Whisker'>
+    <menu name='Apache Whisker'>
        <item name='Introduction' href='index.html'/>
        <item name='Meta Data' href='meta-data.html'/>
     </menu>

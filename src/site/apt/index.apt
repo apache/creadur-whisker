@@ -19,10 +19,11 @@
 ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-What Is Whisker?
+What Is Apache Whisker?
 
-  Whisker assists assembled applications maintain correct legal 
-documentation. 
+  Apache Whisker assists assembled applications maintain correct legal 
+documentation. Whisker is part of the Apache Creadur suite of tools for
+auditing and comprehending software distributions.
 
 * What's An Assembled Application?
 
