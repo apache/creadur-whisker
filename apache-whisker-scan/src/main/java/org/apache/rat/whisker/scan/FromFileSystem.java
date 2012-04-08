@@ -27,46 +27,55 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.TreeSet;
 
-
-
 /**
- * 
+ * Scans directories for resources, within a file system.
  */
 public class FromFileSystem {
     
     /**
-     * @param base
+     * Base constructor.
      */
     public FromFileSystem() {
         super();
     }
 
+    /**
+     * Builds 
+     * @param base names the base directory, not null
+     * @return collected directories within the base, not null
+     * @throws IOException when the scanning fails
+     */
     public Collection<Directory> withBase(final String base) throws IOException {
         return new Builder(base).build();
     }
     
-    private static class Builder {
-        /**
-         * 
-         */
+    private final static class Builder {
+        /** Initial capacity for the backing array. */
         private static final int DEFAULT_INITIAL_CAPACITY = 64;
-        
+        /** Directory scanning base. */
         private final File base;
+        /** Directories scanned. */
         private final Set<Directory> directories;
+        /** Queues work not yet complete. */
         private final Queue<Work> workInProgress;
+        /** Stores work done. */
         private final Collection<Work> workDone;
         
         /**
-         * @param base
+         * Constructs a builder with given base 
+         * (and default backing array).
+         * @param base not null
          */
-        public Builder(String base) {
+        public Builder(final String base) {
             this(base, DEFAULT_INITIAL_CAPACITY);
         }
 
         /**
-         * @param base
+         * Constructs a builder.
+         * @param base not null
+         * @param initialCapacity initial capacity for backing array
          */
-        public Builder(String base, int initialCapacity) {
+        public Builder(final String base, final int initialCapacity) {
             super();
             this.base = new File(base);
             directories = new TreeSet<Directory>();
@@ -74,26 +83,36 @@ public class FromFileSystem {
             workDone = new ArrayList<Work>(initialCapacity);
         }
         
+        /**
+         * Builds directories.
+         * @return not null
+         * @throws IOException when scanning fails
+         */
         public Collection<Directory> build() throws IOException {
             put(base).andWork().untilDone();
             return directories;
         }
 
         /**
-         * 
+         * Waiting until work done.
          */
-        private void untilDone() {
-            // TODO: wait until all threads done
-        }
+        private void untilDone() { }
 
-        private Builder put(File file) {
+        /**
+         * Adds file work to the queue.
+         * @param file not null
+         * @return this, not null
+         */
+        private Builder put(final File file) {
             return put(new Work(file));
         }
         
         /**
-         * @param base
+         * Queues work.
+         * @param work not null
+         * @return this, not null
          */
-        private Builder put(Work work) {
+        private Builder put(final Work work) {
             if (work != null) {
                 if (workDone.contains(work)) {
                     alreadyDone(work);
@@ -105,12 +124,17 @@ public class FromFileSystem {
         }
         
         /**
-         * @param work
+         * Notes that work has already been done.
+         * @param work not null
          */
-        private void alreadyDone(Work work) {
+        private void alreadyDone(final Work work) {
             System.out.println("Already done " + work);
         }
 
+        /**
+         * Starts work.
+         * @return this, not null
+         */
         private Builder andWork() {
             while (!workInProgress.isEmpty()) {
                 workDone.add(workOn(workInProgress.poll()));
@@ -119,8 +143,9 @@ public class FromFileSystem {
         }
 
         /**
-         * @param poll
-         * @return
+         * Performs work.
+         * @param next not null
+         * @return the work done, not null
          */
         private Work workOn(final Work next) {
             for (final String name: next.contents()) {
@@ -130,35 +155,43 @@ public class FromFileSystem {
             return next;
         }
         
-        
-        private static class Work {
-            
+        /**
+         * Computes the contents of a directory.
+         */
+        private final static class Work {
+            /** Represents base directory. */
             private static final String BASE_DIRECTORY = ".";
+            /** Names the directory. */
             private final String name;
+            /** The directory worked on. */
             private final File file;
             
-            /**
-             * @param file
-             */
             public Work(File file) {
                 this(BASE_DIRECTORY, file);
             }
 
             /**
-             * @param name
-             * @param file
+             * Constructs work.
+             * @param name not null
+             * @param file not null
              */
-            public Work(String name, File file) {
+            public Work(final String name, final File file) {
                 if (! file.exists()) {
-                    throw new IllegalArgumentException("Expected '"+ file.getAbsolutePath() + "' to exist");
+                    throw new IllegalArgumentException(
+                            "Expected '"+ file.getAbsolutePath() + "' to exist");
                 }
                 if (! file.isDirectory()) {
-                    throw new IllegalArgumentException("Expected '"+ file.getAbsolutePath() + "' to be a directory");
+                    throw new IllegalArgumentException(
+                            "Expected '"+ file.getAbsolutePath() + "' to be a directory");
                 }
                 this.name = name;
                 this.file = file;
             }
-            
+
+            /**
+             * Gets the contents of the work directory.
+             * @return not null
+             */
             public String[] contents() {
                 final String[] contents = file.list();
                 if (contents == null) {
@@ -168,11 +201,12 @@ public class FromFileSystem {
             }
 
             /**
-             * @return
+             * Builds a directory.
+             * @return not null
              */
             public Directory build() {
                 final Directory result = new Directory().setName(name);
-                for (final String name: contents()) {
+                for (final String name : contents()) {
                     if (isResource(name)) {
                         result.addResource(name);
                     }
@@ -181,26 +215,32 @@ public class FromFileSystem {
             }
 
             /**
-             * @param name
-             * @return
+             * Is the named file a resource?
+             * @param name not null
+             * @return true when the named file is a resource,
+             * false otherwise
              */
             private boolean isResource(final String name) {
                 return !isDirectory(name);
             }
 
             /**
-             * @param name
-             * @return
+             * Is the named file a directory?
+             * @param name not null
+             * @return true when the named file is a directory,
+             * false otherwise
              */
             private boolean isDirectory(final String name) {
                 return file(name).isDirectory();
             }
-            
+
             /**
-             * @param name
-             * @return
+             * Creates new work.
+             * @param name not null
+             * @return work for the named directory,
+             * or null when the resource named is not a directory
              */
-            public Work whenDirectory(String name) {
+            public Work whenDirectory(final String name) {
                 final File file = file(name);
                 final Work result;
                 if (file.isDirectory()) {
@@ -212,10 +252,11 @@ public class FromFileSystem {
             }
 
             /**
-             * @param name
-             * @return
+             * Converts a name to a path relative to base.
+             * @param name not null
+             * @return not null
              */
-            private String path(String name) {
+            private String path(final String name) {
                 final String result;
                 if (isBaseDirectory()) {
                     result = name;
@@ -226,21 +267,25 @@ public class FromFileSystem {
             }
 
             /**
-             * @return
+             * This the work done in the base directory.
+             * @return true when this is the base, false otherwise.
              */
             private boolean isBaseDirectory() {
                 return BASE_DIRECTORY.equals(this.name);
             }
 
             /**
-             * @param name
-             * @return
+             * Creates a file.
+             * @param name not null
+             * @return file with given name
              */
             private File file(String name) {
                 return new File(this.file, name);
             }
 
             /**
+             * Computes some suitable hash.
+             * @return a hash code
              * @see java.lang.Object#hashCode()
              */
             @Override
@@ -255,31 +300,41 @@ public class FromFileSystem {
             }
             
             /**
+             * Equal when both name and file are equal.
+             * @param obj possibly null
+             * @return true when equal, false otherwise
              * @see java.lang.Object#equals(java.lang.Object)
              */
             @Override
-            public boolean equals(Object obj) {
-                if (this == obj)
+            public boolean equals(final Object obj) {
+                if (this == obj) {
                     return true;
-                if (obj == null)
+                }
+                if (obj == null) {
                     return false;
-                if (getClass() != obj.getClass())
+                }
+                if (getClass() != obj.getClass()) {
                     return false;
-                Work other = (Work) obj;
+                }
+                final Work other = (Work) obj;
                 if (file == null) {
                     if (other.file != null)
                         return false;
                 } else if (!file.equals(other.file))
                     return false;
                 if (name == null) {
-                    if (other.name != null)
+                    if (other.name != null) {
                         return false;
-                } else if (!name.equals(other.name))
+                    }
+                } else if (!name.equals(other.name)) {
                     return false;
+                }
                 return true;
             }
             
             /**
+             * Something suitable for logging.
+             * @return not null
              * @see java.lang.Object#toString()
              */
             @Override

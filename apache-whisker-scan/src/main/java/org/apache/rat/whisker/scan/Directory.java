@@ -22,29 +22,34 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * 
+ * Describes a directory.
  */
 public class Directory implements Comparable<Directory> {
-
+    /** Names this directory. */
     private String name;
+    /** Names resources contained. */
     private Set<String> contents = new TreeSet<String>();
   
     
     /**
+     * Gets the directory name.
      * @return the name
      */
     public String getName() {
         return name;
     }
     /**
+     * Sets the directory name.
      * @param name the name to set
+     * @return this, not null
      */
-    public Directory setName(String name) {
+    public Directory setName(final String name) {
         this.name = name;
         return this;
     }
     
     /**
+     * Gets the directory contents.
      * @return the contents
      */
     public Set<String> getContents() {
@@ -52,13 +57,15 @@ public class Directory implements Comparable<Directory> {
     }
     
     /**
+     * Sets the directory contents.
      * @param contents the contents to set
      */
-    public void setContents(Set<String> contents) {
+    public void setContents(final Set<String> contents) {
         this.contents = contents;
     }
     
     /**
+     * @return the hash code
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -70,10 +77,13 @@ public class Directory implements Comparable<Directory> {
     }
     
     /**
+     * Equal if and only if names are equal.
+     * @param obj possibly null
+     * @return true when equal
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj)
             return true;
         if (obj == null)
@@ -90,6 +100,8 @@ public class Directory implements Comparable<Directory> {
     }
     
     /**
+     * Suitable for logging.
+     * @return not null
      * @see java.lang.Object#toString()
      */
     @Override
@@ -98,17 +110,21 @@ public class Directory implements Comparable<Directory> {
     }
     
     /**
-     * @param name
+     * Registers a contained resource.
+     * @param name not null
      */
-    public void addResource(String name) {
+    public void addResource(final String name) {
         contents.add(name);
     }
     
     /**
+     * Natural comparison based on name.
+     * @param other another directory
+     * @return comparison
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
     @Override
-    public int compareTo(Directory other) {
+    public int compareTo(final Directory other) {
         if (other == null) {
             return -1;
         }
