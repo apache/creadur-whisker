@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.cli;
+package org.apache.creadur.whisker.cli;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -39,7 +39,7 @@ public class Main {
     /**
      * 
      */
-    private static final String APP_NAME = "apache-rat-whisker-cli";
+    private static final String APP_NAME = "apache-whisker-cli";
     
     /**
      * Returns okay to system.
