@@ -43,3 +43,9 @@ auditing and comprehending software distributions.
   * verification - checks meta-data quality
 
   * generation - of legal documents from meta-data
+
+* How Can I Use Whisker?
+
+ * From the {{{./apache-whisker-cli/index.html} command line}} 
+ 
+ * As a {{{./apache-whisker-plugin4maven/index.html} plugin for Maven}}
