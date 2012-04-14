@@ -14,92 +14,116 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.cli;
 
 import org.apache.commons.logging.Log;
 
 /**
- * Logs to system err
+ * Logs important messages to system err.
  */
-public class SystemLog implements Log {
+public final class SystemLog implements Log {
 
     /**
+     * Ignored.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#debug(java.lang.Object)
      */
     @Override
-    public void debug(Object message) {}
+    public void debug(final Object message) { }
 
     /**
-     * @see org.apache.commons.logging.Log#debug(java.lang.Object, java.lang.Throwable)
+     * Ignored.
+     * @param message possibly null
+     * @param t possibly null
+     * @see Log#debug(java.lang.Object, java.lang.Throwable)
      */
     @Override
-    public void debug(Object message, Throwable t) {}
+    public void debug(final Object message, final Throwable t) { }
 
     /**
+     * Logs to stderr.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#error(java.lang.Object)
      */
     @Override
-    public void error(Object message) {
+    public void error(final Object message) {
         err(message);
     }
 
     /**
-     * @param message
+     * Logs to stderr.
+     * @param message not null
      */
-    private void err(Object message) {
+    private void err(final Object message) {
         System.err.println(message);
     }
 
     /**
-     * @see org.apache.commons.logging.Log#error(java.lang.Object, java.lang.Throwable)
+     * Logs to stderr.
+     * @param message possibly null
+     * @param t possibly null
+     * @see Log#error(java.lang.Object, java.lang.Throwable)
      */
     @Override
-    public void error(Object message, Throwable t) {
+    public void error(final Object message, final Throwable t) {
         err(message, t);
     }
 
     /**
-     * @param message
-     * @param t
+     * Logs to stderr.
+     * @param message possibly null
+     * @param t possibly null
      */
-    private void err(Object message, Throwable t) {
+    private void err(final Object message, final Throwable t) {
         err(message);
         t.printStackTrace();
     }
 
     /**
+     * Logs to stderr.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#fatal(java.lang.Object)
      */
     @Override
-    public void fatal(Object message) {
-        err(message);        
+    public void fatal(final Object message) {
+        err(message);
     }
 
     /**
-     * @see org.apache.commons.logging.Log#fatal(java.lang.Object, java.lang.Throwable)
+     * Logs to stderr.
+     * @param message possibly null
+     * @param t possibly null
+     * @see Log#fatal(java.lang.Object, java.lang.Throwable)
      */
     @Override
-    public void fatal(Object message, Throwable t) {
+    public void fatal(final Object message, final Throwable t) {
         err(message, t);
     }
 
     /**
-     * @see org.apache.commons.logging.Log#info(java.lang.Object)
+     * Ignored.
+     * @param message possibly null
+     * @see Log#info(java.lang.Object)
      */
     @Override
-    public void info(Object message) {
+    public void info(final Object message) {
     }
 
     /**
-     * @see org.apache.commons.logging.Log#info(java.lang.Object, java.lang.Throwable)
+     * Ignored.
+     * @param message possibly null
+     * @param t possibly null
+     * @see #info(java.lang.Object, java.lang.Throwable)
      */
     @Override
-    public void info(Object message, Throwable t) {
+    public void info(final Object message, final Throwable t) {
     }
 
     /**
+     * Disabled.
+     * @return false
      * @see org.apache.commons.logging.Log#isDebugEnabled()
      */
     @Override
@@ -108,6 +132,8 @@ public class SystemLog implements Log {
     }
 
     /**
+     * Enabled.
+     * @return true
      * @see org.apache.commons.logging.Log#isErrorEnabled()
      */
     @Override
@@ -116,6 +142,8 @@ public class SystemLog implements Log {
     }
 
     /**
+     * Enabled.
+     * @return true
      * @see org.apache.commons.logging.Log#isFatalEnabled()
      */
     @Override
@@ -124,6 +152,8 @@ public class SystemLog implements Log {
     }
 
     /**
+     * Disabled.
+     * @return false
      * @see org.apache.commons.logging.Log#isInfoEnabled()
      */
     @Override
@@ -132,6 +162,8 @@ public class SystemLog implements Log {
     }
 
     /**
+     * Disabled.
+     * @return false
      * @see org.apache.commons.logging.Log#isTraceEnabled()
      */
     @Override
@@ -140,6 +172,8 @@ public class SystemLog implements Log {
     }
 
     /**
+     * Disabled.
+     * @return false
      * @see org.apache.commons.logging.Log#isWarnEnabled()
      */
     @Override
@@ -148,30 +182,40 @@ public class SystemLog implements Log {
     }
 
     /**
+     * Ignored.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#trace(java.lang.Object)
      */
     @Override
-    public void trace(Object message) {
+    public void trace(final Object message) {
     }
 
     /**
-     * @see org.apache.commons.logging.Log#trace(java.lang.Object, java.lang.Throwable)
+     * Ignored.
+     * @param message possibly null
+     * @param t possibly null
+     * @see Log#trace(java.lang.Object, java.lang.Throwable)
      */
     @Override
-    public void trace(Object message, Throwable t) {
+    public void trace(final Object message, final Throwable t) {
     }
 
     /**
+     * Ignored.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#warn(java.lang.Object)
      */
     @Override
-    public void warn(Object message) {
+    public void warn(final Object message) {
     }
 
     /**
-     * @see org.apache.commons.logging.Log#warn(java.lang.Object, java.lang.Throwable)
+     * Ignored.
+     * @param message possibly null
+     * @param t possibly null
+     * @see Log#warn(java.lang.Object, java.lang.Throwable)
      */
     @Override
-    public void warn(Object message, Throwable t) {
+    public void warn(final Object message, final Throwable t) {
     }
 }

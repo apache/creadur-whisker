@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.cli;
 
@@ -28,12 +28,18 @@ import org.apache.commons.cli.Options;
  * Describes an option on the command line.
  */
 public enum CommandLineOption {
-    
-    LICENSE_DESCRIPTION("license-descriptor", 'l', "use given license descriptor", true, "file", false),
+
+    /** License descriptor command line argument. */
+    LICENSE_DESCRIPTION("license-descriptor", 'l', 
+            "use given license descriptor", true, "file", false),
+    /** Application source command line argument. */
     SOURCE("source", 's', "application source", false, "dir", false),
-    ACT_TO_GENERATE("generate", 'g', "generate license and notice", false, null, true),
+    /** Generation command line argument. */
+    ACT_TO_GENERATE("generate", 'g', 
+            "generate license and notice", false, null, true),
+    /** Audit command line argument. */
     ACT_TO_AUDIT("audit", 'a', "report audit details", false, null, true);
-    
+
     /**
      * Creates options for the command line.
      * @return not null
@@ -42,7 +48,7 @@ public enum CommandLineOption {
         final Options options = new Options();
         final OptionGroup acts = new OptionGroup();
         acts.setRequired(true);
-        for (final CommandLineOption option: values()) {
+        for (final CommandLineOption option : values()) {
             final Option cliOption = option.create();
             if (option.isAct) {
                 acts.addOption(cliOption);
@@ -54,17 +60,31 @@ public enum CommandLineOption {
         return options;
     }
 
-    
+    /** The long name used for this command line argument. */
     private final String longName;
+    /** The character short for this command line argument.*/
     private final char shortName;
+    /** A description of this command line argument suitable for user.*/
     private final String description;
+    /** Is this a mandatory argument? */
     private final boolean required;
+    /** The argument name. */
     private final String argument;
+    /** Is this argument within the act group? */
     private final boolean isAct;
-    
-    private CommandLineOption(final String longName, 
-            final char shortName, 
-            final String description, 
+
+    /**
+     * Describes one argument.
+     * @param longName not null
+     * @param shortName not null
+     * @param description not null
+     * @param required is this mandatory?
+     * @param argument possibly null
+     * @param isAct is this argument an act?
+     */
+    private CommandLineOption(final String longName,
+            final char shortName,
+            final String description,
             final boolean required,
             final String argument,
             final boolean isAct) {
@@ -75,19 +95,35 @@ public enum CommandLineOption {
         this.argument = argument;
         this.isAct = isAct;
     }
-    
+
+    /**
+     * Gets the long name of this command line argument.
+     * @return not null
+     */
     public String getLongName() {
         return longName;
     }
 
+    /**
+     * Gets the short name of this command line argument.
+     * @return the character short for this option
+     */
     public char getShortName() {
         return shortName;
     }
 
+    /**
+     * Gets the description for this option.
+     * @return not null
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Builds a representation.
+     * @return not null
+     */
     @SuppressWarnings("static-access")
     public Option create() {
         final OptionBuilder builder = OptionBuilder
@@ -101,18 +137,20 @@ public enum CommandLineOption {
     }
 
     /**
-     * @param commandLine
-     * @return
+     * Gets an option value from the command line.
+     * @param commandLine not null
+     * @return not null
      */
-    public String getOptionValue(CommandLine commandLine) {
+    public String getOptionValue(final CommandLine commandLine) {
         return commandLine.getOptionValue(getShortName());
     }
 
     /**
-     * @param commandLine
-     * @return
+     * Is the short name option set?
+     * @param commandLine not null
+     * @return true when the option is present, false otherwise
      */
-    public boolean isSetOn(CommandLine commandLine) {
+    public boolean isSetOn(final CommandLine commandLine) {
         return commandLine.hasOption(getShortName());
     }
 }

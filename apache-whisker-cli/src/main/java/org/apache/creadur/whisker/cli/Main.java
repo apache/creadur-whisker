@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.cli;
 
@@ -34,75 +34,115 @@ import org.apache.rat.whisker.out.velocity.VelocityEngine;
 /**
  * Command line interface for whisker.
  */
-public class Main {
+public final class Main {
 
     /**
-     * 
+     * Names the application.
      */
     private static final String APP_NAME = "apache-whisker-cli";
-    
+
     /**
      * Returns okay to system.
      */
     private static final int SYSTEM_EXIT_OK = 0;
+    /** Error code returned to system when parameters cannot be parsed. */
     private static final int SYSTEM_EXIT_CLI_PARSE_FAILED = 1;
 
     /**
      * Bootstraps application.
-     * @param args 
+     * @param args not null
+     * @throws Exception when application unexpectedly fails
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(final String[] args) throws Exception {
         System.exit(new Main(app()).run(args));
     }
-    
+
+    /**
+     * Creates an instance of the application.
+     * @return not null
+     */
     private static Whisker app() {
         return new Whisker();
     }
-    
+
+    /** The application run. */
     private final Whisker whisker;
 
-    public Main(Whisker whisker) {
+    /**
+     * Constructs a wrapper for the given application.
+     * @param whisker not null
+     */
+    public Main(final Whisker whisker) {
         super();
         this.whisker = whisker;
     }
 
+    /**
+     * Creates a parser for command line parameters.
+     * Use GNU-style.
+     * @return not null
+     */
     private CommandLineParser parser() {
         return new GnuParser();
     }
-    
+
+    /**
+     * Parses a line of arguments.
+     * @param args not null
+     * @return not null
+     * @throws ParseException when parsing fails
+     */
     public CommandLine parse(final String[] args) throws ParseException {
         return parser().parse(options(), args);
     }
 
+    /**
+     * Parses arguments and configures the application.
+     * @param args not null
+     * @return not null
+     * @throws ParseException when arguments cannot be parsed
+     */
     public Whisker configure(final String[] args) throws ParseException {
         return configure(parse(args));
     }
-    
+
     /**
      * Configures the application from the command line given.
-     * @param parse commandLine not null
+     * @param commandLine not null
      * @return not null
-     * @throws MissingOptionException 
+     * @throws MissingOptionException when a mandatory option 
+     * has not been supplied
      */
-    private Whisker configure(final CommandLine commandLine) throws MissingOptionException {
+    private Whisker configure(
+            final CommandLine commandLine) throws MissingOptionException {
         whisker.setEngine(new VelocityEngine(new SystemLog()));
         whisker.setSource(CommandLineOption.SOURCE.getOptionValue(commandLine));
         whisker.setLicenseDescriptor(
                 new StreamableResourceFactory().streamFromClassPathResource(
-                        CommandLineOption.LICENSE_DESCRIPTION.getOptionValue(commandLine)));
+                        CommandLineOption.LICENSE_DESCRIPTION
+                            .getOptionValue(commandLine)));
         whisker.setWriterFactory(new WriteResultsToSystemOutFactory());
         if (CommandLineOption.ACT_TO_AUDIT.isSetOn(commandLine)) {
             whisker.setAct(Act.AUDIT);
         } else if (CommandLineOption.ACT_TO_GENERATE.isSetOn(commandLine)) {
             whisker.setAct(Act.GENERATE);
         }
-        
-        if (whisker.getSource() == null && whisker.getAct().isSourceRequired()) {
-            throw new MissingOptionException("-" + CommandLineOption.SOURCE.getShortName() + " " + CommandLineOption.SOURCE.getDescription());
+
+        if (whisker.getSource() == null
+                && whisker.getAct().isSourceRequired()) {
+            throw new MissingOptionException("-"
+                    + CommandLineOption.SOURCE.getShortName() + " "
+                    + CommandLineOption.SOURCE.getDescription());
         }
         return whisker;
     }
 
+    /**
+     * Runs Whisker.
+     * @param args not null
+     * @return system return code
+     * @throws Exception when application unexpectedly fails
+     */
     public int run(final String[] args) throws Exception {
         try {
             configure(args).act();
