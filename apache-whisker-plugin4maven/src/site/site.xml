@@ -28,7 +28,7 @@
    
     <menu name="Examples">
     </menu>
-    
+    <menu ref='parent'/>
     <menu ref='reports'/>
   </body>
 </project>
