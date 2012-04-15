@@ -37,6 +37,13 @@ import org.apache.rat.whisker.out.velocity.VelocityEngine;
 public final class Main {
 
     /**
+     * Prepended to help.
+     */
+    private static final String HELP_HEADER = "\nPass " +
+    		"the descriptor containing license meta-data " +
+    		"and the act to be done.\n";
+
+    /**
      * Appended to help.
      */
     private static final String HELP_FOOTER = 
@@ -191,7 +198,7 @@ public final class Main {
      */
     private void help() {
         final HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp(APP_NAME, "", options(), HELP_FOOTER, true);
+        formatter.printHelp(APP_NAME, HELP_HEADER, options(), HELP_FOOTER, true);
     }
 
     /**
