@@ -177,7 +177,7 @@ public final class Main {
      */
     private void help() {
         final HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp(APP_NAME, options());
+        formatter.printHelp(APP_NAME, options(), true);
     }
 
     /**
