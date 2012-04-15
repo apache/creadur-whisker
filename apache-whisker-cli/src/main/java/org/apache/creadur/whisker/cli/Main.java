@@ -145,13 +145,31 @@ public final class Main {
      */
     public int run(final String[] args) throws Exception {
         try {
-            configure(args).act();
+            if (printHelp(args)) {
+                help();
+            } else {
+                configure(args).act();
+            }
             return SYSTEM_EXIT_OK;
         } catch (ParseException e) {
             System.out.println(e.getMessage());
             help();
             return SYSTEM_EXIT_CLI_PARSE_FAILED;
         }
+    }
+
+    /**
+     * Do these command line arguments ask for help?
+     * @param args not null
+     * @return true when command line contains option for help,
+     * false otherwise
+     * @throws ParseException 
+     */
+    private boolean printHelp(String[] args) throws ParseException {
+        final CommandLineOption help = CommandLineOption.PRINT_HELP;
+        return help.isSetOn(
+                parser().parse(new Options().addOption(
+                        help.create()), args));
     }
 
     /**

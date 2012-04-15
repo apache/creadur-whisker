@@ -38,8 +38,10 @@ public enum CommandLineOption {
     ACT_TO_GENERATE("generate", 'g', 
             "generate license and notice", false, null, true),
     /** Audit command line argument. */
-    ACT_TO_AUDIT("audit", 'a', "report audit details", false, null, true);
-
+    ACT_TO_AUDIT("audit", 'a', "report audit details", false, null, true),
+    /** Print help then exit, ignoring other options. */
+    PRINT_HELP("help", 'h', "print help then exit, ignoring other options.", false, null, false);
+    
     /**
      * Creates options for the command line.
      * @return not null
