@@ -152,7 +152,9 @@ public final class Main {
             }
             return SYSTEM_EXIT_OK;
         } catch (ParseException e) {
+            System.out.println();
             System.out.println(e.getMessage());
+            System.out.println();
             help();
             return SYSTEM_EXIT_CLI_PARSE_FAILED;
         }
