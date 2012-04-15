@@ -37,6 +37,18 @@ import org.apache.rat.whisker.out.velocity.VelocityEngine;
 public final class Main {
 
     /**
+     * Appended to help.
+     */
+    private static final String HELP_FOOTER = 
+        "\nApache Whisker assists assembled applications " +
+        "maintain correct legal documentation. " +
+        "Whisker is part of the " +
+        "Apache Creadur suite of tools for " +
+        "auditing and comprehending software distributions, " +
+        "and is open source community developed software. " +
+        "Get involved at http://www.apache.org.\n\n";
+
+    /**
      * Names the application.
      */
     private static final String APP_NAME = "apache-whisker-cli";
@@ -179,7 +191,7 @@ public final class Main {
      */
     private void help() {
         final HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp(APP_NAME, options(), true);
+        formatter.printHelp(APP_NAME, "", options(), HELP_FOOTER, true);
     }
 
     /**
