@@ -38,3 +38,10 @@ java -jar apache-whisker-cli.jar
 
 +-------------------------------+ 
 
+ and 
+
++-------------------------------+
+
+java -jar apache-whisker-cli.jar --help
+
++-------------------------------+ 
