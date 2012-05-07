@@ -22,9 +22,9 @@ import junit.framework.TestCase;
 
 import org.apache.commons.cli.AlreadySelectedException;
 import org.apache.commons.cli.ParseException;
-import org.apache.rat.whisker.app.Act;
-import org.apache.rat.whisker.app.Whisker;
-import org.apache.rat.whisker.app.load.StreamableClassPathResource;
+import org.apache.creadur.whisker.app.Act;
+import org.apache.creadur.whisker.app.Whisker;
+import org.apache.creadur.whisker.app.load.StreamableClassPathResource;
 
 /**
  *

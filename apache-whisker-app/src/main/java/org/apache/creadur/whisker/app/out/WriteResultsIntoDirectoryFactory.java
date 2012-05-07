@@ -16,31 +16,29 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.app.out;
+package org.apache.creadur.whisker.app.out;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.Writer;
 
-import org.apache.rat.whisker.app.Result;
-import org.apache.rat.whisker.app.ResultWriterFactory;
+import org.apache.commons.io.output.FileWriterWithEncoding;
+import org.apache.creadur.whisker.app.Result;
+import org.apache.creadur.whisker.app.ResultWriterFactory;
 
 /**
- * Factory builds writers that output to <code>System.out</code>.
+ * Writes results as files within a directory.
  */
-public class WriteResultsToSystemOutFactory implements ResultWriterFactory {
+public class WriteResultsIntoDirectoryFactory implements ResultWriterFactory  {
 
-    /** Encoding to be used */
+    private final File directory;
     private final String encoding;
-    
-    public WriteResultsToSystemOutFactory(String encoding) {
-        super();
-        this.encoding = encoding;
-    }
 
-    public WriteResultsToSystemOutFactory() {
-        this("UTF-8");
+    public WriteResultsIntoDirectoryFactory(final File directory, final String encoding) {
+        super();
+        this.directory = directory;
+        this.encoding = encoding;
     }
 
     /**
@@ -48,7 +46,6 @@ public class WriteResultsToSystemOutFactory implements ResultWriterFactory {
      */
     @Override
     public Writer writerFor(Result result) throws IOException {
-        return new BufferedWriter(new OutputStreamWriter(System.out, encoding));
+        return new BufferedWriter(new FileWriterWithEncoding(result.within(directory), encoding));
     }
-
 }

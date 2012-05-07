@@ -16,40 +16,25 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.app;
-
-import java.io.File;
+package org.apache.creadur.whisker.app;
 
 /**
  * 
  */
-public enum Result {
-    LICENSE("LICENSE"), NOTICE("NOTICE"), 
-    MISSING_LICENSE_REPORT("missing-licenses.txt"), 
-    XML_TEMPLATE("manifest-template.xml"), 
-    DIRECTORIES_REPORT("directories.txt");
+public enum Act {
     
-    /** Conventional name for the result */
-    private final String name;
+    GENERATE(false),
+    AUDIT(true),
+    REPORT(true),
+    TEMPLATE(true);
 
-    private Result(String name) {
-        this.name = name;
+    private final boolean isSourceRequired;
+
+    private Act(boolean isSourceRequired) {
+        this.isSourceRequired = isSourceRequired;
     }
 
-    /**
-     * Gets the conventional name for this result.
-     * @return not null
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Creates the conventional file for storage of this result.
-     * @param directory not null
-     * @return conventional file within directory
-     */
-    public File within(File directory) {
-        return new File(directory, getName());
+    public boolean isSourceRequired() {
+        return isSourceRequired;
     }
 }

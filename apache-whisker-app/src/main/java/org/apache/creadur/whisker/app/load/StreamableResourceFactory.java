@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.app.load;
+package org.apache.creadur.whisker.app.load;
 
 import java.io.File;
 
-import org.apache.rat.whisker.app.StreamableResource;
+import org.apache.creadur.whisker.app.StreamableResource;
 
 /**
  * Conveniently builds {@link org.apache.rat.whisker.app.StreamableResource} implementations.

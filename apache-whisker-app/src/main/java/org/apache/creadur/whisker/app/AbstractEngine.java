@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.app;
+package org.apache.creadur.whisker.app;
 
 import java.util.Collection;
 
-import org.apache.rat.whisker.app.analysis.LicenseAnalyst;
+import org.apache.creadur.whisker.app.analysis.LicenseAnalyst;
 import org.apache.rat.whisker.model.Descriptor;
 import org.apache.rat.whisker.scan.Directory;
 

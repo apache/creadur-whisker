@@ -23,10 +23,10 @@ import java.io.File;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.rat.whisker.app.Act;
-import org.apache.rat.whisker.app.Whisker;
-import org.apache.rat.whisker.app.load.StreamableResourceFactory;
-import org.apache.rat.whisker.app.out.WriteResultsIntoDirectoryFactory;
+import org.apache.creadur.whisker.app.Act;
+import org.apache.creadur.whisker.app.Whisker;
+import org.apache.creadur.whisker.app.load.StreamableResourceFactory;
+import org.apache.creadur.whisker.app.out.WriteResultsIntoDirectoryFactory;
 import org.apache.rat.whisker.out.velocity.VelocityEngine;
 
 

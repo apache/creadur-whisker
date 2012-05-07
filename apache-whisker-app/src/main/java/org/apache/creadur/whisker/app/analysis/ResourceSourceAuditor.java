@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.app.analysis;
+package org.apache.creadur.whisker.app.analysis;
 
 import java.util.ArrayList;
 import java.util.Collection;

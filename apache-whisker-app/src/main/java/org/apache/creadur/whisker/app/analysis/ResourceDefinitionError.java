@@ -16,21 +16,21 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.app;
+package org.apache.creadur.whisker.app.analysis;
 
-import java.io.IOException;
-import java.io.Writer;
-
-/**
- * Builds writers for results. 
- */
-public interface ResultWriterFactory {
-
-    /**
-     * Builds a writer for the given results.
-     * @param result not null
-     * @return not null
-     * @throws IOException when suitable writer cannot be constructed
-     */
-    public Writer writerFor(final Result result) throws IOException;
+public enum ResourceDefinitionError {
+    MISSING_LICENSE("Missing license(s)"),
+    EXTRA_LICENSE("Extra license(s)"),
+    DUPLICATE("Duplicate resource(s)"),
+    MISSING_SOURCE("Missing link to source ");
+    
+    private final String description;
+    
+    private ResourceDefinitionError (final String description) {
+        this.description = description;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
 }

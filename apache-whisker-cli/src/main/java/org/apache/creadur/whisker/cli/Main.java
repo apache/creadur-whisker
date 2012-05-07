@@ -25,10 +25,10 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.MissingOptionException;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.apache.rat.whisker.app.Act;
-import org.apache.rat.whisker.app.Whisker;
-import org.apache.rat.whisker.app.load.StreamableResourceFactory;
-import org.apache.rat.whisker.app.out.WriteResultsToSystemOutFactory;
+import org.apache.creadur.whisker.app.Act;
+import org.apache.creadur.whisker.app.Whisker;
+import org.apache.creadur.whisker.app.load.StreamableResourceFactory;
+import org.apache.creadur.whisker.app.out.WriteResultsToSystemOutFactory;
 import org.apache.rat.whisker.out.velocity.VelocityEngine;
 
 /**

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.app.load;
+package org.apache.creadur.whisker.app.load;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -24,7 +24,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.rat.whisker.app.StreamableResource;
+import org.apache.creadur.whisker.app.StreamableResource;
 /**
  * Streams, on demand, the contents of a file identified by a full file name, 
  * including path.
