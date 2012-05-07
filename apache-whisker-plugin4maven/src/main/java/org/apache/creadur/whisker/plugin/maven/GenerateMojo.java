@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.plugin.maven;
+package org.apache.creadur.whisker.plugin.maven;
 
 import java.io.File;
 
