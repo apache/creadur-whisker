@@ -27,7 +27,7 @@ import org.apache.creadur.whisker.app.Act;
 import org.apache.creadur.whisker.app.Whisker;
 import org.apache.creadur.whisker.app.load.StreamableResourceFactory;
 import org.apache.creadur.whisker.app.out.WriteResultsIntoDirectoryFactory;
-import org.apache.rat.whisker.out.velocity.VelocityEngine;
+import org.apache.creadur.whisker.out.velocity.VelocityEngine;
 
 
 /**

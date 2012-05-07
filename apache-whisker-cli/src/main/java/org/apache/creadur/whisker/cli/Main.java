@@ -29,7 +29,7 @@ import org.apache.creadur.whisker.app.Act;
 import org.apache.creadur.whisker.app.Whisker;
 import org.apache.creadur.whisker.app.load.StreamableResourceFactory;
 import org.apache.creadur.whisker.app.out.WriteResultsToSystemOutFactory;
-import org.apache.rat.whisker.out.velocity.VelocityEngine;
+import org.apache.creadur.whisker.out.velocity.VelocityEngine;
 
 /**
  * Command line interface for whisker.

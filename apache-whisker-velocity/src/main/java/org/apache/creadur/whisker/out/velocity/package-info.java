@@ -20,4 +20,4 @@
  * Uses <a href='http://velocity.apache.org'>Apache Velocity</a>
  * templating engine to generate reports.
  */
-package org.apache.rat.whisker.out.velocity;
+package org.apache.creadur.whisker.out.velocity;
