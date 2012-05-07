@@ -28,7 +28,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.rat.whisker.model.Resource;
 import org.apache.rat.whisker.model.ResourceNamesCollator;
 import org.apache.rat.whisker.model.Descriptor;
-import org.apache.rat.whisker.scan.Directory;
+import org.apache.creadur.whisker.scan.Directory;
 
 /**
  * 

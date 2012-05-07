@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.scan;
+package org.apache.creadur.whisker.scan;
 
 import java.util.Set;
 import java.util.TreeSet;

@@ -19,4 +19,4 @@
 /**
  * Scans a file system for resources within directories.
  */
-package org.apache.rat.whisker.scan;
+package org.apache.creadur.whisker.scan;

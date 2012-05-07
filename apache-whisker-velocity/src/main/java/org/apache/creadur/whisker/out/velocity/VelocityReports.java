@@ -26,7 +26,7 @@ import org.apache.commons.logging.Log;
 import org.apache.creadur.whisker.app.ResultWriterFactory;
 import org.apache.creadur.whisker.app.analysis.LicenseAnalyst;
 import org.apache.rat.whisker.model.Descriptor;
-import org.apache.rat.whisker.scan.Directory;
+import org.apache.creadur.whisker.scan.Directory;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeServices;
