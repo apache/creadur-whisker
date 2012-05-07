@@ -23,10 +23,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.rat.whisker.model.ByOrganisation;
-import org.apache.rat.whisker.model.License;
-import org.apache.rat.whisker.model.Organisation;
-import org.apache.rat.whisker.model.WithinDirectory;
+import org.apache.creadur.whisker.model.ByOrganisation;
+import org.apache.creadur.whisker.model.License;
+import org.apache.creadur.whisker.model.Organisation;
+import org.apache.creadur.whisker.model.WithinDirectory;
 import org.jdom.Element;
 
 import junit.framework.TestCase;

@@ -18,7 +18,7 @@
  */
 package org.apache.rat.whisker.fromxml;
 
-import org.apache.rat.whisker.model.License;
+import org.apache.creadur.whisker.model.License;
 import org.jdom.CDATA;
 import org.jdom.Element;
 

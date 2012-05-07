@@ -18,7 +18,7 @@
  */
 package org.apache.rat.whisker.fromxml;
 
-import org.apache.rat.whisker.model.Resource;
+import org.apache.creadur.whisker.model.Resource;
 import org.jdom.Element;
 
 import junit.framework.TestCase;

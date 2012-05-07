@@ -21,7 +21,7 @@ package org.apache.creadur.whisker.app;
 import java.util.Collection;
 
 import org.apache.creadur.whisker.app.analysis.LicenseAnalyst;
-import org.apache.rat.whisker.model.Descriptor;
+import org.apache.creadur.whisker.model.Descriptor;
 import org.apache.creadur.whisker.scan.Directory;
 
 /**

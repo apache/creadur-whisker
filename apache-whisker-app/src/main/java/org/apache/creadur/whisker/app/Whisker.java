@@ -25,7 +25,7 @@ import java.util.Collection;
 
 import org.apache.creadur.whisker.app.analysis.LicenseAnalyst;
 import org.apache.rat.whisker.fromxml.JDomBuilder;
-import org.apache.rat.whisker.model.Descriptor;
+import org.apache.creadur.whisker.model.Descriptor;
 import org.apache.creadur.whisker.scan.Directory;
 import org.apache.creadur.whisker.scan.FromFileSystem;
 import org.jdom.JDOMException;

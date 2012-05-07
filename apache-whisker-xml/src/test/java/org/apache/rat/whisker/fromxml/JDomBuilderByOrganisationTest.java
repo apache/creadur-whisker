@@ -24,9 +24,9 @@ import java.util.HashMap;
 
 import junit.framework.TestCase;
 
-import org.apache.rat.whisker.model.ByOrganisation;
-import org.apache.rat.whisker.model.Organisation;
-import org.apache.rat.whisker.model.Resource;
+import org.apache.creadur.whisker.model.ByOrganisation;
+import org.apache.creadur.whisker.model.Organisation;
+import org.apache.creadur.whisker.model.Resource;
 import org.jdom.Element;
 
 /**

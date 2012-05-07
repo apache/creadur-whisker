@@ -16,45 +16,40 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.model;
-
-import java.util.Collection;
+package org.apache.creadur.whisker.model;
 
 
 /**
  * 
  */
-public class WithinDirectory implements Comparable<WithinDirectory> {
+public class Resource implements Comparable<Resource>{
 
-
-    private final Collection<WithLicense> licenses;
-    private final Collection<ByOrganisation> publicDomain;
     private final String name;
-     
-    /**
-     * @param element
-     */
-    public WithinDirectory(final String name, final Collection<WithLicense> licenses, 
-            Collection<ByOrganisation> publicDomain) {
-        super();
-        this.name = name;
-        this.licenses = licenses;
-        this.publicDomain = publicDomain;
-    }
+    private final String noticeId;
+    private final String source;
     
     /**
-     * @return the publicDomain
+     * @param name
      */
-    public Collection<ByOrganisation> getPublicDomain() {
-        return publicDomain;
+    public Resource(String name, final String noticeId, final String source) {
+        super();
+        this.name = name;
+        this.noticeId = noticeId;
+        this.source = source;
     }
 
+    /**
+     * @return the name
+     */
     public String getName() {
         return name;
     }
-    
-    public Collection<WithLicense> getLicenses() {
-        return licenses;
+
+    /**
+     * @return the noticeId
+     */
+    public String getNoticeId() {
+        return noticeId;
     }
 
     /**
@@ -62,7 +57,10 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
      */
     @Override
     public int hashCode() {
-        return getName().hashCode();
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
     }
 
     /**
@@ -76,45 +74,51 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        final WithinDirectory other = (WithinDirectory) obj;
-        return getName().equals(other.getName());
+        Resource other = (Resource) obj;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        return true;
+    }
+
+    /**
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "Resource [name=" + name + "]";
     }
 
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
     @Override
-    public int compareTo(WithinDirectory other) {
+    public int compareTo(Resource other) {
         return getName().compareTo(other.getName());
     }
-
-
-    /**
-     * @param directoryName
-     * @return
-     */
-    public boolean isNamed(String directoryName) {
-        return getName().equals(directoryName);
-    }
-
 
     /**
      * @param visitor
      */
     public void accept(Visitor visitor) {
-        if (visitor != null) {      
+        if (visitor != null && visitor.traverseResource()) {
             visitor.visit(this);
-            if (visitor.traversePublicDomain()) {
-                for (final ByOrganisation organisation: getPublicDomain()) {
-                    organisation.accept(visitor);
-                }        
-            }
-    
-            for (final WithLicense license: getLicenses()) {
-                license.accept(visitor);
-            }
         }
     }
-    
-    
+
+    /**
+     * @return the source
+     */
+    public String getSource() {
+        return source;
+    }
+
+    /**
+     * @return
+     */
+    public boolean hasSource() {
+        return getSource() != null && !"".equals(getSource());
+    }
 }
