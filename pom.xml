@@ -100,8 +100,8 @@
     override these values. You might do this by adding a profile to your local settings.xml.
      -->
     <whisker.site.url>file:stage</whisker.site.url>
-    <whisker.site.name>Whisker Incubating Website</whisker.site.name>
-    <whisker.site.id>org.apache.rat.whisker.incubating.site</whisker.site.id>   
+    <whisker.site.name>Whisker Website</whisker.site.name>
+    <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>   
   </properties>
 
   <!-- ================================ Build information -->
