@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.fromxml;
+package org.apache.creadur.whisker.fromxml;
 
 /**
  * Indicates that the element linked by ID is missing.

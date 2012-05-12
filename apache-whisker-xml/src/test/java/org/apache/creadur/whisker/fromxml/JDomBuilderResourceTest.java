@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.fromxml;
+package org.apache.creadur.whisker.fromxml;
 
 import org.apache.creadur.whisker.model.Resource;
 import org.jdom.Element;

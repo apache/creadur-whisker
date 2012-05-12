@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License. 
  */
-package org.apache.rat.whisker.fromxml;
+package org.apache.creadur.whisker.fromxml;
 
 /**
  * Indicates that a duplicate of an existing element has been unexpectedly encountered.
