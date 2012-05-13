@@ -266,6 +266,11 @@
     <maven>3.0.2</maven>
   </prerequisites>
 
+  <issueManagement>
+    <system>JIRA</system>
+    <url>https://issues.apache.org/jira/browse/WHISKER</url>
+  </issueManagement>
+
   <distributionManagement>
     <site>
         <id>${whisker.site.id}</id>
