@@ -271,6 +271,22 @@
     <url>https://issues.apache.org/jira/browse/WHISKER</url>
   </issueManagement>
 
+  <mailingLists>
+    <mailingList>
+      <name>Whisker development at Apache Creadur project</name>
+      <subscribe>dev-subscribe@creadur.apache.org</subscribe>
+      <unsubscribe>dev-unsubscribe@creadur.apache.org</unsubscribe>
+      <post>dev@creadur.apache.org</post>
+      <archive>http://mail-archives.apache.org/mod_mbox/creadur-dev/</archive>
+    </mailingList>
+    <mailingList>
+      <name>Whisker commits at Apache Creadur project</name>
+      <subscribe>commits-subscribe@creadur.apache.org</subscribe>
+      <unsubscribe>commits-unsubscribe@creadur.apache.org</unsubscribe>
+      <archive>http://mail-archives.apache.org/mod_mbox/creadur-commits/</archive>
+    </mailingList>
+  </mailingLists>
+
   <distributionManagement>
     <site>
         <id>${whisker.site.id}</id>
