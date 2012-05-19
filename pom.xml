@@ -294,4 +294,11 @@
         <url>${whisker.site.url}</url>
     </site>
   </distributionManagement>  
+  
+  <scm>
+  	<url>http://svn.apache.org/repos/asf/creadur/whisker/trunk</url>
+  	<connection>scm:svn:http://svn.apache.org/repos/asf/creadur/whisker/trunk</connection>
+  	<developerConnection>scm:svn:https://svn.apache.org/repos/asf/creadur/whisker/trunk</developerConnection>
+  </scm>
+  
 </project>
