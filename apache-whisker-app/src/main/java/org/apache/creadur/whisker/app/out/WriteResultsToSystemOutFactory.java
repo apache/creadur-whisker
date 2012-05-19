@@ -44,9 +44,8 @@ public class WriteResultsToSystemOutFactory implements ResultWriterFactory {
     }
 
     /**
-     * @see org.apache.rat.whisker.app.ResultWriterFactory#writerFor(org.apache.rat.whisker.app.Result)
+     * @see ResultWriterFactory#writerFor(Result)
      */
-    @Override
     public Writer writerFor(Result result) throws IOException {
         return new BufferedWriter(new OutputStreamWriter(System.out, encoding));
     }
