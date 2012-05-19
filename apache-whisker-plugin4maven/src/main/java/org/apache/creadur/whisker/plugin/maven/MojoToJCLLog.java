@@ -36,7 +36,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#debug(java.lang.Object)
      */
-    @Override
     public void debug(Object message) {
         log.debug(ObjectUtils.toString(message));
     }
@@ -44,7 +43,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#debug(java.lang.Object, java.lang.Throwable)
      */
-    @Override
     public void debug(Object message, Throwable t) {
         log.debug(ObjectUtils.toString(message), t);
     }
@@ -52,7 +50,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#error(java.lang.Object)
      */
-    @Override
     public void error(Object message) {
         log.error(ObjectUtils.toString(message));
     }
@@ -60,7 +57,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#error(java.lang.Object, java.lang.Throwable)
      */
-    @Override
     public void error(Object message, Throwable t) {
         log.error(ObjectUtils.toString(message), t);
     }
@@ -68,7 +64,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#fatal(java.lang.Object)
      */
-    @Override
     public void fatal(Object message) {
         log.error(ObjectUtils.toString(message));
     }
@@ -76,7 +71,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#fatal(java.lang.Object, java.lang.Throwable)
      */
-    @Override
     public void fatal(Object message, Throwable t) {
         log.error(ObjectUtils.toString(message), t);
     }
@@ -84,7 +78,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#info(java.lang.Object)
      */
-    @Override
     public void info(Object message) {
         log.info(ObjectUtils.toString(message));
     }
@@ -92,7 +85,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#info(java.lang.Object, java.lang.Throwable)
      */
-    @Override
     public void info(Object message, Throwable t) {
         log.info(ObjectUtils.toString(message), t);
     }
@@ -100,7 +92,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#isDebugEnabled()
      */
-    @Override
     public boolean isDebugEnabled() {
         return log.isDebugEnabled();
     }
@@ -108,7 +99,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#isErrorEnabled()
      */
-    @Override
     public boolean isErrorEnabled() {
         return log.isErrorEnabled();
     }
@@ -116,7 +106,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#isFatalEnabled()
      */
-    @Override
     public boolean isFatalEnabled() {
         return log.isErrorEnabled();
     }
@@ -124,7 +113,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#isInfoEnabled()
      */
-    @Override
     public boolean isInfoEnabled() {
         return log.isInfoEnabled();
     }
@@ -132,7 +120,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#isTraceEnabled()
      */
-    @Override
     public boolean isTraceEnabled() {
         return log.isDebugEnabled();
     }
@@ -140,7 +127,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#isWarnEnabled()
      */
-    @Override
     public boolean isWarnEnabled() {
         return log.isWarnEnabled();
     }
@@ -148,7 +134,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#trace(java.lang.Object)
      */
-    @Override
     public void trace(Object message) {
         log.debug(ObjectUtils.toString(message));
     }
@@ -156,7 +141,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#trace(java.lang.Object, java.lang.Throwable)
      */
-    @Override
     public void trace(Object message, Throwable t) {
         log.debug(ObjectUtils.toString(message), t);
     }
@@ -164,7 +148,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#warn(java.lang.Object)
      */
-    @Override
     public void warn(Object message) {
         log.warn(ObjectUtils.toString(message));
     }
@@ -172,7 +155,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     /**
      * @see org.apache.commons.logging.Log#warn(java.lang.Object, java.lang.Throwable)
      */
-    @Override
     public void warn(Object message, Throwable t) {
         log.warn(ObjectUtils.toString(message), t);
     }
