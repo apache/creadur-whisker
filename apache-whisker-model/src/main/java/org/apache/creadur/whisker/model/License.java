@@ -168,7 +168,6 @@ public class License implements Comparable<License> {
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    @Override
     public int compareTo(License other) {
         final int nameDifference = getName().compareTo(other.getName());
         return nameDifference == 0 ? getId().compareTo(other.getId()) : nameDifference;

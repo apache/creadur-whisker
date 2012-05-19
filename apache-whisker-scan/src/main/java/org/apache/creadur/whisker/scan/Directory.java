@@ -123,7 +123,6 @@ public class Directory implements Comparable<Directory> {
      * @return comparison
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    @Override
     public int compareTo(final Directory other) {
         if (other == null) {
             return -1;

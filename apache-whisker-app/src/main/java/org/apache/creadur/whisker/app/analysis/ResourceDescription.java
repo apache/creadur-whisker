@@ -97,7 +97,6 @@ public class ResourceDescription implements Comparable<ResourceDescription> {
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    @Override
     public int compareTo(ResourceDescription other) {
         final int result;
         final int compareOnDirectoryName = this.getDirectory().compareTo(other.getDirectory());

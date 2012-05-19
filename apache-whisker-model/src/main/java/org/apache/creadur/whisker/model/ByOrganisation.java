@@ -97,7 +97,6 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    @Override
     public int compareTo(ByOrganisation other) {
         return organisation.compareTo(other.getOrganisation());
     }

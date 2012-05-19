@@ -87,7 +87,6 @@ public class Organisation implements Comparable<Organisation> {
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    @Override
     public int compareTo(Organisation other) {
         final int nameDifference = getName().compareTo(other.getName());
         return nameDifference == 0 ? getId().compareTo(other.getId()) : nameDifference;

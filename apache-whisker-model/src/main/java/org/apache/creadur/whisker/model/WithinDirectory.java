@@ -83,7 +83,6 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    @Override
     public int compareTo(WithinDirectory other) {
         return getName().compareTo(other.getName());
     }

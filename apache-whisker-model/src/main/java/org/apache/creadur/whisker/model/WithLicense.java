@@ -79,7 +79,6 @@ public class WithLicense implements Comparable<WithLicense> {
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    @Override
     public int compareTo(WithLicense other) {
         return license.compareTo(other.getLicense());
     }

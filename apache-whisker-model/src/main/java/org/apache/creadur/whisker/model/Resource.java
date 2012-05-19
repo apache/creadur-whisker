@@ -94,7 +94,6 @@ public class Resource implements Comparable<Resource>{
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    @Override
     public int compareTo(Resource other) {
         return getName().compareTo(other.getName());
     }
