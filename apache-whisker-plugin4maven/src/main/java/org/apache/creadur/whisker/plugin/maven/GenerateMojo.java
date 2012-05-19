@@ -63,7 +63,6 @@ public class GenerateMojo extends AbstractMojo {
      * Generate licensing related materials such as LICENSE and NOTICE documents.
      * @see org.apache.maven.plugin.Mojo#execute()
      */
-    @Override
     public void execute() throws MojoExecutionException, MojoFailureException { 
         if (descriptor.exists()) {
             if (descriptor.canRead()) {

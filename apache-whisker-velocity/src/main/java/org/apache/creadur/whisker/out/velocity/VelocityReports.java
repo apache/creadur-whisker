@@ -79,7 +79,6 @@ public class VelocityReports implements LogChute {
      * @param services unused
      * @see LogChute#init(RuntimeServices)
      */
-    @Override
     public final void init(final RuntimeServices services) { }
 
     /**
@@ -88,7 +87,6 @@ public class VelocityReports implements LogChute {
      * @return true when log level is enabled, false otherwise
      * @see LogChute#isLevelEnabled(int)
      */
-    @Override
     public final boolean isLevelEnabled(final int level) {
         switch (level) {
             case DEBUG_ID:
@@ -112,7 +110,6 @@ public class VelocityReports implements LogChute {
      * @param message possibly null
      * @see LogChute#log(int, String)
      */
-    @Override
     public final void log(final int level, final String message) {
         switch (level) {
             case DEBUG_ID:
@@ -142,7 +139,6 @@ public class VelocityReports implements LogChute {
      * @param throwable possibly null
      * @see LogChute#log(int, String, Throwable)
      */
-    @Override
     public final void log(final int level,
             final String message, final Throwable throwable) {
         switch (level) {
