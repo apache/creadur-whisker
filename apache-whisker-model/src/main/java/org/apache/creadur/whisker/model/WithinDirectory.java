@@ -21,16 +21,25 @@ package org.apache.creadur.whisker.model;
 import java.util.Collection;
 
 /**
- * 
+ * Links resources expected within a directory in the distribution
+ * to licensing meta-data.
  */
 public class WithinDirectory implements Comparable<WithinDirectory> {
 
+    /** Resources grouped by license applicable. */
     private final Collection<WithLicense> licenses;
+    /** Public domain resources, grouped by responsible organisation. */
     private final Collection<ByOrganisation> publicDomain;
+    /** The directory name. */
     private final String name;
 
     /**
-     * @param element
+     * Constructs a description of a directory
+     * @param name directory name, not null
+     * @param licenses resources contained, 
+     * grouped by license applicable, not null
+     * @param publicDomain resources in the public domain,
+     * grouped by responsible organisation
      */
     public WithinDirectory(final String name,
             final Collection<WithLicense> licenses,
@@ -42,22 +51,35 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
     }
 
     /**
-     * @return the publicDomain
+     * Gets resources in the public domain,
+     * grouped by the organisation responsible.
+     * @return not null
      */
     public Collection<ByOrganisation> getPublicDomain() {
         return this.publicDomain;
     }
 
+    /**
+     * Gets the name of the directory described.
+     * @return not null
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Gets resources contained,
+     * grouped by license applicable.
+     * @return not null
+     */
     public Collection<WithLicense> getLicenses() {
         return this.licenses;
     }
 
     /**
+     * Based on name.
      * @see java.lang.Object#hashCode()
+     * @return hash code
      */
     @Override
     public int hashCode() {
@@ -65,7 +87,11 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
     }
 
     /**
+     * Based on directory name.
      * @see java.lang.Object#equals(java.lang.Object)
+     * @param obj possibly null
+     * @return true when directory names are equal,
+     * false otherwise
      */
     @Override
     public boolean equals(final Object obj) {
@@ -83,22 +109,27 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
     }
 
     /**
+     * Based on name.
      * @see java.lang.Comparable#compareTo(java.lang.Object)
+     * @return based on name
      */
     public int compareTo(final WithinDirectory other) {
         return getName().compareTo(other.getName());
     }
 
     /**
-     * @param directoryName
-     * @return
+     * Does the directory described have the given name?
+     * @param directoryName not null
+     * @return true when the name match that of this directory,
+     * false otherwise
      */
     public boolean isNamed(final String directoryName) {
         return getName().equals(directoryName);
     }
 
     /**
-     * @param visitor
+     * Accepts a visitor.
+     * @param visitor possibly null
      */
     public void accept(final Visitor visitor) {
         if (visitor != null) {
@@ -114,5 +145,4 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
             }
         }
     }
-
 }
