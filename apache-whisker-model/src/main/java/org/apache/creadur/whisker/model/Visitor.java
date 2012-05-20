@@ -14,42 +14,84 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.model;
 
 /**
- * 
+ * Visits element in the model.
  */
 public abstract class Visitor {
 
-    // Tune traversal
+    /**
+     * Tunes traversal, allowing public domain resources
+     * to be ignored.
+     * @return true when public domain resources should
+     * be traversed, false otherwise
+     */
     public boolean traversePublicDomain() {
         return true;
     }
 
+    /**
+     * Tunes traversal, allowing a shallow traversal
+     * without {@link WithLicense} elements.
+     *
+     * @return true when {@link WithLicense} elements
+     * should be stepped over, false when they should
+     * be included
+     */
     public boolean traverseWithLicense() {
         return true;
     }
 
+    /**
+     * Tunes traversal, allowing a moderate traversal
+     * without {@link ByOrganisation} elements.
+     * @return true when {@link ByOrganisation} elements
+     * should be stepped over, false when they should
+     * be included
+     */
     public boolean traverseByOrganisation() {
         return true;
     }
 
+    /**
+     * Tunes traversal, allowing {@link Resource}
+     * elements to be ignored.
+     * @return true when {@link Resource} elements
+     * should be stepped over, false when they should
+     * be included
+     */
     public boolean traverseResource() {
         return true;
     }
 
-    // Classic visitor pattern
+    /**
+     * Visits {@link WithinDirectory}.
+     * @param directory not null
+     */
     public void visit(final WithinDirectory directory) {
     };
 
+    /**
+     * Visits {@link WithLicense}.
+     * @param license not null
+     */
     public void visit(final WithLicense license) {
     };
 
+    /**
+     * Visits {@link ByOrganisation}.
+     * @param byOrganisation not null
+     */
     public void visit(final ByOrganisation byOrganisation) {
     };
 
+    /**
+     * Visits {@link Resource}.
+     * @param resource not null
+     */
     public void visit(final Resource resource) {
     };
 }
