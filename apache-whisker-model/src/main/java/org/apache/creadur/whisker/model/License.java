@@ -24,17 +24,37 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 
+ * Describes a software license.
  */
 public class License implements Comparable<License> {
 
+    /**
+     * Is information about source distribution required 
+     * by this license? 
+     */
     private final boolean isSourceRequired;
+    /** Template for license wording. */
     private final String baseText;
+    /** Parameters expected by the template. */
     private final Collection<String> expectedParameters;
+    /** Identifies this license. */
     private final String id;
+    /** Canonical locator for this license. */
     private final String url;
+    /** Names this license */
     private final String name;
-
+    
+    /**
+     * Constructs meta-data for a family of licenses.
+     * @param isSourceRequired true if this license requires
+     * information about source distribution to be included
+     * within the distribution
+     * @param baseText a template for the legal text, not null
+     * @param expectedParameters not null
+     * @param id not null
+     * @param url not null
+     * @param name not null
+     */
     public License(final boolean isSourceRequired, final String baseText,
             final Collection<String> expectedParameters, final String id,
             final String url, final String name) {
@@ -48,27 +68,55 @@ public class License implements Comparable<License> {
         this.name = name;
     }
 
+    /**
+     * Is source information inclusion required by this
+     * license?
+     * @return true when information about the source
+     * should be included, false otherwise
+     */
     public boolean isSourceRequired() {
         return this.isSourceRequired;
     }
 
+    /**
+     * Gets legal text expressing this license.
+     * @return not null
+     * @throws LicenseTemplateException when the text cannot
+     * be created from the template
+     */
     public String getText() throws LicenseTemplateException {
         return getText(null);
     }
 
+    /**
+     * Gets legal text expressing this license,
+     * 
+     * @param parameters possibly null
+     * @return not null
+     * @throws LicenseTemplateException when the text cannot
+     * be created from the template
+     */
     public String getText(final Map<String, String> parameters)
             throws LicenseTemplateException {
         return substituteInto(validate(parameters), this.baseText);
     }
-
+    
+    /**
+     * Gets parameters required by the template
+     * to generate a instance of this license family.
+     * @return not null, possibly empty
+     */
     public Collection<String> getExpectedParameters() {
         return this.expectedParameters;
     }
 
     /**
-     * @param parameters
-     * @return
-     * @throws LicenseTemplateException
+     * Validates that these given parameters
+     * are suitable for the template expressing the legalise.
+     * @param parameters possibly null
+     * @return parameters, not null
+     * @throws LicenseTemplateException when the parameter
+     * do not fulfill the expectations of the template
      */
     @SuppressWarnings("unchecked")
     private Map<String, String> validate(final Map<String, String> parameters)
@@ -92,9 +140,11 @@ public class License implements Comparable<License> {
     }
 
     /**
-     * @param parameters
-     * @param expectedParameters
-     * @return
+     * Do the presented parameters fulfill expectations? 
+     * @param parameters possibly null
+     * @param expectedParameters possibly null
+     * @return true when expected and presented parameters
+     * match, false otherwise
      */
     private boolean parametersMatch(final Map<String, String> parameters,
             final Collection<String> expectedParameters) {
@@ -103,14 +153,23 @@ public class License implements Comparable<License> {
                 .containsAll(keySet));
     }
 
+    /**
+     * Translates a parameter name to 
+     * the variable style used by the template
+     * @param parameterName not null
+     * @return variable in template format, not null
+     */
     private String variable(final String parameterName) {
         return "${" + parameterName + "}";
     }
 
     /**
-     * @param parameters
-     * @param trim
-     * @return
+     * Substitutes parameter values into the variable
+     * in the template legalise, parameterising 
+     * an instance of the license family.
+     * @param parameters not null
+     * @param text template text
+     * @return not null
      */
     private String substituteInto(final Map<String, String> parameters,
             final String text) {
@@ -122,7 +181,9 @@ public class License implements Comparable<License> {
     }
 
     /**
-     * @param results
+     * Stores the license by its id.
+     * @param map not null
+     * @return the license stored
      */
     public License storeIn(final Map<String, License> map) {
         map.put(getId(), this);
@@ -130,21 +191,25 @@ public class License implements Comparable<License> {
     }
 
     /**
-     * @return
+     * Gets the unique identifier for this license.
+     * @return not null
      */
     public String getId() {
         return this.id;
     }
 
     /**
-     * @return
+     * Gets a locator for this license.
+     * @return not null
      */
     public String getURL() {
         return this.url;
     }
 
     /**
-     * @return
+     * Gets a name for this license suitable for 
+     * display.
+     * @return not null
      */
     public String getName() {
         return this.name;

@@ -22,7 +22,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * 
+ * Collates 
  */
 public class LicenseAndOrganisationCollator extends Visitor {
 

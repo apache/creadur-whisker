@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.model;
 
@@ -23,17 +23,34 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 
+ * High level description of licensing qualities.
  */
 public class Descriptor {
 
+    /** Principle license for main work. */
     private final License primaryLicense;
+    /** Individual or group with main responsible for main work. */
     private final String primaryOrganisationId;
+    /** A NOTICE for the main work, for inclusion alongside the LICENSE.*/
     private final String primaryNotice;
+    /** License meta-data, indexed by id. */
     private final Map<String, License> licenses;
+    /** Notice meta-data, indexed by id. */
     private final Map<String, String> notices;
+    /** Directories expected to be contained within the release. */
     private final Collection<WithinDirectory> contents;
 
+    /**
+     * Constructs a description of the expected licensing qualities
+     * of a distribution.
+     * @param primaryLicense not null
+     * @param primaryOrganisationId not null
+     * @param primaryNotice possibly null
+     * @param licenses not null, possibly empty
+     * @param notices not null, possibly empty
+     * @param organisations not null, possibly empty
+     * @param contents not null, possibly empty
+     */
     public Descriptor(final License primaryLicense,
             final String primaryOrganisationId, final String primaryNotice,
             final Map<String, License> licenses,
@@ -50,44 +67,84 @@ public class Descriptor {
     }
 
     /**
+     * Gets the principle NOTICE for the main work.
      * @return the primaryNotice
      */
     public String getPrimaryNotice() {
         return this.primaryNotice;
     }
 
+    /**
+     * Collates NOTICE meta-data for resources.
+     * @return not null, possibly empty
+     */
     public Map<String, Collection<Resource>> getResourceNotices() {
         final NoticeCollator collator = new NoticeCollator();
         traverse(collator);
         return collator.resourceNotices(this.notices);
     }
 
+    /**
+     * Collates NOTICE meta-data not linked to any resource.
+     * @return not null, possibly empty
+     */
     public Set<String> getOtherNotices() {
         final NoticeCollator collator = new NoticeCollator();
         traverse(collator);
         return collator.notices(this.notices);
     }
 
+    /**
+     * Gets the license with the given id.
+     * @param id not null
+     * @return the license with the given id, or null
+     */
     public License license(final String id) {
         return this.licenses.get(id);
     }
 
+    /**
+     * Gets the principle license under which the work is licensed.
+     * @return the principle license, not null
+     */
     public License getPrimaryLicense() {
         return this.primaryLicense;
     }
 
+    /**
+     * Gets the contents expected in the distribution.
+     * @return not null, possibly null
+     */
     public Collection<WithinDirectory> getContents() {
         return this.contents;
     }
 
+    /**
+     * Is the given license the principle license for the main work?
+     * @param license not null
+     * @return true when the given license is the primary license, not null
+     */
     public boolean isPrimary(final License license) {
         return this.primaryLicense.equals(license);
     }
 
+    /**
+     * Is the given individual or group the principle organisation with responsibility
+     * for the main work.
+     * @param byOrganisation not null
+     * @return true when the given organisation is primary
+     */
     public boolean isPrimary(final ByOrganisation byOrganisation) {
         return byOrganisation.getId().equals(this.primaryOrganisationId);
     }
 
+    /**
+     * Is this directory expected to contain only material with the 
+     * primary license?
+     * @param directory not null
+     * @return true when the directory contains only material with the
+     * primary license, false otherwise
+     */
     public boolean isOnlyPrimary(final WithinDirectory directory) {
         final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
         directory.accept(collator);
@@ -95,6 +152,13 @@ public class Descriptor {
                 && collator.isOnlyOrganisation(this.primaryOrganisationId);
     }
 
+    /**
+     * Is this collection of resources licensed under the primary
+     * license by the primary organisation?
+     * @param license not null
+     * @return true when the contents are all licensed under the primary
+     * license by the primary organisation
+     */
     public boolean isOnlyPrimary(final WithLicense license) {
         final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
         license.accept(collator);
@@ -102,12 +166,21 @@ public class Descriptor {
                 && collator.isOnlyOrganisation(this.primaryOrganisationId);
     }
 
+    /**
+     * Traverses the content directories.
+     * @param visitor possibly null
+     */
     public void traverse(final Visitor visitor) {
         for (final WithinDirectory directory : getContents()) {
             directory.accept(visitor);
         }
     }
 
+    /**
+     * Traverses the given directory.
+     * @param visitor possibly null
+     * @param directoryName not null
+     */
     public void traverseDirectory(final Visitor visitor,
             final String directoryName) {
         for (final WithinDirectory directory : getContents()) {

@@ -21,14 +21,19 @@ package org.apache.creadur.whisker.model;
 import java.util.Collection;
 
 /**
- * 
+ * Relates the responsible group or individual to one
+ * or more resources.
  */
 public class ByOrganisation implements Comparable<ByOrganisation> {
 
+    /** The responsible group or individual. */
     private final Organisation organisation;
+    /** The resources for which the group or individual is responsible. */
     private final Collection<Resource> resources;
 
     /**
+     * Links an individual or group
+     * to the resources for which they have responsibility.
      * @param resources
      *            not null
      * @param organisation
@@ -41,34 +46,54 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
         this.resources = resources;
     }
 
+    /**
+     * Gets the name of the individual or group responsible.
+     * @return not null
+     */
     public String getName() {
         return this.organisation.getName();
     }
 
+    /**
+     * Gets the primary URL for the individual or group responsible.
+     * @return not null
+     */
     public String getURL() {
         return this.organisation.getURL();
     }
 
+    /**
+     * Gets the primary identifier for the individual or group responsible.
+     * @return not null
+     */
     public String getId() {
         return this.organisation.getId();
     }
 
+    /**
+     * Gets the resource for which the linked individual or group is responsible.
+     * @return not null, possibly empty
+     */
     public Collection<Resource> getResources() {
         return this.resources;
     }
 
     /**
-     * @return the organisation
+     * Gets the organisation representing the individual or group responible
+     * for the linked resources.
+     * @return the organisation , not ull
      */
     public Organisation getOrganisation() {
         return this.organisation;
     }
 
     /**
+     * Based on organisation.
      * @see java.lang.Object#hashCode()
+     * @return hash based on organisation
      */
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime
@@ -79,7 +104,11 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
     }
 
     /**
+     * Equal iff organisations are equal.
      * @see java.lang.Object#equals(java.lang.Object)
+     * @param obj possibly null
+     * @return true when organisations are equal,
+     * false otherwise
      */
     @Override
     public boolean equals(final Object obj) {
@@ -104,14 +133,18 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
     }
 
     /**
+     * Delegates to organisation.
      * @see java.lang.Comparable#compareTo(java.lang.Object)
+     * @param other possibly null
+     * @return {@link Organisation#compareTo(Organisation)}
      */
     public int compareTo(final ByOrganisation other) {
         return this.organisation.compareTo(other.getOrganisation());
     }
 
     /**
-     * @param visitor
+     * Accepts a visitor.
+     * @param visitor possibly null
      */
     public void accept(final Visitor visitor) {
         if (visitor != null && visitor.traverseByOrganisation()) {
@@ -121,7 +154,11 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
             }
         }
     }
-
+    
+    /**
+     * Describes object suitably for logging.
+     * @return something suitable for logging
+     */
     @Override
     public String toString() {
         return "ByOrganisation [organisation=" + this.organisation

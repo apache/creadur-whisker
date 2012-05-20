@@ -22,15 +22,19 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * 
+ * Indicates that generating an instance of a license
+ * from the template (for the license family) has failed.
  */
 public class LicenseTemplateException extends Exception {
 
+    /** Exception are serializable, so provide a SUID. */
     private static final long serialVersionUID = -4085365930968672572L;
 
     /**
-     * @param parameters
-     * @return
+     * Builds an instance.
+     * @param parameters not null
+     * @param name not null
+     * @return not null 
      */
     public static LicenseTemplateException notLicenseTemplate(
             final Map<String, String> parameters, final String name) {
@@ -39,8 +43,10 @@ public class LicenseTemplateException extends Exception {
     }
 
     /**
-     * @param string
-     * @param parameters
+     * Constructs an instance.
+     * @param message not null
+     * @param parameters parameters passed
+     * @param name license name
      */
     public LicenseTemplateException(final String message,
             final Map<String, String> parameters, final String name) {
@@ -49,9 +55,10 @@ public class LicenseTemplateException extends Exception {
     }
 
     /**
-     * @param message
-     * @param expectedParameters
-     * @param actualParameters
+     * Constructs an instance.
+     * @param message not null
+     * @param expectedParameters not null
+     * @param actualParameters not null
      */
     public LicenseTemplateException(final String message,
             final Collection<String> expectedParameters,
@@ -61,8 +68,9 @@ public class LicenseTemplateException extends Exception {
     }
 
     /**
-     * @param string
-     * @param name
+     * Constructs an instance
+     * @param message not null
+     * @param name not null
      */
     public LicenseTemplateException(final String message, final String name) {
         // TODO improve reporting
@@ -70,9 +78,11 @@ public class LicenseTemplateException extends Exception {
     }
 
     /**
-     * @param expectedParameters
-     * @param keySet
-     * @return
+     * Builds an exception indicating that parameter passed
+     * do not fulfill expectations.
+     * @param expectedParameters not null
+     * @param actualParameters not null
+     * @return not null
      */
     public static LicenseTemplateException parameterMismatch(
             final Collection<String> expectedParameters,
@@ -82,8 +92,10 @@ public class LicenseTemplateException extends Exception {
     }
 
     /**
-     * @param name
-     * @return
+     * Builds an exception indicating that duplicate parameter
+     * names have been passed.
+     * @param name names the parameter duplicated, not null
+     * @return not null
      */
     public static LicenseTemplateException duplicateParameterName(
             final String name) {

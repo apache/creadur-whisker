@@ -21,14 +21,28 @@ package org.apache.creadur.whisker.model;
 import java.util.Map;
 
 /**
- * 
+ * Describes a group or individual with responsibility for 
+ * upstream distributions.
  */
 public class Organisation implements Comparable<Organisation> {
 
+    /** Identifies this group or individual with responsibility. */
     private final String id;
+    /** A name for this group or individual suitable for presentation. */
     private final String name;
+    /** A locator for the home of this group or individual. */
     private final String url;
 
+    /**
+     * Constructs an instance.
+     * @param id identifies this group or individual 
+     * with responsibility for 
+     * upstream distributions, not null
+     * @param name a name for this group or individual 
+     * suitable for presentation, not null
+     * @param url a locator for the home of this group 
+     * or individual, not null
+     */
     public Organisation(final String id, final String name, final String url) {
         super();
         this.id = id;
@@ -37,7 +51,9 @@ public class Organisation implements Comparable<Organisation> {
     }
 
     /**
-     * @param organisationsById
+     * Stores this organisation by id.
+     * @param organisationsById not null
+     * @return this organisation
      */
     public Organisation storeIn(
             final Map<String, Organisation> organisationsById) {
@@ -45,16 +61,29 @@ public class Organisation implements Comparable<Organisation> {
         return this;
     }
 
+    /**
+     * Gets a name for this group or individual 
+     * suitable for presentation.
+     * @return not null
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Gets a locator for the home of this group 
+     * or individual.
+     * @return not null
+     */
     public String getURL() {
         return this.url;
     }
 
     /**
-     * @return
+     * Gets an identifier for this group or individual 
+     * with responsibility for 
+     * upstream distributions.
+     * @return not null
      */
     public String getId() {
         return this.id;
