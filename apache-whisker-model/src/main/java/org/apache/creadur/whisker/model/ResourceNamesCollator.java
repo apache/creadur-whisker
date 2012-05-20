@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.model;
 
@@ -25,16 +25,23 @@ import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
- * 
+ * Collates resources within directories, flattening the
+ * model.
  */
 public class ResourceNamesCollator extends Visitor {
 
-    private final Collection<Pair<WithinDirectory, Resource>> resources = new TreeSet<Pair<WithinDirectory, Resource>>();
-    private final Collection<Pair<WithinDirectory, Resource>> duplicates = new TreeSet<Pair<WithinDirectory, Resource>>();
+    /** Resources collected. */
+    private final Collection<Pair<WithinDirectory, Resource>> resources 
+        = new TreeSet<Pair<WithinDirectory, Resource>>();
+    /** Duplicate resources discovered. */
+    private final Collection<Pair<WithinDirectory, Resource>> duplicates 
+        = new TreeSet<Pair<WithinDirectory, Resource>>();
+    /** Last directory visited. */
     private WithinDirectory lastDirectory;
 
     /**
-     * @return the names
+     * Gets the names of the resources collected.
+     * @return not null
      */
     public Collection<String> getNames() {
         final Collection<String> names = new TreeSet<String>();
@@ -45,14 +52,17 @@ public class ResourceNamesCollator extends Visitor {
     }
 
     /**
-     * @return the duplicates
+     * Gets the duplicate resources discovered.
+     * @return not null
      */
     public Collection<Pair<WithinDirectory, Resource>> getDuplicates() {
         return this.duplicates;
     }
 
     /**
-     * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.WithinDirectory)
+     * Sets the last directory visited.
+     * @see Visitor#visit(WithinDirectory)
+     * @param directory not null
      */
     @Override
     public void visit(final WithinDirectory directory) {
@@ -60,7 +70,9 @@ public class ResourceNamesCollator extends Visitor {
     }
 
     /**
-     * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.Resource)
+     * Collects this resource.
+     * @see Visitor#visit(Resource)
+     * @param resource not null
      */
     @Override
     public void visit(final Resource resource) {
