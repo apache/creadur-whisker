@@ -27,22 +27,29 @@ public abstract class Visitor {
     public boolean traversePublicDomain() {
         return true;
     }
-    
+
     public boolean traverseWithLicense() {
         return true;
     }
-    
+
     public boolean traverseByOrganisation() {
         return true;
     }
-    
+
     public boolean traverseResource() {
         return true;
     }
 
     // Classic visitor pattern
-    public void visit(final WithinDirectory directory) {};
-    public void visit(final WithLicense license) {};
-    public void visit(final ByOrganisation byOrganisation) {};
-    public void visit(final Resource resource) {};
+    public void visit(final WithinDirectory directory) {
+    };
+
+    public void visit(final WithLicense license) {
+    };
+
+    public void visit(final ByOrganisation byOrganisation) {
+    };
+
+    public void visit(final Resource resource) {
+    };
 }

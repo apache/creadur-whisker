@@ -22,24 +22,24 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-
 /**
  * 
  */
 public class Descriptor {
-    
+
     private final License primaryLicense;
     private final String primaryOrganisationId;
     private final String primaryNotice;
     private final Map<String, License> licenses;
     private final Map<String, String> notices;
     private final Collection<WithinDirectory> contents;
-    
-    public Descriptor(License primaryLicense, String primaryOrganisationId,
-            String primaryNotice, Map<String, License> licenses,
-            Map<String, String> notices,
-            Map<String, Organisation> organisations,
-            Collection<WithinDirectory> contents) {
+
+    public Descriptor(final License primaryLicense,
+            final String primaryOrganisationId, final String primaryNotice,
+            final Map<String, License> licenses,
+            final Map<String, String> notices,
+            final Map<String, Organisation> organisations,
+            final Collection<WithinDirectory> contents) {
         super();
         this.primaryLicense = primaryLicense;
         this.primaryOrganisationId = primaryOrganisationId;
@@ -53,7 +53,7 @@ public class Descriptor {
      * @return the primaryNotice
      */
     public String getPrimaryNotice() {
-        return primaryNotice;
+        return this.primaryNotice;
     }
 
     public Map<String, Collection<Resource>> getResourceNotices() {
@@ -61,53 +61,56 @@ public class Descriptor {
         traverse(collator);
         return collator.resourceNotices(this.notices);
     }
-    
+
     public Set<String> getOtherNotices() {
         final NoticeCollator collator = new NoticeCollator();
         traverse(collator);
-        return collator.notices(notices);
+        return collator.notices(this.notices);
     }
 
     public License license(final String id) {
-        return licenses.get(id);
+        return this.licenses.get(id);
     }
-    
+
     public License getPrimaryLicense() {
-        return primaryLicense;
+        return this.primaryLicense;
     }
-    
+
     public Collection<WithinDirectory> getContents() {
-        return contents;
+        return this.contents;
     }
-    
-    public boolean isPrimary( final License license) {
+
+    public boolean isPrimary(final License license) {
         return this.primaryLicense.equals(license);
     }
-    
-    public boolean isPrimary( final ByOrganisation byOrganisation ) {
-        return byOrganisation.getId().equals(primaryOrganisationId);
+
+    public boolean isPrimary(final ByOrganisation byOrganisation) {
+        return byOrganisation.getId().equals(this.primaryOrganisationId);
     }
-    
-    public boolean isOnlyPrimary (final WithinDirectory directory) {
+
+    public boolean isOnlyPrimary(final WithinDirectory directory) {
         final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
         directory.accept(collator);
-        return collator.isOnlyLicense(getPrimaryLicense()) && collator.isOnlyOrganisation(primaryOrganisationId);
+        return collator.isOnlyLicense(getPrimaryLicense())
+                && collator.isOnlyOrganisation(this.primaryOrganisationId);
     }
-    
-    public boolean isOnlyPrimary (final WithLicense license) {
+
+    public boolean isOnlyPrimary(final WithLicense license) {
         final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
         license.accept(collator);
-        return collator.isOnlyLicense(getPrimaryLicense()) && collator.isOnlyOrganisation(primaryOrganisationId);
+        return collator.isOnlyLicense(getPrimaryLicense())
+                && collator.isOnlyOrganisation(this.primaryOrganisationId);
     }
-    
+
     public void traverse(final Visitor visitor) {
-        for (final WithinDirectory directory: getContents()) {
+        for (final WithinDirectory directory : getContents()) {
             directory.accept(visitor);
         }
     }
-   
-    public void traverseDirectory(final Visitor visitor, final String directoryName) {
-        for (final WithinDirectory directory: getContents()) {
+
+    public void traverseDirectory(final Visitor visitor,
+            final String directoryName) {
+        for (final WithinDirectory directory : getContents()) {
             if (directory.isNamed(directoryName)) {
                 directory.accept(visitor);
             }

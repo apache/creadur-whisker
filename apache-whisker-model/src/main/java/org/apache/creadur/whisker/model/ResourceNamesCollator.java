@@ -21,7 +21,6 @@ package org.apache.creadur.whisker.model;
 import java.util.Collection;
 import java.util.TreeSet;
 
-
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -29,17 +28,17 @@ import org.apache.commons.lang3.tuple.Pair;
  * 
  */
 public class ResourceNamesCollator extends Visitor {
-    
+
     private final Collection<Pair<WithinDirectory, Resource>> resources = new TreeSet<Pair<WithinDirectory, Resource>>();
     private final Collection<Pair<WithinDirectory, Resource>> duplicates = new TreeSet<Pair<WithinDirectory, Resource>>();
-    private WithinDirectory lastDirectory; 
+    private WithinDirectory lastDirectory;
 
     /**
      * @return the names
      */
     public Collection<String> getNames() {
         final Collection<String> names = new TreeSet<String>();
-        for (Pair<WithinDirectory, Resource> pair: resources) {
+        for (final Pair<WithinDirectory, Resource> pair : this.resources) {
             names.add(pair.getRight().getName());
         }
         return names;
@@ -49,16 +48,14 @@ public class ResourceNamesCollator extends Visitor {
      * @return the duplicates
      */
     public Collection<Pair<WithinDirectory, Resource>> getDuplicates() {
-        return duplicates;
+        return this.duplicates;
     }
 
-    
-    
     /**
      * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.WithinDirectory)
      */
     @Override
-    public void visit(WithinDirectory directory) {
+    public void visit(final WithinDirectory directory) {
         this.lastDirectory = directory;
     }
 
@@ -66,16 +63,19 @@ public class ResourceNamesCollator extends Visitor {
      * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.Resource)
      */
     @Override
-    public void visit(Resource resource) {
-        if (resources.add(new ImmutablePair<WithinDirectory, Resource>(lastDirectory, resource))) {
+    public void visit(final Resource resource) {
+        if (this.resources.add(new ImmutablePair<WithinDirectory, Resource>(
+                this.lastDirectory, resource))) {
             // Fine
         } else {
             // Already added
-            if (lastDirectory == null) {
+            if (this.lastDirectory == null) {
                 // Issue with logic which will result in a null pointer later
-                throw new IllegalArgumentException("Expected directory to be present");
+                throw new IllegalArgumentException(
+                        "Expected directory to be present");
             }
-            duplicates.add(new ImmutablePair<WithinDirectory, Resource>(lastDirectory, resource));
+            this.duplicates.add(new ImmutablePair<WithinDirectory, Resource>(
+                    this.lastDirectory, resource));
         }
     }
 }

@@ -24,42 +24,44 @@ import java.util.Collection;
  * 
  */
 public class ByOrganisation implements Comparable<ByOrganisation> {
-    
+
     private final Organisation organisation;
     private final Collection<Resource> resources;
-    
-    
+
     /**
-     * @param resources not null
-     * @param organisation not null
+     * @param resources
+     *            not null
+     * @param organisation
+     *            not null
      */
-    public ByOrganisation(final Organisation organisation, final Collection<Resource> resources) {
+    public ByOrganisation(final Organisation organisation,
+            final Collection<Resource> resources) {
         super();
         this.organisation = organisation;
         this.resources = resources;
     }
 
     public String getName() {
-        return organisation.getName();
+        return this.organisation.getName();
     }
-    
+
     public String getURL() {
-        return organisation.getURL();
+        return this.organisation.getURL();
     }
-    
+
     public String getId() {
-        return organisation.getId();
+        return this.organisation.getId();
     }
-   
+
     public Collection<Resource> getResources() {
-        return resources;
+        return this.resources;
     }
-    
+
     /**
      * @return the organisation
      */
     public Organisation getOrganisation() {
-        return organisation;
+        return this.organisation;
     }
 
     /**
@@ -69,8 +71,10 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result
-                + ((organisation == null) ? 0 : organisation.hashCode());
+        result = prime
+                * result
+                + ((this.organisation == null) ? 0 : this.organisation
+                        .hashCode());
         return result;
     }
 
@@ -78,36 +82,41 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
-        ByOrganisation other = (ByOrganisation) obj;
-        if (organisation == null) {
-            if (other.organisation != null)
+        }
+        final ByOrganisation other = (ByOrganisation) obj;
+        if (this.organisation == null) {
+            if (other.organisation != null) {
                 return false;
-        } else if (!organisation.equals(other.organisation))
+            }
+        } else if (!this.organisation.equals(other.organisation)) {
             return false;
+        }
         return true;
     }
 
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    public int compareTo(ByOrganisation other) {
-        return organisation.compareTo(other.getOrganisation());
+    public int compareTo(final ByOrganisation other) {
+        return this.organisation.compareTo(other.getOrganisation());
     }
 
     /**
      * @param visitor
      */
-    public void accept(Visitor visitor) {
+    public void accept(final Visitor visitor) {
         if (visitor != null && visitor.traverseByOrganisation()) {
             visitor.visit(this);
-            for (final Resource resource: getResources()) {
+            for (final Resource resource : getResources()) {
                 resource.accept(visitor);
             }
         }
@@ -115,7 +124,7 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
 
     @Override
     public String toString() {
-        return "ByOrganisation [organisation=" + organisation + ", resources="
-                + resources + "]";
+        return "ByOrganisation [organisation=" + this.organisation
+                + ", resources=" + this.resources + "]";
     }
 }

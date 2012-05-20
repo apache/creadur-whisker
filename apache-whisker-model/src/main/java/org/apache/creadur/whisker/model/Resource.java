@@ -18,20 +18,20 @@
  */
 package org.apache.creadur.whisker.model;
 
-
 /**
  * 
  */
-public class Resource implements Comparable<Resource>{
+public class Resource implements Comparable<Resource> {
 
     private final String name;
     private final String noticeId;
     private final String source;
-    
+
     /**
      * @param name
      */
-    public Resource(String name, final String noticeId, final String source) {
+    public Resource(final String name, final String noticeId,
+            final String source) {
         super();
         this.name = name;
         this.noticeId = noticeId;
@@ -42,14 +42,14 @@ public class Resource implements Comparable<Resource>{
      * @return the name
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
      * @return the noticeId
      */
     public String getNoticeId() {
-        return noticeId;
+        return this.noticeId;
     }
 
     /**
@@ -59,7 +59,8 @@ public class Resource implements Comparable<Resource>{
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result
+                + ((this.name == null) ? 0 : this.name.hashCode());
         return result;
     }
 
@@ -67,19 +68,24 @@ public class Resource implements Comparable<Resource>{
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
-        Resource other = (Resource) obj;
-        if (name == null) {
-            if (other.name != null)
+        }
+        final Resource other = (Resource) obj;
+        if (this.name == null) {
+            if (other.name != null) {
                 return false;
-        } else if (!name.equals(other.name))
+            }
+        } else if (!this.name.equals(other.name)) {
             return false;
+        }
         return true;
     }
 
@@ -88,20 +94,20 @@ public class Resource implements Comparable<Resource>{
      */
     @Override
     public String toString() {
-        return "Resource [name=" + name + "]";
+        return "Resource [name=" + this.name + "]";
     }
 
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    public int compareTo(Resource other) {
+    public int compareTo(final Resource other) {
         return getName().compareTo(other.getName());
     }
 
     /**
      * @param visitor
      */
-    public void accept(Visitor visitor) {
+    public void accept(final Visitor visitor) {
         if (visitor != null && visitor.traverseResource()) {
             visitor.visit(this);
         }
@@ -111,7 +117,7 @@ public class Resource implements Comparable<Resource>{
      * @return the source
      */
     public String getSource() {
-        return source;
+        return this.source;
     }
 
     /**

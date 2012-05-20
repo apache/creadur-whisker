@@ -28,18 +28,19 @@ public class LicenseAndOrganisationCollator extends Visitor {
 
     private final Set<License> licenses = new TreeSet<License>();
     private final Set<Organisation> organisations = new TreeSet<Organisation>();
-    
+
     /**
      * @return the licenses
      */
     public Set<License> getLicenses() {
-        return licenses;
+        return this.licenses;
     }
+
     /**
      * @return the organisation
      */
     public Set<Organisation> getOrganisation() {
-        return organisations;
+        return this.organisations;
     }
 
     /**
@@ -49,39 +50,43 @@ public class LicenseAndOrganisationCollator extends Visitor {
     public boolean traverseResource() {
         return false;
     }
-    
+
     /**
      * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.WithLicense)
      */
     @Override
-    public void visit(WithLicense license) {
-        licenses.add(license.getLicense());
+    public void visit(final WithLicense license) {
+        this.licenses.add(license.getLicense());
     }
-    
+
     public boolean isOnlyLicense(final License license) {
-        return (licenses.size() == 1) && licenses.contains(license);
+        return (this.licenses.size() == 1) && this.licenses.contains(license);
     }
-    
+
     /**
      * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.ByOrganisation)
      */
     @Override
-    public void visit(ByOrganisation byOrganisation) {
-        organisations.add(byOrganisation.getOrganisation());
+    public void visit(final ByOrganisation byOrganisation) {
+        this.organisations.add(byOrganisation.getOrganisation());
     }
+
     /**
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        return "LicenseAndOrganisationCollator [licenses=" + licenses
-                + ", organisations=" + organisations + "]";
+        return "LicenseAndOrganisationCollator [licenses=" + this.licenses
+                + ", organisations=" + this.organisations + "]";
     }
+
     /**
      * @param primaryOrganisationId
      * @return
      */
-    public boolean isOnlyOrganisation(String primaryOrganisationId) {
-        return organisations.size() == 1 && organisations.iterator().next().getId().equals(primaryOrganisationId);
+    public boolean isOnlyOrganisation(final String primaryOrganisationId) {
+        return this.organisations.size() == 1
+                && this.organisations.iterator().next().getId()
+                        .equals(primaryOrganisationId);
     }
 }

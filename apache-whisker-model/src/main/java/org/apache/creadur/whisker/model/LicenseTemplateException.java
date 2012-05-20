@@ -32,44 +32,42 @@ public class LicenseTemplateException extends Exception {
      * @param parameters
      * @return
      */
-    public static LicenseTemplateException notLicenseTemplate(Map<String, String> parameters, String name) {
-        return new LicenseTemplateException("This is not a templated license", parameters, name);
+    public static LicenseTemplateException notLicenseTemplate(
+            final Map<String, String> parameters, final String name) {
+        return new LicenseTemplateException("This is not a templated license",
+                parameters, name);
     }
 
-    
     /**
      * @param string
      * @param parameters
      */
-    public LicenseTemplateException(String message,
-            Map<String, String> parameters, String name) {
+    public LicenseTemplateException(final String message,
+            final Map<String, String> parameters, final String name) {
         // TODO: improve reporting
         super(message);
     }
-
 
     /**
      * @param message
      * @param expectedParameters
      * @param actualParameters
      */
-    public LicenseTemplateException(String message,
-            Collection<String> expectedParameters,
-            Collection<String> actualParameters) {
+    public LicenseTemplateException(final String message,
+            final Collection<String> expectedParameters,
+            final Collection<String> actualParameters) {
         // TODO improve reporting
         super(message);
     }
-
 
     /**
      * @param string
      * @param name
      */
-    public LicenseTemplateException(String message, String name) {
+    public LicenseTemplateException(final String message, final String name) {
         // TODO improve reporting
         super(message);
     }
-
 
     /**
      * @param expectedParameters
@@ -77,18 +75,19 @@ public class LicenseTemplateException extends Exception {
      * @return
      */
     public static LicenseTemplateException parameterMismatch(
-            Collection<String> expectedParameters, Collection<String> actualParameters) {
-        return new LicenseTemplateException("Parameter mismatch.", expectedParameters, actualParameters);
+            final Collection<String> expectedParameters,
+            final Collection<String> actualParameters) {
+        return new LicenseTemplateException("Parameter mismatch.",
+                expectedParameters, actualParameters);
     }
-
 
     /**
      * @param name
      * @return
      */
-    public static LicenseTemplateException duplicateParameterName(String name) {
+    public static LicenseTemplateException duplicateParameterName(
+            final String name) {
         return new LicenseTemplateException("Duplicate parameter name.", name);
     }
-
 
 }

@@ -25,58 +25,62 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-
 /**
  * 
  */
 public class NoticeCollator extends Visitor {
-    
+
     private final Map<String, Collection<Resource>> resourcesByNoticeId = new HashMap<String, Collection<Resource>>();
-    
+
     /**
      * @return the noticeIds
      */
     public Set<String> getNoticeIds() {
-        return resourcesByNoticeId.keySet();
+        return this.resourcesByNoticeId.keySet();
     }
 
     /**
      * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.Resource)
      */
     @Override
-    public void visit(Resource resource) {
+    public void visit(final Resource resource) {
         final String noticeId = resource.getNoticeId();
         if (noticeId != null) {
-            if (!resourcesByNoticeId.containsKey(noticeId)) {
-                resourcesByNoticeId.put(noticeId, new TreeSet<Resource>());
+            if (!this.resourcesByNoticeId.containsKey(noticeId)) {
+                this.resourcesByNoticeId.put(noticeId, new TreeSet<Resource>());
             }
-            resourcesByNoticeId.get(noticeId).add(resource);
+            this.resourcesByNoticeId.get(noticeId).add(resource);
         }
     }
 
-    public Map<String, Collection<Resource>> resourceNotices(Map<String, String> notices) {
+    public Map<String, Collection<Resource>> resourceNotices(
+            final Map<String, String> notices) {
         final Map<String, Collection<Resource>> results = new HashMap<String, Collection<Resource>>();
-        for (Map.Entry<String, Collection<Resource>> entry: resourcesByNoticeId.entrySet()) {
+        for (final Map.Entry<String, Collection<Resource>> entry : this.resourcesByNoticeId
+                .entrySet()) {
             if (notices.containsKey(entry.getKey())) {
-                results.put(notices.get(entry.getKey()), new TreeSet<Resource>(entry.getValue()));
+                results.put(notices.get(entry.getKey()), new TreeSet<Resource>(
+                        entry.getValue()));
             } else {
-                throw new IllegalArgumentException("Notice missing for id " + entry.getKey());
+                throw new IllegalArgumentException("Notice missing for id "
+                        + entry.getKey());
             }
         }
         return results;
     }
-    
+
     /**
      * @param notices
      * @return
      */
-    public Set<String> notices(Map<String, String> notices) {
+    public Set<String> notices(final Map<String, String> notices) {
         final Set<String> results = new HashSet<String>();
-        for (final String id: getNoticeIds()) {
+        for (final String id : getNoticeIds()) {
             if (notices.containsKey(id)) {
                 results.add(notices.get(id));
             } else {
-                throw new IllegalArgumentException("Notice missing for id " + id);
+                throw new IllegalArgumentException("Notice missing for id "
+                        + id);
             }
         }
         return results;

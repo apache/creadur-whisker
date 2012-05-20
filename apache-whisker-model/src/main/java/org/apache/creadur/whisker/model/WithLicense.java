@@ -22,23 +22,21 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
-
 /**
  * 
  */
 public class WithLicense implements Comparable<WithLicense> {
-    
-    
+
     private final License license;
     private final Collection<ByOrganisation> organisations;
     private final String copyrightNotice;
     private final Map<String, String> parameters;
-        /**
+
+    /**
      * @param license
      * @param element
      */
-    public WithLicense(License license,     
-            final String copyrightNotice,
+    public WithLicense(final License license, final String copyrightNotice,
             final Map<String, String> parameters,
             final Collection<ByOrganisation> organisations) {
         super();
@@ -49,57 +47,57 @@ public class WithLicense implements Comparable<WithLicense> {
     }
 
     public String getCopyrightNotice() {
-        return copyrightNotice;
+        return this.copyrightNotice;
     }
-    
+
     public String getName() {
-        return license.getName();
+        return this.license.getName();
     }
-    
+
     public String getURL() {
-        return license.getURL();
+        return this.license.getURL();
     }
-    
+
     public License getLicense() {
-        return license;
+        return this.license;
     }
-    
+
     public String getText() throws LicenseTemplateException {
-        return license.getText(parameters);
+        return this.license.getText(this.parameters);
     }
-    
+
     public Collection<ByOrganisation> getOrganisations() {
-        return organisations;
+        return this.organisations;
     }
 
     public Map<String, String> getParameters() {
-        return parameters;
+        return this.parameters;
     }
 
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    public int compareTo(WithLicense other) {
-        return license.compareTo(other.getLicense());
+    public int compareTo(final WithLicense other) {
+        return this.license.compareTo(other.getLicense());
     }
-    
 
     /**
      * @param visitor
      */
-    public void accept(Visitor visitor) {
+    public void accept(final Visitor visitor) {
         if (visitor != null && visitor.traverseWithLicense()) {
             visitor.visit(this);
-            for (final ByOrganisation organisation: getOrganisations()) {
+            for (final ByOrganisation organisation : getOrganisations()) {
                 organisation.accept(visitor);
             }
         }
     }
+
     /**
      * @return
      */
     public boolean isSourceRequired() {
-        return license.isSourceRequired();
+        return this.license.isSourceRequired();
     }
-    
+
 }

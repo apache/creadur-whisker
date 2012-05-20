@@ -20,41 +20,40 @@ package org.apache.creadur.whisker.model;
 
 import java.util.Collection;
 
-
 /**
  * 
  */
 public class WithinDirectory implements Comparable<WithinDirectory> {
 
-
     private final Collection<WithLicense> licenses;
     private final Collection<ByOrganisation> publicDomain;
     private final String name;
-     
+
     /**
      * @param element
      */
-    public WithinDirectory(final String name, final Collection<WithLicense> licenses, 
-            Collection<ByOrganisation> publicDomain) {
+    public WithinDirectory(final String name,
+            final Collection<WithLicense> licenses,
+            final Collection<ByOrganisation> publicDomain) {
         super();
         this.name = name;
         this.licenses = licenses;
         this.publicDomain = publicDomain;
     }
-    
+
     /**
      * @return the publicDomain
      */
     public Collection<ByOrganisation> getPublicDomain() {
-        return publicDomain;
+        return this.publicDomain;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
-    
+
     public Collection<WithLicense> getLicenses() {
-        return licenses;
+        return this.licenses;
     }
 
     /**
@@ -69,13 +68,16 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         final WithinDirectory other = (WithinDirectory) obj;
         return getName().equals(other.getName());
     }
@@ -83,37 +85,34 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
     /**
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
-    public int compareTo(WithinDirectory other) {
+    public int compareTo(final WithinDirectory other) {
         return getName().compareTo(other.getName());
     }
-
 
     /**
      * @param directoryName
      * @return
      */
-    public boolean isNamed(String directoryName) {
+    public boolean isNamed(final String directoryName) {
         return getName().equals(directoryName);
     }
-
 
     /**
      * @param visitor
      */
-    public void accept(Visitor visitor) {
-        if (visitor != null) {      
+    public void accept(final Visitor visitor) {
+        if (visitor != null) {
             visitor.visit(this);
             if (visitor.traversePublicDomain()) {
-                for (final ByOrganisation organisation: getPublicDomain()) {
+                for (final ByOrganisation organisation : getPublicDomain()) {
                     organisation.accept(visitor);
-                }        
+                }
             }
-    
-            for (final WithLicense license: getLicenses()) {
+
+            for (final WithLicense license : getLicenses()) {
                 license.accept(visitor);
             }
         }
     }
-    
-    
+
 }
