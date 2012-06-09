@@ -25,6 +25,11 @@ What Is Apache Whisker?
 documentation. Whisker is part of the Apache Creadur suite of tools for
 auditing and comprehending software distributions.
 
+  Apache Whisker is developed by the {{{http://creadur.apache.org}Apache Creadur project}}, 
+a language- and build-agnostic home for software distribution comprehension 
+and audit tools.
+
+
 * What's An Assembled Application?
 
   An assembled application is composed from libraries and frameworks. 

@@ -20,11 +20,18 @@
 <project name="Apache Whisker">
   <body>
     <menu name='Apache Whisker'>
-       <item name='Introduction' href='index.html'/>
+       <item name='Introducing Whisker' href='index.html'/>
        <item name='Meta Data' href='meta-data.html'/>
        <item name='Maven Plugin' href='apache-whisker-plugin4maven/index.html'/>
        <item name='Command Line' href='apache-whisker-cli/index.html'/>
     </menu>
+    
+    <menu name="Apache Creadur">
+		<item name='Project Home' href="http://creadur.apache.org"/>
+		<item name='Apache Rat' href="http://creadur.apache.org/rat"/>  
+		<item name='Apache Tentacles' href="http://creadur.apache.org/tentacles"/>
+	</menu>
+    
     
     <menu ref='reports'/>
   </body>
