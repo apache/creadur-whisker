@@ -123,6 +123,7 @@
 	        <configuration>
 	          <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
 	          <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
+	          <relativizeDecorationLinks>false</relativizeDecorationLinks>
 	          <!-- reporting plugins are configured according to new mvn3 standard -->
 	          <reportPlugins>
 	            <plugin>
@@ -245,7 +246,7 @@
   
   <name>Apache Whisker</name>
   <description>Apache Whisker wrangles legal documentation for composed applications.</description>
-  <url>http://creadur.apache.org/whisker</url>
+  <url>http://creadur.apache.org/whisker/</url>
   <inceptionYear>2011</inceptionYear>
   
   <licenses>
