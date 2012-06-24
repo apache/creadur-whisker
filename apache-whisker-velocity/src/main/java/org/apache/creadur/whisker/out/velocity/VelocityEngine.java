@@ -51,8 +51,7 @@ public class VelocityEngine extends AbstractEngine {
      * @param writerFactory not null
      * @return this engine, not null
      * @throws Exception when generation fails
-     * @see org.apache.rat.whisker.app.AbstractEngine#generateTemplate(
-     * java.util.Collection, ResultWriterFactory)
+     * @see AbstractEngine#generateTemplate(Collection, ResultWriterFactory)
      */
     @Override
     public final AbstractEngine generateTemplate(

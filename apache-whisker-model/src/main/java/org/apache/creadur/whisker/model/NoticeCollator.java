@@ -40,7 +40,7 @@ public class NoticeCollator extends Visitor {
     }
 
     /**
-     * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.Resource)
+     * @see Visitor#visit(Resource)
      */
     @Override
     public void visit(final Resource resource) {

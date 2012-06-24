@@ -23,7 +23,7 @@ import java.io.File;
 import org.apache.creadur.whisker.app.StreamableResource;
 
 /**
- * Conveniently builds {@link org.apache.rat.whisker.app.StreamableResource} implementations.
+ * Conveniently builds {@link StreamableResource} implementations.
  */
 public class StreamableResourceFactory {
 

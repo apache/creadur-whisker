@@ -55,7 +55,7 @@ public class StreamableClassPathResource extends StreamableResource {
 
 
     /**
-     * @see org.apache.rat.whisker.app.StreamableResource#open()
+     * @see StreamableResource#open()
      */
     @Override
     public InputStream open() throws IOException {

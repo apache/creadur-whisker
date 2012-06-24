@@ -44,7 +44,7 @@ public class ResourceSourceAuditor extends Visitor {
     = new TreeSet<Pair<WithinDirectory, Resource>>();
     
     /**
-     * @see org.apache.rat.whisker.legacy.out.Visitor#traversePublicDomain()
+     * @see Visitor#traversePublicDomain()
      */
     @Override
     public boolean traversePublicDomain() {
@@ -69,7 +69,7 @@ public class ResourceSourceAuditor extends Visitor {
     }
 
     /**
-     * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.WithinDirectory)
+     * @see Visitor#visit(WithinDirectory)
      */
     @Override
     public void visit(WithinDirectory directory) {
@@ -79,7 +79,7 @@ public class ResourceSourceAuditor extends Visitor {
 
 
     /**
-     * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.WithLicense)
+     * @see Visitor#visit(WithLicense)
      */
     @Override
     public void visit(WithLicense license) {
@@ -87,7 +87,7 @@ public class ResourceSourceAuditor extends Visitor {
     }
 
     /**
-     * @see org.apache.rat.whisker.legacy.out.Visitor#visit(org.apache.rat.whisker.legacy.out.Resource)
+     * @see Visitor#visit(Resource)
      */
     @Override
     public void visit(Resource resource) {
