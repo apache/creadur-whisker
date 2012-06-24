@@ -218,7 +218,7 @@ public class VelocityReports implements LogChute {
      * @return not null
      */
     private String template(final String name) {
-        return "org/apache/rat/whisker/template/velocity/"
+        return "org/apache/creadur/whisker/template/velocity/"
                 + name.toLowerCase() + ".vm";
     }
 
