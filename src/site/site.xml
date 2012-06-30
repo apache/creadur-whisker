@@ -48,6 +48,16 @@
 		<item name='Thanks' href='http://www.apache.org/foundation/thanks.html'/>
 	</menu>
     
+    <menu name="The Apache Software Foundation" inherit="bottom">
+        <item name='About the ASF' 
+            href="http://www.apache.org/foundation"/>
+        <item name='How Apache works' 
+            href='http://www.apache.org/foundation/how-it-works.html'/>
+        <item name='Some history' 
+            href='http://www.apache.org/foundation/how-it-works.html#history'/>
+        <item name='News' 
+            href='http://blogs.apache.org/foundation/'/>
+    </menu>
     
     <menu ref='reports'/>
   </body>
