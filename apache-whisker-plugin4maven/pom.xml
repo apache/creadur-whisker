@@ -115,24 +115,16 @@
           </execution>
         </executions>
       </plugin>
-    </plugins>
-  </build>
-
- <!-- 
-  
-  
-  ================================  
-  Reports for the site
-  -->
-  <reporting>
-    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
-        <version>2.9</version>
+        <version>3.0</version>
+        <configuration>
+          <goalPrefix>plugin</goalPrefix>
+        </configuration>
       </plugin>
     </plugins>
-  </reporting> 
+  </build>
 
  <!-- 
   
