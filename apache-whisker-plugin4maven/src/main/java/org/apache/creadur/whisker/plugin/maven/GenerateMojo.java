@@ -46,7 +46,7 @@ public class GenerateMojo extends AbstractMojo {
     
     /**
      * The licensing materials will be encoding thus.
-     * @parameter expression="${outputEncoding}" default-value="${project.build.sourceEncoding}"
+     * @parameter property="outputEncoding" default-value="${project.build.sourceEncoding}"
      */
     private String outputEncoding;
 
@@ -55,7 +55,7 @@ public class GenerateMojo extends AbstractMojo {
      * the expected contents of the assembled application.
      * 
      * @required
-     * @parameter expression="${apacheWhiskerDescriptor}"
+     * @parameter property="apacheWhiskerDescriptor"
      */
     private File descriptor;
     
