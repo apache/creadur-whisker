@@ -62,6 +62,10 @@
         <item name='News' 
             href='http://blogs.apache.org/foundation/'/>
     </menu>
+   
+    <menu name="Contribute" inherit="bottom">
+      <item name="Get Involved" href='http://www.apache.org/foundation/getinvolved.html'/>
+    </menu>
     
     <menu name="Committer Info" inherit="bottom">
       <item name="Committers' FAQ" href='http://www.apache.org/dev/committers.html'/>
