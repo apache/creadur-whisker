@@ -39,7 +39,7 @@
     </menu>
     
     <menu name="Apache Creadur" inherit="bottom">
-		<item name='Project Home' href="http://creadur.apache.org"/>
+		<item name='Creadur Project Home' href="http://creadur.apache.org"/>
 		<item name='Apache Rat' href="http://creadur.apache.org/rat"/>  
 		<item name='Apache Tentacles' href="http://creadur.apache.org/tentacles"/>
 		<item name='Security' href='http://www.apache.org/security/'/>
