@@ -125,6 +125,7 @@
 	          <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
 	          <relativizeDecorationLinks>false</relativizeDecorationLinks>
 	          <!-- reporting plugins are configured according to new mvn3 standard -->
+              <!-- Until Maven finds a way to allow inheritance, duplicated in plugin4maven -->
 	          <reportPlugins>
 	            <plugin>
 	              <groupId>org.apache.maven.plugins</groupId>
