@@ -17,7 +17,7 @@
   specific language governing permissions and limitations
   under the License.    
 -->
-<project name="Apache Whisker">
+<project name="Apache Whisker&trade;">
   <bannerRight>
     <title>The Apache Software Foundation</title>
     <name>The Apache Software Foundation</name>
@@ -31,14 +31,14 @@
       <item name="Whisker" href="http://creadur.apache.org/whisker/"/>
     </breadcrumbs>
   
-    <menu name='Apache Whisker' inherit="bottom">
+    <menu name='Apache Whisker&trade;' inherit="bottom">
        <item name='Introducing Whisker' href='index.html'/>
        <item name='Meta Data' href='meta-data.html'/>
        <item name='Maven Plugin' href='apache-whisker-plugin4maven/index.html'/>
        <item name='Command Line' href='apache-whisker-cli/index.html'/>
     </menu>
     
-    <menu name="Apache Creadur" inherit="bottom">
+    <menu name="Apache Creadur &trade;" inherit="bottom">
 		<item name='Creadur Project Home' href="http://creadur.apache.org"/>
 		<item name='Apache Rat' href="http://creadur.apache.org/rat"/>  
 		<item name='Apache Tentacles' href="http://creadur.apache.org/tentacles"/>
