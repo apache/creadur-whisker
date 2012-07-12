@@ -18,14 +18,21 @@
   under the License.    
 -->
 <faqs id="FAQ" title="Frequently Asked Questions">
-  <part id="General">
-  <!-- Template 
-    <faq id="question">
-      <question></question>
+  <part id="General"> 
+    <faq id="when-will-validation-arrive">
+      <question>Why is validation missing?</question>
       <answer>
-        <p></p>
+        <p>Not all features available on the 
+        <a href='http://creadur.apache.org/whisker/apache-whisker-cli/index.html'>command line</a>
+        are available in the Maven plugin yet. If you can
+        spare a few cycles to 
+        <a href='http://www.apache.org/foundation/getinvolved.html'>help development</a>, that'd be 
+        greatly appreciated. Take a look at the 
+        <a href='source-repository.html'>source</a> 
+        then please join us on our
+        <a href='./mail-lists.html'>mail lists</a>
+        or open a <a href='./issue-tracking.html'>issue</a>.</p>
       </answer>
     </faq>
-    -->
   </part>
 </faqs>
