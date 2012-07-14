@@ -69,5 +69,5 @@ useful not only for building components but also for assembling them into applic
   To provide you with better understanding of some usages of the Plugin Name,
   you can take a look into the following examples:
   
-  * TODO
+  * {{{./examples/generation-in-5-mins.html}Generation In 5 Minutes}}
   

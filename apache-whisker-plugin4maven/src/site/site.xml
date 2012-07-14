@@ -27,6 +27,9 @@
     </menu>
    
     <menu name="Examples">
+    <item 
+        name="In 5 Minutes" 
+        href="examples/generation-in-5-mins.html"/>
     </menu>
     <menu ref='parent'/>
     <menu ref='reports'/>
