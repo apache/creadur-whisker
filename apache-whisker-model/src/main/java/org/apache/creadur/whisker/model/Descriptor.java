@@ -190,4 +190,30 @@ public class Descriptor {
         }
     }
 
+    /**
+     * Is a NOTICE document required?
+     * @return true when a NOTICE is required, false otherwise
+     */
+    public boolean isNoticeRequired() {
+       return primaryNoticeExists() || resourceNoticesExist(); 
+    }
+
+    /**
+     * Does any resource have a required notice?
+     * @return true when at least one required third party notice
+     * exists, false otherwise
+     */
+    public boolean resourceNoticesExist() {
+        return !getResourceNotices().isEmpty();
+    }
+
+    /**
+     * Does the work described have a primary notice?
+     * @return true unless the primary notice is null 
+     * or whitespace
+     */
+    public boolean primaryNoticeExists() {
+        return (this.primaryNotice != null) &&
+                   !"".equals(this.primaryNotice.trim());
+    }
 }

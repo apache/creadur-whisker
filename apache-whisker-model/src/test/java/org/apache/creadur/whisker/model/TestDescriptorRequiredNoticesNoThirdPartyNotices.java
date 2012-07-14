@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.creadur.whisker.out.velocity;
+package org.apache.creadur.whisker.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,18 +24,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.creadur.whisker.app.Result;
-import org.apache.creadur.whisker.model.Descriptor;
-import org.apache.creadur.whisker.model.License;
-import org.apache.creadur.whisker.model.Organisation;
-import org.apache.creadur.whisker.model.WithinDirectory;
-
 import junit.framework.TestCase;
 
-public class TestNoticeGeneration extends TestCase {
-    
-    StringResultWriterFactory writerFactory;
-    VelocityEngine subject;
+public class TestDescriptorRequiredNoticesNoThirdPartyNotices extends TestCase {
+
     License primaryLicense = new License(false, "This is the license text", Collections.<String> emptyList(), "example.org", "http://example.org", "Example License");
     String primaryOrg = "example.org";
     String primaryNotice = "The primary notice.";
@@ -44,39 +36,45 @@ public class TestNoticeGeneration extends TestCase {
     Map<String, String> notices = new HashMap<String, String>();
     Map<String, Organisation> organisations = new HashMap<String, Organisation>();
     
-    @Override
+    Descriptor subject;
+    
     protected void setUp() throws Exception {
         super.setUp();
-        writerFactory = new StringResultWriterFactory();
-        subject = new VelocityEngine(new EmptyLog());
         primaryLicense.storeIn(licenses);
     }
 
-    @Override
     protected void tearDown() throws Exception {
         super.tearDown();
     }
-    
-    public void testThatWhenThereAreNoThirdPartyNoticesHeaderIsNotShown() throws Exception {
-        Descriptor work = 
+
+    public void testNoticeRequiredWhenPrimaryNoticeExists() throws Exception {
+        subject = 
                 new Descriptor(primaryLicense, primaryOrg,  primaryNotice, 
                         licenses, notices, organisations, contents);
-        
-        subject.generate(work, writerFactory);
-        
-        assertEquals("Only one request for NOTICE writer", 1, writerFactory.requestsFor(Result.NOTICE));
-        assertEquals("When no third party notices, expect that only the primary notice is output", primaryNotice, writerFactory.firstOutputFor(Result.NOTICE).trim());
-    }
-    
-    public void testThatOutputIsEmptyWhenThereAreNoNotices() throws Exception {
-        Descriptor work = 
-                new Descriptor(primaryLicense, primaryOrg,  "", 
-                        licenses, notices, organisations, contents);
-        
-        subject.generate(work, writerFactory);
-        
-        assertEquals("Only one request for NOTICE writer", 1, writerFactory.requestsFor(Result.NOTICE));
-        assertEquals("When no notices, expect that output is empty", "", writerFactory.firstOutputFor(Result.NOTICE));
+        assertTrue("When primary notices exists, even if there are not other notices display is required", subject.isNoticeRequired());        
     }
 
+    public void testNoticeNotRequiredWhenPrimaryNoticeIsNullAndNoNotices() throws Exception {
+        subject = 
+                new Descriptor(primaryLicense, primaryOrg,  null, 
+                        licenses, notices, organisations, contents);
+        assertFalse("When no other notices exist and no primary notice, display is not required", 
+                subject.isNoticeRequired());        
+    }
+
+    public void testNoticeNotRequiredWhenPrimaryNoticeIsEmptyAndNoNotices() throws Exception {
+        subject = 
+                new Descriptor(primaryLicense, primaryOrg,  "", 
+                        licenses, notices, organisations, contents);
+        assertFalse("When no other notices exist and no primary notice, display is not required", 
+                subject.isNoticeRequired());        
+    }
+
+    public void testNoticeNotRequiredWhenPrimaryNoticeIsWhitespaceAndNoNotices() throws Exception {
+        subject = 
+                new Descriptor(primaryLicense, primaryOrg,  "   ", 
+                        licenses, notices, organisations, contents);
+        assertFalse("When no other notices exist and no primary notice, display is not required", 
+                subject.isNoticeRequired());        
+    }
 }
