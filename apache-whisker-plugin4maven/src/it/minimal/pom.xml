@@ -26,12 +26,12 @@
   
   
   <groupId>org.apache.creadur.whisker.it</groupId>
-  <artifactId>HelloWorld</artifactId>
+  <artifactId>SimpleGeneration</artifactId>
   <version>@project.version@</version>
   
-  <name>Smoke Test</name>
+  <name>Minimal Generation</name>
   <description>
-  Basic integration test for LICENSE and NOTICE generation. 
+  The very simple example used in 5 min example. 
   </description>
   
   <properties>
@@ -60,5 +60,5 @@
         </plugin>
     </plugins>
   </build>
-  
+ 
 </project>
