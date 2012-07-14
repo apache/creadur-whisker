@@ -23,7 +23,7 @@ $indent.indent(2, $work.PrimaryNotice)
 
 
 #if ( ! $work.ResourcesRequiringSourceLinks.isEmpty() )
-  Download the source for:
+  ##Download the source for:
 #foreach ( $resource in $work.ResourcesRequiringSourceLinks )
     $resource.Name from $resource.Source
 #end

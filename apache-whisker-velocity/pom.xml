@@ -62,6 +62,12 @@
     </dependency>
     
     <dependency>
+      <groupId>org.jmock</groupId>
+      <artifactId>jmock-junit3</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-scan</artifactId>
       <version>${project.version}</version>
