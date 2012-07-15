@@ -19,7 +19,9 @@
 package org.apache.creadur.whisker.out.velocity;
 
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
@@ -168,7 +170,21 @@ public class VelocityReports implements LogChute {
      * @throws Exception when generation fails
      */
     public final void generate(final Descriptor work) throws Exception {
-        merge(PRODUCTS_THAT_GENERATE_LICENSING_MATERIALS, context(work));
+        final List<Product> products = new ArrayList<Product>();
+        for (Product product: PRODUCTS_THAT_GENERATE_LICENSING_MATERIALS) {
+            switch (product) {
+                case NOTICE:
+                    if (!work.isNoticeRequired()) {
+                        break;
+                    }
+                default:
+                    products.add(product);
+            }
+                
+                
+        }
+        final Product[] pruductArray = new Product[products.size()]; 
+        merge(products.toArray(pruductArray), context(work));
     }
 
     /**

@@ -68,15 +68,14 @@ public class TestNoticeGeneration extends TestCase {
         assertEquals("When no third party notices, expect that only the primary notice is output", primaryNotice, writerFactory.firstOutputFor(Result.NOTICE).trim());
     }
     
-    public void testThatOutputIsEmptyWhenThereAreNoNotices() throws Exception {
+    public void testThatNoticeOutputIsSkippedWhenThereAreNoNotices() throws Exception {
         Descriptor work = 
                 new Descriptor(primaryLicense, primaryOrg,  "", 
                         licenses, notices, organisations, contents);
         
         subject.generate(work, writerFactory);
         
-        assertEquals("Only one request for NOTICE writer", 1, writerFactory.requestsFor(Result.NOTICE));
-        assertEquals("When no notices, expect that output is empty", "", writerFactory.firstOutputFor(Result.NOTICE));
+        assertEquals("No requests for NOTICE writer", 0, writerFactory.requestsFor(Result.NOTICE));
     }
 
 }

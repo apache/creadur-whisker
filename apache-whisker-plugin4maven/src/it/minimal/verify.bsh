@@ -23,7 +23,7 @@ try {
     File license = new File(basedir, "target/LICENSE");
     File notice = new File(basedir, "target/NOTICE");
     
-    return license.exists() && notice.exists();    
+    return license.exists() && !notice.exists();    
 
 } catch (Throwable t) {
     t.printStackTrace();
