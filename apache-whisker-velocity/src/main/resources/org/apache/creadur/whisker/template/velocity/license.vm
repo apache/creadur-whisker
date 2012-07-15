@@ -20,7 +20,9 @@
 #################################################################################
 $work.PrimaryLicense.Text
 
+#if ( ! $work.isPrimaryOnly() )
 This distribution contains third party resources.
+#end
 #foreach( $directory in $work.Contents )
 #if (! $work.isOnlyPrimary( $directory ) )
 Within the $directory.Name directory

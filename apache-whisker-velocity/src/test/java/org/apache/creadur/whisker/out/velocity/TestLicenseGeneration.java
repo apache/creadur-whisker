@@ -32,11 +32,12 @@ import org.apache.creadur.whisker.model.WithinDirectory;
 
 import junit.framework.TestCase;
 
-public class TestNoticeGeneration extends TestCase {
+public class TestLicenseGeneration extends TestCase {
     
     StringResultWriterFactory writerFactory;
     VelocityEngine subject;
-    License primaryLicense = new License(false, "This is the license text", Collections.<String> emptyList(), "example.org", "http://example.org", "Example License");
+    String primaryLicenseText = "This is the primary license text";
+    License primaryLicense = new License(false, primaryLicenseText, Collections.<String> emptyList(), "example.org", "http://example.org", "Example License");
     String primaryOrg = "example.org";
     String primaryNotice = "The primary notice.";
     Collection<WithinDirectory> contents = new ArrayList<WithinDirectory>();
@@ -57,25 +58,17 @@ public class TestNoticeGeneration extends TestCase {
         super.tearDown();
     }
     
-    public void testThatWhenThereAreNoThirdPartyNoticesHeaderIsNotShown() throws Exception {
+    public void testThatWhenThereAreNoThirdPartyNoticesFooterIsNotShown() throws Exception {
         Descriptor work = 
                 new Descriptor(primaryLicense, primaryOrg,  primaryNotice, 
                         licenses, notices, organisations, contents);
         
         subject.generate(work, writerFactory);
-        
-        assertEquals("Only one request for NOTICE writer", 1, writerFactory.requestsFor(Result.NOTICE));
-        assertEquals("When no third party notices, expect that only the primary notice is output", primaryNotice, writerFactory.firstOutputFor(Result.NOTICE).trim());
-    }
-    
-    public void testThatNoticeOutputIsSkippedWhenThereAreNoNotices() throws Exception {
-        Descriptor work = 
-                new Descriptor(primaryLicense, primaryOrg,  "", 
-                        licenses, notices, organisations, contents);
-        
-        subject.generate(work, writerFactory);
-        
-        assertEquals("No requests for NOTICE writer", 0, writerFactory.requestsFor(Result.NOTICE));
-    }
 
+        assertTrue("Check that work is suitable for this test", work.isPrimaryOnly());
+        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
+        assertEquals("When no third party notices, expect that only the license text is output", 
+                primaryLicenseText, 
+                writerFactory.firstOutputFor(Result.LICENSE).trim());
+    }
 }
