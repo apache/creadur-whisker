@@ -18,31 +18,21 @@
   under the License.    
 -->
 <faqs id="FAQ" title="Frequently Asked Questions">
-  <part id="General"> 
-    <title>General</title>
-    <faq id="when-will-validation-arrive">
-      <question>Why is validation missing?</question>
-      <answer>
-        <p>Not all features available on the 
-        <a href='http://creadur.apache.org/whisker/apache-whisker-cli/index.html'>command line</a>
-        are available in the Maven plugin yet. If you can
-        spare a few cycles to 
-        <a href='http://www.apache.org/foundation/getinvolved.html'>help development</a>, that'd be 
-        greatly appreciated. Take a look at the 
-        <a href='source-repository.html'>source</a> 
-        then please join us on our
-        <a href='./mail-lists.html'>mail lists</a>
-        or open a <a href='./issue-tracking.html'>issue</a>.</p>
-      </answer>
-    </faq>
-  </part>
-  <part id="Generation"> 
+  <part id="generation"> 
     <title>Generating Licensing Documents</title>
     <faq id="when-notice">
       <question>When will a NOTICE be generated?</question>
       <answer>
-      Only when needed. For more details, see the 
-      <a href='../faq.html#when-notice'>Whisker documentation</a>.    
+      <p>Whisker should generate a NOTICE document only when needed. 
+      Examples include:</p>
+      <ul>
+        <li>when the primary notice is not empty; and</li>
+        <li>when at least one distributed artifact requires an attribution.</li>
+      </ul>
+      <p>If you have a use case where an unnecessary NOTICE is generated,
+      or when a NOTICE isn't generated when it is needed please open an 
+      <a href='./issue-tracking.html'>issue</a> or let us know 
+      <a href='./mail-lists.html'>on list</a>.</p>
       </answer>
     </faq>
   </part>
