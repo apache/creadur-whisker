@@ -26,10 +26,11 @@ import java.util.Map;
 
 import junit.framework.TestCase;
 
-public class TestDescriptorRequiredNoticesNoThirdPartyNotices extends TestCase {
+public class TestDescriptorPrimaryOnly extends TestCase {
 
     License primaryLicense = new License(false, "This is the license text", Collections.<String> emptyList(), "example.org", "http://example.org", "Example License");
-    String primaryOrg = "example.org";
+    Organisation primaryOrg = new Organisation("primary", "primary.org", "http://primary.org");
+    Organisation thirdPartyOrg = new Organisation("third-party", "thirdparty.org", "http://thirdparty.org");
     String primaryNotice = "The primary notice.";
     Collection<WithinDirectory> contents = new ArrayList<WithinDirectory>();
     Map<String, License> licenses = new HashMap<String, License>();
@@ -41,40 +42,76 @@ public class TestDescriptorRequiredNoticesNoThirdPartyNotices extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         primaryLicense.storeIn(licenses);
+        primaryOrg.storeIn(organisations);
+        thirdPartyOrg.storeIn(organisations);
+                       
+        addDirectory(primaryLicense, primaryOrg, ".");
+    }
+
+    private void addDirectory(License license, final Organisation org,
+            final String directoryName) {
+        final WithinDirectory withinDirectory = buildDirectory(license, org,
+                directoryName);
+        contents.add(withinDirectory);
+    }
+
+    private WithinDirectory buildDirectory(License license,
+            final Organisation org, final String directoryName) {
+        Collection<ByOrganisation> byOrgs = new ArrayList<ByOrganisation>();
+        Collection<Resource> resources = buildResources();
+        byOrgs.add(new ByOrganisation(org, resources));
+        
+        Collection<WithLicense> withLicenses = new ArrayList<WithLicense>();
+        String copyright = "Copyright Blah";
+        Map<String, String> params = Collections.emptyMap();
+        withLicenses.add(new WithLicense(license, copyright, params, byOrgs));
+        
+        Collection<ByOrganisation> publicDomain = Collections.emptyList();
+        
+        final WithinDirectory withinDirectory = new WithinDirectory(directoryName, withLicenses, publicDomain);
+        return withinDirectory;
+    }
+
+    private Collection<Resource> buildResources() {
+        String noticeId = "notice:id";
+        notices.put(noticeId, "Some notice text");
+        Collection<Resource> resources = new ArrayList<Resource>();
+        String source = "";
+        String name = "resource";
+        resources.add(new Resource(name, noticeId, source));
+        return resources;
     }
 
     protected void tearDown() throws Exception {
         super.tearDown();
     }
 
-    public void testNoticeRequiredWhenPrimaryNoticeExists() throws Exception {
+    public void testIsPrimaryOnlyWithThirdPartyResources() throws Exception {
         subject = 
-                new Descriptor(primaryLicense, primaryOrg,  primaryNotice, 
+                new Descriptor(primaryLicense, primaryOrg.getId(),  primaryNotice, 
                         licenses, notices, organisations, contents);
-        assertTrue("When primary notices exists, even if there are not other notices display is required", subject.isNoticeRequired());        
+        addDirectory(primaryLicense, thirdPartyOrg, "lib");
+        assertFalse("Work is not primary only when third party resources exist.", subject.isPrimaryOnly());        
     }
 
-    public void testNoticeNotRequiredWhenPrimaryNoticeIsNullAndNoNotices() throws Exception {
+    public void testIsPrimaryOnlyWithoutThirdPartyResources() throws Exception {
         subject = 
-                new Descriptor(primaryLicense, primaryOrg,  null, 
+                new Descriptor(primaryLicense, primaryOrg.getId(),  null, 
                         licenses, notices, organisations, contents);
-        assertFalse("When no other notices exist and no primary notice, display is not required", 
-                subject.isNoticeRequired());        
+        
+        assertTrue("Work is primary only when no third party resources exist.", 
+                subject.isPrimaryOnly());        
+    }
+    
+    public void testIsPrimaryOnlyWithoutResources() throws Exception {
+        subject = 
+                new Descriptor(primaryLicense, primaryOrg.getId(),  null, 
+                        licenses, notices, organisations, contents);
+        
+        contents.clear();
+        
+        assertTrue("Work is primary only when no third party resources exist.", 
+                subject.isPrimaryOnly());        
     }
 
-    public void testNoticeNotRequiredWhenPrimaryNoticeIsEmptyAndNoNotices() throws Exception {
-        subject = 
-                new Descriptor(primaryLicense, primaryOrg,  "", 
-                        licenses, notices, organisations, contents);
-        assertFalse("When no other notices exist and no primary notice, display is not required", 
-                subject.isNoticeRequired());        
-    }
-
-    public void testNoticeNotRequiredWhenPrimaryNoticeIsWhitespaceAndNoNotices() throws Exception {
-        subject = 
-                new Descriptor(primaryLicense, primaryOrg,  "   ", 
-                        licenses, notices, organisations, contents);
-        assertFalse("When no other notices exist and no primary notice, display is not required", 
-                subject.isNoticeRequired());        
-    }
 }

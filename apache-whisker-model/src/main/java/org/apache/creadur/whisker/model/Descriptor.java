@@ -31,7 +31,7 @@ public class Descriptor {
     private final License primaryLicense;
     /** Individual or group with main responsible for main work. */
     private final String primaryOrganisationId;
-    /** A NOTICE for the main work, for inclusion alongside the LICENSE.*/
+    /** A NOTICE for the main work, for inclusion alongside the LICENSE. */
     private final String primaryNotice;
     /** License meta-data, indexed by id. */
     private final Map<String, License> licenses;
@@ -41,15 +41,23 @@ public class Descriptor {
     private final Collection<WithinDirectory> contents;
 
     /**
-     * Constructs a description of the expected licensing qualities
-     * of a distribution.
-     * @param primaryLicense not null
-     * @param primaryOrganisationId not null
-     * @param primaryNotice possibly null
-     * @param licenses not null, possibly empty
-     * @param notices not null, possibly empty
-     * @param organisations not null, possibly empty
-     * @param contents not null, possibly empty
+     * Constructs a description of the expected licensing qualities of a
+     * distribution.
+     * 
+     * @param primaryLicense
+     *            not null
+     * @param primaryOrganisationId
+     *            not null
+     * @param primaryNotice
+     *            possibly null
+     * @param licenses
+     *            not null, possibly empty
+     * @param notices
+     *            not null, possibly empty
+     * @param organisations
+     *            not null, possibly empty
+     * @param contents
+     *            not null, possibly empty
      */
     public Descriptor(final License primaryLicense,
             final String primaryOrganisationId, final String primaryNotice,
@@ -68,6 +76,7 @@ public class Descriptor {
 
     /**
      * Gets the principle NOTICE for the main work.
+     * 
      * @return the primaryNotice
      */
     public String getPrimaryNotice() {
@@ -76,6 +85,7 @@ public class Descriptor {
 
     /**
      * Collates NOTICE meta-data for resources.
+     * 
      * @return not null, possibly empty
      */
     public Map<String, Collection<Resource>> getResourceNotices() {
@@ -86,6 +96,7 @@ public class Descriptor {
 
     /**
      * Collates NOTICE meta-data not linked to any resource.
+     * 
      * @return not null, possibly empty
      */
     public Set<String> getOtherNotices() {
@@ -96,7 +107,9 @@ public class Descriptor {
 
     /**
      * Gets the license with the given id.
-     * @param id not null
+     * 
+     * @param id
+     *            not null
      * @return the license with the given id, or null
      */
     public License license(final String id) {
@@ -105,6 +118,7 @@ public class Descriptor {
 
     /**
      * Gets the principle license under which the work is licensed.
+     * 
      * @return the principle license, not null
      */
     public License getPrimaryLicense() {
@@ -113,6 +127,7 @@ public class Descriptor {
 
     /**
      * Gets the contents expected in the distribution.
+     * 
      * @return not null, possibly null
      */
     public Collection<WithinDirectory> getContents() {
@@ -121,7 +136,9 @@ public class Descriptor {
 
     /**
      * Is the given license the principle license for the main work?
-     * @param license not null
+     * 
+     * @param license
+     *            not null
      * @return true when the given license is the primary license, not null
      */
     public boolean isPrimary(final License license) {
@@ -129,9 +146,11 @@ public class Descriptor {
     }
 
     /**
-     * Is the given individual or group the principle organisation with responsibility
-     * for the main work.
-     * @param byOrganisation not null
+     * Is the given individual or group the principle organisation with
+     * responsibility for the main work.
+     * 
+     * @param byOrganisation
+     *            not null
      * @return true when the given organisation is primary
      */
     public boolean isPrimary(final ByOrganisation byOrganisation) {
@@ -139,11 +158,13 @@ public class Descriptor {
     }
 
     /**
-     * Is this directory expected to contain only material with the 
-     * primary license?
-     * @param directory not null
-     * @return true when the directory contains only material with the
-     * primary license, false otherwise
+     * Is this directory expected to contain only material with the primary
+     * license?
+     * 
+     * @param directory
+     *            not null
+     * @return true when the directory contains only material with the primary
+     *         license, false otherwise
      */
     public boolean isOnlyPrimary(final WithinDirectory directory) {
         final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
@@ -153,11 +174,13 @@ public class Descriptor {
     }
 
     /**
-     * Is this collection of resources licensed under the primary
-     * license by the primary organisation?
-     * @param license not null
-     * @return true when the contents are all licensed under the primary
-     * license by the primary organisation
+     * Is this collection of resources licensed under the primary license by the
+     * primary organisation?
+     * 
+     * @param license
+     *            not null
+     * @return true when the contents are all licensed under the primary license
+     *         by the primary organisation
      */
     public boolean isOnlyPrimary(final WithLicense license) {
         final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
@@ -168,7 +191,9 @@ public class Descriptor {
 
     /**
      * Traverses the content directories.
-     * @param visitor possibly null
+     * 
+     * @param visitor
+     *            possibly null
      */
     public void traverse(final Visitor visitor) {
         for (final WithinDirectory directory : getContents()) {
@@ -178,8 +203,11 @@ public class Descriptor {
 
     /**
      * Traverses the given directory.
-     * @param visitor possibly null
-     * @param directoryName not null
+     * 
+     * @param visitor
+     *            possibly null
+     * @param directoryName
+     *            not null
      */
     public void traverseDirectory(final Visitor visitor,
             final String directoryName) {
@@ -192,16 +220,18 @@ public class Descriptor {
 
     /**
      * Is a NOTICE document required?
+     * 
      * @return true when a NOTICE is required, false otherwise
      */
     public boolean isNoticeRequired() {
-       return primaryNoticeExists() || resourceNoticesExist(); 
+        return primaryNoticeExists() || resourceNoticesExist();
     }
 
     /**
      * Does any resource have a required notice?
-     * @return true when at least one required third party notice
-     * exists, false otherwise
+     * 
+     * @return true when at least one required third party notice exists, false
+     *         otherwise
      */
     public boolean resourceNoticesExist() {
         return !getResourceNotices().isEmpty();
@@ -209,11 +239,32 @@ public class Descriptor {
 
     /**
      * Does the work described have a primary notice?
-     * @return true unless the primary notice is null 
-     * or whitespace
+     * 
+     * @return true unless the primary notice is null or whitespace
      */
     public boolean primaryNoticeExists() {
-        return (this.primaryNotice != null) &&
-                   !"".equals(this.primaryNotice.trim());
+        return (this.primaryNotice != null)
+                && !"".equals(this.primaryNotice.trim());
+    }
+
+    /**
+     * Is this the work of the primary organisation only?
+     * 
+     * @return true when no third party resources are contained, false when
+     *         third party resources exist. In particular, true when
+     *         contents are empty.
+     */
+    public boolean isPrimaryOnly() {
+        final boolean result;
+        if (contents.size() > 0) {
+            final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
+            for (final WithinDirectory directory : contents) {
+                directory.accept(collator);
+            }
+            result = collator.isOnlyOrganisation(primaryOrganisationId);
+        } else {
+            result = true;
+        }
+        return result;
     }
 }
