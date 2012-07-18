@@ -52,4 +52,13 @@
       </answer>
     </faq>
   </part>
+  <part id="learning"> 
+    <title>Learning Whisker</title>
+    <faq id="mit-example">
+    <question>Is there an example using the MIT License?</question>
+    <answer>
+    <p><a href='examples/in-5-mins.html'>Yes</a></p>
+    </answer>
+    </faq>
+  </part>
 </faqs>
