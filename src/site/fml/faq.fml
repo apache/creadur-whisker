@@ -53,12 +53,18 @@
     </faq>
   </part>
   <part id="learning"> 
-    <title>Learning Whisker</title>
+    <title>Is there an Example...</title>
     <faq id="mit-example">
-    <question>Is there an example using the MIT License?</question>
+    <question>Using the MIT License?</question>
     <answer>
     <p><a href='examples/in-5-mins.html'>Yes</a></p>
     </answer>
+    </faq>
+    <faq id="no-notice-example">
+        <question>Of a Project without a NOTICE?</question>
+        <answer>
+            <p><a href='examples/in-5-mins.html'>Yes</a></p>
+        </answer>
     </faq>
   </part>
 </faqs>
