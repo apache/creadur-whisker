@@ -54,3 +54,11 @@ What Is Apache Whisker?
  * From the {{{./apache-whisker-cli/index.html} command line}} 
  
  * As a {{{./apache-whisker-plugin4maven/index.html} plugin for Maven}}
+
+* Getting Started
+
+ Browse the {{{./xref/index.html}source}}, 
+ read the {{{./apidocs/index.html}javadocs}}
+ or take a look at some examples:
+ 
+ * {{{./examples/in-5-mins.html}Whisker In 5 Minutes}}

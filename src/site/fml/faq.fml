@@ -18,6 +18,22 @@
   under the License.    
 -->
 <faqs id="FAQ" title="Frequently Asked Questions">
+  <part id="meta-data"> 
+    <title>Meta Data</title>
+    <faq id="why-ids">
+      <question>Why Reference Licenses, Notices and Organisations by ID?</question>
+      <answer>
+      <p>
+      <a href="http://dbpedia.org/resource/Don't_repeat_yourself">DRY</a> rules.
+      </p>
+      <p>
+      Each license, notice and organisation should be described once, and then
+      referenced by <code>id</code>. For complex projects, this reduces duplication
+      and eases maintenance.   
+      </p>
+      </answer>
+    </faq>
+  </part>
   <part id="generation"> 
     <title>Generating Licensing Documents</title>
     <faq id="when-notice">
