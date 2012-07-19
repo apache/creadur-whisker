@@ -26,13 +26,14 @@ Whisker In 5 Minutes
 
  {{{http://creadur.apache.org/whisker} Apache Whisker}} is based around
  {{{../meta-data.html}meta-data}} describing the licensing qualities
- of documents included within complex software distributions. This
- separates information about <which> documents are distributed 
+ of documents included within complex software distributions. 
+ <Which> documents are distributed is separated 
  from <what> these documents are. 
  
  For this example, we'll create meta-data for a simple 
  {{{http://opensource.org/licenses/mit-license.php/}MIT licensed}} 
- project.  
+ project. This illustrates any project where
+ a NOTICE is not (necessarily) required.
  
  
 * Basic Structure
