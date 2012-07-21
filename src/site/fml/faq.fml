@@ -39,17 +39,48 @@
     <faq id="when-notice">
       <question>When will a NOTICE be generated?</question>
       <answer>
-      <p>Whisker should generate a NOTICE document only when needed. 
+      <p>Whisker should generate a <code>NOTICE</code> document only when 
+      <a href='#when-notice-needed'>needed</a>. 
       Examples include:</p>
       <ul>
         <li>when the primary notice is not empty; and</li>
         <li>when at least one distributed artifact requires an attribution.</li>
       </ul>
-      <p>If you have a use case where an unnecessary NOTICE is generated,
-      or when a NOTICE isn't generated when it is needed please open an 
+      <p>If you have a use case where an unnecessary <code>NOTICE</code> is generated,
+      or when a <code>NOTICE</code> isn't generated when it is needed please open an 
       <a href='./issue-tracking.html'>issue</a> or let us know 
       <a href='./mail-lists.html'>on list</a>.</p>
       </answer>
+    </faq>
+  </part>
+  <part id="licensing"> 
+    <title>Licensing Documentation</title>
+     <faq id="notice-vs-license">
+        <question>What is the difference between a <code>NOTICE</code> and a <code>LICENSE</code>?</question>
+        <answer>
+            <p>
+A <code>NOTICE</code> is informational documentation, whereas a <code>LICENSE</code> 
+is legal documentation. 
+A <code>NOTICE</code> may be subject to a <a href='#when-notice-needed'>retention clause</a>.
+            </p>
+        </answer>
+    </faq>
+    
+    <faq id="when-notice-needed">
+        <question>When is a <code>NOTICE</code> needed?</question>
+        <answer>
+            <p>
+            It depends :-)
+            </p>
+            <p>
+Some licenses require <code>NOTICE</code> documents to be retained.
+For example, clause 4.4 in the
+<a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2</a>
+is a retention clause covering any <code>NOTICE</code> distributed with the original. 
+When creating or distributing a modified version of a project licensed with a retention clause,
+you need to ensure that the <code>NOTICE</code> is distributed. 
+            </p>
+        </answer>
     </faq>
   </part>
   <part id="learning"> 

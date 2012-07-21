@@ -33,7 +33,7 @@ Whisker In 5 Minutes
  For this example, we'll create meta-data for a simple 
  {{{http://opensource.org/licenses/mit-license.php/}MIT licensed}} 
  project. This illustrates any project where
- a NOTICE is not (necessarily) required.
+ a NOTICE is not (necessarily) {{{../faq.html#when-notice-needed}required}}.
  
  
 * Basic Structure
