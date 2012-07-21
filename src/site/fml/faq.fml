@@ -64,6 +64,21 @@ If it were, probably a language like
 <a href='http://relaxng.org/'>Relax NG</a> would be chosen.
             </p>
         </answer>
+    </faq>
+    <faq id='ide'>
+        <question>I prefer to use an IDE. Can it help me write the meta-data?</question>
+        <answer>
+            <p>
+            A DTD is available in the 
+            <a href='meta-data.html#Described_By_DTD'>meta data reference</a>,
+            which should be of some use. 
+            </p>
+            <p>
+There are currently no known plugins. If you know of a plugin please
+<a href='./mail-lists.html'>let us know</a> or 
+<a href='./source-repository.html'>contribute a patch</a> for this documentation.
+            </p>
+        </answer>
     </faq>    
   </part>
   <part id="generation"> 
