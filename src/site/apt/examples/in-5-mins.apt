@@ -37,7 +37,9 @@ Whisker In 5 Minutes
  a NOTICE is not (necessarily) {{{../faq.html#when-notice-needed}required}}.
  
  If you're using an IDE then see the 
-  {{{../meta-data.html}meta data reference}} for a DTD.
+  {{{../meta-data.html}meta data reference}} for a DTD. If you have 
+  any questions, please try the {{{../faq.html}FAQ}} before asking on the 
+  {{{../mail-lists.html}mail lists}}.
  
 * Basic Structure
 
