@@ -82,6 +82,18 @@ you need to ensure that the <code>NOTICE</code> is distributed.
             </p>
         </answer>
     </faq>
+    <faq id='complex-software-applications'>
+        <question>When is Whisker needed?</question>
+        <answer>
+            <p>
+For projects distributing applications containing only a few third party dependencies,
+manually maintaining and verifying the <code>LICENSE</code> and <code>NOTICE</code> documents
+shipped is not a major burden. When releasing complex applications containing scores of 
+third party dependencies from dozens of sources, producing accurate licensing documentation
+without automation takes a lot of time. This is where Whisker has the biggest value.
+            </p>
+        </answer>
+    </faq>
   </part>
   <part id="learning"> 
     <title>Is there an Example...</title>

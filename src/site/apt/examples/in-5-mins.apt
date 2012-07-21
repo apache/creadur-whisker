@@ -26,7 +26,8 @@ Whisker In 5 Minutes
 
  {{{http://creadur.apache.org/whisker} Apache Whisker}} is based around
  {{{../meta-data.html}meta-data}} describing the licensing qualities
- of documents included within complex software distributions. 
+ of documents included within 
+ {{{../faq.html#complex-software-applications}complex software distributions}}. 
  <Which> documents are distributed is separated 
  from <what> these documents are. 
  
