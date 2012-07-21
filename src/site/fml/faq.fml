@@ -33,6 +33,19 @@
       </p>
       </answer>
     </faq>
+    <faq id='where-is-reference'>
+        <question>Is a reference available?</question>
+        <answer>
+        <a href='meta-data.html'>Yes</a>
+        </answer>
+    </faq>
+    <faq id='where-is-dtd'>
+        <question>Is a DTD available?</question>
+        <answer>
+        Yes, in the
+        <a href='meta-data.html#Described_By_DTD'>meta data reference</a>
+        </answer>
+    </faq>
   </part>
   <part id="generation"> 
     <title>Generating Licensing Documents</title>
