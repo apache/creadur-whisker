@@ -36,16 +36,35 @@
     <faq id='where-is-reference'>
         <question>Is a reference available?</question>
         <answer>
-        <a href='meta-data.html'>Yes</a>
+            <p>
+            <a href='meta-data.html'>Yes</a>
+            </p>
         </answer>
     </faq>
     <faq id='where-is-dtd'>
         <question>Is a DTD available?</question>
         <answer>
-        Yes, in the
-        <a href='meta-data.html#Described_By_DTD'>meta data reference</a>
+            <p>
+            Yes, in the
+            <a href='meta-data.html#Described_By_DTD'>meta data reference</a>
+            </p>
         </answer>
     </faq>
+    <faq id='why-dtd'>
+        <question>Why only a DTD?</question>
+        <answer>
+            <p>
+The <a href='http://www.xml.com/axml/target.html#dt-doctype'>DTD</a> is 
+aimed at IDE users and developers,
+and is not prescriptive but descriptive.
+            </p>
+            <p>
+For the present, schema validation is not enforced.
+If it were, probably a language like 
+<a href='http://relaxng.org/'>Relax NG</a> would be chosen.
+            </p>
+        </answer>
+    </faq>    
   </part>
   <part id="generation"> 
     <title>Generating Licensing Documents</title>
