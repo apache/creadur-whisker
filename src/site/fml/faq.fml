@@ -41,6 +41,28 @@
             </p>
         </answer>
     </faq>
+    <faq id='what-is-primary'>
+        <question>What Do You Mean by Primary?</question>
+        <answer>
+            <p>
+Whisker documentation often talks about a <em>primary license</em>, 
+a <em>primary organisation</em> and so on.
+The meta-data contains elements like <code>primary-license</code> and 
+<code>primary-notice</code>. Though the intended meaning might accord
+with intuition, a more precise description may help to deepen 
+understanding of software licensing.
+            </p>
+            <p>
+By <em>primary</em>, we mean the 
+main license, notice or organisation associated with the project.
+Take, for example, a project here at <a href='http://www.apache.org'>Apache</a>.
+In this case, the primary license would be 
+<a href='http://www.apache.org/licenses/LICENSE-2.0.html'>The Apache License, Version 2</a>
+and the primary organisation 
+<a href='http://www.apache.org/foundation/'>The Apache Software Foundation</a>.
+            </p>
+        </answer>
+    </faq>
     <faq id='where-is-dtd'>
         <question>Is a DTD available?</question>
         <answer>

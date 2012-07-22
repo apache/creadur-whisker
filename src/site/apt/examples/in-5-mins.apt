@@ -47,7 +47,7 @@ Whisker In 5 Minutes
   Each license, notice and organisation is described once 
   above, and then
   {{{../faq.html#why-ids}referenced by id}} below.
-  Begin with an outline:
+  Begin with an outline.
  
 +---------------------------------------+
 <manifest>
@@ -65,6 +65,8 @@ Whisker In 5 Minutes
 +---------------------------------------+
 
 * Definitions
+
+  Begin with the {{{../faq.html#what-is-primary}primary}} definitions.
 
 ** Add The Primary License
 
