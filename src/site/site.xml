@@ -25,6 +25,12 @@
     <href>http://www.apache.org/</href>
   </bannerRight>
   <body>
+    <head>
+        <link 
+            href='http://fonts.googleapis.com/css?family=Mate+SC' 
+            rel='stylesheet' 
+            type='text/css'/>
+    </head>
     <breadcrumbs>
       <item name="Apache" href="http://www.apache.org/"/>
       <item name="Creadur" href="http://creadur.apache.org/"/>
