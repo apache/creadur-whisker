@@ -68,8 +68,8 @@ by the project to the software distributed. Apache, for example,
 <a href='http://www.apache.org/legal/src-headers.html'>insists</a> that 
 original source is 
 <abbr title='The Apache License, Version 2'><code>AL2</code></abbr> licensed.
-The <em>primary organisation</em> should be the legal entity issuing 
-the primary license. Apache, for example, uses 
+The <em>primary organisation</em> should be the legal entity 
+issuing the primary license. Apache, for example, uses 
 <a href='http://www.apache.org/licenses/index.html#clas'>contributor license agreements</a>,
 <a href='http://www.apache.org/licenses/index.html#grants'>grants</a> and
 <code><abbr title='The Apache License, Version 2'>AL2</abbr> Section 5</code>
@@ -88,8 +88,8 @@ original source is
 <abbr title='The Apache License, Version 2'><code>AL2</code></abbr> licensed.
             </p>
             <p>
-The <em>primary organisation</em> should be the legal entity issuing 
-the <em>primary license</em>. Apache, for example, uses 
+The <em>primary organisation</em> should be the legal entity 
+issuing the <em>primary license</em>. Apache, for example, uses 
 <a href='http://www.apache.org/licenses/index.html#clas'>contributor license agreements</a>,
 <a href='http://www.apache.org/licenses/index.html#grants'>grants</a> and
 <code><abbr title='The Apache License, Version 2'>AL2</abbr> Section 5</code>
@@ -100,6 +100,45 @@ for example)
 copyright may be assigned to the organisation by its contributions.
             </p>            
         </answer>
+    </faq>
+    <faq id='what-is-org'>
+        <question>What do you mean by an organisation?</question>
+        <answer>
+            <p>
+Whisker uses <em>organisation</em> to identify and describe groups or individuals
+who license the third party works distributed. This includes a wide variety of
+entities, for example 
+            </p>
+            <ul>
+<li>non-profit corporations such as 
+<a href='http://www.apache.org/foundation'>The Apache Software Foundation</a>, 
+<a href='http://www.fsf.org/about/'>The Free Software Foundation</a> and 
+<a href='http://www.gnome.org/foundation/'>The GNOME Foundation</a>;
+</li>
+<li>
+for-profit corporations such as
+VMWare Inc., Google Inc. and IBM Corporation;
+</li>
+<li>
+academic institutions such as the 
+<a href='http://berkeley.edu/'>University of California, Berkeley</a>,
+the
+<a href='http://web.mit.edu/'>Massachusetts Institute of Technology</a> and
+<a href='http://osuosl.org/'>Oregon State University</a>; 
+</li>
+<li>
+groups and collectives such as 
+<a href='http://www.bouncycastle.org'>The Legion of the Bouncy Castle</a> and
+<a href='http://www.joda.org'>Joda</a>
+</li>
+<li>and individual maintainers.
+</li>
+            </ul>
+            <p>
+ To reduce duplication and increase comprehension, Whisker often
+ groups results by organisation.
+            </p>
+        </answer>    
     </faq>
     <faq id='where-is-dtd'>
         <question>Is a DTD available?</question>
