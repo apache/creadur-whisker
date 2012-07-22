@@ -65,3 +65,7 @@ What Is Apache Whisker?
  or take a look at some examples:
  
  * {{{./examples/in-5-mins.html}Whisker In 5 Minutes}}
+ 
+** Other Examples
+ 
+ * {{{./examples/3rd-party-individual.html}Including a 3rd Party work licensed by an individual}}
