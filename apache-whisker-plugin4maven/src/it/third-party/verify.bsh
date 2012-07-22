@@ -19,14 +19,16 @@
 
 import java.io.*;
 
-try {
     File license = new File(basedir, "target/LICENSE");
     File notice = new File(basedir, "target/NOTICE");
     
-    return license.exists() && !notice.exists();    
-
-} catch (Throwable t) {
-    t.printStackTrace();
-    return false;
-}
+    if (notice.exists()) {
+        throw new RuntimeException("NOTICE unexpectedly generated");
+    }
+    if (license.exists()) {
+        
+    } else {
+        throw new FileNotFoundException("LICENSE missing");
+    }
+    
 return true;
