@@ -165,7 +165,8 @@ As far as Whisker is concerned, each individual maintainer is an
 organisation.  
             </p>
             <p>
-            Read more <a href='#what-is-org'>here</a>. 
+            Read more <a href='#what-is-org'>here</a>. See this 
+            <a href='./examples/3rd-party-individual.html'>example</a>.
             </p>
         </answer>
     </faq>
@@ -191,7 +192,7 @@ has the rights required to issue the license,
 though, before adding it to your distribution. 
             </p>
             <p>
-            Read more <a href='#what-is-org'>here</a>. 
+            Read more <a href='#what-is-org'>here</a>.  
             </p>
         </answer>
     </faq>

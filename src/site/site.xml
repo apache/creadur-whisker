@@ -41,6 +41,7 @@
     
     <menu name='Examples'>
         <item name="In 5 Minutes" href="examples/in-5-mins.html"/>
+        <item name="Individual 3rd Party" href="examples/3rd-party-individual.html"/>
     </menu>
     
     <menu name="Apache Creadur &trade;" inherit="bottom">
