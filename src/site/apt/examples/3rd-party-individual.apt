@@ -371,7 +371,7 @@ With An Individual Third Party Work
 +---------------------------------------+
 
   We need to add <<<boo.png>>> to the contents, to a new group of resources
-  within the root directory. 
+  within the {{{../faq.html#how-root-dir}root directory}}. 
    
 +---------------------------------------+
     ...

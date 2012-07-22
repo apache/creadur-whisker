@@ -234,7 +234,19 @@ There are currently no known plugins. If you know of a plugin please
 <a href='./source-repository.html'>contribute a patch</a> for this documentation.
             </p>
         </answer>
-    </faq>    
+    </faq>
+    <faq id='how-root-dir'>
+        <question>What represents the root directory?</question>
+        <answer>
+            <p>
+            <code>.</code>
+            </p>
+            <p>
+            As in &lt;within dir='.'&gt;
+            </p>
+        </answer>
+    </faq>
+        
   </part>
   <part id="generation"> 
     <title>Generating Licensing Documents</title>
