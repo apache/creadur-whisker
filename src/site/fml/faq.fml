@@ -356,5 +356,12 @@ that relies on a project are <em>downstream consumers</em>.
             <p><a href='examples/in-5-mins.html'>Yes</a></p>
         </answer>
     </faq>
+    <faq id="no-notice-example">
+        <question>Of a Third Party Dependency licensed from an Individual?</question>
+        <answer>
+            <p><a href='examples/3rd-party-individual.html'>Yes</a></p>
+        </answer>
+    </faq>
+    
   </part>
 </faqs>
