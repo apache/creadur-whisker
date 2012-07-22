@@ -58,9 +58,23 @@ main license, notice or organisation associated with the project.
 Take, for example, a project here at <a href='http://www.apache.org'>Apache</a>.
 In this case, the primary license would be 
 <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>The Apache License, Version 2</a>
+(<abbr title='The Apache License, Version 2'><code>AL2</code></abbr>) 
 and the primary organisation 
 <a href='http://www.apache.org/foundation/'>The Apache Software Foundation</a>.
             </p>
+            <p>
+The <em>primary license</em> should cover most of the original content contributed 
+by the project to the software distributed. Apache, for example, 
+<a href='http://www.apache.org/legal/src-headers.html'>insists</a> that 
+original source is 
+<abbr title='The Apache License, Version 2'><code>AL2</code></abbr> licensed.
+The <em>primary organisation</em> should be the legal entity issuing 
+the primary license. Apache, for example, uses 
+<a href='http://www.apache.org/licenses/index.html#clas'>contributor license agreements</a>,
+<a href='http://www.apache.org/licenses/index.html#grants'>grants</a> and
+<code><abbr title='The Apache License, Version 2'>AL2</abbr> Section 5</code>
+to allow the foundation to issue open source licenses.
+            </p>            
         </answer>
     </faq>
     <faq id='where-is-dtd'>
