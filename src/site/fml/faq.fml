@@ -152,6 +152,44 @@ groups and collectives such as
             as well as some individual maintainers.
             </p>
             <p>
+            Read more <a href='#what-is-org'>here</a> and see comments 
+            on <a href='#third-party-ad-hoc'>informal groups</a>. 
+            </p>
+        </answer>
+    </faq>
+    <faq id='third-party-individual'>
+        <question>What about third party software licensed from an individual?</question>
+        <answer>
+            <p>
+As far as Whisker is concerned, each individual maintainer is an  
+organisation.  
+            </p>
+            <p>
+            Read more <a href='#what-is-org'>here</a>. 
+            </p>
+        </answer>
+    </faq>
+    <faq id='third-party-corporation'>
+        <question>What about third party software licensed from a corporation?</question>
+        <answer>
+            <p>
+As far as Whisker is concerned, each corporation (whether non-profit or for-profit) is an  
+organisation.
+            </p>
+            <p>
+            Read more <a href='#what-is-org'>here</a>. 
+            </p>
+        </answer>
+    </faq>
+    <faq id='third-party-ad-hoc'>
+        <question>What about third party software licensed by an informal group?</question>
+        <answer>
+            <p>
+As far as Whisker is concerned, each group or collective is an organisation.
+You might want to check that the licensee has the rights required to issue the license,
+though, before adding it to your distribution. 
+            </p>
+            <p>
             Read more <a href='#what-is-org'>here</a>. 
             </p>
         </answer>
