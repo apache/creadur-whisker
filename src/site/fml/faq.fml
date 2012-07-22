@@ -299,8 +299,9 @@ original files then you could opt not to have a <code>NOTICE</code>. Please read
 <a href='#when-notice-needed'>this</a>.  
             </p>
             <p>
-It is polite to include a minimal <code>NOTICE</code>. Otherwise, downstream 
-consumers may need to manually verify that no <code>NOTICE</code> exists 
+It is polite to include a minimal <code>NOTICE</code>. Otherwise, 
+<a href='#what-is-downstream'>downstream consumers</a> may need to manually verify that no 
+<code>NOTICE</code> exists 
 for the release.
             </p>
         </answer>
@@ -320,11 +321,23 @@ without automation takes a lot of time. This is where Whisker has the biggest va
     </faq>
     
     <faq id="licensor">
-        <question>What do you mean by licensor</question>
+        <question>What do you mean by licensor?</question>
         <answer>
             <p>
 The entity issuing the license.            
             </p>
+        </answer>
+    </faq>
+
+    <faq id="what-is-downstream">
+        <question>What is a downstream consumer?</question>
+        <answer>
+            <p>
+Software flows downstream from the source to the end user.
+Dependencies are <em>upstream</em> of a project, and software
+that relies on a project are <em>downstream consumers</em>.
+            </p>
+            
         </answer>
     </faq>
     
