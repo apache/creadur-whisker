@@ -141,6 +141,22 @@ groups and collectives such as
         </answer>    
     </faq>
     <faq id='where-is-dtd'>
+        <question>Does an organisation have to be a formal corporation or company?</question>
+        <answer>
+            <p>
+            No
+            </p>
+            <p>
+            As far as Whisker is concerned, 
+            a wide variety of entities are organisations,
+            as well as some individual maintainers.
+            </p>
+            <p>
+            Read more <a href='#what-is-org'>here</a>. 
+            </p>
+        </answer>
+    </faq>
+    <faq id='where-is-dtd'>
         <question>Is a DTD available?</question>
         <answer>
             <p>
