@@ -77,6 +77,30 @@ to allow the foundation to issue open source licenses.
             </p>            
         </answer>
     </faq>
+    <faq id='primary-license-organisation-relationship'>
+        <question>What is the relationship between the Primary License and the Primary Organsation?</question>
+        <answer>
+            <p>
+The <em>primary license</em> covers most of the original content contributed 
+by the project to the software distributed. Apache, for example, 
+<a href='http://www.apache.org/legal/src-headers.html'>insists</a> that 
+original source is 
+<abbr title='The Apache License, Version 2'><code>AL2</code></abbr> licensed.
+            </p>
+            <p>
+The <em>primary organisation</em> should be the legal entity issuing 
+the <em>primary license</em>. Apache, for example, uses 
+<a href='http://www.apache.org/licenses/index.html#clas'>contributor license agreements</a>,
+<a href='http://www.apache.org/licenses/index.html#grants'>grants</a> and
+<code><abbr title='The Apache License, Version 2'>AL2</abbr> Section 5</code>
+to allow the foundation to issue open source licenses. Alternatively 
+(as practiced by 
+<a href='http://www.gnu.org/prep/maintain/html_node/Copyright-Papers.html#Copyright-Papers'>GNU</a>,
+for example) 
+copyright may be assigned to the organisation by its contributions.
+            </p>            
+        </answer>
+    </faq>
     <faq id='where-is-dtd'>
         <question>Is a DTD available?</question>
         <answer>
