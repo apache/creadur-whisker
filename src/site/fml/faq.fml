@@ -284,6 +284,28 @@ you need to ensure that the <code>NOTICE</code> is distributed.
             </p>
         </answer>
     </faq>
+    <faq id="notice-needed-for-al2">
+        <question>Do I need to add a <code>NOTICE</code> for my Apache Licensed Project?</question>
+        <answer>
+            <p>
+Not necessarily, though Apache Software Foundation projects 
+MUST include a <code>NOTICE</code> 
+of <a href='http://www.apache.org/legal/src-headers.html#notice'>standard form</a>. 
+            </p>
+            <p>
+The <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2</a>
+requires that a <code>NOTICE</code> is retained but if your project contains only
+original files then you could opt not to have a <code>NOTICE</code>. Please read
+<a href='#when-notice-needed'>this</a>.  
+            </p>
+            <p>
+It is polite to include a minimal <code>NOTICE</code>. Otherwise, downstream 
+consumers may need to manually verify that no <code>NOTICE</code> exists 
+for the release.
+            </p>
+        </answer>
+    </faq>
+    
     <faq id='complex-software-applications'>
         <question>When is Whisker needed?</question>
         <answer>
