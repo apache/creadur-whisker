@@ -42,7 +42,7 @@
         </answer>
     </faq>
     <faq id='what-is-primary'>
-        <question>What Do You Mean by Primary?</question>
+        <question>What do you mean by 'primary'?</question>
         <answer>
             <p>
 Whisker documentation often talks about a <em>primary license</em>, 
@@ -102,7 +102,7 @@ copyright may be assigned to the organisation by its contributions.
         </answer>
     </faq>
     <faq id='what-is-org'>
-        <question>What do you mean by an organisation?</question>
+        <question>What do you mean by an 'organisation'?</question>
         <answer>
             <p>
 Whisker uses <em>organisation</em> to identify and describe groups or individuals
