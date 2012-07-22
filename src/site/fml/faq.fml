@@ -186,7 +186,8 @@ organisation.
         <answer>
             <p>
 As far as Whisker is concerned, each group or collective is an organisation.
-You might want to check that the licensee has the rights required to issue the license,
+You might want to check that the <a href='#licensor'>licensor</a> 
+has the rights required to issue the license,
 though, before adding it to your distribution. 
             </p>
             <p>
@@ -294,6 +295,16 @@ without automation takes a lot of time. This is where Whisker has the biggest va
             </p>
         </answer>
     </faq>
+    
+    <faq id="licensor">
+        <question>What do you mean by licensor</question>
+        <answer>
+            <p>
+The entity issuing the license.            
+            </p>
+        </answer>
+    </faq>
+    
   </part>
   <part id="learning"> 
     <title>Is there an Example...</title>
