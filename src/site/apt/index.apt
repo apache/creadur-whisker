@@ -64,7 +64,16 @@ What Is Apache Whisker?
  read the {{{./apidocs/index.html}javadocs}}
  or take a look at some examples:
  
- * {{{./examples/in-5-mins.html}Whisker In 5 Minutes}}
+   * {{{./examples/in-5-mins.html}Whisker In 5 Minutes}}
+ 
+ 
+ or dive into sample meta-data:
+ 
+   * {{{./examples/james.xml} Apache James}}
+
+   * {{{./examples/public-domain.xml} Public Domain}}
+
+   * {{{./examples/template-license.xml} Template License}}
  
 ** Other Examples
  

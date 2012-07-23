@@ -49,6 +49,12 @@
         <item name="In 5 Minutes" href="examples/in-5-mins.html"/>
         <item name="Individual 3rd Party" href="examples/3rd-party-individual.html"/>
     </menu>
+
+    <menu name='Sample Meta Data'>
+        <item name="Apache James" href="examples/james.xml"/>
+        <item name="Public Domain" href="examples/public-domain.xml"/>
+        <item name="Template License" href="examples/template-license.xml"/>
+    </menu>
     
     <menu name="Apache Creadur &trade;" inherit="bottom">
 		<item name='Creadur Project Home' href="http://creadur.apache.org"/>
