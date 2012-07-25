@@ -17,18 +17,9 @@
  * under the License. 
  */
 
-import java.io.*;
+assert !new File(basedir, "target/NOTICE").exists()
 
-    File license = new File(basedir, "target/LICENSE");
-    File notice = new File(basedir, "target/NOTICE");
-    
-    if (notice.exists()) {
-        throw new RuntimeException("NOTICE unexpectedly generated");
-    }
-    if (license.exists()) {
-        
-    } else {
-        throw new FileNotFoundException("LICENSE missing");
-    }
+def license = new File(basedir, "target/LICENSE")
+assert license.exists()    
     
 return true;
