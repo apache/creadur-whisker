@@ -20,6 +20,29 @@
 assert !new File(basedir, "target/NOTICE").exists()
 
 def license = new File(basedir, "target/LICENSE")
-assert license.exists()    
+assert license.exists()  
+
+def reader = new BufferedReader(new InputStreamReader(new FileInputStream(license), "UTF-8"))  
+
+def alv2 = false
+def samSmith = false
+def boo = false
+def line = reader.readLine()
+while (line != null) {
+    if (line.contains("Apache License")) {
+        apache = true
+    }
+    if (line.contains("Sam Smith")) {
+        samSmith = true
+    }
+    if (line.contains("boo.png")) {
+        boo = true
+    }
+    line = reader.readLine()
+}
+assert boo
+assert apache
+assert samSmith
+
     
 return true;
