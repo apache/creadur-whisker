@@ -364,8 +364,8 @@ With An Individual Third Party Work
   As far as Whisker is
   concerned, data about an individual maintainer (like <Sam Smith>) is
   entered as an {{{../faq.html#what-is-org}organisation}}. 
-  After checking that <Sam Smith> isn't already described in the 
-  <<<organisations>>>, we find that an <<<organisation>>>
+  By checking that <Sam Smith> isn't already described in the 
+  <<<organisations>>>, we discover that an <<<organisation>>>
   needs to be added. Pay particular attention to the <<<id>>> -
   we'll need to refer to this later when the contents are updated.
   For this example, we'll {{{../faq.html#id-freedom}pick}} 
