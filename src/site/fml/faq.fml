@@ -33,6 +33,15 @@
       </p>
       </answer>
     </faq>
+    <faq id="id-freedom">
+      <question>Am I Free to Pick Any ID?</question>
+      <answer>
+      <p>
+IDs need to be unique (within the document)
+but otherwise you are free. 
+      </p>
+      </answer>
+    </faq>
     <faq id='where-is-reference'>
         <question>Is a reference available?</question>
         <answer>

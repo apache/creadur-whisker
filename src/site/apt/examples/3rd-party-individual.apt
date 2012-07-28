@@ -360,7 +360,8 @@ With An Individual Third Party Work
   <<<organisations>>>, we find that an <<<organisation>>>
   needs to be added. Pay particular attention to the <<<id>>> -
   we'll need to refer to this later when the contents are updated.
-  For this example, we'll pick <<<person:Sam.Smith>>>
+  For this example, we'll {{{../faq.html#id-freedom}pick}} 
+  <<<person:Sam.Smith>>> as <<<id>>>. 
   
 +---------------------------------------+
 <manifest>
