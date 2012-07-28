@@ -34,7 +34,9 @@ What Is Apache Whisker?
   {{{http://www.apache.org/foundation/how-it-works.html} Apache way}}.
   
   Whisker just helps to maintain information more efficiently, and is no
-  substitute for solid legal work.
+  substitute for solid legal work. No part of our documentation is legal advice, 
+  and readers are assumed to have a practical understanding of the relevant laws. 
+  
   Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
    
 * What's An Assembled Application?
