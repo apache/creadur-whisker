@@ -300,8 +300,14 @@ annotated outline useful for new meta-data; or
 <a href='./examples/public-domain.xml'>public domain</a>
                     </li>
                     <li>
-distributing work licensed from an 
-<a href='./examples/3rd-party-individual-sample.xml'>individual maintainer</a>
+distributing work licensed from 
+                        <ul>
+                            <li>                      
+an <a href='./examples/3rd-party-individual-sample.xml'>individual maintainer</a>
+                            </li><li>
+a for- or non-profit <a href='./examples/3rd-party-corporate-sample.xml'>corporation</a>
+                            </li>
+                        </ul>                            
                     </li>
                  </ul>
                  </li>
