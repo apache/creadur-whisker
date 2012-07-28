@@ -71,7 +71,8 @@ With An Individual Third Party Work
 
 ** Starting Definitions
 
-  Whisker describes each license, {{{../faq.html#what-notice}notice}} 
+  Whisker describes each {{{../faq.html#what-is-a-license}license}}, 
+  {{{../faq.html#what-notice}notice}} 
   and {{{../faq.html#what-is-org}organisation}} once 
   above, and then {{{../faq.html#why-ids}references by id}} below. So, the meta-data for
   project <<<foo>>> is structured along these lines:
@@ -90,8 +91,10 @@ With An Individual Third Party Work
 
   Let's say that the 
   {{{http://www.apache.org/licenses/LICENSE-2.0.html}Apache License, Version 2}}
-  is the primary license for the project, but <<<foo>>> opts not to include
-  a primary notice. The license text for this license is included in <<<licenses>>> above
+  is the {{{../faq.html#what-is-primary}primary license}} 
+  for the project, but <<<foo>>> opts not to 
+  {{{../faq.html#notice-needed-for-al2}include a primary notice}}. 
+  The text for this license is included in <<<licenses>>> above,
   and this data is referenced by <<<id>>> as <<<primary-license>>> below:
 
 +---------------------------------------+
@@ -292,23 +295,20 @@ With An Individual Third Party Work
 
   Let's assume that our project <<<foo>>> is here at Apache. So the 
   {{{../faq.html#what-is-primary}primary organisation}} is the
-  Apache Software Foundation. The meta-data for <<<foo>>> describes
+  {{{http://www.apache.org/foundation}Apache Software Foundation}}. The meta-data for <<<foo>>> describes
   this in <<<organisations>>> above then references by id as the
   <<<primary-organisation>>> below. 
 
 +---------------------------------------+
 <manifest>
-    <!-- Definitions -->
-    <licenses>...</licenses>
-    <notices>...</notices>
+    ...
     <organisations>
         <organisation 
             id='apache.org' 
             name='The Apache Software Foundation' 
             url='http://www.apache.org/'/>  
     </organisations>
-    <primary-license>...</primary-license>
-    <primary-notice>...</primary-notice>
+    ...
     <primary-organisation id='apache.org'/>
     ...
 +---------------------------------------+
@@ -324,7 +324,7 @@ With An Individual Third Party Work
        | HelloWorld.py
 +---------------------------------------+
 
-  The contents section of the meta-data will look quite a lot like:
+  The contents section of the meta-data should look quite a lot like:
 
 +---------------------------------------+
     ...
@@ -338,16 +338,17 @@ With An Individual Third Party Work
     </within>
 </manifest>
 +---------------------------------------+
-
-
-
+  
+   It is essential that the <<<id>>> attributes in the <<<with-license>>> 
+   and <<<by-organisation>>> elements match the ids assigned above. This
+   allows the details entered above to be re-used consistently.
   
 * Adding A Third Party to the Distribution
 
   Let's add <<<boo.png>>> to the distribution,
   licensed under the same Apache License 
-  by, let's say, <Sam Smith> (of <<<example.org>>>). If this had had 
-  a different license, then this license might have to be added but 
+  by (let's say) <Sam Smith> (of <<<example.org>>>) an individual maintainer. 
+  If <Sam> had chosen a different license, then this license might have to be added but 
   otherwise the process would be analogous.
   
 ** Add Organisation  
