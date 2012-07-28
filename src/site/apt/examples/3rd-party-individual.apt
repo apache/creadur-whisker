@@ -390,10 +390,10 @@ With An Individual Third Party Work
 +---------------------------------------+
   foo--| 
        | HelloWorld.py
-       | boo.png
+       | boo.png         <- Newly added
 +---------------------------------------+
 
-  We need to add <<<boo.png>>> to the contents, to a new group of resources
+  We need to add <<<boo.png>>> to the contents, into a new group of resources
   within the {{{../faq.html#how-root-dir}root directory}}. Resources
   are grouped by organisation, so the <<<by-organisation>>> containing
   the new resource named <<<boo.png>>> needs to refer (by <<<id>>>) 
@@ -421,7 +421,7 @@ With An Individual Third Party Work
   If <Sam Smith> had distributed a <<<NOTICE>>> for this resource, then 
   (after finding that the <<<NOTICE>>> is not already included) a
   <<<notice>>> description would need to be added to <<<notices>>>
-  above and referenced by id from the resource. 
+  above and referenced by id from the resource. Something like:
   
 +---------------------------------------+
     ...
