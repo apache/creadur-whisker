@@ -83,9 +83,7 @@ Whisker In 5 Minutes
 </manifest> 
 +---------------------------------------+
 
-* Definitions
-
-  Begin with the {{{../faq.html#what-is-primary}primary}} definitions.
+* Primary Definitions
 
 ** Add The Primary License
 
@@ -93,7 +91,8 @@ Whisker In 5 Minutes
   section (at the top), and then {{{../faq.html#why-ids}referenced 
   by id}}. 
   
-  This is an MIT license project, so add the MIT license.
+  This project is MIT licensed, so a description of this license 
+  needs to be added into <<<licenses>>>. 
   
 +---------------------------------------+
 <manifest>
@@ -128,6 +127,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 +---------------------------------------+
   
   (Start here for more about the primary license.)
+
++---------------------------------------+
+<manifest>
+    ...
+    <primary-license id='osi:mit'/>
+    ...
+</manifest>
++---------------------------------------+
 
 * Summary
 
