@@ -34,7 +34,14 @@ Whisker In 5 Minutes
  For this example, we'll create meta-data for a simple 
  {{{http://opensource.org/licenses/mit-license.php/}MIT licensed}} 
  project. This illustrates any project where
- a NOTICE is not (necessarily) {{{../faq.html#when-notice-needed}required}}.
+ a NOTICE is not (necessarily) {{{../faq.html#when-notice-needed}required}}. 
+ If this isn't quite what you're looking for, take a look at other 
+ examples which
+ 
+   * add third party resources
+     
+     * licensed from {{{./3rd-party-individual.html}an individual}} 
+       to an Apache licensed project 
  
  If you're using an IDE then see the 
   {{{../meta-data.html}meta data reference}} for a 
