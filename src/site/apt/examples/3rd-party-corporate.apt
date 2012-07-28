@@ -1,5 +1,5 @@
   ------
-  With An Individual Third Party Work  
+  With A Corporate Third Party Work  
   ------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~
@@ -22,7 +22,7 @@
 ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-With An Individual Third Party Work
+With A Corporate Third Party Work
 
  {{{http://creadur.apache.org/whisker} Apache Whisker}} is based around
  {{{../meta-data.html}meta-data}} describing the licensing qualities
@@ -32,17 +32,14 @@ With An Individual Third Party Work
  substitute for solid legal work.
  Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
  
- 
  For this example, we'll add the meta-data for a third party work licensed from 
- an individual. 
+ a for- or non-profit corporation.   
  
  If this isn't quite what you're looking for, take a look at:
  
    * {{{./in-5-mins.html}Whisker in 5 minutes}}, an MIT licensed project
    
-   * including a 3rd Party work licensed by a for- or non-profit 
-     {{{./3rd-party-corporate.html}corporation}}
-   
+   * including a 3rd Party work licensed by an {{{./3rd-party-individual.html}individual}}
  
   or dive into sample meta-data:
  
@@ -57,7 +54,8 @@ With An Individual Third Party Work
  Whisker treats individual maintainers, 
  groups, for- and non-profit corporations as {{{../faq.html#what-is-org}organisations}},
  so these examples are almost identical.
-
+ 
+ 
  If you're using an IDE then see the 
   {{{../meta-data.html}meta data reference}} for a 
   {{{../faq.html#why-dtd}DTD}}. If you have 

@@ -85,4 +85,9 @@ What Is Apache Whisker?
  
 ** Other Examples
  
- * {{{./examples/3rd-party-individual.html}Including a 3rd Party work licensed by an individual}}
+ * Including a 3rd Party work licensed by 
+  
+    * an {{{./examples/3rd-party-individual.html}individual}}
+ 
+    * a for- or non-profit {{{./examples/3rd-party-corporate.html}corporation}}
+ 

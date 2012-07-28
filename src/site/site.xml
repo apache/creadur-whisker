@@ -47,7 +47,8 @@
     
     <menu name='Examples'>
         <item name="In 5 Minutes" href="examples/in-5-mins.html"/>
-        <item name="Individual 3rd Party" href="examples/3rd-party-individual.html"/>
+        <item name="3rd Party (Individual)" href="examples/3rd-party-individual.html"/>
+        <item name="3rd Party (Corporate)" href="examples/3rd-party-corporate.html"/>
     </menu>
 
     <menu name='Sample Meta Data'>
