@@ -19,7 +19,7 @@
 -->
 <!--
 This is an example of a project which distributes a dependency
-maintained by an individual. 
+maintained by a corporation. 
  -->
 <!DOCTYPE manifest [
 
@@ -303,21 +303,21 @@ within the distribution, add NOTICE details here.
      -->
     <notices/>
     <!-- 
-This sample example defines only two organisations. Individual maintainers
+This sample example defines only two organisations. Corporate entities
 are described using the same organisation element used for groups
-and corporate entities. 
+and individual maintainers. 
      -->
     <organisations>
-        <!-- The primary organisation for the project -->
+    <!-- The primary organisation for the project -->
         <organisation 
             id='apache.org' 
             name='The Apache Software Foundation' 
-            url='http://www.apache.org/'/>
-        <!-- The maintainer for the dependency included in the distribution -->  
+            url='http://www.apache.org/'/>  
+    <!-- The corporation from whom the dependency included in the distribution is licensed -->
         <organisation
-           id='person:Sam.Smith'
-           name='Sam Smith'
-           url='http://example.org/~samsmith'
+           id='example.org'
+           name='The Example Foundation'
+           url='http://example.org/'
         />
     </organisations>
     <!--
@@ -327,10 +327,10 @@ The ID links back into the license section.
     <!--
 This sample project chooses not to distribute a NOTICE. 
      -->
-    <primary-notice/>        
+    <primary-notice/>
     <!--
 The ID links back into the organisation section. 
-     -->
+     -->        
     <primary-organisation id='apache.org'/>
         
     <!-- 
@@ -341,9 +341,9 @@ The ID links back into the organisation section.
     direction, license and organisation. 
     -->
     <within dir='.'>
-    <!-- '.' is the root directory -->
+     <!-- '.' is the root directory -->
         <with-license id='osi:AL2'>
-        <!-- List Apache Licensed resources in the root directory -->
+         <!-- List Apache Licensed resources in the root directory -->
             <by-organisation id='apache.org'>
             <!-- 
                 List resources
@@ -353,12 +353,12 @@ The ID links back into the organisation section.
                 -->
                 <resource name='HelloWorld.py'/>
             </by-organisation>
-            <by-organisation id='person:Sam.Smith'>
-            <!-- 
+            <by-organisation id='example.org'>
+             <!-- 
                 List resources
                 in the root directory
                 with Apache License and 
-                licensed from the sample maintainer 
+                licensed from the sample corporation 
                 -->
                 <resource name='boo.png'/>
             </by-organisation>
@@ -377,9 +377,9 @@ The ID links back into the organisation section.
               with other licenses
             where added
               then this is where they would be recorded.
-        -->        
+        -->         
     </within>
-    <!--
+     <!--
             If other resources 
               in other directories
             where added
