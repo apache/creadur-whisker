@@ -295,9 +295,10 @@ With An Individual Third Party Work
 
   Let's assume that our project <<<foo>>> is here at Apache. So the 
   {{{../faq.html#what-is-primary}primary organisation}} is the
-  {{{http://www.apache.org/foundation}Apache Software Foundation}}. The meta-data for <<<foo>>> describes
-  this in <<<organisations>>> above then references by id as the
-  <<<primary-organisation>>> below. 
+  {{{http://www.apache.org/foundation}Apache Software Foundation}}. 
+  This organisation is described once in <<<organisations>>> (above) then 
+  referenced by id as the
+  <<<primary-organisation>>> (below). 
 
 +---------------------------------------+
 <manifest>
@@ -442,8 +443,9 @@ With An Individual Third Party Work
 
 * And Finally
 
-  We end up with this meta-data (or open as an 
-  {{{./3rd-party-individual-sample.xml}annotated sample}}):
+  We end up with this meta-data 
+  ({{{./3rd-party-individual-sample.xml}open}}
+  as an annotated sample):
 
 +---------------------------------------+
 <?xml version="1.0" encoding="UTF-8"?>
