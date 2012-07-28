@@ -317,6 +317,28 @@ Learn about copyright and software licensing <a href='#more-resources'>here</a>.
             </p>
         </answer>
      </faq>
+      <faq id="what-this-documentation-is-not">
+        <question>Can I rely on this documentation as legal advice?</question>
+        <answer>
+            <p>
+            Most definitely <strong>no</strong>
+            </p>
+            <p>
+This documentation guides users assumed to have a practical understanding of the relevant
+laws in appropriate jurisdictions. In order to explain how Whisker can help,
+we need to agree some terms with the reader.       
+            </p>
+            <p>
+Learn about copyright and software licensing <a href='#more-resources'>here</a>.
+            </p>
+            <p>
+Intellectual property laws are complex, and vary from country to country.
+Anyone looking for legal advice should consult the best lawyer they can.
+We cannot help.
+            </p>
+        </answer>
+     </faq>
+
       <faq id="what-notice">
         <question>What do you mean by <code>NOTICE</code>?</question>
         <answer>
