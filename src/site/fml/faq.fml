@@ -246,6 +246,30 @@ There are currently no known plugins. If you know of a plugin please
             </p>
         </answer>
     </faq>
+    <faq id='sample-meta-data'>
+        <question>Are any samples available?</question>
+        <answer>
+            <p>
+            Yes
+            </p>
+            <p>
+            See
+            </p>
+            <ul>
+                <li> 
+<a href='./examples/james.xml'>Apache James</a>, sample meta-data 
+for a complex open source application; 
+                </li>
+                <li>
+<a href='./examples/public-domain.xml'>Public Domain</a>, a simple
+educational sample with annotation; and 
+                 </li><li>
+<a href='./examples/template-license.xml'>Template License</a>, an
+annotated outline useful for new meta-data.
+                 </li>
+            </ul>
+        </answer>
+    </faq>
         
   </part>
   <part id="generation"> 
