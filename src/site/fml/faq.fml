@@ -451,7 +451,7 @@ that relies on a project are <em>downstream consumers</em>.
     </faq>
     
   </part>
-  <part id="learning"> 
+  <part id="examples"> 
     <title>Is there an Example...</title>
     <faq id="mit-example">
     <question>Using the MIT License?</question>
@@ -473,4 +473,24 @@ that relies on a project are <em>downstream consumers</em>.
     </faq>
     
   </part>
+  <part id="learning"> 
+    <title>Learning</title>
+    <faq id="more-resources">
+      <question>I'm interested in learning more about software licensing. Where should I start?</question>
+      <answer>
+      <p>
+      Some recommended resources
+      </p>
+      <ul>
+        <li><a href='http://www.rosenlaw.com/oslbook.htm'>Open Source Licensing</a> by Lawrence Rosen</li>
+        <li><a href='http://www.softwarefreedom.org/'>Software Freedom Law Center</a> 
+        <a href='http://www.softwarefreedom.org/resources/'>publications</a></li>
+        <li><a href='http://www.ifosslr.org/'>International Free and Open Source Software Law Review</a></li>
+        <li><a href='http://ifosslawbook.org'>The International Free and Open Source Software Law Book</a></li>
+      </ul>
+      
+      </answer>
+    </faq>
+  </part>
+  
 </faqs>
