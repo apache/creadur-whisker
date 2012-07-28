@@ -31,8 +31,12 @@ What Is Apache Whisker?
   language- and build-agnostic suite of tools for auditing and comprehending 
   software distributions. Our community develops 
   {{{http://www.opensource.org/} open source software}} the
-  {{{http://www.apache.org/foundation/how-it-works.html} Apache way}}.  
-
+  {{{http://www.apache.org/foundation/how-it-works.html} Apache way}}.
+  
+  Whisker just helps to maintain information more efficiently, and is no
+  substitute for solid legal work.
+  Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
+   
 * What's An Assembled Application?
 
   An assembled application is composed from libraries and frameworks. 

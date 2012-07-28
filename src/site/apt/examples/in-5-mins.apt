@@ -28,8 +28,12 @@ Whisker In 5 Minutes
  {{{../meta-data.html}meta-data}} describing the licensing qualities
  of documents included within 
  {{{../faq.html#complex-software-applications}complex software distributions}}. 
- <Which> documents are distributed is separated 
- from <what> these documents are. 
+ <Which> documents are distributed are separated 
+ from <what> these documents are.  
+ Whisker just helps to maintain information more efficiently, and is no
+ substitute for solid legal work.
+ Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
+  
  
  For this example, we'll create meta-data for a simple 
  {{{http://opensource.org/licenses/mit-license.php/}MIT licensed}} 
