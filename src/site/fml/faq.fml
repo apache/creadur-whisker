@@ -301,6 +301,22 @@ distributing work licensed from an
   </part>
   <part id="licensing"> 
     <title>Licensing Documentation</title>
+       <faq id="what-whisker-is-not">
+        <question>Will Whisker Automagically Solve my Licensing Problems?</question>
+        <answer>
+            <p>
+            No
+            </p>
+            <p>
+Whisker is just an efficient way to maintain licensing documentation for 
+<a href='#complex-software-applications'>complex applications</a>. It is no 
+substitute for accurate legal legwork.
+            </p>
+            <p>
+Learn about copyright and software licensing <a href='#more-resources'>here</a>.
+            </p>
+        </answer>
+     </faq>
       <faq id="what-notice">
         <question>What do you mean by <code>NOTICE</code>?</question>
         <answer>
@@ -335,7 +351,7 @@ are may well be considered important, and may be governed by statue.
 <a href='#notice-vs-copyright-notice'><code>NOTICE</code></a>.
             </p>
             <p>
-Learn more on copyright and software licensing <a href='#more-resources'>here</a>.
+Learn about copyright and software licensing <a href='#more-resources'>here</a>.
            </p>
         </answer>
      </faq>    
@@ -359,7 +375,7 @@ Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>.
 Read more on copyright notices <a href='#what-copyright-notice'>here</a>. 
            </p>
            <p>
-Learn more on copyright and software licensing <a href='#more-resources'>here</a>.
+Learn about copyright and software licensing <a href='#more-resources'>here</a>.
            </p>
         </answer>
      </faq>
@@ -375,7 +391,7 @@ A <code>NOTICE</code> may be subject to a <a href='#when-notice-needed'>retentio
 Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>. 
             </p>
            <p>
-Learn more on copyright and software licensing <a href='#more-resources'>here</a>.
+Learn about copyright and software licensing <a href='#more-resources'>here</a>.
            </p>
         </answer>
     </faq>
@@ -398,7 +414,7 @@ you need to ensure that the <code>NOTICE</code> is distributed.
 Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>. 
             </p>
             <p>
-Learn more on copyright and software licensing <a href='#more-resources'>here</a>.
+Learn about copyright and software licensing <a href='#more-resources'>here</a>.
            </p>
         </answer>
     </faq>
