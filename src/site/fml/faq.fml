@@ -301,6 +301,62 @@ distributing work licensed from an
   </part>
   <part id="licensing"> 
     <title>Licensing Documentation</title>
+      <faq id="what-notice">
+        <question>What do you mean by <code>NOTICE</code>?</question>
+        <answer>
+            <p>
+A <code>NOTICE</code> is informational documentation, whose retention
+is required by a license condition.
+            </p>
+            <p>
+Some licenses (for example the 
+<a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2</a>)
+may require the retention of a document named <code>NOTICE</code> (or at least its contents).
+By <code>NOTICE</code> we mean information that <code>MUST</code> be preserved 
+to satisfy some condition of a license. Take care not to confuse <code>NOTICE</code> with
+<a href='#notice-vs-copyright-notice'>copyright notice</a> or 
+<a href='#notice-vs-license'><code>LICENSE</code></a>.
+             </p>
+        </answer>
+     </faq>
+      <faq id="what-copyright-notice">
+        <question>What is a copyright notice?</question>
+        <answer>
+            <p>
+A phrase or symbol informing a reader about a underlying claim of copyright ownership.
+            </p><p>
+For example <em>"Copyright (c) 2525 Apache Software Foundation"</em>   
+            </p><p>
+Though copyright laws differ from country to country, copyright notices
+are may well be considered important, and may be governed by statue.
+            </p>
+            <p>
+            Take care not to confuse copyright notice with
+<a href='#notice-vs-copyright-notice'><code>NOTICE</code></a>.
+            </p>
+        </answer>
+     </faq>    
+         
+     <faq id="notice-vs-copyright-notice">
+        <question>What is the difference between a <code>NOTICE</code> and a copyright notice?</question>
+        <answer>
+            <p>
+A <code>NOTICE</code> is informational documentation, whereas a copyright notice 
+informs a reader about a legal claim of ownership. A license may be conditional
+on the redistribution of the contents of a <code>NOTICE</code> but typically
+a copyright notice is governed directly by statue.
+            </p><p>
+A <code>NOTICE</code> document often contains
+copyright notices, but is not limited to just this sort of content. 
+            </p>
+            <p>
+Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>. 
+           </p>
+           <p>
+Read more on copyright notices <a href='#what-copyright-notice'>here</a>. 
+           </p>
+        </answer>
+     </faq>
      <faq id="notice-vs-license">
         <question>What is the difference between a <code>NOTICE</code> and a <code>LICENSE</code>?</question>
         <answer>
@@ -308,6 +364,9 @@ distributing work licensed from an
 A <code>NOTICE</code> is informational documentation, whereas a <code>LICENSE</code> 
 is legal documentation. 
 A <code>NOTICE</code> may be subject to a <a href='#when-notice-needed'>retention clause</a>.
+            </p>
+            <p>
+Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>. 
             </p>
         </answer>
     </faq>
@@ -325,6 +384,9 @@ For example, clause 4.4 in the
 is a retention clause covering any <code>NOTICE</code> distributed with the original. 
 When creating or distributing a modified version of a project licensed with a retention clause,
 you need to ensure that the <code>NOTICE</code> is distributed. 
+            </p>
+            <p>
+Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>. 
             </p>
         </answer>
     </faq>
@@ -348,6 +410,9 @@ It is polite to include a minimal <code>NOTICE</code>. Otherwise,
 <code>NOTICE</code> exists 
 for the release.
             </p>
+            <p>
+Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>. 
+           </p>
         </answer>
     </faq>
     

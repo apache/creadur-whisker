@@ -67,7 +67,8 @@ With An Individual Third Party Work
 
 ** Starting Definitions
 
-  Whisker describes each license, notice and {{{../faq.html#what-is-org}organisation}} once 
+  Whisker describes each license, {{{../faq.html#what-notice}notice}} 
+  and {{{../faq.html#what-is-org}organisation}} once 
   above, and then {{{../faq.html#why-ids}references by id}} below. So, the meta-data for
   project <<<foo>>> is structured along these lines:
 
