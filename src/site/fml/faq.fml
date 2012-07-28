@@ -338,6 +338,41 @@ We cannot help.
             </p>
         </answer>
      </faq>
+     <faq id="what-license">
+        <question>What is a license?</question>
+        <answer>
+            <p>
+In some general sense, a license is a permission. We're
+thinking in particular about copyright or patent permissions.
+            </p>
+            <p>
+Whisker focuses on tracking explicit licenses, and so almost always
+when we talk about a license, we're thinking about a
+written document conditionally granting some copyright 
+and patents permissions for a work.  
+            </p>
+            <p>
+Learn about copyright and software licensing <a href='#more-resources'>here</a>.
+            </p>
+            <p>
+We adopt the convention  <code>LICENSE</code> for the principle licensing 
+document. Read more about this convention <a href='#what-license'>here</a>. 
+            </p>
+        </answer>
+    </faq>
+     
+      <faq id="what-license">
+        <question>What do you mean by <code>LICENSE</code>?</question>
+        <answer>
+            <p>
+We adopt the convention that <code>LICENSE</code> means the principle licensing 
+document for the project. 
+            </p>
+           <p>
+Learn about copyright and software licensing <a href='#more-resources'>here</a>.
+           </p>
+        </answer>
+     </faq>
 
       <faq id="what-notice">
         <question>What do you mean by <code>NOTICE</code>?</question>
