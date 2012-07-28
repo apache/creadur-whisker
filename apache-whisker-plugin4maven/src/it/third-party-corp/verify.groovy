@@ -25,15 +25,15 @@ assert license.exists()
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream(license), "UTF-8"))  
 
 def alv2 = false
-def samSmith = false
+def foundation = false
 def boo = false
 def line = reader.readLine()
 while (line != null) {
     if (line.contains("Apache License")) {
         apache = true
     }
-    if (line.contains("Sam Smith")) {
-        samSmith = true
+    if (line.contains("The Example Foundation")) {
+        foundation = true
     }
     if (line.contains("boo.png")) {
         boo = true
@@ -42,7 +42,7 @@ while (line != null) {
 }
 assert boo
 assert apache
-assert samSmith
+assert foundation
 
     
 return true;
