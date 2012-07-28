@@ -255,6 +255,27 @@ There are currently no known plugins. If you know of a plugin please
             </p>
         </answer>
     </faq>
+    <faq id='how-contents'>
+        <question>How are the contents of a distribution represented?</question>
+        <answer>
+            <p>
+Resources are grouped       
+            </p>
+            <ul>
+                <li><code>by-organisation</code></li>
+                <li><code>with-license</code></li>
+                <li><code>within</code> a directory.</li>
+            </ul>
+            <p> 
+The directory structure is not represented by 
+nesting <code>within</code> elements. These elements are simply listed. 
+            </p>
+            <p>
+See the <a href='#sample-meta-data'>samples</a> for examples.
+            </p>
+        </answer>
+    </faq>
+    
     <faq id='sample-meta-data'>
         <question>Are any samples available?</question>
         <answer>

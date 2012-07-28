@@ -393,7 +393,9 @@ With An Individual Third Party Work
        | boo.png         <- Newly added
 +---------------------------------------+
 
-  We need to add <<<boo.png>>> to the contents, into a new group of resources
+  We need to add <<<boo.png>>> to the 
+  {{{../faq.html#how-contents}contents}}, 
+  into a new group of resources
   within the {{{../faq.html#how-root-dir}root directory}}. Resources
   are grouped by organisation, so the <<<by-organisation>>> containing
   the new resource named <<<boo.png>>> needs to refer (by <<<id>>>) 
