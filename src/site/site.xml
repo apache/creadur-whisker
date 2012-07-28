@@ -54,6 +54,7 @@
         <item name="Apache James" href="examples/james.xml"/>
         <item name="Public Domain" href="examples/public-domain.xml"/>
         <item name="Template License" href="examples/template-license.xml"/>
+        <item name="Individual Maintainer" href="examples/3rd-party-individual-sample.xml"/>
     </menu>
     
     <menu name="Apache Creadur &trade;" inherit="bottom">

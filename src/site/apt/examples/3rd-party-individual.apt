@@ -43,6 +43,9 @@ With An Individual Third Party Work
    * {{{./public-domain.xml} Public Domain}}
 
    * {{{./template-license.xml} Template License}}
+   
+   * distributing work licensed from an {{{./3rd-party-individual-sample.xml} individual maintainer}}
+   
  
  If you're using an IDE then see the 
   {{{../meta-data.html}meta data reference}} for a 
@@ -430,7 +433,8 @@ With An Individual Third Party Work
 
 * And Finally
 
-  We end up with this meta-data:
+  We end up with this meta-data (or open as an 
+  {{{./3rd-party-individual-sample.xml}annotated sample}}):
 
 +---------------------------------------+
 <?xml version="1.0" encoding="UTF-8"?>

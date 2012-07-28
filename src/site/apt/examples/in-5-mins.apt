@@ -51,6 +51,9 @@ Whisker In 5 Minutes
    * {{{./public-domain.xml} Public Domain}}
 
    * {{{./template-license.xml} Template License}}
+   
+   * distributing work licensed from an {{{./3rd-party-individual-sample.xml} individual maintainer}}
+   
  
  If you're using an IDE then see the 
   {{{../meta-data.html}meta data reference}} for a 

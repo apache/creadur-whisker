@@ -261,11 +261,19 @@ There are currently no known plugins. If you know of a plugin please
 for a complex open source application; 
                 </li>
                 <li>
-<a href='./examples/public-domain.xml'>Public Domain</a>, a simple
-educational sample with annotation; and 
-                 </li><li>
 <a href='./examples/template-license.xml'>Template License</a>, an
-annotated outline useful for new meta-data.
+annotated outline useful for new meta-data; or
+                 </li>
+                 <li>simple annotated educational samples for
+                 <ul>
+                    <li> 
+<a href='./examples/public-domain.xml'>public domain</a>
+                    </li>
+                    <li>
+distributing work licensed from an 
+<a href='./examples/3rd-party-individual-sample.xml'>individual maintainer</a>
+                    </li>
+                 </ul>
                  </li>
             </ul>
         </answer>
