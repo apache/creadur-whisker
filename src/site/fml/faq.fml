@@ -174,8 +174,11 @@ As far as Whisker is concerned, each individual maintainer is an
 organisation.  
             </p>
             <p>
-            Read more <a href='#what-is-org'>here</a>. See this 
+            See this 
             <a href='./examples/3rd-party-individual.html'>example</a>.
+            </p>
+            <p>
+            Read more <a href='#what-is-org'>here</a>. 
             </p>
         </answer>
     </faq>
@@ -185,6 +188,10 @@ organisation.
             <p>
 As far as Whisker is concerned, each corporation (whether non-profit or for-profit) is an  
 organisation.
+            </p>
+            <p>
+            See this 
+            <a href='./examples/3rd-party-corporate.html'>example</a>.
             </p>
             <p>
             Read more <a href='#what-is-org'>here</a>. 
@@ -199,6 +206,10 @@ As far as Whisker is concerned, each group or collective is an organisation.
 You might want to check that the <a href='#licensor'>licensor</a> 
 has the rights required to issue the license,
 though, before adding it to your distribution. 
+            </p>
+            <p>
+            See this 
+            <a href='./examples/3rd-party-group.html'>example</a>.
             </p>
             <p>
             Read more <a href='#what-is-org'>here</a>.  
@@ -586,13 +597,24 @@ that relies on a project are <em>downstream consumers</em>.
             <p><a href='examples/in-5-mins.html'>Yes</a></p>
         </answer>
     </faq>
-    <faq id="no-notice-example">
+    <faq id="3rd-party-individual-example">
         <question>Of a Third Party Dependency licensed from an Individual?</question>
         <answer>
             <p><a href='examples/3rd-party-individual.html'>Yes</a></p>
         </answer>
     </faq>
-    
+    <faq id="3rd-party-corporate-example">
+        <question>Of a Third Party Dependency licensed from a for- or non-profit organisation?</question>
+        <answer>
+            <p><a href='examples/3rd-party-corporate.html'>Yes</a></p>
+        </answer>
+    </faq>
+    <faq id="3rd-party-individual-example">
+        <question>Of a Third Party Dependency licensed from an Informal Group?</question>
+        <answer>
+            <p><a href='examples/3rd-party-group.html'>Yes</a></p>
+        </answer>
+    </faq>    
   </part>
   <part id="learning"> 
     <title>Learning</title>
