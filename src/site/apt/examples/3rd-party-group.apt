@@ -39,10 +39,12 @@ With A Third Party Work by an Informal Group
  
    * {{{./in-5-mins.html}Whisker in 5 minutes}}, an MIT licensed project
    
-   * including a 3rd Party work licensed by an {{{./3rd-party-individual.html}individual}}
+   * including a 3rd Party work licensed by 
+   
+       * an {{{./3rd-party-individual.html}individual}}
 
-   * including a 3rd Party work licensed by a for- or non-profit 
-     {{{./3rd-party-corporate.html}corporation}}
+       * a for- or non-profit 
+         {{{./3rd-party-corporate.html}corporation}}
  
  
   or dive into sample meta-data:
