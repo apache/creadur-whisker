@@ -86,7 +86,7 @@ What Is Apache Whisker?
       * an {{{./examples/3rd-party-individual-sample.xml} individual maintainer}}
       
       * a for- or non-profit {{{./examples/3rd-party-corporate-sample.xml}corporation}}
- 
+      
 ** Other Examples
  
  * Including a 3rd Party work licensed by 
@@ -94,4 +94,6 @@ What Is Apache Whisker?
     * an {{{./examples/3rd-party-individual.html}individual}}
  
     * a for- or non-profit {{{./examples/3rd-party-corporate.html}corporation}}
+    
+    * an {{{./examples/3rd-party-group.html}informal group}}
  
