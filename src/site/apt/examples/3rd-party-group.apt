@@ -359,8 +359,8 @@ With A Third Party Work by an Informal Group
 
   Let's add <<<boo.png>>> to the distribution,
   licensed under the same Apache License 
-  by (let's say) <The Example Foundation> (of <<<example.org>>>) a hypothetical
-  non-profit corporation. 
+  by (let's say) <The Legion of the Bouncy Example> (of <<<example.org>>>) a hypothetical
+  informal group. 
   If <<<example.org>>> had chosen a different license, 
   then this license might have to be added but 
   otherwise the process would be analogous.
@@ -368,10 +368,11 @@ With A Third Party Work by an Informal Group
 ** Add Organisation  
 
   As far as Whisker is
-  concerned, data about a for- or non-profit corporation 
-  (like <The Example Foundation>) is entered
+  concerned, data about an informal group corporation 
+  (like <The Legion of the Bouncy Example>) is entered
   entered as an {{{../faq.html#what-is-org}organisation}}. 
-  By checking that <The Example Foundation> isn't already described in the 
+  By checking that <The Legion of the Bouncy Example> 
+  isn't already described in the 
   <<<organisations>>>, we discover that an <<<organisation>>>
   needs to be added. Pay particular attention to the <<<id>>> -
   we'll need to refer to this later when the contents are updated.
@@ -387,7 +388,7 @@ With A Third Party Work by an Informal Group
     ...
         <organisation
            id='example.org'
-           name='The Example Foundation'
+           name='The Legion of the Bouncy Example'
            url='http://example.org/'
         />
     </organisations>
@@ -415,7 +416,7 @@ With A Third Party Work by an Informal Group
   are grouped by organisation, so the <<<by-organisation>>> containing
   the new resource named <<<boo.png>>> needs to refer (by <<<id>>>) 
   to the <<<organisation>>> we added earlier. After checking that 
-  <The Example Foundation>
+  <The Legion of the Bouncy Example>
   doesn't distribute a <<<NOTICE>>> for <<<boo.png>>>, we can complete
   the resource entry. 
    
@@ -434,9 +435,10 @@ With A Third Party Work by an Informal Group
 +---------------------------------------+
 
   That's about all there is to the addition of this new resource licensed from
-  a new individual.
+  an informal group.
  
-  If <The Example Foundation> had distributed a <<<NOTICE>>> for this resource, then 
+  If <The Legion of the Bouncy Example> had distributed 
+  a <<<NOTICE>>> for this resource, then 
   (after finding that the <<<NOTICE>>> is not already included) a
   <<<notice>>> description would need to be added to <<<notices>>>
   above and referenced by id from the resource. Something like:
@@ -447,7 +449,7 @@ With A Third Party Work by an Informal Group
     <within dir='.'>
         <with-license id='osi:AL2'>
             ...
-            <by-organisation id='example'>
+            <by-organisation id='example.org'>
                 <resource name='boo.png' notice='example.org/boo'/>
             </by-organisation>
         </with-license>
@@ -659,7 +661,7 @@ With A Third Party Work by an Informal Group
             url='http://www.apache.org/'/>  
         <organisation
            id='example.org'
-           name='The Example Foundation'
+           name='The Legion of the Bouncy Example'
            url='http://example.org/'
         />
     </organisations>
