@@ -446,7 +446,7 @@ With A Corporate Third Party Work
     <within dir='.'>
         <with-license id='osi:AL2'>
             ...
-            <by-organisation id='example'>
+            <by-organisation id='example.org'>
                 <resource name='boo.png' notice='example.org/boo'/>
             </by-organisation>
         </with-license>
