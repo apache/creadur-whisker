@@ -49,6 +49,7 @@
         <item name="In 5 Minutes" href="examples/in-5-mins.html"/>
         <item name="3rd Party (Individual)" href="examples/3rd-party-individual.html"/>
         <item name="3rd Party (Corporate)" href="examples/3rd-party-corporate.html"/>
+        <item name="3rd Party (Group)" href="examples/3rd-party-group.html"/>
     </menu>
 
     <menu name='Sample Meta Data'>
