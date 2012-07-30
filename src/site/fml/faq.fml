@@ -42,6 +42,25 @@ but otherwise you are free.
       </p>
       </answer>
     </faq>
+    <faq id="name-freedom">
+      <question>Am I Free to Pick Any Name?</question>
+      <answer>
+      <p>
+      Yes, but...
+      </p>
+      <p>
+Whisker adopts the convention that <code>name</code> attributes 
+(for example, on <code>license</code> elements) are used
+for presentation, so it is strong recommended that a suitably
+human-readable title is chosen. 
+      </p>
+      <p>
+Where possibly, pick the standard name for this license: either the
+title within the text, or the name adopted by a standards organisation 
+for example  <a href='http://www.opensource.org'>The Open Source Initiative</a>.
+      </p>
+      </answer>
+    </faq>
     <faq id='where-is-reference'>
         <question>Is a reference available?</question>
         <answer>

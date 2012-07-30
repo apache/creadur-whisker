@@ -70,7 +70,7 @@ Whisker In 5 Minutes
   Each license, notice and organisation is described once 
   above, and then
   {{{../faq.html#why-ids}referenced by id}} below.
-  Begin with an outline.
+  Start with the outline.
  
 +---------------------------------------+
 <manifest>
@@ -96,7 +96,8 @@ Whisker In 5 Minutes
   by id}}. 
   
   This project is MIT licensed, so a description of this license 
-  needs to be added into <<<licenses>>>. 
+  needs to be added into <<<licenses>>>. Choose a <<<name>>> suitable
+  for {{{../faq.html#name-freedom}display}}. 
   
 +---------------------------------------+
 <manifest>
