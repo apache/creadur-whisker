@@ -55,8 +55,14 @@ With A Third Party Work by an Informal Group
 
    * {{{./template-license.xml} Template License}}
    
-   * distributing work licensed from an {{{./3rd-party-individual-sample.xml} individual maintainer}}
-   
+   * distributing work licensed from 
+      
+      * an {{{./3rd-party-individual-sample.xml} individual maintainer}}
+      
+      * a for- or non-profit {{{./3rd-party-corporate-sample.xml}corporation}}
+
+      * an informal {{{./3rd-party-group-sample.xml}group}}
+  
  Whisker treats individual maintainers, 
  groups, for- and non-profit corporations as {{{../faq.html#what-is-org}organisations}},
  so these examples are almost identical.
