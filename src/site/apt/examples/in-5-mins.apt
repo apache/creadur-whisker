@@ -97,7 +97,9 @@ Whisker In 5 Minutes
   
   This project is MIT licensed, so a description of this license 
   needs to be added into <<<licenses>>>. Choose a <<<name>>> suitable
-  for {{{../faq.html#name-freedom}display}}. 
+  for {{{../faq.html#name-freedom}display}}, 
+  {{{../faq.html#id-freedom}pick an id}} and give an 
+  {{{../faq.html#url-freedom}url}}. 
   
 +---------------------------------------+
 <manifest>

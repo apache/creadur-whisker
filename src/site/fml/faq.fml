@@ -61,6 +61,18 @@ for example  <a href='http://www.opensource.org'>The Open Source Initiative</a>.
       </p>
       </answer>
     </faq>
+    <faq id="url-freedom">
+      <question>Am I Free to Pick Any URL?</question>
+      <answer>
+      <p>
+Whisker adopts the convention that <code>url</code> attributes
+(for example, on <code>license</code> elements) are used to present
+a reference location for a reader. It is recommended that a
+standard URL is given, where possible, for example from the 
+<a href='http://www.opensource.org'>The Open Source Initiative</a>.
+       </p>
+      </answer>
+    </faq>
     <faq id='where-is-reference'>
         <question>Is a reference available?</question>
         <answer>
