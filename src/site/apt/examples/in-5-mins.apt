@@ -101,7 +101,7 @@ Whisker In 5 Minutes
   {{{../faq.html#id-freedom}pick an id}} and give an 
   {{{../faq.html#url-freedom}url}}. The MIT license isn't a
   {{{../faq.html#what-is-license-family}family of license}}, so just plain license text 
-  (without parameters) is needed. 
+  (without {{{../meta-data.html#Templates_For_License_Families}parameters}}) is needed. 
   
 +---------------------------------------+
 <manifest>
