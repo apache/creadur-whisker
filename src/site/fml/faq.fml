@@ -615,7 +615,51 @@ that relies on a project are <em>downstream consumers</em>.
             
         </answer>
     </faq>
+
+    <faq id="what-is-an-open-source-license">
+        <question>What is an Open Source License?</question>
+        <answer>
+            <p>
+An open-source license complies with the 
+<a href='http://opensource.org/docs/osd'>Open Source Definition</a>.
+Open Source Licenses are those on this 
+<a href='http://opensource.org/licenses/index.html'>list</a>. 
+Both are maintained by the 
+<a href='http://www.opensource.org'>Open Source Initiative</a>.   
+            </p>
+            <p>
+ Learn more about Open Source <a href='http://opensource.org/history'>here</a>.
+            </p>
+        </answer>
+    </faq>
+
     
+    <faq id="what-is-license-family">
+        <question>What do you mean by a license family?</question>
+        <answer>
+            <p>
+<a href='#what-is-an-open-source-license'>Open source licenses</a> 
+are designed to be re-usable: 
+both you and I can use the same basic text to license our works. 
+Many license texts can be reused without modification (for example,
+the <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2</a>).
+Others require that a small number of details are changed.   
+            </p>
+<p>For example, to use the
+<a href='http://opensource.org/licenses/BSD-2-Clause'>BSD License (2 Clause)</a>
+your name, organisation and the year of publication must be inserted. We call
+licenses of this sort a <em>license family</em> to emphasis that the text is
+a template from which instances of the licenses are created by parameterisation.
+</p>
+            <p>
+Read more about licenses <a href='#what-is-a-license'>here</a>.
+            </p>
+            <p>
+Learn about copyright and software licensing <a href='#more-resources'>here</a>.
+            </p>
+        </answer>
+    </faq>
+
   </part>
   <part id="examples"> 
     <title>Is there an Example...</title>

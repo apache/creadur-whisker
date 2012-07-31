@@ -99,7 +99,9 @@ Whisker In 5 Minutes
   needs to be added into <<<licenses>>>. Choose a <<<name>>> suitable
   for {{{../faq.html#name-freedom}display}}, 
   {{{../faq.html#id-freedom}pick an id}} and give an 
-  {{{../faq.html#url-freedom}url}}. 
+  {{{../faq.html#url-freedom}url}}. The MIT license isn't a
+  {{{../faq.html#what-is-license-family}family of license}}, so just plain license text 
+  (without parameters) is needed. 
   
 +---------------------------------------+
 <manifest>
