@@ -325,7 +325,13 @@ See the <a href='#sample-meta-data'>samples</a> for examples.
 Yes       
             </p>
             <p>
+Add a template <code>license</code> and parameterise.
+            </p>
+            <p>
 Read how <a href='meta-data.html#Templates_For_License_Families'>here</a>.
+            </p>
+            <p>
+See this <a href='examples/license-family.html'>example</a>.
             </p>
             <p>
 Read more about license families <a href='#what-is-license-family'>here</a>.
@@ -667,6 +673,9 @@ your name, organisation and the year of publication must be inserted. We call
 licenses of this sort a <em>license family</em> to emphasis that the text is
 a template from which instances of the licenses are created by parameterisation.
 </p>
+            <p>
+Learn how Whisker supports license families <a href='#how-license-family'>here</a>.
+            </p>
             <p>
 Read more about licenses <a href='#what-is-a-license'>here</a>.
             </p>
