@@ -34,7 +34,9 @@ Parameterising a Template for a License Family
  
  For this example, we'll add the meta-data for a third party work whose
  license is parameterised using a 
- {{{../faq.html#what-is-license-family}license family}} template.   
+ {{{../faq.html#what-is-license-family}license family}} template, 
+ featuring the 
+    {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}  
  
  If this isn't quite what you're looking for, take a look at:
  
@@ -46,6 +48,9 @@ Parameterising a Template for a License Family
 
        * a for- or non-profit 
          {{{./3rd-party-corporate.html}corporation}}
+       
+       * an {{{./3rd-party-group.html}informal group}}
+       
  
  
   or dive into sample meta-data:

@@ -45,6 +45,11 @@ With A Third Party Work by an Informal Group
 
        * a for- or non-profit 
          {{{./3rd-party-corporate.html}corporation}}
+
+   * {{{./license-family.html}Parameterising a template}} for a 
+     {{{../faq.html#what-is-license-family}license family}}, 
+     featuring the 
+     {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
  
  
   or dive into sample meta-data:
