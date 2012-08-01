@@ -429,7 +429,8 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
   Yes, the license is indeed part of the BSD (2 Clause) license family.
   Checking <<<licenses>>> verifies that we need to add this as a new
-  template <<<license>>> with two parameters. We have a free choice 
+  template <<<license>>> with two parameters. We have a 
+  {{{../faq.html#parameter-name-freedom}free choice}} 
   of <<<parameter-name>>> but it's convention to reuse standard names
   (where possible).
 

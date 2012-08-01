@@ -73,6 +73,18 @@ standard URL is given, where possible, for example from the
        </p>
       </answer>
     </faq>
+    <faq id="parameter-name-freedom">
+      <question>Am I Free to Pick Any Name for a Parameter?</question>
+      <answer>
+      <p>
+      Yes
+      </p>
+      <p>
+Where possible, we recommend reusing the name adopted by a standards organisation, 
+for example  <a href='http://www.opensource.org'>The Open Source Initiative</a>.
+      </p>
+      </answer>
+    </faq>
     <faq id='where-is-reference'>
         <question>Is a reference available?</question>
         <answer>
