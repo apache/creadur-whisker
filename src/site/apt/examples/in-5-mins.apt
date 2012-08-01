@@ -91,7 +91,8 @@ Whisker In 5 Minutes
 
 ** Add The Primary License
 
-  Licenses should be entered once into the <<<licenses>>> 
+  {{{../faq.html#what-is-a-license}Licenses}} should be entered once 
+  into the <<<licenses>>> 
   section (at the top), and then {{{../faq.html#why-ids}referenced 
   by id}}. 
   
@@ -99,9 +100,13 @@ Whisker In 5 Minutes
   needs to be added into <<<licenses>>>. Choose a <<<name>>> suitable
   for {{{../faq.html#name-freedom}display}}, 
   {{{../faq.html#id-freedom}pick an id}} and give an 
-  {{{../faq.html#url-freedom}url}}. The MIT license isn't a
-  {{{../faq.html#what-is-license-family}family of license}}, so just plain license text 
-  (without {{{../meta-data.html#Templates_For_License_Families}parameters}}) is needed. 
+  {{{../faq.html#url-freedom}url}}. Note the <<<id>>> chosen since
+  this will be used a little later.
+  The MIT license isn't a
+  {{{../faq.html#what-is-license-family}family}}, so the <<<text>>> contains  
+  just the plain license text 
+  (without {{{../meta-data.html#Templates_For_License_Families}parameters}}).
+  We end up with something like 
   
 +---------------------------------------+
 <manifest>
