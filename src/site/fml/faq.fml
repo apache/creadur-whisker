@@ -331,11 +331,42 @@ Add a template <code>license</code> and parameterise.
 Read how <a href='meta-data.html#Templates_For_License_Families'>here</a>.
             </p>
             <p>
+Read the rational for templates <a href='#why-license-family'>here</a>.
+            </p>
+            <p>
 See this <a href='examples/license-family.html'>example</a>.
             </p>
             <p>
 Read more about license families <a href='#what-is-license-family'>here</a>.
             </p>
+        </answer>
+    </faq>
+
+    <faq id='why-license-family'>
+        <question>Why use templates for license families?</question>
+        <answer>
+            <p>
+Templates are not strictly necessary.
+            </p><p>
+Just pasting every complete license into the <code>text</code> would work,
+though the meta-data would be less concise than using templates. 
+There is some additional work involved with drawing up each template,
+so you might think that this is not a worthwhile tradeoff. 
+            </p><p>
+But there are reasons why using templates today may benefit a project
+tomorrow.
+            </p>
+            <p>
+License families share important legal qualities. In the future, it should 
+be possible to
+automate some licensing policy checks but only if licenses are
+categorised in a form which enables automated reasoning.
+Using a template for all members of a family is likely to help.
+            </p>
+            <p>
+Read more about license families <a href='#what-is-license-family'>here</a>.
+            </p>
+            
         </answer>
     </faq>
 
@@ -672,6 +703,15 @@ Others require that a small number of details are changed.
 your name, organisation and the year of publication must be inserted. We call
 licenses of this sort a <em>license family</em> to emphasis that the text is
 a template from which instances of the licenses are created by parameterisation.
+</p>
+<p>
+Each family shares the share legal qualities, typically differing only in details 
+related
+to the act of publication. Knowing that a license belongs to a family allows
+knowledge about that family to be applied without extensive analysis of the text.
+So, for example, even though BSD License (2 Clause) texts differ we can confidently
+state that each is an 
+<a href='#what-is-an-open-source-license'>Open Source License</a>. 
 </p>
             <p>
 Learn how Whisker supports license families <a href='#how-license-family'>here</a>.
