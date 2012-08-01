@@ -363,7 +363,7 @@ Parameterising a Template for a License Family
    and <<<by-organisation>>> elements match the ids assigned above. This
    allows the details entered above to be re-used consistently.
   
-* Adding A Third Party to the Distribution
+* Adding A Third Party Work to the Distribution
 
   Let's add <<<boo.png>>> to the distribution,
   licensed with the
@@ -426,6 +426,12 @@ OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +---------------------------------------+
+
+  Yes, the license is indeed part of the BSD (2 Clause) license family.
+  Checking <<<licenses>>> verifies that we need to add this as a new
+  template <<<license>>> with two parameters. We have a free choice 
+  of <<<parameter-name>>> but it's convention to reuse standard names
+  (where possible).
 
 ** Add Organisation  
 
