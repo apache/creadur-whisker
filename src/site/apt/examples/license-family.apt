@@ -438,6 +438,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   the text.
   
 +---------------------------------------+
+<manifest>
         ...
         <license 
             id='osi:BSD2' 
@@ -477,38 +478,27 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         ...
 +---------------------------------------+
 
-
+ Comparing the text of the license instance with the template (we just created), 
+ we find that <<<YEAR>>> should be <2000-2010> and 
+ <<<OWNER>>> should be <The Example Project>. We'll need to 
+ add these later as <<<license-parameters>>>.
 
 ** Add Organisation  
 
-  As far as Whisker is
-  concerned, data about an informal group corporation 
-  (like <The Legion of the Bouncy Example>) is entered
-  entered as an {{{../faq.html#what-is-org}organisation}}. 
-  By checking that <The Legion of the Bouncy Example> 
-  isn't already described in the 
-  <<<organisations>>>, we discover that an <<<organisation>>>
-  needs to be added. Pay particular attention to the <<<id>>> -
-  we'll need to refer to this later when the contents are updated.
-  For this example, we'll {{{../faq.html#id-freedom}pick}} 
-  <<<example.org>>> as <<<id>>>. 
+  After verifying that <The Example Project> isn't already 
+  described in the <<<organisations>>>, we add this new 
+  <<<organisation>>>.
   
 +---------------------------------------+
 <manifest>
-    <!-- Definitions -->
-    <licenses>...</licenses>
-    <notices>...</notices>
     <organisations>
     ...
         <organisation
            id='example.org'
-           name='The Legion of the Bouncy Example'
+           name='The Example Project'
            url='http://example.org/'
         />
     </organisations>
-    <primary-license>...</primary-license>
-    <primary-notice>...</primary-notice>
-    <primary-organisation>...</primary-organisation>
     ...
 +---------------------------------------+
 
