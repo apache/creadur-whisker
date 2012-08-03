@@ -399,7 +399,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   {{{http://opensource.org/licenses/index.html}open source initiative}},
   we find this corresponds to the 
   {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
-  template.
+  template
  
 +---------------------------------------+
 Copyright (c) <YEAR>, <OWNER>
@@ -431,8 +431,53 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   Checking <<<licenses>>> verifies that we need to add this as a new
   template <<<license>>> with two parameters. We have a 
   {{{../faq.html#parameter-name-freedom}free choice}} 
-  of <<<parameter-name>>> but it's convention to reuse standard names
-  (where possible).
+  of <<<parameter-name>>> but it's convention to reuse (where possible)
+  standard names - in this case <<<YEAR>>> and <<<OWNER>>>.
+  Define them within in a <<<template>>> element and then values   
+  will be substituted for <<<$\{YEAR\}>>> and <<<$\{OWNER\}>>> within
+  the text.
+  
++---------------------------------------+
+        ...
+        <license 
+            id='osi:BSD2' 
+            name='BSD (2 Clause)'
+            url='http://opensource.org/licenses/BSD-2-Clause'
+            >
+            <template>
+                <parameter-name>YEAR</parameter-name>
+                <parameter-name>OWNER</parameter-name>
+            </template>
+            <text>
+Copyright (c) ${YEAR}, ${OWNER}
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+      this list of conditions and the following disclaimer.
+      
+    * Redistributions in binary form must reproduce the above copyright notice, 
+      this list of conditions and the following disclaimer in the documentation 
+      and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY 
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+            </text>
+        </license>
+        ...
++---------------------------------------+
+
+
 
 ** Add Organisation  
 
