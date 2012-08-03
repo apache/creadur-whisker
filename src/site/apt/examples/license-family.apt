@@ -487,7 +487,8 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
   After verifying that <The Example Project> isn't already 
   described in the <<<organisations>>>, we add this new 
-  <<<organisation>>>.
+  <<<organisation>>>. (Read more about adding organisations 
+  {{{../faq.html#add-org-example}here}}.)
   
 +---------------------------------------+
 <manifest>

@@ -190,6 +190,9 @@ groups and collectives such as
  To reduce duplication and increase comprehension, Whisker often
  groups results by organisation.
             </p>
+            <p>
+ See <a href='#add-org-example'>here</a> for examples.
+            </p>
         </answer>    
     </faq>
     <faq id='where-is-dtd'>
@@ -752,6 +755,24 @@ Learn about copyright and software licensing <a href='#more-resources'>here</a>.
             <p><a href='examples/in-5-mins.html'>Yes</a></p>
         </answer>
     </faq>
+    <faq id="add-org-example">
+        <question>Of Adding an Organisation?</question>
+        <answer>
+            <p>Yes</p>
+            <p>Including examples focussing on</p>
+            <ul>
+                <li>
+<a href='examples/3rd-party-individual.html'>an individual maintainer</a>
+                </li>
+                <li><a href='examples/3rd-party-corporate.html'>a corporation</a></li>
+                <li><a href='examples/3rd-party-group.html'>an informal group</a></li>
+            </ul>
+            <p>
+            Read more about organisations <a href='#what-is-org'>here</a>.
+            </p>
+        </answer>
+    </faq>    
+
     <faq id="3rd-party-individual-example">
         <question>Of a Third Party Dependency licensed from an Individual?</question>
         <answer>
