@@ -551,7 +551,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <within dir='.'>
         ...
         <with-license id='osi:BSD2'>
-            ...
             <by-organisation id='example.org'>
                 <resource name='boo.png'/>
             </by-organisation>
@@ -756,6 +755,41 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    END OF TERMS AND CONDITIONS
 </text>
         </license>
+        <license 
+            id='osi:BSD2' 
+            name='BSD (2 Clause)'
+            url='http://opensource.org/licenses/BSD-2-Clause'
+            >
+            <template>
+                <parameter-name>YEAR</parameter-name>
+                <parameter-name>OWNER</parameter-name>
+            </template>
+            <text>
+Copyright (c) ${YEAR}, ${OWNER}
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+      this list of conditions and the following disclaimer.
+      
+    * Redistributions in binary form must reproduce the above copyright notice, 
+      this list of conditions and the following disclaimer in the documentation 
+      and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY 
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+            </text>
+        </license>
     </licenses>
     <notices/>
     <organisations>
@@ -765,7 +799,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             url='http://www.apache.org/'/>  
         <organisation
            id='example.org'
-           name='The Legion of the Bouncy Example'
+           name='The Example Project'
            url='http://example.org/'
         />
     </organisations>
@@ -779,6 +813,8 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <by-organisation id='apache.org'>
                 <resource name='HelloWorld.py'/>
             </by-organisation>
+        </with-license>
+        <with-license id='osi:BSD2'>
             <by-organisation id='example.org'>
                 <resource name='boo.png'/>
             </by-organisation>
