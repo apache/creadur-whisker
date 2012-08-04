@@ -55,9 +55,15 @@ Whisker In 5 Minutes
    * {{{./public-domain.xml} Public Domain}}
 
    * {{{./template-license.xml} Template License}}
+     or {{{./license-family-sample.xml}License Family}}
    
-   * distributing work licensed from an {{{./3rd-party-individual-sample.xml} individual maintainer}}
-   
+   * distributing work licensed from 
+      
+      * an {{{./3rd-party-individual-sample.xml} individual maintainer}}
+      
+      * a for- or non-profit {{{./3rd-party-corporate-sample.xml}corporation}}
+
+      * an informal {{{./3rd-party-group-sample.xml}group}}
  
  If you're using an IDE then see the 
   {{{../meta-data.html}meta data reference}} for a 
