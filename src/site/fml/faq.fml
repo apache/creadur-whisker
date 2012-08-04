@@ -410,6 +410,9 @@ annotated outline useful for new meta-data; or
 <a href='./examples/public-domain.xml'>public domain</a>
                     </li>
                     <li>
+<a href='./examples/license-family-sample.xml'>license family</a> using a template
+                    </li>
+                    <li>
 distributing work licensed from 
                         <ul>
                             <li>                      
