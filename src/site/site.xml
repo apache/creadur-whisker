@@ -57,6 +57,7 @@
         <item name="Apache James" href="examples/james.xml"/>
         <item name="Public Domain" href="examples/public-domain.xml"/>
         <item name="Template License" href="examples/template-license.xml"/>
+        <item name='License Family' href='examples/license-family-sample.xml'/>
         <item name="3rd Party (Individual)" href="examples/3rd-party-individual-sample.xml"/>
         <item name="3rd Party (Corporate)" href="examples/3rd-party-corporate-sample.xml"/>
         <item name="3rd Party (Group)" href="examples/3rd-party-group-sample.xml"/>
