@@ -533,7 +533,6 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 +---------------------------------------+
     ...
-    <!-- Contents -->
     <within dir='.'>
         ...
         <with-license id='osi:BSD2'>
@@ -541,49 +540,27 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         ...
 +---------------------------------------+
   
-  
-  Resources
-  are grouped by organisation, so the <<<by-organisation>>> containing
-  the new resource named <<<boo.png>>> needs to refer (by <<<id>>>) 
-  to the <<<organisation>>> we added earlier. 
+  Within each license, resources are grouped by organisation.
+  So the <<<by-organisation>>> containing
+  the new resource named <<<boo.png>>> needs to 
+  {{{../faq.html#why-ids}refer}} (by <<<id>>>) 
+  to the <<<organisation>>> we added earlier - <<<example.org>>>. 
    
 +---------------------------------------+
     ...
-    <!-- Contents -->
     <within dir='.'>
-        <with-license id='osi:AL2'>
+        ...
+        <with-license id='osi:BSD2'>
             ...
             <by-organisation id='example.org'>
                 <resource name='boo.png'/>
             </by-organisation>
         </with-license>
-    </within>
-</manifest>
+    ...
 +---------------------------------------+
 
-  That's about all there is to the addition of this new resource licensed from
-  an informal group.
- 
-  If <The Legion of the Bouncy Example> had distributed 
-  a <<<NOTICE>>> for this resource, then 
-  (after finding that the <<<NOTICE>>> is not already included) a
-  <<<notice>>> description would need to be added to <<<notices>>>
-  above and referenced by id from the resource. Something like:
-  
-+---------------------------------------+
-    ...
-    <!-- Contents -->
-    <within dir='.'>
-        <with-license id='osi:AL2'>
-            ...
-            <by-organisation id='example.org'>
-                <resource name='boo.png' notice='example.org/boo'/>
-            </by-organisation>
-        </with-license>
-    </within>
-</manifest>
-+---------------------------------------+
-  
+  That's about all there is to adding <<<boo.png>>>,
+  a new BSD (2 Clause) licensed resource. 
 
 * And Finally
 
