@@ -523,13 +523,29 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   We need to add <<<boo.png>>> to the 
   {{{../faq.html#how-contents}contents}}, 
   into a new group of resources
-  within the {{{../faq.html#how-root-dir}root directory}}. Resources
+  within the {{{../faq.html#how-root-dir}root directory}}. 
+  Within each <<<dir>>>, resources contained within the 
+  directory are grouped <<<with-license>>>. The new resource
+  - <<<boo.png>>> - is the first with the <BSD (2 Clause) License>,
+  so we need to add a new <<<with-license>>> with <<<id>>> 
+  attribute <<<osi:BSD2>>>, the <<<id>>> we chose when we
+  added the license earlier.
+
++---------------------------------------+
+    ...
+    <!-- Contents -->
+    <within dir='.'>
+        ...
+        <with-license id='osi:BSD2'>
+        </with-license>
+        ...
++---------------------------------------+
+  
+  
+  Resources
   are grouped by organisation, so the <<<by-organisation>>> containing
   the new resource named <<<boo.png>>> needs to refer (by <<<id>>>) 
-  to the <<<organisation>>> we added earlier. After checking that 
-  <The Legion of the Bouncy Example>
-  doesn't distribute a <<<NOTICE>>> for <<<boo.png>>>, we can complete
-  the resource entry. 
+  to the <<<organisation>>> we added earlier. 
    
 +---------------------------------------+
     ...
