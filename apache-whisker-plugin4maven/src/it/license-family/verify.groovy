@@ -25,24 +25,28 @@ assert license.exists()
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream(license), "UTF-8"))  
 
 def alv2 = false
-def group = false
+def substituted = false
 def boo = false
+def thirdParty = false
 def line = reader.readLine()
 while (line != null) {
     if (line.contains("Apache License")) {
-        apache = true
+        alv2 = true
     }
-    if (line.contains("The Legion of the Bouncy Example")) {
-        group = true
+    if (line.contains("Copyright (c) 2000-2010, The Example Project")) {
+        substituted = true
     }
     if (line.contains("boo.png")) {
         boo = true
     }
+    if (line.contains("This distribution contains third party resources.")) {
+        thirdParty = true
+    }
     line = reader.readLine()
 }
 assert boo
-assert apache
-assert group
-
+assert alv2
+assert substituted
+assert thirdParty
     
 return true;

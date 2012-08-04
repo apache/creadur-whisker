@@ -19,7 +19,7 @@
 -->
 <!--
 This is an example of a project which distributes a dependency
-maintained by an informal group. 
+with a template license. 
  -->
 <!DOCTYPE manifest [
 
@@ -107,9 +107,8 @@ by ID. Data only needs to be entered once.
     -->
     <licenses>
     <!--
-All artifacts distributed by this sample project shared the Apache License,
-version 2. When artifacts are included with different licenses,
-those licenses would be added here. 
+The primary license is the Apache License, version 2. No template is
+needed for this license.
      -->
         <license 
             name='Apache License, Version 2' 
@@ -294,6 +293,62 @@ those licenses would be added here.
    END OF TERMS AND CONDITIONS
 </text>
         </license>
+<!--
+The BSD (2 Clause) is a license family, this provides an example
+of a template license with parameters. 
+ -->        
+        <license 
+            id='osi:BSD2' 
+            name='BSD (2 Clause)'
+            url='http://opensource.org/licenses/BSD-2-Clause'
+            >
+            <!-- 
+            Describe the parameters used in the template
+            license just below. 
+             -->
+            <template>
+                <!-- 
+                Wherever ${YEAR} occurs in template license
+                below, when the license instance is rendered
+                the value will be substituted.
+                 -->
+                <parameter-name>YEAR</parameter-name>
+                <!-- 
+                ${OWNER} will be substituted when the license
+                instance is rendered.
+                 -->
+                <parameter-name>OWNER</parameter-name>
+            </template>
+            <!-- 
+            This is a template license. When the licence instance
+            is rendered, values will be substituted for parameters.
+             -->
+            <text>
+Copyright (c) ${YEAR}, ${OWNER}
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+      this list of conditions and the following disclaimer.
+      
+    * Redistributions in binary form must reproduce the above copyright notice, 
+      this list of conditions and the following disclaimer in the documentation 
+      and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY 
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+            </text>
+        </license>        
     </licenses>
     <!--
 For this sample, neither the project nor its distributed dependencies
@@ -302,9 +357,7 @@ within the distribution, add NOTICE details here.
      -->
     <notices/>
     <!-- 
-This sample example defines only two organisations. Informal groups
-are described using the same organisation element used for corporate
-and individual maintainers. 
+This sample example defines only two organisations.
      -->
     <organisations>
      <!-- The primary organisation for the project -->
@@ -318,7 +371,7 @@ and individual maintainers.
     -->
         <organisation
            id='example.org'
-           name='The Legion of the Bouncy Example'
+           name='The Example Project'
            url='http://example.org/'
         />
     </organisations>
@@ -355,15 +408,6 @@ The ID links back into the organisation section.
                 -->
                 <resource name='HelloWorld.py'/>
             </by-organisation>
-            <by-organisation id='example.org'>
-              <!-- 
-                List resources
-                in the root directory
-                with Apache License and 
-                licensed from the sample group 
-                -->
-                <resource name='boo.png'/>
-            </by-organisation>
             <!--
             If other resources 
               in the root directory
@@ -374,12 +418,50 @@ The ID links back into the organisation section.
              -->
         </with-license>
         <!--
+           The second resource uses a different license,
+           one that has been defined using a template license
+           above.
+        -->
+        <with-license id='osi:BSD2'>
+        <!-- 
+        All resources within this section should have licenses
+        which are not only in the same license family but which
+        share the same parameter values. 
+         -->
+            <license-parameters>
+                <!-- 
+                Substitute ${YEAR} with '2000-2010' 
+                when the license is rendered.
+                 -->
+                <parameter>
+                    <name>YEAR</name>
+                    <value>2000-2010</value>
+                </parameter>
+                <!-- 
+                Substitute ${OWNER} with 'The Example Project' 
+                when the license is rendered.
+                 -->
+                <parameter>
+                    <name>OWNER</name>
+                    <value>The Example Project</value>
+                </parameter>
+            </license-parameters>
+            <!--
+            This is the third party resource, with a license
+            instance generated by substituting the values above
+            into the template license.  
+             -->
+            <by-organisation id='example.org'>
+                <resource name='boo.png'/>
+            </by-organisation>
+        </with-license>
+        <!--
             If other resources 
               in the root directory
               with other licenses
             where added
               then this is where they would be recorded.
-        -->         
+        -->                 
     </within>
      <!--
             If other resources 
