@@ -540,6 +540,31 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         ...
 +---------------------------------------+
   
+  The <<<license>>> we added early is a template,
+  so we need to include the parameter values
+  as <<<license-parameters>>>. These will be substituted
+  into the template when rendering the license instance text.
+  We enter the values we noted above
+
++---------------------------------------+
+    ...
+    <within dir='.'>
+        ...
+        <with-license id='osi:BSD2'>
+            <license-parameters>
+                <parameter>
+                    <name>YEAR</name>
+                    <value>2000-2010</value>
+                </parameter>
+                <parameter>
+                    <name>OWNER</name>
+                    <value>The Example Project</value>
+                </parameter>
+            </license-parameters>
+        </with-license>
+        ...
++---------------------------------------+
+  
   Within each license, resources are grouped by organisation.
   So the <<<by-organisation>>> containing
   the new resource named <<<boo.png>>> needs to 
@@ -551,6 +576,16 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <within dir='.'>
         ...
         <with-license id='osi:BSD2'>
+            <license-parameters>
+                <parameter>
+                    <name>YEAR</name>
+                    <value>2000-2010</value>
+                </parameter>
+                <parameter>
+                    <name>OWNER</name>
+                    <value>The Example Project</value>
+                </parameter>
+            </license-parameters>
             <by-organisation id='example.org'>
                 <resource name='boo.png'/>
             </by-organisation>
@@ -815,6 +850,16 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             </by-organisation>
         </with-license>
         <with-license id='osi:BSD2'>
+            <license-parameters>
+                <parameter>
+                    <name>YEAR</name>
+                    <value>2000-2010</value>
+                </parameter>
+                <parameter>
+                    <name>OWNER</name>
+                    <value>The Example Project</value>
+                </parameter>
+            </license-parameters>
             <by-organisation id='example.org'>
                 <resource name='boo.png'/>
             </by-organisation>
