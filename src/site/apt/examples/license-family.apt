@@ -482,12 +482,18 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  we find that <<<YEAR>>> should be <2000-2010> and 
  <<<OWNER>>> should be <The Example Project>. We'll need to 
  add these later as <<<license-parameters>>>.
+ We note the {{{../faq.html#id-freedom}id chosen}} 
+ - <<<osi:BSD2>>> - for {{{../faq.html#why-ids}later}}. 
+  
 
 ** Add Organisation  
 
   After verifying that <The Example Project> isn't already 
   described in the <<<organisations>>>, we add this new 
-  <<<organisation>>>. (Read more about adding organisations 
+  <<<organisation>>>, noting the 
+  {{{../faq.html#id-freedom}id chosen}} for 
+  {{{../faq.html#why-ids}later}}. 
+  (Read more about adding organisations 
   {{{../faq.html#add-org-example}here}}.)
   
 +---------------------------------------+
