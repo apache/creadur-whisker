@@ -43,10 +43,21 @@ Whisker In 5 Minutes
  If this isn't quite what you're looking for, take a look at other 
  examples which
  
-   * add third party resources
-     
-     * licensed from {{{./3rd-party-individual.html}an individual}} 
-       to an Apache licensed project 
+   * add third party resources licensed by 
+   
+       * an {{{./3rd-party-individual.html}individual}}
+
+       * a for- or non-profit 
+         {{{./3rd-party-corporate.html}corporation}}
+       
+       * an {{{./3rd-party-group.html}informal group}}
+   
+   * {{{./license-family.html}parameterising a template}} for a 
+     {{{../faq.html#what-is-license-family}license family}}, 
+     featuring the 
+     {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
+   
+
        
   or dive into sample meta-data:
  
