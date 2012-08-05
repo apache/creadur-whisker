@@ -228,6 +228,23 @@ public class JDomBuilderWorkTest extends TestCase {
         assertNotNull("Builder should find primary license", result);
         assertEquals("Builder should find primary licenser", expected, result);
     }
+
+    public void testNoPrimaryCopyright() throws Exception {
+        final String primaryCopyrightNotice = subject.primaryCopyrightNotice(new Document().setRootElement(new Element("manifest").
+                addContent(new Element("primary-license").setAttribute("id", "The primary ID"))));
+        assertNull("Builder should only set primary copyright when present", primaryCopyrightNotice);
+    }
+
+    public void testPrimaryCopyright() throws Exception {
+        final String copyrightNoticeSet = "Some Copyright Claim";
+        final String result = subject.primaryCopyrightNotice(new Document().setRootElement(new Element("manifest").
+                addContent(
+                        new Element("primary-license").setAttribute("id", "The primary ID")
+                        .addContent(
+                                new Element("copyright-notice").addContent(copyrightNoticeSet)))));
+        assertEquals("Builder should set primary copyright notice", result, copyrightNoticeSet);
+    }
+
     
     public void testThrowsMissingIDExceptionWhenPrimaryLicenseMissing() throws Exception {
         final String id = "The primary ID";

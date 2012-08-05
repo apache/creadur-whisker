@@ -49,6 +49,7 @@ import org.jdom.input.SAXBuilder;
  */
 public class JDomBuilder {
     
+    private static final String COPYRIGHT_NOTICE_NAME = "copyright-notice";
     /**
      * 
      */
@@ -240,7 +241,7 @@ public class JDomBuilder {
      */
     private String copyrightNotice(final Element element) {
         final String result;
-        final Element copyrightNoticeElement = element.getChild("copyright-notice");
+        final Element copyrightNoticeElement = element.getChild(COPYRIGHT_NOTICE_NAME);
         if (copyrightNoticeElement == null) {
             result = null;
         } else {
@@ -361,7 +362,7 @@ public class JDomBuilder {
      */
     public License primaryLicense(Document document,
             Map<String, License> licenses) {
-        final String idAttributeValue = document.getRootElement().getChild(PRIMARY_LICENSE_NAME).getAttributeValue("id");
+        final String idAttributeValue = getPrimaryLicenseElement(document).getAttributeValue("id");
         final License results = licenses.get(idAttributeValue);
         if (results == null) {
             throw new MissingIDException(LICENSE_ELEMENT_NAME, PRIMARY_LICENSE_NAME, idAttributeValue);
@@ -369,6 +370,34 @@ public class JDomBuilder {
         return results;
     }
 
+    /**
+     * Gets the element representing the primary license.
+     * @param document not null
+     * @return not null
+     */
+    private Element getPrimaryLicenseElement(final Document document) {
+        return document.getRootElement().getChild(PRIMARY_LICENSE_NAME);
+    }
+
+    /**
+     * Gets the additional primary copyright notice 
+     * from the document.
+     * @param document not null
+     * @return optional primary copyright notice, possibly null
+     */
+    public String primaryCopyrightNotice(final Document document) {
+        final String result;
+        final Element copyrightElement = 
+                getPrimaryLicenseElement(document).getChild(COPYRIGHT_NOTICE_NAME);
+        if (copyrightElement == null) {
+            result = null;
+        } else {
+            result = copyrightElement.getTextTrim();
+        }
+        return result;
+    }
+
+    
     /**
      * Collects notices in the given documents.
      * @param document, not null

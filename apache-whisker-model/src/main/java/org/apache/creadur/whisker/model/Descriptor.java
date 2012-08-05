@@ -29,6 +29,8 @@ public class Descriptor {
 
     /** Principle license for main work. */
     private final License primaryLicense;
+    /** Optional additional primary copyright notice*/
+    private final String primaryCopyrightNotice;
     /** Individual or group with main responsible for main work. */
     private final String primaryOrganisationId;
     /** A NOTICE for the main work, for inclusion alongside the LICENSE. */
@@ -42,7 +44,7 @@ public class Descriptor {
 
     /**
      * Constructs a description of the expected licensing qualities of a
-     * distribution.
+     * distribution, with no additional primary copyright notice.
      * 
      * @param primaryLicense
      *            not null
@@ -60,18 +62,70 @@ public class Descriptor {
      *            not null, possibly empty
      */
     public Descriptor(final License primaryLicense,
-            final String primaryOrganisationId, final String primaryNotice,
+            final String primaryOrganisationId, 
+            final String primaryNotice,
+            final Map<String, License> licenses,
+            final Map<String, String> notices,
+            final Map<String, Organisation> organisations,
+            final Collection<WithinDirectory> contents) {
+        this(   primaryLicense,
+                null,
+                primaryOrganisationId,
+                primaryNotice,
+                licenses,
+                notices,
+                organisations, 
+                contents);
+    }
+    
+    /**
+     * Constructs a description of the expected licensing qualities of a
+     * distribution, with a primary additional copyright notice.
+     * 
+     * @param primaryLicense
+     *            not null
+     * @param primaryCopyrightNotice 
+     *            optional primary copyright notice, possibly null
+     *            
+     * @param primaryOrganisationId
+     *            not null
+     * @param primaryNotice
+     *            possibly null
+     * @param licenses
+     *            not null, possibly empty
+     * @param notices
+     *            not null, possibly empty
+     * @param organisations
+     *            not null, possibly empty
+     * @param contents
+     *            not null, possibly empty
+     */
+    public Descriptor(final License primaryLicense,
+            final String primaryCopyrightNotice,
+            final String primaryOrganisationId, 
+            final String primaryNotice,
             final Map<String, License> licenses,
             final Map<String, String> notices,
             final Map<String, Organisation> organisations,
             final Collection<WithinDirectory> contents) {
         super();
         this.primaryLicense = primaryLicense;
+        this.primaryCopyrightNotice = primaryCopyrightNotice;
         this.primaryOrganisationId = primaryOrganisationId;
         this.primaryNotice = primaryNotice;
         this.licenses = licenses;
         this.notices = notices;
         this.contents = contents;
+    }
+
+    /**
+     * Gets an additional copyright notice needed 
+     * for some primary licenses.
+     * @return optional primary copyright notice,
+     * possibly null
+     */
+    public String getPrimaryCopyrightNotice() {
+        return primaryCopyrightNotice;
     }
 
     /**
