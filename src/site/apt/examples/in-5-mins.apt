@@ -180,6 +180,17 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   {{{../faq.html#when-notice-needed}retention clause}}. So, there is no need
   for a <<<primary-notice>>> to be defined. 
 
++---------------------------------------+
+<manifest>
+    ...
+    <notices/>
+    ...
+    <primary-notice/>
+    ...
+</manifest> 
++---------------------------------------+
+
+
 * Summary
 
 +---------------------------------------+
