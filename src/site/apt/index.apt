@@ -100,4 +100,10 @@ What Is Apache Whisker?
     * a for- or non-profit {{{./examples/3rd-party-corporate.html}corporation}}
     
     * an {{{./examples/3rd-party-group.html}informal group}}
+    
+ * {{{./examples/license-family.html}Parameterising a template}} for a 
+     {{{./faq.html#what-is-license-family}license family}}, 
+     featuring the 
+     {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
+ 
  
