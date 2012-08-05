@@ -163,7 +163,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   contributed to the distribution by the project. 
   Reference this {{{../faq.html#why-ids}by id}}
   in <<<primary-license>>>. For our example, we set the <<<id>>> 
-  attribute to the id - <<<osi:mit>>> - we picked early
+  attribute to the id - <<<osi:mit>>> - we picked earlier.
 
 +---------------------------------------+
 <manifest>
@@ -172,6 +172,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ...
 </manifest>
 +---------------------------------------+
+
+  Unlike the 
+  {{{http://opensource.org/licenses/apache-2.0}Apache License, Version 2}} 
+  (for example),
+  the MIT License does not have a <<<NOTICE>>> 
+  {{{../faq.html#when-notice-needed}retention clause}}. So, there is no need
+  for a <<<primary-notice>>> to be defined. 
 
 * Summary
 
