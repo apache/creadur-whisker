@@ -433,7 +433,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   Checking <<<licenses>>> verifies that we need to add this as a new
   template <<<license>>> with two parameters. We have a 
   {{{../faq.html#parameter-name-freedom}free choice}} 
-  of <<<parameter-name>>> but it's convention to reuse (where possible)
+  of <<<parameter-name>>> but it's conventional to reuse (where possible)
   standard names - in this case <<<YEAR>>> and <<<OWNER>>>.
   Define them within in a <<<template>>> element and then values   
   will be substituted for <<<$\{YEAR\}>>> and <<<$\{OWNER\}>>> within
@@ -542,7 +542,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         ...
 +---------------------------------------+
   
-  The <<<license>>> we added early is a template,
+  The <<<license>>> we added earlier is a template,
   so we need to include the parameter values
   as <<<license-parameters>>>. These will be substituted
   into the template when rendering the license instance text.
