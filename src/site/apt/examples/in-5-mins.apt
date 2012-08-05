@@ -190,6 +190,43 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </manifest> 
 +---------------------------------------+
 
+** Add The Primary Organisation
+
+ {{{../faq.html#third-party-individual}Individual maintainers}}, 
+ {{{../faq.html#third-party-ad-hoc}informal groups}}, 
+ for- and non-profit 
+ {{{../faq.html#third-party-corporation}corporations}}
+ are all modeled by Whisker as <<<organisations>>>. 
+ Read more {{{../faq.html#what-is-org}here}}. 
+ Let's assume that our example project is here at Apache, 
+ and so is licensed by the 
+ {{{http://www.apache.org/foundation}Apache Software Foundation}}.
+ 
+ This <<<organisation>>> needs to be added into <<<organisations>>>.
+ We fill in <<<name>>> and <<<url>>>, and 
+ {{{../faq.html#id-freedom}pick an id}}, which we'll need to
+ {{{../faq.html#why-ids}refer to}} just a little later.
+ 
++---------------------------------------+
+    ...
+    <organisations>
+        <organisation 
+            id='apache.org' 
+            name='Apache Software Foundation' 
+            url='http://www.apache.org'/>
+    </organisations>
+    ...
++---------------------------------------+
+  
+  Find the <<<primary-organisation>>> lower in the document,
+  and set the <<<id>>> attribute.
+ 
++---------------------------------------+
+    ...
+    <primary-organisation id='apache.org'/>
+    ...
++---------------------------------------+
+
 
 * Summary
 
