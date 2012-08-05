@@ -158,7 +158,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ...  
 +---------------------------------------+
   
-  (Start here for more about the primary license.)
+  By primary license we {{{../faq.html#what-is-primary}mean}} the main
+  license for the project, covering most of the original resources
+  contributed to the distribution by the project. 
+  Reference this {{{../faq.html#why-ids}by id}}
+  in <<<primary-license>>>. For our example, we set the <<<id>>> 
+  attribute to the id - <<<osi:mit>>> - we picked early
 
 +---------------------------------------+
 <manifest>
