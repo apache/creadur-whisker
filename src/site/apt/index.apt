@@ -81,6 +81,8 @@ What Is Apache Whisker?
 
    * {{{./examples/template-license.xml} Template License}}
    
+   * {{{./examples/license-family-sample.xml}License Family}}
+   
    * distributing work licensed from 
       
       * an {{{./examples/3rd-party-individual-sample.xml} individual maintainer}}
