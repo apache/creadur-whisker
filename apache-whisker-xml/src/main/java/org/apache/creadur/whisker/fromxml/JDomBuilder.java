@@ -488,10 +488,12 @@ public class JDomBuilder {
         final Map<String, License> licenses = mapLicenses(document);
         final Map<String, String> notices = mapNotices(document);
         final License primaryLicense = primaryLicense(document, licenses);
+        final String primaryCopyrightNotice = primaryCopyrightNotice(document);
         final String primaryNotice = primaryNotice(document);
         final String primaryOrganisationId = primaryOrganisationId(document);
         final Collection<WithinDirectory> contents = collectContents(document, licenses, organisations); 
-        return new Descriptor(primaryLicense, primaryOrganisationId, primaryNotice, 
+        return new Descriptor(primaryLicense, primaryCopyrightNotice,
+                primaryOrganisationId, primaryNotice, 
                 licenses, notices, organisations, contents);
     }
     

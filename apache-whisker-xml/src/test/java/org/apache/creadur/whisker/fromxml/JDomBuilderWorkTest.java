@@ -245,6 +245,20 @@ public class JDomBuilderWorkTest extends TestCase {
         assertEquals("Builder should set primary copyright notice", result, copyrightNoticeSet);
     }
 
+    public void testBuildPrimaryCopyright() throws Exception {
+        final String copyrightNoticeSet = "Some Copyright Claim";
+        final String result = subject.build(new Document().setRootElement(
+                new Element("manifest")
+                    .addContent(
+                            new Element("licenses").addContent(
+                                    new Element("license").setAttribute("id", "The primary ID")))
+                    .addContent(
+                        new Element("primary-license").setAttribute("id", "The primary ID")
+                        .addContent(
+                                new Element("copyright-notice").addContent(copyrightNoticeSet))))
+                                ).getPrimaryCopyrightNotice();
+        assertEquals("Builder should set primary copyright notice", result, copyrightNoticeSet);
+    }
     
     public void testThrowsMissingIDExceptionWhenPrimaryLicenseMissing() throws Exception {
         final String id = "The primary ID";
