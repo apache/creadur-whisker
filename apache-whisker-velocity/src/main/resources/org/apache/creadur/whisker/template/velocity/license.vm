@@ -18,6 +18,10 @@
 ##  under the License.    
 ## 
 #################################################################################
+#if ( $work.isPrimaryCopyrightNotice() )
+$work.getPrimaryCopyrightNotice()
+
+#end 
 $work.PrimaryLicense.Text
 
 #if ( ! $work.isPrimaryOnly() )

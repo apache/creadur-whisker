@@ -129,6 +129,15 @@ public class Descriptor {
     }
 
     /**
+     * Is there a primary copyright notice?
+     * @return true if a primary copyright notice
+     * has been set, false otherwise
+     */
+    public boolean isPrimaryCopyrightNotice() {
+        return primaryCopyrightNotice != null;
+    }
+    
+    /**
      * Gets the principle NOTICE for the main work.
      * 
      * @return the primaryNotice

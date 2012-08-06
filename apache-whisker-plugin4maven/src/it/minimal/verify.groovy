@@ -17,16 +17,24 @@
  * under the License. 
  */
 
-import java.io.*;
+File license = new File(basedir, "target/LICENSE");
+File notice = new File(basedir, "target/NOTICE");
 
-try {
-    File license = new File(basedir, "target/LICENSE");
-    File notice = new File(basedir, "target/NOTICE");
-    
-    return license.exists() && !notice.exists();    
+assert license.exists()
+assert !notice.exists()
 
-} catch (Throwable t) {
-    t.printStackTrace();
-    return false;
+
+def copyright = false
+
+def reader = new BufferedReader(new InputStreamReader(new FileInputStream(license), "UTF-8"))  
+def line = reader.readLine()
+while (line != null) {
+    if (line.contains("Copyright (c) 2525 Someone")) {
+        copyright = true
+    }
+    line = reader.readLine()
 }
+assert copyright
+
+    
 return true;
