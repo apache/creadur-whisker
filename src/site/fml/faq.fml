@@ -385,6 +385,33 @@ Read more about license families <a href='#what-is-license-family'>here</a>.
         </answer>
     </faq>
     <faq id='how-primary-copyright-notice'>
+        <question>What do you mean by a primary copyright notice?</question>
+        <answer>
+            <p>
+An (optional) <a href='#what-copyright-notice'>copyright notice</a>,
+included in a <code>LICENSE</code> document but positioned above the license text
+(rather than being part of it). For example, conventionally a copyright notice
+is positioned above the
+<a href='http://opensource.org/licenses/mit-license.php/'>MIT License</a> text.
+            </p>
+            <p>
+ Learn about copyright notices <a href='#what-copyright-notice'>here</a>.
+            </p>
+            <p>
+ Read about the different between a <code>NOTICE</code>
+ and a copyright notice <a href='#notice-vs-copyright-notice'>here</a>.
+            </p>
+            <p>
+ Read about when you need to add a primary copyright notice
+ <a href='#when-primary-copyright-notice'>here</a>.
+            </p>
+             <p>
+ Read about how you need add a primary copyright notice
+ <a href='#how-primary-copyright-notice'>here</a>.
+            </p>
+        </answer>
+    </faq>
+    <faq id='how-primary-copyright-notice'>
         <question>How do I add a primary copyright notice?</question>
         <answer>
             <p>
@@ -393,7 +420,7 @@ Read more about license families <a href='#what-is-license-family'>here</a>.
             <p>
             </p>
             <p>
- Learn about a copyright notice <a href='#what-copyright-notice'>here</a>.
+ Learn about copyright notices <a href='#what-copyright-notice'>here</a>.
             </p>
             <p>
  Read about the different between a <code>NOTICE</code>
