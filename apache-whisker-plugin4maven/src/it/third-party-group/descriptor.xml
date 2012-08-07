@@ -64,7 +64,7 @@ maintained by an informal group.
 <!ELEMENT primary-notice (#PCDATA)>
 
 <!-- The organisation responsible for the application -->
-<!ELEMENT primary-organisation EMPTY>
+<!ELEMENT primary-organisation (copyright-notice?)>
 <!-- References the organisation by id attribute -->
 <!ATTLIST primary-organisation id IDREF #REQUIRED>
 
