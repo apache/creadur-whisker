@@ -384,6 +384,60 @@ Read more about license families <a href='#what-is-license-family'>here</a>.
             
         </answer>
     </faq>
+    <faq id='how-primary-copyright-notice'>
+        <question>How do I add a primary copyright notice?</question>
+        <answer>
+            <p>
+ 
+            </p>
+            <p>
+            </p>
+            <p>
+ Learn about a copyright notice <a href='#what-copyright-notice'>here</a>.
+            </p>
+            <p>
+ Read about the different between a <code>NOTICE</code>
+ and a copyright notice <a href='#notice-vs-copyright-notice'>here</a>.
+            </p>
+            <p>
+ Read about when you need to add a primary copyright notice
+ <a href='#when-primary-copyright-notice'>here</a>.
+            </p>
+        </answer>
+    </faq>
+    <faq id='when-primary-copyright-notice'>
+        <question>When do I need to add a primary copyright notice?</question>
+        <answer>
+            <p>
+<a href='#what-is-license-family'>Template licenses</a> 
+(for example the 
+<a href='http://opensource.org/licenses/BSD-2-Clause'>BSD License 2 Clause</a>)
+typically includes a 
+parameterised copyright notice. Licenses 
+<a href='#when-notice-needed'>with</a> a <code>NOTICE</code>
+(for example the 
+<a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2</a>)
+usually include the copyright notice in the <code>NOTICE</code>.
+            </p><p>
+Some other licenses (for example the 
+<a href='http://opensource.org/licenses/mit-license.php/'>MIT License</a>) 
+conventionally include a copyright notice above the text:
+to use these licenses with Whisker, add a primary copyright notice
+and use the plain license text.
+            </p>
+            <p>
+ Learn about copyright notices <a href='#what-copyright-notice'>here</a>.
+            </p>
+            <p>
+ Read about the different between a <code>NOTICE</code>
+ and a copyright notice <a href='#notice-vs-copyright-notice'>here</a>.
+            </p>
+            <p>
+ Read about how you need add a primary copyright notice
+ <a href='#how-primary-copyright-notice'>here</a>.
+            </p>
+        </answer>
+    </faq>
 
     
     <faq id='sample-meta-data'>
