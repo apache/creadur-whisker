@@ -384,7 +384,7 @@ Read more about license families <a href='#what-is-license-family'>here</a>.
             
         </answer>
     </faq>
-    <faq id='how-primary-copyright-notice'>
+    <faq id='what-primary-copyright-notice'>
         <question>What do you mean by a primary copyright notice?</question>
         <answer>
             <p>
@@ -415,9 +415,8 @@ is positioned above the
         <question>How do I add a primary copyright notice?</question>
         <answer>
             <p>
- 
-            </p>
-            <p>
+ Add a <code>copyright-notice</code> child to the <code>primary-license</code>.
+ See the example <a href='./examples/in-5-mins.html'>here</a>.
             </p>
             <p>
  Learn about copyright notices <a href='#what-copyright-notice'>here</a>.
