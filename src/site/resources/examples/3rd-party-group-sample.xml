@@ -56,7 +56,7 @@ maintained by an informal group.
 <!ATTLIST organisation url CDATA #IMPLIED>
 
 <!-- The primary license for the application -->
-<!ELEMENT primary-license EMPTY>
+<!ELEMENT primary-license (copyright-notice?)>
 <!-- References the license by id attribute -->
 <!ATTLIST primary-license id IDREF #REQUIRED>
 
