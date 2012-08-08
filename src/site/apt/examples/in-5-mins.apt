@@ -211,8 +211,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  
  This <<<organisation>>> needs to be added into <<<organisations>>>.
  We fill in <<<name>>> and <<<url>>>, and 
- {{{../faq.html#id-freedom}pick an id}}, which we'll need to
- {{{../faq.html#why-ids}refer to}} just a little later.
+ {{{../faq.html#id-freedom}pick an id}} (which we'll need to
+ {{{../faq.html#why-ids}refer to}} just a little later).
  
 +---------------------------------------+
     ...
