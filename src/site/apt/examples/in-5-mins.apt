@@ -164,11 +164,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   Reference this {{{../faq.html#why-ids}by id}}
   in <<<primary-license>>>. For our example, we set the <<<id>>> 
   attribute to the id - <<<osi:mit>>> - we picked earlier.
+  Conventionally, a 
+  {{{../faq.html#what-copyright-notice}copyright notice}}  
+  is positioned above the MIT license text. So we need to add
+  a {{{../faq.html#what-primary-copyright-notice}primary copyright notice}} 
+  (<Copyright (c) 3535 Someone>, let's say).
 
 +---------------------------------------+
 <manifest>
     ...
-    <primary-license id='osi:mit'/>
+    <primary-license id='osi:mit'>
+        <copyright-notice>Copyright (c) 3535 Someone</copyright-notice>
+    </primary-license>
     ...
 </manifest>
 +---------------------------------------+
