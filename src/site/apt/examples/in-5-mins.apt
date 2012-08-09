@@ -234,6 +234,37 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ...
 +---------------------------------------+
 
+* Contents
+
+  Meta-data links the contents of a software distribution with 
+  its licensing definitions. This allows Whisker to, for example, 
+  generate licensing document and check that every document
+  included is expected.
+  
+  Contents are described by directory. The resources <<<within>>> 
+  each directory are grouped <<<with-license>>> then 
+  <<<by-organisation>>> but the tree structure of directories
+  in a file system is not replicated in the element structure.
+  In short, directories are modeled by a flat list.
+  
+  Work through the distribution, one directory at a time.
+  Let's say our distribution is something similar to this.
+  
++---------------------------------------+
+  --|- one.txt
+    |- two.html
+    |- three.py
+    |
+    |-alpha-|- five.js 
+    |       |- six.rb
+    |       |- seven.coffee
+    |
+    |-beta--|- eight.java
+    |       |...
+   ...     
++---------------------------------------+
+
+
 
 * Summary
 
