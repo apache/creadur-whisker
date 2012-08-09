@@ -264,6 +264,74 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    ...     
 +---------------------------------------+
 
+  The root directory of the distribution is 
+  {{{../faq.html#how-root-dir}denoted by '.'}}, and let's
+  say that its contents - <<<one.txt>>>, <<<two.html>>>
+  and <<<three.py>>> - are all licensed from the primary
+  organisation using the primary license. Whisker
+  makes no assumptions about license or organisation,
+  whether primary or not.
+  Every resource is added <<<by-organisation>>> 
+  and <<<with-license>>>, referred to {{{../faq.html#why-ids}by id}}.
+
++---------------------------------------+
+    ...
+    <within dir='.'>
+        <with-license id='osi:AL2'>
+            <by-organisation id='apache.org'>
+                <resource name='one.text'/>
+                <resource name='two.html'/>
+                <resource name='three.py'/>
+            </by-organisation>
+        </with-license>
+    </within>
+</manifest>
++---------------------------------------+
+
+ In directory <<<alpha>>>, let's say that <<<five.js>>>
+ and <<<six.rb>>> are similar. We add these immediately.
+
++---------------------------------------+
+    ...
+    <within dir='alpha'>
+        <with-license id='osi:AL2'>
+            <by-organisation id='apache.org'>
+                <resource name='five.js'/>
+                <resource name='six.rb'/>
+            </by-organisation>
+            ...
++---------------------------------------+
+
+ Let's say that <<<seven.coffee>>>
+ is licensed from <<<example.org>>> also under the Apache License.
+ After checking that details haven't already been added
+ for <<<example.org>>>, we add an <<<organisation>>>
+ and refer to it <<<by-organisation>>> containing the
+ <<<resource>>>.
+
++---------------------------------------+
+    ...
+    <organisations>
+        ...
+        <organisation 
+            id='example.org' 
+            name='The Example Org' 
+            url='http://www.example.org'/>
+    </organisations>
+    ...
+    <within dir='alpha'>
+        <with-license id='osi:AL2'>
+            <by-organisation id='apache.org'>
+                <resource name='five.js '/>
+                <resource name='six.rb'/>
+            </by-organisation>
+            <by-organisation id='example.org'>
+                <resource name='seven.coffee'/>
+            </by-organisation>
+        </with-license>
+    </within>
+</manifest>
++---------------------------------------+
 
 
 * Summary
