@@ -289,7 +289,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 +---------------------------------------+
 
  In directory <<<alpha>>>, let's say that <<<five.js>>>
- and <<<six.rb>>> are similar. We add these immediately.
+ and <<<six.rb>>> are similar to those above. 
+ We add these immediately.
 
 +---------------------------------------+
     ...
