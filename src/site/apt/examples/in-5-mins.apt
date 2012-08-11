@@ -243,9 +243,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   
   Contents are described by directory. The resources <<<within>>> 
   each directory are grouped <<<with-license>>> then 
-  <<<by-organisation>>> but the tree structure of directories
-  in a file system is not replicated in the element structure.
-  In short, directories are modeled by a flat list.
+  <<<by-organisation>>>. Directories are modeled by a 
+  {{{../faq.html#how-dir-model}flat list}} 
+  of <<<within>>> elements.
   
   Work through the distribution, one directory at a time.
   Let's say our distribution is something similar to this.
