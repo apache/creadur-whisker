@@ -310,8 +310,54 @@ There are currently no known plugins. If you know of a plugin please
             <p>
             As in &lt;within dir='.'&gt;
             </p>
+            <p>
+Read how directories are modeled <a href='#how-dir-model'>here</a>           
+            </p>            
         </answer>
     </faq>
+    <faq id='how-dir-model'>
+        <question>How are directories modeled?</question>
+        <answer>
+            <p>
+ Directories are modeled by a flat list of <code>within</code>
+ elements.
+            </p>
+            <p>
+Read why <a href='#why-dir-model'>here</a>           
+            </p>
+            <p>
+See how the root directory is modelled <a href='#how-root-dir'>here</a>
+            </p>
+        </answer>
+    </faq>
+    <faq id='why-dir-model'>
+        <question>Why are directories modeled as a flat list?</question>
+        <answer>
+            <p>
+            Simplicity
+            </p>
+            <p>
+ Within a file system, the containment relationship between
+ directories typically forms a natural tree. Modern file systems 
+ typically allow cyclic links only with special links (for example,
+  <code>symbolic links</code> in 
+  <a href='http://dbpedia.org/resource/Unix-like'>*nix</a>).
+  Including these links would allow directory containment
+  to become a graph. XML element containment forms a natural
+  tree structure, but representing a graph in XML requires 
+  links to break this structure.
+  This would introduce more complexity 
+  and more ways to make mistakes but little gain. 
+            </p>
+            <p>
+Read how directories are modeled <a href='#how-dir-model'>here</a>           
+            </p>
+            <p>
+See how the root directory is modelled <a href='#how-root-dir'>here</a>
+            </p>
+        </answer>
+    </faq>
+    
     <faq id='how-contents'>
         <question>How are the contents of a distribution represented?</question>
         <answer>
