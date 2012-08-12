@@ -28,8 +28,6 @@ Whisker In 5 Minutes
  {{{../meta-data.html}meta-data}} describing the licensing qualities
  of documents included within 
  {{{../faq.html#complex-software-applications}complex software distributions}}. 
- <Which> documents are distributed are separated 
- from <what> these documents are.  
  Whisker just helps to maintain information more efficiently, and is no
  substitute for solid legal work.
  Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
@@ -249,7 +247,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   of <<<within>>> elements.
   
   Work through the distribution, one directory at a time.
-  Let's say our distribution is something similar to this.
+  Let's say our distribution is laid out like this:
   
 +---------------------------------------+
   --|- one.txt
@@ -262,7 +260,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     |
     |-beta--|- eight.java
     
-   ...     
 +---------------------------------------+
 
   The root directory of the distribution is 
