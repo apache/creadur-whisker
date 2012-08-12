@@ -56,7 +56,7 @@ maintained by an informal group.
 <!ATTLIST organisation url CDATA #IMPLIED>
 
 <!-- The primary license for the application -->
-<!ELEMENT primary-license EMPTY>
+<!ELEMENT primary-license (copyright-notice?)>
 <!-- References the license by id attribute -->
 <!ATTLIST primary-license id IDREF #REQUIRED>
 
@@ -64,7 +64,7 @@ maintained by an informal group.
 <!ELEMENT primary-notice (#PCDATA)>
 
 <!-- The organisation responsible for the application -->
-<!ELEMENT primary-organisation (copyright-notice?)>
+<!ELEMENT primary-organisation EMPTY>
 <!-- References the organisation by id attribute -->
 <!ATTLIST primary-organisation id IDREF #REQUIRED>
 
@@ -97,8 +97,7 @@ maintained by an informal group.
 <!ATTLIST resource sha1 CDATA #IMPLIED>
 <!ATTLIST resource notice IDREF #IMPLIED>
 <!ATTLIST resource source CDATA #IMPLIED>
-]>
-<manifest>    
+]><manifest>
 <!-- 
     Definitions 
     ===========    
@@ -107,11 +106,40 @@ by ID. Data only needs to be entered once.
     -->
     <licenses>
     <!--
-All artifacts distributed by this sample project shared the Apache License,
-version 2. When artifacts are included with different licenses,
-those licenses would be added here. 
+The primary license is the MIT license. No template is
+needed for this license. The primary license is treated
+like any other license in the meta-data, though it will
+be given more prominence when legal documents are 
+generated.
      -->
-        <license 
+        <license name='MIT License' id='osi:mit' 
+            url='http://www.opensource.org/licenses/mit-license.php'>
+            <text>
+Permission is hereby granted, free  of charge, to any person obtaining
+a  copy  of this  software  and  associated  documentation files  (the
+"Software"), to  deal in  the Software without  restriction, including
+without limitation  the rights to  use, copy, modify,  merge, publish,
+distribute,  sublicense, and/or sell  copies of  the Software,  and to
+permit persons to whom the Software  is furnished to do so, subject to
+the following conditions:
+
+The  above  copyright  notice  and  this permission  notice  shall  be
+included in all copies or substantial portions of the Software.
+
+THE  SOFTWARE IS  PROVIDED  "AS  IS", WITHOUT  WARRANTY  OF ANY  KIND,
+EXPRESS OR  IMPLIED, INCLUDING  BUT NOT LIMITED  TO THE  WARRANTIES OF
+MERCHANTABILITY,    FITNESS    FOR    A   PARTICULAR    PURPOSE    AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+            </text>
+        </license>
+        <!-- 
+The Apache License, Version 2 is used by one of the third party
+dependencies aggregated within the distribution. 
+         -->
+         <license 
             name='Apache License, Version 2' 
             id='osi:AL2' 
             url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
@@ -302,30 +330,37 @@ within the distribution, add NOTICE details here.
      -->
     <notices/>
     <!-- 
-This sample example defines only two organisations. Informal groups
-are described using the same organisation element used for corporate
-and individual maintainers. 
+This sample example defines only two organisations.
      -->
     <organisations>
-     <!-- The primary organisation for the project -->
+    <!-- 
+    The primary organisation for the project, 
+    typically the main maintainers. 
+    -->
+        <organisation 
+            id='example.org' 
+            name='The Hypothetical Example Foundation' 
+            url='http://www.example.org'/>
+    <!--
+    A third party who licenses a resource aggregated within the
+    distribution. 
+     -->
         <organisation 
             id='apache.org' 
-            name='The Apache Software Foundation' 
-            url='http://www.apache.org/'/>  
-    <!-- 
-        The informal group from whom the dependency 
-        included in the distribution is licensed 
-    -->
-        <organisation
-           id='example.org'
-           name='The Legion of the Bouncy Example'
-           url='http://example.org/'
-        />
+            name='Apache Software Foundation' 
+            url='http://www.apache.org'/>
     </organisations>
     <!--
 The ID links back into the license section. 
      -->
-    <primary-license id='osi:AL2'/>
+    <primary-license id='osi:mit'>
+        <!--
+        The MIT license does not contain a copyright notice.
+        This copyright notice will be prefixed when the primary
+        licensed is rendered. Only a few licenses need this. 
+        -->
+        <copyright-notice>Copyright (c) 3535 Someone</copyright-notice>
+    </primary-license>
     <!--
 This sample project chooses not to distribute a NOTICE. 
      -->
@@ -333,8 +368,8 @@ This sample project chooses not to distribute a NOTICE.
     <!--
 The ID links back into the organisation section. 
      -->                
-    <primary-organisation id='apache.org'/>
-        
+    <primary-organisation id='example.org'/>
+    
     <!-- 
     Contents
     ========
@@ -343,48 +378,66 @@ The ID links back into the organisation section.
     direction, license and organisation. 
     -->
     <within dir='.'>
-     <!-- '.' is the root directory -->
-        <with-license id='osi:AL2'>
-         <!-- List Apache Licensed resources in the root directory -->
-            <by-organisation id='apache.org'>
+    <!-- '.' is the root directory -->
+        <with-license id='osi:mit'>
+        <!-- List MIT Licensed resources in the root directory -->
+            <by-organisation id='example.org'>
             <!-- 
                 List resources
                 in the root directory
-                with Apache License and 
+                with MIT License and 
                 licensed from apache.org 
                 -->
-                <resource name='HelloWorld.py'/>
+                <resource name='one.text'/>
+                <resource name='two.html'/>
+                <resource name='three.py'/>
             </by-organisation>
-            <by-organisation id='example.org'>
-              <!-- 
-                List resources
-                in the root directory
-                with Apache License and 
-                licensed from the sample group 
-                -->
-                <resource name='boo.png'/>
-            </by-organisation>
-            <!--
-            If other resources 
-              in the root directory
-              with the Apache License
-              licensed by other organisations
-            where added
-              then this is where they would be recorded.
-             -->
         </with-license>
-        <!--
-            If other resources 
-              in the root directory
-              with other licenses
-            where added
-              then this is where they would be recorded.
-        -->         
     </within>
-     <!--
-            If other resources 
-              in other directories
-            where added
-              then this is where they would be recorded.
+    <!-- 
+    alpha is contained within the root directory,
+    but the meta-data uses a flat list for directories
+    and so the natural tree structure of the file system
+    is not reflected here. 
+    -->
+    <within dir='alpha'>
+        <with-license id='osi:mit'>
+            <!--
+            Resources are grouped by the organisation
+            that licenses them. 
+             -->
+            <by-organisation id='example.org'>
+                <resource name='five.js'/>
+                <resource name='six.rb'/>
+            </by-organisation>
+            <by-organisation id='apache.org'>
+                <resource name='seven.coffee'/>
+            </by-organisation>
+        </with-license>
+    </within>
+    <!-- 
+    alpha is contained within the root directory,
+    but the meta-data uses a flat list for directories
+    and so the natural tree structure of the file system
+    is not reflected here. 
+    -->
+    <within dir='beta'>
+    <!-- 
+    Compare this with the root directory,
+    and you'll see that there is nothing special 
+    about the handling of contents with the primary
+    license.
      -->
+        <with-license id='osi:AL2'>
+            <by-organisation id='apache.org'>
+                <resource name='eight.java'/>
+            </by-organisation>
+        </with-license>
+    </within>
+    <!--
+       If other resources 
+       in other directories
+       where added
+       then this is where they would be recorded.
+    -->
 </manifest>

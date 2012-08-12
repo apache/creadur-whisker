@@ -25,24 +25,69 @@ assert license.exists()
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream(license), "UTF-8"))  
 
 def alv2 = false
-def group = false
-def boo = false
+def mit = false
+def thirdParty = false
+def apacheOrg = false
+def five = false
+def copyright = false
+def one = false
+def two = false
+def three = false
+def six = false
+def seven = false
+def eight = false
 def line = reader.readLine()
 while (line != null) {
     if (line.contains("Apache License")) {
         apache = true
     }
-    if (line.contains("The Legion of the Bouncy Example")) {
-        group = true
+    if (line.contains("Permission is hereby granted, free  of charge, to any person obtaining")) {
+        mit = true
     }
-    if (line.contains("boo.png")) {
-        boo = true
+    if (line.contains("Copyright (c) 3535 Someone")) {
+        copyright = true
     }
+    if (line.contains("This distribution contains third party resources.")) {
+        thirdParty = true
+    }
+    if (line.contains("Apache Software Foundation")) {
+        apacheOrg = true
+    }
+    
+    if (line.contains("five.js")) {
+        five = true
+    }
+    if (line.contains("one.text")) {
+        one = true
+    }
+    if (line.contains("two.html")) {
+        two = true
+    }
+    if (line.contains("three.py")) {
+        three = true
+    }
+    if (line.contains("six.rb")) {
+        six = true
+    }
+    if (line.contains("seven.coffee")) {
+        seven = true
+    }
+    if (line.contains("eight.java")) {
+        eight = true
+    }
+    
     line = reader.readLine()
 }
-assert boo
+assert apacheOrg
 assert apache
-assert group
-
+assert thirdParty
+assert mit
+assert !five
+assert !one
+assert !two
+assert !three
+assert !six
+assert seven
+assert eight
     
 return true;
