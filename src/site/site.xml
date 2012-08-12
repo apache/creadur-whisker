@@ -76,6 +76,7 @@
         <item name="3rd Party (Individual)" href="examples/3rd-party-individual-sample.xml"/>
         <item name="3rd Party (Corporate)" href="examples/3rd-party-corporate-sample.xml"/>
         <item name="3rd Party (Group)" href="examples/3rd-party-group-sample.xml"/>
+        <item name="MIT License" href="examples/in-5-mins-sample.xml"/>
     </menu>
     
     <menu name="Apache Creadur &trade;" inherit="bottom">

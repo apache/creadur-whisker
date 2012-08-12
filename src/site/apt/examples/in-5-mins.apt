@@ -538,8 +538,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
  The <<<beta>>> directory in our distribution contains only the 
  resource <<<eight.java>>> by <<<apache.org>>> licensed under the 
- Apache License, Version 2. So we're ready now to complete the
- meta-data.
+ Apache License, Version 2. For this example, we will assume
+ that no NOTICE is 
+ {{{../faq.html#when-notice-needed}required}}. 
+ So we're ready now to complete the meta-data.
 
 +---------------------------------------+
     ...
@@ -557,7 +559,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 * And Finally
 
   We end up with this meta-data 
-  ({{{./3rd-party-individual-sample.xml}open}}
+  ({{{./in-5-mins-sample.xml}open}}
   as an annotated sample):
 
 +---------------------------------------+
