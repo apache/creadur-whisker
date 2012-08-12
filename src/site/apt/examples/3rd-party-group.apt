@@ -28,8 +28,8 @@ With A Third Party Work by an Informal Group
  {{{../meta-data.html}meta-data}} describing the licensing qualities
  of documents included within 
  {{{../faq.html#complex-software-applications}complex software distributions}}.
- Whisker just helps to maintain information more efficiently, and is no
- substitute for solid legal work.
+ Whisker just helps to maintain information more efficiently, and is 
+ {{{../faq.html#what-whisker-is-not}no substitute}} for solid legal work.
  Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
  
  For this example, we'll add the meta-data for a third party work licensed from 
