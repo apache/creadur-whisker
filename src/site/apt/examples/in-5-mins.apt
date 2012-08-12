@@ -207,11 +207,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  Read more {{{../faq.html#what-is-org}here}}. 
  Let's assume that our example project is maintained by 
  - and licensed from - the (hypothetical)
- <The Hypothetical Example Foundation>, whose domain is 
+ <Hypothetical Example Foundation>, whose domain is 
  <<<example.org>>>.
  
  This <<<organisation>>> needs to be added into <<<organisations>>>.
- We fill in <<<name>>> and <<<url>>>, and 
+ We fill in {{{../faq.html#name-freedom}<<<name>>>}} 
+ and {{{../faq.html#url-freedom}<<<url>>>}}, and 
  {{{../faq.html#id-freedom}pick an id}} (which we'll need to
  {{{../faq.html#why-ids}refer to}} just a little later).
  
@@ -242,7 +243,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   generate licensing document and check that every document
   included is expected.
   
-  Contents are described by directory. The resources <<<within>>> 
+  Contents are {{{../faq.html#how-contents}described by directory}}. 
+  The resources <<<within>>> 
   each directory are grouped <<<with-license>>> then 
   <<<by-organisation>>>. Directories are modeled by a 
   {{{../faq.html#how-dir-model}flat list}} 
@@ -268,7 +270,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   {{{../faq.html#how-root-dir}denoted by '.'}}, and let's
   say that its contents (<<<one.txt>>>, <<<two.html>>>
   and <<<three.py>>>) are all licensed from the primary
-  organisation using the primary license. Whisker
+  organisation (<<<example.org>>>) 
+  using the primary license (MIT). Whisker
   makes no assumptions about license or organisation,
   whether primary or not.
   Every resource is added <<<by-organisation>>> 
@@ -289,7 +292,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 +---------------------------------------+
 
  In directory <<<alpha>>>, let's say that <<<five.js>>>
- and <<<six.rb>>> are similar to those above. 
+ and <<<six.rb>>> are similar (MIT licensed by <<<example.org>>>) 
+ to those above. 
  We add these immediately.
 
 +---------------------------------------+
@@ -306,7 +310,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  Let's say that <<<seven.coffee>>> is a third party resource
  included within the software distribution. To illustrate how
  to add a third party resource sharing the primary license,
- let's suppose that <<<seven.coffee>>> is licensed under the 
+ let's say that <<<seven.coffee>>> is licensed under the 
  primary (MIT) license from the Apache Software Foundation.
  After checking that details haven't 
  already been added for <<<apache.org>>>, we add an 
