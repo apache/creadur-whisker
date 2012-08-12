@@ -260,7 +260,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     |       |- seven.coffee
     |
     |-beta--|- eight.java
-    |       |...
+    
    ...     
 +---------------------------------------+
 
@@ -277,7 +277,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 +---------------------------------------+
     ...
     <within dir='.'>
-        <with-license id='osi:AL2'>
+        <with-license id='osi:mit'>
             <by-organisation id='apache.org'>
                 <resource name='one.text'/>
                 <resource name='two.html'/>
@@ -295,7 +295,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 +---------------------------------------+
     ...
     <within dir='alpha'>
-        <with-license id='osi:AL2'>
+        <with-license id='osi:mit'>
             <by-organisation id='apache.org'>
                 <resource name='five.js'/>
                 <resource name='six.rb'/>
@@ -321,7 +321,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     </organisations>
     ...
     <within dir='alpha'>
-        <with-license id='osi:AL2'>
+        <with-license id='osi:mit'>
             <by-organisation id='apache.org'>
                 <resource name='five.js '/>
                 <resource name='six.rb'/>
@@ -533,6 +533,22 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         ...
 +---------------------------------------+
 
+ The <<<beta>>> directory in our distribution contains only the 
+ resource <<<eight.java>>> by <<<example.org>>> licensed under the 
+ Apache License, Version 2. So we're ready now to complete the
+ meta-data.
+
++---------------------------------------+
+    ...
+    <within dir='beta'>
+        <with-license id='osi:AL2'>
+            <by-organisation id='example.org'>
+                <resource name='eight.java'/>
+            </by-organisation>
+        </with-license>
+    </within>
+</manifest>
++---------------------------------------+
  
 
 * Summary
