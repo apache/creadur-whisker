@@ -205,9 +205,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  {{{../faq.html#third-party-corporation}corporations}}
  are all modeled by Whisker as <<<organisations>>>. 
  Read more {{{../faq.html#what-is-org}here}}. 
- Let's assume that our example project is here at Apache, 
- and so is licensed by the 
- {{{http://www.apache.org/foundation}Apache Software Foundation}}.
+ Let's assume that our example project is maintained by 
+ - and licensed from - the (hypothetical)
+ <The Hypothetical Example Foundation>, whose domain is 
+ <<<example.org>>>.
  
  This <<<organisation>>> needs to be added into <<<organisations>>>.
  We fill in <<<name>>> and <<<url>>>, and 
@@ -218,9 +219,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ...
     <organisations>
         <organisation 
-            id='apache.org' 
-            name='Apache Software Foundation' 
-            url='http://www.apache.org'/>
+            id='example.org' 
+            name='The Hypothetical Example Foundation' 
+            url='http://www.example.org'/>
     </organisations>
     ...
 +---------------------------------------+
@@ -230,7 +231,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  
 +---------------------------------------+
     ...
-    <primary-organisation id='apache.org'/>
+    <primary-organisation id='example.org'/>
     ...
 +---------------------------------------+
 
@@ -278,7 +279,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ...
     <within dir='.'>
         <with-license id='osi:mit'>
-            <by-organisation id='apache.org'>
+            <by-organisation id='example.org'>
                 <resource name='one.text'/>
                 <resource name='two.html'/>
                 <resource name='three.py'/>
@@ -296,17 +297,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ...
     <within dir='alpha'>
         <with-license id='osi:mit'>
-            <by-organisation id='apache.org'>
+            <by-organisation id='example.org'>
                 <resource name='five.js'/>
                 <resource name='six.rb'/>
             </by-organisation>
             ...
 +---------------------------------------+
 
- Let's say that <<<seven.coffee>>>
- is licensed from <<<example.org>>> also under the Apache License.
- After checking that details haven't already been added
- for <<<example.org>>>, we add an <<<organisation>>>
+ Let's say that <<<seven.coffee>>> is a third party resource
+ included within the software distribution. To illustrate how
+ to add a third party resource sharing the primary license,
+ let's suppose that <<<seven.coffee>>> is licensed under the 
+ primary (MIT) license from the Apache Software Foundation.
+ After checking that details haven't 
+ already been added for <<<apache.org>>>, we add an 
+ <<<organisation>>>
  and {{{../faq.html#why-ids}refer to it}} <<<by-organisation>>> containing the
  <<<resource>>>.
 
@@ -315,18 +320,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     <organisations>
         ...
         <organisation 
-            id='example.org' 
-            name='The Example Org' 
-            url='http://www.example.org'/>
+            id='apache.org' 
+            name='Apache Software Foundation' 
+            url='http://www.apache.org'/>
     </organisations>
     ...
     <within dir='alpha'>
         <with-license id='osi:mit'>
-            <by-organisation id='apache.org'>
+            <by-organisation id='example.org'>
                 <resource name='five.js '/>
                 <resource name='six.rb'/>
             </by-organisation>
-            <by-organisation id='example.org'>
+            <by-organisation id='apache.org'>
                 <resource name='seven.coffee'/>
             </by-organisation>
         </with-license>
@@ -335,9 +340,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 +---------------------------------------+
 
  Finally, let's say that directory <<<beta>>> contains only 
- <<<eight.java>>>, again from <<<example.org>>> but licensed
+ <<<eight.java>>>, again from <<<apache.org>>> but licensed
  this time under the 
- {{{http://opensource.org/licenses/apache-2.0}Apache License, Version 2}}.
+ {{{http://opensource.org/licenses/apache-2.0}Apache License, Version 2}},
+ which is the standard license for Apache software.
  
  After checking that this license isn't already in <<<licenses>>>,
  we add the license details and note the id 
@@ -534,7 +540,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 +---------------------------------------+
 
  The <<<beta>>> directory in our distribution contains only the 
- resource <<<eight.java>>> by <<<example.org>>> licensed under the 
+ resource <<<eight.java>>> by <<<apache.org>>> licensed under the 
  Apache License, Version 2. So we're ready now to complete the
  meta-data.
 
@@ -542,7 +548,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ...
     <within dir='beta'>
         <with-license id='osi:AL2'>
-            <by-organisation id='example.org'>
+            <by-organisation id='apache.org'>
                 <resource name='eight.java'/>
             </by-organisation>
         </with-license>
