@@ -538,6 +538,10 @@ annotated outline useful for new meta-data; or
                     <li>
 <a href='./examples/license-family-sample.xml'>license family</a> using a template
                     </li>
+                    <li>                    
+Whisker In 5 Minutes featuring the 
+<a href='./examples/in-5-mins-sample.xml'>MIT License</a>
+                    </li>
                     <li>
 distributing work licensed from 
                         <ul>
