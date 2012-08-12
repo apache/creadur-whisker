@@ -33,30 +33,39 @@ What Is Apache Whisker?
   {{{http://www.opensource.org/} open source software}} the
   {{{http://www.apache.org/foundation/how-it-works.html} Apache Way}}.
   
-  Whisker just helps to maintain information more efficiently, and is no
-  substitute for solid legal work. No part of our documentation is legal advice, 
+  Whisker just helps to maintain information more efficiently, and is 
+  {{{./faq.html#what-whisker-is-not}no substitute}} 
+  for solid legal work. No part of our documentation is 
+  {{{./faq.html#what-this-documentation-is-not}legal advice}}, 
   and readers are assumed to have a practical understanding of the relevant laws. 
   
   Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
+
+* How Can Whisker Help?
+
+ Whisker can
+ 
+  * verify - checking meta-data quality against a distribution
+
+  * generate - legal documents from meta-data
+ 
+ Particular useful for complex assembled applications.
    
-* What's An Assembled Application?
+** What's An Assembled Application?
 
-  An assembled application is composed from libraries and frameworks. 
+  An assembled application is composed from libraries and frameworks.
+  
+  Read more {{{./faq.html#complex-software-applications}here}}.
 
-* What Legal Documentation?
+** What Legal Documentation?
 
   NOTICE and LICENSE are supported examples.
 
-* How Does Whisker Work?
+** How Does Whisker Work?
  
   Licensing {{{./meta-data.html} meta-data}} describes the legal qualities of the components 
   assembled.  
  
-* What Does Whisker Do?
- 
-  * verification - checks meta-data quality
-
-  * generation - of legal documents from meta-data
 
 * How Can I Use Whisker?
 
