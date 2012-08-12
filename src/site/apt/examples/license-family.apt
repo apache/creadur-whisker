@@ -77,7 +77,9 @@ Parameterising a Template for a License Family
  
  If you're using an IDE then see the 
   {{{../meta-data.html}meta data reference}} for a 
-  {{{../faq.html#why-dtd}DTD}}. If you have 
+  {{{../faq.html#why-dtd}DTD}}. 
+  
+ If you have 
   any questions, please try the {{{../faq.html}FAQ}} before asking on the 
   {{{../mail-lists.html}mail lists}}.
  
