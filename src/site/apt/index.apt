@@ -31,7 +31,7 @@ What Is Apache Whisker?
   language- and build-agnostic suite of tools for auditing and comprehending 
   software distributions. Our community develops 
   {{{http://www.opensource.org/} open source software}} the
-  {{{http://www.apache.org/foundation/how-it-works.html} Apache way}}.
+  {{{http://www.apache.org/foundation/how-it-works.html} Apache Way}}.
   
   Whisker just helps to maintain information more efficiently, and is no
   substitute for solid legal work. No part of our documentation is legal advice, 
@@ -67,13 +67,13 @@ What Is Apache Whisker?
 * Getting Started
 
  Browse the {{{./xref/index.html}source}}, 
- read the {{{./apidocs/index.html}javadocs}}
- or take a look at some examples:
+ read the {{{./apidocs/index.html}javadocs}},
+ take a look
  
    * {{{./examples/in-5-mins.html}Whisker In 5 Minutes}}
  
  
- or dive into sample meta-data:
+ dive into sample meta-data
  
    * {{{./examples/james.xml} Apache James}}
 
@@ -94,7 +94,12 @@ What Is Apache Whisker?
 
       * an informal {{{./examples/3rd-party-group-sample.xml}group}}
       
-** Other Examples
+ or browse the {{{./faq.html}FAQ}}.
+
+ A warm welcome is guaranteed on our 
+ {{{../mail-lists.html}mail lists}}.
+      
+** More Examples
  
  * Including a 3rd Party work licensed by 
   
