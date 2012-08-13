@@ -48,7 +48,7 @@ public class LicenseTemplateException extends Exception {
      * @param parameters parameters passed
      * @param name license name
      */
-    public LicenseTemplateException(final String message,
+    private LicenseTemplateException(final String message,
             final Map<String, String> parameters, final String name) {
         // TODO: improve reporting
         super(message);
@@ -60,7 +60,7 @@ public class LicenseTemplateException extends Exception {
      * @param expectedParameters not null
      * @param actualParameters not null
      */
-    public LicenseTemplateException(final String message,
+    private LicenseTemplateException(final String message,
             final Collection<String> expectedParameters,
             final Collection<String> actualParameters) {
         // TODO improve reporting
@@ -72,7 +72,7 @@ public class LicenseTemplateException extends Exception {
      * @param message not null
      * @param name not null
      */
-    public LicenseTemplateException(final String message, final String name) {
+    private LicenseTemplateException(final String message, final String name) {
         // TODO improve reporting
         super(message);
     }
