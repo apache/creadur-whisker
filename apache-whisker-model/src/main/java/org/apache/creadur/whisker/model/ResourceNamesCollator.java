@@ -75,6 +75,7 @@ public class ResourceNamesCollator extends Visitor {
      * @param resource not null
      */
     @Override
+    @SuppressWarnings("PMD.EmptyIfStmt")
     public void visit(final Resource resource) {
         if (this.resources.add(new ImmutablePair<WithinDirectory, Resource>(
                 this.lastDirectory, resource))) {
