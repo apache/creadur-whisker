@@ -37,10 +37,13 @@ public class Descriptor {
     private final String primaryNotice;
     /** License meta-data, indexed by id. */
     private final Map<String, License> licenses;
+    /** Organisation meta-data, indexed by id */
+    private final Map<String, Organisation> organisations;
     /** Notice meta-data, indexed by id. */
     private final Map<String, String> notices;
     /** Directories expected to be contained within the release. */
     private final Collection<WithinDirectory> contents;
+    
 
     /**
      * Constructs a description of the expected licensing qualities of a
@@ -115,6 +118,7 @@ public class Descriptor {
         this.primaryNotice = primaryNotice;
         this.licenses = licenses;
         this.notices = notices;
+        this.organisations = organisations;
         this.contents = contents;
     }
 
@@ -155,6 +159,14 @@ public class Descriptor {
         final NoticeCollator collator = new NoticeCollator();
         traverse(collator);
         return collator.resourceNotices(this.notices);
+    }
+
+    /**
+     * Gets the organisations described.
+     * @return organisations indexed by id, not null
+     */
+    public Map<String, Organisation> getOrganisations() {
+        return organisations;
     }
 
     /**
