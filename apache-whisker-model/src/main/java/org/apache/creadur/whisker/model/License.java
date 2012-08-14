@@ -133,7 +133,7 @@ public class License implements Comparable<License> {
 
         if (!parametersMatch(parameters, this.expectedParameters)) {
             throw LicenseTemplateException.parameterMismatch(
-                    this.expectedParameters, parameters.keySet());
+                    this.expectedParameters, parameters.keySet(), getName());
         }
 
         return parameters;

@@ -29,77 +29,99 @@ public class LicenseTemplateException extends Exception {
 
     /** Exception are serializable, so provide a SUID. */
     private static final long serialVersionUID = -4085365930968672572L;
-
-    /**
-     * Builds an instance.
-     * @param parameters not null
-     * @param name not null
-     * @return not null 
-     */
-    public static LicenseTemplateException notLicenseTemplate(
-            final Map<String, String> parameters, final String name) {
-        return new LicenseTemplateException("This is not a templated license",
-                parameters, name);
-    }
-
-    /**
-     * Constructs an instance.
-     * @param message not null
-     * @param parameters parameters passed
-     * @param name license name
-     */
-    private LicenseTemplateException(final String message,
-            final Map<String, String> parameters, final String name) {
-        // TODO: improve reporting
-        super(message);
-    }
-
-    /**
-     * Constructs an instance.
-     * @param message not null
-     * @param expectedParameters not null
-     * @param actualParameters not null
-     */
-    private LicenseTemplateException(final String message,
-            final Collection<String> expectedParameters,
-            final Collection<String> actualParameters) {
-        // TODO improve reporting
-        super(message);
-    }
-
-    /**
-     * Constructs an instance
-     * @param message not null
-     * @param name not null
-     */
-    private LicenseTemplateException(final String message, final String name) {
-        // TODO improve reporting
-        super(message);
-    }
+    /** Names the erroneous license */
+    private final String licenseName;
 
     /**
      * Builds an exception indicating that parameter passed
      * do not fulfill expectations.
      * @param expectedParameters not null
      * @param actualParameters not null
+     * @param licenseName not null
      * @return not null
      */
     public static LicenseTemplateException parameterMismatch(
             final Collection<String> expectedParameters,
-            final Collection<String> actualParameters) {
-        return new LicenseTemplateException("Parameter mismatch.",
-                expectedParameters, actualParameters);
+            final Collection<String> actualParameters,
+            final String licenseName) {
+        final StringBuilder message = new StringBuilder("Parameter mismatch for license '");
+        message.append(licenseName);
+        message.append('.');
+        explainDiffs(expectedParameters, actualParameters, message, " Missing parameters: ");
+        explainDiffs(actualParameters, expectedParameters, message, " Unexpected parameters: ");
+        return new LicenseTemplateException(message.toString(), licenseName);
     }
 
     /**
-     * Builds an exception indicating that duplicate parameter
-     * names have been passed.
-     * @param name names the parameter duplicated, not null
-     * @return not null
+     * Explains the differences between the sample and the base.
+     * @param sample not null
+     * @param base not null
+     * @param message not null
+     * @param preamble not null
      */
-    public static LicenseTemplateException duplicateParameterName(
-            final String name) {
-        return new LicenseTemplateException("Duplicate parameter name.", name);
+    private static void explainDiffs(final Collection<String> sample,
+            final Collection<String> base, final StringBuilder message,
+            final String preamble) {
+        boolean first = true;
+        for (final String expected:sample) {
+            if (!base.contains(expected)) {
+                if (first) {
+                    first = false;
+                    message.append(preamble);
+                } else {
+                    message.append(", ");
+                }
+                message.append(expected);
+            }
+        }
+        if (!first) {
+            message.append('.');
+        }
     }
 
+    
+    /**
+     * Builds an instance.
+     * @param parameters not null
+     * @param licenseName not null
+     * @return not null 
+     */
+    public static LicenseTemplateException notLicenseTemplate(
+            final Map<String, String> parameters, final String licenseName) {
+        final StringBuilder message = new StringBuilder("'");
+        message.append(licenseName);
+        message.append("' is not a templated license but parameters were set (");
+        boolean first = true;
+        for (final String name:parameters.keySet()) {
+            if (first) {
+                first = false;
+            } else {
+                message.append(", ");
+            }
+            message.append(name);
+        }
+        message.append(")");
+        return new LicenseTemplateException(message.toString(), licenseName);
+    }
+
+    /**
+     * Constructs an instance.
+     * @param message not null
+     * @param parameters parameters passed
+     * @param licenseName license name, not null
+     */
+    private LicenseTemplateException(final String message, final String licenseName) {
+        super(message);
+        this.licenseName = licenseName;
+    }
+
+    /**
+     * Gets the name of the erroneous license.
+     * @return license name, not null
+     */
+    public String getLicenseName() {
+        return licenseName;
+    }
+
+    
 }
