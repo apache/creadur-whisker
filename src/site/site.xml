@@ -57,6 +57,7 @@
        <item name='Meta Data' href='meta-data.html'/>
        <item name='Maven Plugin' href='apache-whisker-plugin4maven/index.html'/>
        <item name='Command Line' href='apache-whisker-cli/index.html'/>
+       <item name='Javadocs' href='apidocs/index.html'/>
        <item name="FAQ" href="faq.html"/>
     </menu>
     
