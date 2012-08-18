@@ -14,25 +14,35 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app;
 
 import java.io.File;
 
 /**
- * 
+ * Names results which might be produced by Whisker.
  */
 public enum Result {
-    LICENSE("LICENSE"), NOTICE("NOTICE"), 
-    MISSING_LICENSE_REPORT("missing-licenses.txt"), 
-    XML_TEMPLATE("manifest-template.xml"), 
+    /** Software license. */
+    LICENSE("LICENSE"),
+    /** Software notice. */
+    NOTICE("NOTICE"),
+    /** Describes missing meta-data. */
+    MISSING_LICENSE_REPORT("missing-licenses.txt"),
+    /** Starting point for meta-data development. */
+    XML_TEMPLATE("manifest-template.xml"),
+    /** Describes the directories in the source. */
     DIRECTORIES_REPORT("directories.txt");
-    
-    /** Conventional name for the result */
+
+    /** Conventional name for the result. */
     private final String name;
 
-    private Result(String name) {
+    /**
+     * Constructs an instance.
+     * @param name not null
+     */
+    private Result(final String name) {
         this.name = name;
     }
 
@@ -49,7 +59,7 @@ public enum Result {
      * @param directory not null
      * @return conventional file within directory
      */
-    public File within(File directory) {
+    public File within(final File directory) {
         return new File(directory, getName());
     }
 }

@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app;
 
@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * Builds writers for results. 
+ * Builds writers for results.
  */
 public interface ResultWriterFactory {
 
@@ -32,5 +32,5 @@ public interface ResultWriterFactory {
      * @return not null
      * @throws IOException when suitable writer cannot be constructed
      */
-    public Writer writerFor(final Result result) throws IOException;
+    Writer writerFor(final Result result) throws IOException;
 }

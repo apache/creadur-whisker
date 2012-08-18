@@ -1,11 +1,11 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
  * regarding copyright ownership.  The ASF licenses this file
- *  to you under the Apache License, Version 2.0 (the
+ * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
- *  with the License.  You may obtain a copy of the License at
+ * with the License.  You may obtain a copy of the License at
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -16,20 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.creadur.whisker.app;
-
-import java.io.IOException;
-import java.io.InputStream;
-
 /**
- * A resource capable of being opened as a stream.
+ * High level application components.
  */
-public abstract class StreamableResource {
-
-    /**
-     * Opens the resource as a stream.
-     * @return open resource, not null
-     * @throws IOException when resource cannot be opened as a stream
-     */
-    public abstract InputStream open() throws IOException;
-}
+package org.apache.creadur.whisker.app;
