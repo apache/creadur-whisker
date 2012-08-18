@@ -14,23 +14,39 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app.analysis;
 
+/**
+ * Enumerates modes of definitional error.
+ */
 public enum ResourceDefinitionError {
+    /** Expected license definition is missing. */
     MISSING_LICENSE("Missing license(s)"),
+    /** Duplicate licenses */
     EXTRA_LICENSE("Extra license(s)"),
+    /** Duplicate resources.  */
     DUPLICATE("Duplicate resource(s)"),
+    /** Links to source is missing. */
     MISSING_SOURCE("Missing link to source ");
-    
+
+    /** Describes this error suitable for display. */
     private final String description;
-    
-    private ResourceDefinitionError (final String description) {
+
+    /**
+     * Constructs an error with the given description.
+     * @param description not null
+     */
+    private ResourceDefinitionError(final String description) {
         this.description = description;
     }
-    
-    public String getDescription() {
+
+    /**
+     * Gets a description suitable for display.
+     * @return not null
+     */
+    public final String getDescription() {
         return description;
     }
 }

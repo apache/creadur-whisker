@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app.analysis;
 
@@ -31,15 +31,20 @@ import org.apache.creadur.whisker.model.Descriptor;
 import org.apache.creadur.whisker.scan.Directory;
 
 /**
- * 
+ * Analyses licenses.
  */
 public class LicenseAnalyst {
-    
+
     /**
-     * @return
+     * Maps issues.
+     * @return not null
      */
-    private static Map<ResourceDefinitionError, Collection<ResourceDescription>> buildIssueMap() {
-        final Map<ResourceDefinitionError, Collection<ResourceDescription>> results = new HashMap<ResourceDefinitionError, Collection<ResourceDescription>>();
+    private static Map<ResourceDefinitionError,
+                        Collection<ResourceDescription>> buildIssueMap() {
+        final Map<ResourceDefinitionError,
+                    Collection<ResourceDescription>> results =
+                    new HashMap<ResourceDefinitionError,
+                        Collection<ResourceDescription>>();
         for (final ResourceDefinitionError error: ResourceDefinitionError.values()) {
             initIssues(results, error);
         }
@@ -47,8 +52,9 @@ public class LicenseAnalyst {
     }
 
     /**
-     * @param results
-     * @param error
+     * Builds an initial map.
+     * @param results not null
+     * @param error not null
      */
     private static void initIssues(
             final Map<ResourceDefinitionError, Collection<ResourceDescription>> results,
@@ -56,41 +62,55 @@ public class LicenseAnalyst {
         results.put(error, new TreeSet<ResourceDescription>());
     }
 
-    
+    /** Directories analysed. */
     private final Collection<Directory> directories;
-    private final Map<ResourceDefinitionError, Collection<ResourceDescription>> issues;
-    
+    /** Maps resource errors to resources. */
+    private final Map<ResourceDefinitionError,
+                    Collection<ResourceDescription>> issues;
+
+    /**
+     * Constructs empty analyst.
+     */
     public LicenseAnalyst() {
         this(null);
     }
-    
+
     /**
-     * @param work
-     * @param directories
+     * Analyse the given directories.
+     * @param directories, not null
      */
-    public LicenseAnalyst(Collection<Directory> directories) {
+    public LicenseAnalyst(final Collection<Directory> directories) {
         super();
         this.directories = directories;
         issues = buildIssueMap();
     }
 
+    /**
+     * Discover discrepancies between meta-data and source directories.
+     * @param work not null
+     * @return this, not null
+     */
     public LicenseAnalyst analyse(final Descriptor work) {
         if (directories == null) {
-            final ResourceNamesCollator collator = new ResourceNamesCollator();
+            final ResourceNamesCollator collator =
+                    new ResourceNamesCollator();
             work.traverse(collator);
             analyseDuplicates(collator);
-            
-            final ResourceSourceAuditor sourceAuditor = new ResourceSourceAuditor();
+
+            final ResourceSourceAuditor sourceAuditor =
+                    new ResourceSourceAuditor();
             work.traverse(sourceAuditor);
             analyse(sourceAuditor);
         } else {
             for (final Directory directory: directories) {
-                final ResourceNamesCollator collator = new ResourceNamesCollator();
+                final ResourceNamesCollator collator =
+                        new ResourceNamesCollator();
                 work.traverseDirectory(collator, directory.getName());
                 analyseLicenses(directory, collator);
                 analyseDuplicates(collator);
-                
-                final ResourceSourceAuditor sourceAuditor = new ResourceSourceAuditor();
+
+                final ResourceSourceAuditor sourceAuditor = new
+                        ResourceSourceAuditor();
                 work.traverseDirectory(sourceAuditor, directory.getName());
                 analyse(sourceAuditor);
             }
@@ -99,60 +119,92 @@ public class LicenseAnalyst {
     }
 
     /**
-     * @param sourceAuditor
+     * Analyse the directories with this auditor.
+     * @param sourceAuditor not null
      */
-    private void analyse(ResourceSourceAuditor sourceAuditor) {
-        addIssues(sourceAuditor.getResourcesMissingSource(), ResourceDefinitionError.MISSING_SOURCE);
+    private void analyse(final ResourceSourceAuditor sourceAuditor) {
+        addIssues(sourceAuditor.getResourcesMissingSource(),
+                ResourceDefinitionError.MISSING_SOURCE);
     }
 
+    /**
+     * Were any errors found?
+     * @return true when the meta-data is valid,
+     * false otherwise
+     */
     public boolean isValid() {
-        for (final ResourceDefinitionError error: ResourceDefinitionError.values()) {
+        for (final ResourceDefinitionError error:
+                ResourceDefinitionError.values()) {
             if (!getIssues(error).isEmpty()) {
                 return false;
             }
         }
         return true;
     }
-    
-    public Descriptor validate(final Descriptor work) throws ResourceDefinitionException {
+
+    /**
+     * Checks the descriptor against the source directories.
+     * @param work not null
+     * @return valid meta-data
+     * @throws ResourceDefinitionException when issues are found
+     */
+    public Descriptor validate(final Descriptor work)
+            throws ResourceDefinitionException {
         analyse(work);
         if (isValid()) {
             return work;
         } else {
             throw new ResourceDefinitionException(issues);
         }
-            
-    }
-    
-    /**
-     * @param collator
-     */
-    private void analyseDuplicates(final ResourceNamesCollator collator) {
-        addIssues(collator.getDuplicates(), ResourceDefinitionError.DUPLICATE);
+
     }
 
     /**
-     * @param resources
-     * @param error
+     * Discovers duplicates.
+     * @param collator not null
+     */
+    private void analyseDuplicates(
+            final ResourceNamesCollator collator) {
+        addIssues(collator.getDuplicates(),
+                ResourceDefinitionError.DUPLICATE);
+    }
+
+    /**
+     * Adds the issues to the store.
+     * @param resources not null
+     * @param error not null
      */
     private void addIssues(
-            Collection<Pair<org.apache.creadur.whisker.model.WithinDirectory, Resource>> resources,
-            ResourceDefinitionError error) {
-        for (Pair<org.apache.creadur.whisker.model.WithinDirectory, Resource> duplicate: resources) {
-            getIssues(error).add(new ResourceDescription(duplicate.getLeft().getName(), duplicate.getRight().getName()));
+            final Collection<Pair<
+                org.apache.creadur.whisker.model.WithinDirectory,
+                Resource>> resources,
+            final ResourceDefinitionError error) {
+        for (Pair<
+                org.apache.creadur.whisker.model.WithinDirectory,
+                Resource> duplicate: resources) {
+            getIssues(error).add(
+                    new ResourceDescription(
+                            duplicate.getLeft().getName(),
+                            duplicate.getRight().getName()));
         }
     }
 
+    /**
+     * Checks for too many or few licenses.
+     * @param directory not null
+     * @param collator not null
+     */
     private void analyseLicenses(final Directory directory,
             final ResourceNamesCollator collator) {
         analyseExtraLicenses(directory, collator);
         analyseMissingLicenses(directory, collator);
     }
 
-    
+
     /**
-     * @param directory
-     * @param collator
+     * Checks for to many licenses.
+     * @param directory not null
+     * @param collator not null
      */
     @SuppressWarnings("PMD.EmptyIfStmt")
     private void analyseExtraLicenses(final Directory directory,
@@ -162,14 +214,18 @@ public class LicenseAnalyst {
             if (actualResources.contains(resourceLicense)) {
                 // Fine
             } else {
-                getExtraLicenses().add(new ResourceDescription(directory.getName(), resourceLicense));
+                getExtraLicenses().add(
+                        new ResourceDescription(
+                                directory.getName(),
+                                resourceLicense));
             }
         }
     }
-    
+
     /**
-     * @param directory
-     * @param collator
+     * Checks for too few licenses.
+     * @param directory not null
+     * @param collator not null
      */
     @SuppressWarnings("PMD.EmptyIfStmt")
     private void analyseMissingLicenses(final Directory directory,
@@ -179,38 +235,59 @@ public class LicenseAnalyst {
             if (licensedResources.contains(actualResource)) {
                 // Fine
             } else {
-                getMissingLicenses().add(new ResourceDescription(directory.getName(), actualResource));
+                getMissingLicenses().add(
+                        new ResourceDescription(
+                                directory.getName(),
+                                actualResource));
             }
         }
     }
 
-
+    /**
+     * Gets resources whose sources are missing.
+     * @return not null, possibly empty
+     */
     public Collection<ResourceDescription> getResourcesMissingSources() {
         return getIssues(ResourceDefinitionError.MISSING_SOURCE);
     }
 
-    
-    
+    /**
+     * Gets surplus licenses.
+     * @return not null, possibly empty
+     */
     public Collection<ResourceDescription> getExtraLicenses() {
         return getIssues(ResourceDefinitionError.EXTRA_LICENSE);
     }
-    
+
+    /**
+     * Gets missing license.
+     * @return not null, possibly empty
+     */
     public Collection<ResourceDescription> getMissingLicenses() {
         return getIssues(ResourceDefinitionError.MISSING_LICENSE);
     }
-    
+
     /**
+     * Gets duplicate resources.
      * @return the duplicates
      */
     public Collection<ResourceDescription> getDuplicates() {
         return getIssues(ResourceDefinitionError.DUPLICATE);
     }
 
-    public Collection<ResourceDescription> getIssues(ResourceDefinitionError ofType) {
+    /**
+     * Gets issues by type.
+     * @param ofType not null
+     * @return issues of given type, not null, possibly empty
+     */
+    public Collection<ResourceDescription> getIssues(
+            ResourceDefinitionError ofType) {
         return issues.get(ofType);
     }
-    
+
     /**
+     * Describes suitably for logging.
+     * @return something suitable for logging
      * @see java.lang.Object#toString()
      */
     @Override

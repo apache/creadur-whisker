@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app.analysis;
 
@@ -22,10 +22,22 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
+/**
+ * Indicates an issue with a resource definition.
+ */
 public final class ResourceDefinitionException extends Exception {
 
-    private static String message(final Map<ResourceDefinitionError, Collection<ResourceDescription>> issues) {
-        final StringBuilder builder = new StringBuilder("Resources definitions are incorrect. ");
+    /**
+     * Composes an informative error message.
+     * @param issues not null
+     * @return informative error message, not null
+     */
+    private static String message(
+            final Map<
+                ResourceDefinitionError,
+                Collection<ResourceDescription>> issues) {
+        final StringBuilder builder =
+                new StringBuilder("Resources definitions are incorrect. ");
         for (ResourceDefinitionError error: issues.keySet()) {
             if (!issues.get(error).isEmpty()) {
                 builder.append(error.getDescription()).append(": ");
@@ -36,7 +48,10 @@ public final class ResourceDefinitionException extends Exception {
                     } else {
                         builder.append("; ");
                     }
-                    builder.append(description.getResource()).append(" in ").append(description.getDirectory());
+                    builder
+                        .append(description.getResource())
+                        .append(" in ")
+                        .append(description.getDirectory());
                 }
                 builder.append(". ");
             }
@@ -44,22 +59,34 @@ public final class ResourceDefinitionException extends Exception {
         return builder.toString();
     }
 
+    /** For serialisation. */
     private static final long serialVersionUID = -455455829914484243L;
-    
-    private final Map<ResourceDefinitionError, Collection<ResourceDescription>> issues;
-    
+
     /**
-     * @param duplicates
+     * Causal issues.
      */
-    public ResourceDefinitionException(Map<ResourceDefinitionError, Collection<ResourceDescription>> issues) {
+    private final Map<
+        ResourceDefinitionError,
+        Collection<ResourceDescription>> issues;
+
+    /**
+     * Constructs an exception caused by the given issues.
+     * @param issues not null
+     */
+    public ResourceDefinitionException(
+            final Map<ResourceDefinitionError,
+            Collection<ResourceDescription>> issues) {
         super(message(issues));
         this.issues = Collections.unmodifiableMap(issues);
     }
 
     /**
-     * @return the issues
+     * Gets causal issues.
+     * @return the issues not null
      */
-    public Map<ResourceDefinitionError, Collection<ResourceDescription>> getIssues() {
+    public Map<
+                ResourceDefinitionError,
+                Collection<ResourceDescription>> getIssues() {
         return issues;
     }
 }
