@@ -24,7 +24,7 @@ import java.util.Map;
 
 public final class ResourceDefinitionException extends Exception {
 
-    private final static String message(final Map<ResourceDefinitionError, Collection<ResourceDescription>> issues) {
+    private static String message(final Map<ResourceDefinitionError, Collection<ResourceDescription>> issues) {
         final StringBuilder builder = new StringBuilder("Resources definitions are incorrect. ");
         for (ResourceDefinitionError error: issues.keySet()) {
             if (!issues.get(error).isEmpty()) {

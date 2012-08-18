@@ -28,7 +28,6 @@ import org.apache.creadur.whisker.fromxml.JDomBuilder;
 import org.apache.creadur.whisker.model.Descriptor;
 import org.apache.creadur.whisker.scan.Directory;
 import org.apache.creadur.whisker.scan.FromFileSystem;
-import org.jdom.JDOMException;
 
 
 /**

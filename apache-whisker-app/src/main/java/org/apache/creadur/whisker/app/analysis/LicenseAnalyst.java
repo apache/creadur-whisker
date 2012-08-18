@@ -154,6 +154,7 @@ public class LicenseAnalyst {
      * @param directory
      * @param collator
      */
+    @SuppressWarnings("PMD.EmptyIfStmt")
     private void analyseExtraLicenses(final Directory directory,
             final ResourceNamesCollator collator) {
         final Collection<String> actualResources = directory.getContents();
@@ -170,6 +171,7 @@ public class LicenseAnalyst {
      * @param directory
      * @param collator
      */
+    @SuppressWarnings("PMD.EmptyIfStmt")
     private void analyseMissingLicenses(final Directory directory,
             final ResourceNamesCollator collator) {
         final Collection<String> licensedResources = collator.getNames();

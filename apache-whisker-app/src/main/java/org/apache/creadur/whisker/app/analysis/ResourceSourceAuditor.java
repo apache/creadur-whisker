@@ -90,6 +90,7 @@ public class ResourceSourceAuditor extends Visitor {
      * @see Visitor#visit(Resource)
      */
     @Override
+    @SuppressWarnings("PMD.EmptyIfStmt")
     public void visit(Resource resource) {
         if (lastLicense == null) {
             throw new IllegalArgumentException("Last license unexpectedly null for resource " + resource);
