@@ -262,6 +262,17 @@ though, before adding it to your distribution.
             </p>
         </answer>
     </faq>
+    <faq id='organisation-verses-organization'>
+        <question>Why organisation, not organization?</question>
+        <answer>
+            <p>
+            No particular reason
+            </p>
+            <p>
+            Apologies to those tripped up by this choice
+            </p>
+        </answer>
+    </faq>    
     <faq id='where-is-dtd'>
         <question>Is a DTD available?</question>
         <answer>
