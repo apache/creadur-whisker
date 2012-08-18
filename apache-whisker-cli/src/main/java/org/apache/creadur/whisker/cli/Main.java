@@ -46,7 +46,7 @@ public final class Main {
     /**
      * Appended to help.
      */
-    private static final String HELP_FOOTER = 
+    private static final String HELP_FOOTER =
         "\nApache Whisker assists assembled applications " +
         "maintain correct legal documentation. " +
         "Whisker is part of the " +
@@ -129,7 +129,7 @@ public final class Main {
      * Configures the application from the command line given.
      * @param commandLine not null
      * @return not null
-     * @throws MissingOptionException when a mandatory option 
+     * @throws MissingOptionException when a mandatory option
      * has not been supplied
      */
     private Whisker configure(
@@ -184,13 +184,17 @@ public final class Main {
      * @param args not null
      * @return true when command line contains option for help,
      * false otherwise
-     * @throws ParseException 
+     * @throws ParseException
      */
-    private boolean printHelp(String[] args) throws ParseException {
+    public boolean printHelp(String[] args) throws ParseException {
         final CommandLineOption help = CommandLineOption.PRINT_HELP;
-        return help.isSetOn(
+        try {
+            return help.isSetOn(
                 parser().parse(new Options().addOption(
                         help.create()), args));
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
     /**
