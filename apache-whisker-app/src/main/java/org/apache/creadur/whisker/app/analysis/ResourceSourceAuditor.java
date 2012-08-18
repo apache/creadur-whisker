@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app.analysis;
 
@@ -30,73 +30,91 @@ import org.apache.creadur.whisker.model.WithLicense;
 import org.apache.creadur.whisker.model.WithinDirectory;
 
 /**
- * 
+ * Collects resource source details.
  */
-public class ResourceSourceAuditor extends Visitor {
-
+public final class ResourceSourceAuditor extends Visitor {
+    /** Last license visited. */
     private WithLicense lastLicense;
+    /** Last directory visited. */
     private WithinDirectory lastDirectory;
-    
-    private final Collection<Pair<WithinDirectory, Resource>> resourcesMissingSource 
-        = new TreeSet<Pair<WithinDirectory, Resource>>();
-    
-    private final Collection<Pair<WithinDirectory, Resource>> resourcesWithSource 
-    = new TreeSet<Pair<WithinDirectory, Resource>>();
-    
+    /** Collects resources that are missing source. */
+    private final Collection<
+        Pair<WithinDirectory, Resource>> resourcesMissingSource
+            = new TreeSet<Pair<WithinDirectory, Resource>>();
+    /** Collects resources that match a source. */
+    private final Collection<
+        Pair<WithinDirectory, Resource>> resourcesWithSource
+            = new TreeSet<Pair<WithinDirectory, Resource>>();
+
     /**
+     * Hook for public domain.
+     * @return false (no need to traverse public domain)
      * @see Visitor#traversePublicDomain()
      */
     @Override
     public boolean traversePublicDomain() {
-        // TODO: no need to traverse public domain 
-        // TODO: think about API 
+        // no need to traverse public domain
         return false;
     }
 
-    
+
     /**
-     * @return the resourcesWithSource
+     * Gets the resources with source collected during visits.
+     * @return the resourcesWithSource, not null
      */
-    public Collection<Pair<WithinDirectory, Resource>> getResourcesWithSource() {
+    public Collection<
+            Pair<WithinDirectory, Resource>> getResourcesWithSource() {
         return resourcesWithSource;
     }
 
     /**
-     * @return the resourcesMissingSource
+     * Gets the resources missing source collected during visits.
+     * @return the resourcesMissingSource not null
      */
-    public Collection<Pair<WithinDirectory, Resource>> getResourcesMissingSource() {
+    public Collection<
+            Pair<WithinDirectory, Resource>> getResourcesMissingSource() {
         return resourcesMissingSource;
     }
 
     /**
+     * Accepts a directory visit.
+     * @param directory not null
      * @see Visitor#visit(WithinDirectory)
      */
     @Override
-    public void visit(WithinDirectory directory) {
+    public void visit(final WithinDirectory directory) {
         this.lastDirectory = directory;
     }
 
 
 
     /**
+     * Accepts a license visit.
+     * @param license not null
      * @see Visitor#visit(WithLicense)
      */
     @Override
-    public void visit(WithLicense license) {
+    public void visit(final WithLicense license) {
         this.lastLicense = license;
     }
 
     /**
+     * Accepts a visit to a resource.
+     * @param resource not null
      * @see Visitor#visit(Resource)
      */
     @Override
     @SuppressWarnings("PMD.EmptyIfStmt")
-    public void visit(Resource resource) {
+    public void visit(final Resource resource) {
         if (lastLicense == null) {
-            throw new IllegalArgumentException("Last license unexpectedly null for resource " + resource);
+            throw new IllegalArgumentException(
+                    "Last license unexpectedly null for resource "
+                            + resource);
         } else if (lastLicense.isSourceRequired()) {
-            // TODO: Consider using ResourceDescription
-            final ImmutablePair<WithinDirectory, Resource> pair = new ImmutablePair<WithinDirectory, Resource>(lastDirectory, resource);
+            final ImmutablePair<WithinDirectory, Resource> pair =
+                    new ImmutablePair<
+                        WithinDirectory,
+                        Resource>(lastDirectory, resource);
             if (resource.hasSource()) {
                 resourcesWithSource.add(pair);
             } else {
@@ -109,7 +127,8 @@ public class ResourceSourceAuditor extends Visitor {
 
 
     /**
-     * @return
+     * Gets those resources visited which require source links.
+     * @return not null, possibly empty
      */
     public Collection<Resource> getResourcesRequiringSourceLinks() {
         final Collection<Resource> results = new ArrayList<Resource>();
@@ -118,5 +137,5 @@ public class ResourceSourceAuditor extends Visitor {
         }
         return results;
     }
-    
+
 }

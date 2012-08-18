@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app.load;
 
@@ -28,13 +28,16 @@ import org.apache.creadur.whisker.app.StreamableResource;
  */
 public class StreamableClassPathResource extends StreamableResource {
 
-    /** The full name <strong>including path</strong> of a resource on the class path */
+    /**
+     * The full name <strong>including path</strong>
+     * of a resource on the class path.
+     */
     private final String name;
-  
+
     /**
      * Constructs an instance that streams the given class path resource
      * on demand.
-     * @param name full name <strong>including path</strong> of 
+     * @param name full name <strong>including path</strong> of
      * a resource on the class path,
      * not null
      */
@@ -43,7 +46,7 @@ public class StreamableClassPathResource extends StreamableResource {
         this.name = name;
     }
 
-    
+
     /**
      * Gets the location on the class path of the resource to be streamed.
      * @return not null
@@ -61,7 +64,7 @@ public class StreamableClassPathResource extends StreamableResource {
     public InputStream open() throws IOException {
         return getClass().getClassLoader().getResourceAsStream(name);
     }
-    
+
     @Override
     public String toString() {
         return "StreamableClassPathResource [name=" + name + "]";
