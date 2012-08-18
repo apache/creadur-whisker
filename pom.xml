@@ -309,4 +309,8 @@
   	<developerConnection>scm:svn:https://svn.apache.org/repos/asf/creadur/whisker/trunk</developerConnection>
   </scm>
   
+  <ciManagement>
+    <system>Buildbot</system>
+    <url>http://ci.apache.org/builders/whisker-trunk</url>
+  </ciManagement>
 </project>
