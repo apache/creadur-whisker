@@ -463,6 +463,7 @@ public class JDomBuilder {
      * @return not null, possibly empty
      * @throws DuplicateElementException when dir names are not unique
      */
+    @SuppressWarnings("PMD.EmptyIfStmt")
     public Collection<WithinDirectory> collectContents(final Document document, final Map<String, License> licenses,
             final Map<String, Organisation> organisations) throws DuplicateElementException {
         final Collection<WithinDirectory> results = new TreeSet<WithinDirectory>();
