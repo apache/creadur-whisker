@@ -26,7 +26,7 @@ import org.apache.creadur.whisker.app.StreamableResource;
 /**
  * Streams, on demand, the contents of a resource located on the class path.
  */
-public class StreamableClassPathResource extends StreamableResource {
+public final class StreamableClassPathResource extends StreamableResource {
 
     /**
      * The full name <strong>including path</strong>
@@ -41,7 +41,7 @@ public class StreamableClassPathResource extends StreamableResource {
      * a resource on the class path,
      * not null
      */
-    public StreamableClassPathResource(String name) {
+    public StreamableClassPathResource(final String name) {
         super();
         this.name = name;
     }
@@ -58,13 +58,20 @@ public class StreamableClassPathResource extends StreamableResource {
 
 
     /**
+     * Opens a resource on the classpath.
+     * @return not null
      * @see StreamableResource#open()
+     * @throws IOException when resource cannot be open
      */
     @Override
     public InputStream open() throws IOException {
         return getClass().getClassLoader().getResourceAsStream(name);
     }
 
+    /**
+     * Suitable for logging.
+     * @return a description
+     */
     @Override
     public String toString() {
         return "StreamableClassPathResource [name=" + name + "]";

@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app.load;
 
@@ -31,19 +31,21 @@ import org.apache.creadur.whisker.app.StreamableResource;
  * Streams the contents of a file.
  */
 public class StreamableFileResource extends StreamableResource {
-    /** The file to be streamed */
+    /** The file to be streamed. */
     private final File file;
-    
+
     /**
      * Constructs an object that streams the file on demand.
      * @param file not null
      */
-    public StreamableFileResource(File file) {
+    public StreamableFileResource(final File file) {
         super();
         this.file = file;
     }
 
     /**
+     * Opens the file as an input stream.
+     * @return not null
      * @see StreamableResource#open()
      */
     @Override

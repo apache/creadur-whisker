@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app.load;
 
@@ -26,24 +26,28 @@ import java.io.InputStream;
 
 import org.apache.creadur.whisker.app.StreamableResource;
 /**
- * Streams, on demand, the contents of a file identified by a full file name, 
+ * Streams, on demand, the contents of a file identified by a full file name,
  * including path.
  */
 public class StreamableFileNameResource extends StreamableResource {
-    /** The full file name, including path, of the resource to be streamed */
+    /**
+     * The full file name, including path,
+     * of the resource to be streamed.
+     */
     private final String fileName;
 
     /**
-     * Constructs an instance that streams the resource identified by name on demand
+     * Constructs an instance that streams
+     * the resource identified by name on demand.
      * @param fileName, full file name, including path, of the resource to be streamed
      * on demand, not null
      */
-    public StreamableFileNameResource(String fileName) {
+    public StreamableFileNameResource(final String fileName) {
         super();
         this.fileName = fileName;
     }
 
-    /**    
+    /**
      * Gets the file name of the resource to be streamed.
      * @return full file name, not null
      */
@@ -52,6 +56,8 @@ public class StreamableFileNameResource extends StreamableResource {
     }
 
     /**
+     * Opens the file as an input stream.
+     * @return not null
      * @see StreamableResource#open()
      */
     @Override
@@ -59,6 +65,10 @@ public class StreamableFileNameResource extends StreamableResource {
         return new BufferedInputStream(new FileInputStream(new File(fileName)));
     }
 
+    /**
+     * Suitable for logging.
+     * @return a description
+     */
     @Override
     public String toString() {
         return "StreamableFileNameResource [fileName=" + fileName + "]";
