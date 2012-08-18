@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app.out;
 
@@ -32,19 +32,35 @@ import org.apache.creadur.whisker.app.ResultWriterFactory;
  */
 public class WriteResultsIntoDirectoryFactory implements ResultWriterFactory  {
 
+    /** Output directory. */
     private final File directory;
+    /** Output encoding. */
     private final String encoding;
 
-    public WriteResultsIntoDirectoryFactory(final File directory, final String encoding) {
+    /**
+     * Constructs a factory that write reports
+     * into the given directory with the given
+     * encoding.
+     * @param directory not null
+     * @param encoding not null
+     */
+    public WriteResultsIntoDirectoryFactory(
+            final File directory, final String encoding) {
         super();
         this.directory = directory;
         this.encoding = encoding;
     }
 
     /**
+     * Creates a suitable write for the given report.
+     * @param not null
+     * @return not null
      * @see ResultWriterFactory#writerFor(Result)
+     * @throws IOException when the report cannot be written
      */
-    public Writer writerFor(Result result) throws IOException {
-        return new BufferedWriter(new FileWriterWithEncoding(result.within(directory), encoding));
+    public Writer writerFor(final Result result) throws IOException {
+        return new BufferedWriter(
+                new FileWriterWithEncoding(
+                        result.within(directory), encoding));
     }
 }

@@ -59,6 +59,7 @@ public class StreamableFileNameResource extends StreamableResource {
      * Opens the file as an input stream.
      * @return not null
      * @see StreamableResource#open()
+     * @throws IOException when resource cannot be opened
      */
     @Override
     public InputStream open() throws IOException {

@@ -30,7 +30,7 @@ import org.apache.creadur.whisker.app.StreamableResource;
 /**
  * Streams the contents of a file.
  */
-public class StreamableFileResource extends StreamableResource {
+public final class StreamableFileResource extends StreamableResource {
     /** The file to be streamed. */
     private final File file;
 
@@ -47,6 +47,7 @@ public class StreamableFileResource extends StreamableResource {
      * Opens the file as an input stream.
      * @return not null
      * @see StreamableResource#open()
+     * @throws IOException when resource cannot be opened
      */
     @Override
     public InputStream open() throws IOException {
