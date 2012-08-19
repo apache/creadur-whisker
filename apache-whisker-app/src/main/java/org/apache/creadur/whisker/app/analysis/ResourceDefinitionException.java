@@ -38,11 +38,16 @@ public final class ResourceDefinitionException extends Exception {
                 Collection<ResourceDescription>> issues) {
         final StringBuilder builder =
                 new StringBuilder("Resources definitions are incorrect. ");
-        for (ResourceDefinitionError error: issues.keySet()) {
-            if (!issues.get(error).isEmpty()) {
+        for (Map.Entry<
+                ResourceDefinitionError,
+                Collection<ResourceDescription>>
+                    entry: issues.entrySet()) {
+            final ResourceDefinitionError error = entry.getKey();
+            final Collection<ResourceDescription> resources = entry.getValue();
+            if (!resources.isEmpty()) {
                 builder.append(error.getDescription()).append(": ");
                 boolean firstTime = true;
-                for (final ResourceDescription description: issues.get(error)) {
+                for (final ResourceDescription description: resources) {
                     if (firstTime) {
                         firstTime = false;
                     } else {
