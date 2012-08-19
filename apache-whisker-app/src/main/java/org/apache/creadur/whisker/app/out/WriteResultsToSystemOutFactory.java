@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.app.out;
 
@@ -29,25 +29,39 @@ import org.apache.creadur.whisker.app.ResultWriterFactory;
 /**
  * Factory builds writers that output to <code>System.out</code>.
  */
-public class WriteResultsToSystemOutFactory implements ResultWriterFactory {
+public final class WriteResultsToSystemOutFactory
+                        implements ResultWriterFactory {
 
-    /** Encoding to be used */
+    /** Encoding used. */
     private final String encoding;
-    
-    public WriteResultsToSystemOutFactory(String encoding) {
+
+    /**
+     * Constructs a factory with given encoding.
+     * @param encoding not null
+     */
+    public WriteResultsToSystemOutFactory(final String encoding) {
         super();
         this.encoding = encoding;
     }
 
+    /**
+     * Constructs a factory with default
+     * (<code>UTF-8</code>) encoding.
+     */
     public WriteResultsToSystemOutFactory() {
         this("UTF-8");
     }
 
     /**
+     * Writes given result to <code>System.our</code>.
+     * @param result not null
+     * @return not null
+     * @throws IOException when result cannot be written
      * @see ResultWriterFactory#writerFor(Result)
      */
-    public Writer writerFor(Result result) throws IOException {
-        return new BufferedWriter(new OutputStreamWriter(System.out, encoding));
+    public Writer writerFor(final Result result)
+            throws IOException {
+        return new BufferedWriter(
+                new OutputStreamWriter(System.out, encoding));
     }
-
 }

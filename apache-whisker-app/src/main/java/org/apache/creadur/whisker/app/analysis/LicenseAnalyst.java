@@ -45,7 +45,8 @@ public class LicenseAnalyst {
                     Collection<ResourceDescription>> results =
                     new HashMap<ResourceDefinitionError,
                         Collection<ResourceDescription>>();
-        for (final ResourceDefinitionError error: ResourceDefinitionError.values()) {
+        for (final ResourceDefinitionError error:
+                ResourceDefinitionError.values()) {
             initIssues(results, error);
         }
         return results;
@@ -57,7 +58,9 @@ public class LicenseAnalyst {
      * @param error not null
      */
     private static void initIssues(
-            final Map<ResourceDefinitionError, Collection<ResourceDescription>> results,
+            final Map<
+                ResourceDefinitionError,
+                Collection<ResourceDescription>> results,
             ResourceDefinitionError error) {
         results.put(error, new TreeSet<ResourceDescription>());
     }
@@ -77,7 +80,7 @@ public class LicenseAnalyst {
 
     /**
      * Analyse the given directories.
-     * @param directories, not null
+     * @param directories not null
      */
     public LicenseAnalyst(final Collection<Directory> directories) {
         super();

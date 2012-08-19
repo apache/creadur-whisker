@@ -29,7 +29,7 @@ import org.apache.creadur.whisker.app.StreamableResource;
  * Streams, on demand, the contents of a file identified by a full file name,
  * including path.
  */
-public class StreamableFileNameResource extends StreamableResource {
+public final class StreamableFileNameResource extends StreamableResource {
     /**
      * The full file name, including path,
      * of the resource to be streamed.
@@ -39,7 +39,8 @@ public class StreamableFileNameResource extends StreamableResource {
     /**
      * Constructs an instance that streams
      * the resource identified by name on demand.
-     * @param fileName, full file name, including path, of the resource to be streamed
+     * @param fileName full file name, including path,
+     * of the resource to be streamed
      * on demand, not null
      */
     public StreamableFileNameResource(final String fileName) {

@@ -30,7 +30,8 @@ import org.apache.creadur.whisker.app.ResultWriterFactory;
 /**
  * Writes results as files within a directory.
  */
-public class WriteResultsIntoDirectoryFactory implements ResultWriterFactory  {
+public final class WriteResultsIntoDirectoryFactory
+                       implements ResultWriterFactory  {
 
     /** Output directory. */
     private final File directory;
@@ -53,12 +54,13 @@ public class WriteResultsIntoDirectoryFactory implements ResultWriterFactory  {
 
     /**
      * Creates a suitable write for the given report.
-     * @param not null
+     * @param result not null
      * @return not null
      * @see ResultWriterFactory#writerFor(Result)
      * @throws IOException when the report cannot be written
      */
-    public Writer writerFor(final Result result) throws IOException {
+    public Writer writerFor(final Result result)
+            throws IOException {
         return new BufferedWriter(
                 new FileWriterWithEncoding(
                         result.within(directory), encoding));
