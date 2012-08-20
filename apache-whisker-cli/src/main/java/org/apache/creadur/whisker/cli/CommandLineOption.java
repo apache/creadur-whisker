@@ -30,18 +30,21 @@ import org.apache.commons.cli.Options;
 public enum CommandLineOption {
 
     /** License descriptor command line argument. */
-    LICENSE_DESCRIPTION("license-descriptor", 'l', 
+    LICENSE_DESCRIPTION("license-descriptor", 'l',
             "use given license descriptor", true, "file", false),
     /** Application source command line argument. */
     SOURCE("source", 's', "application source", false, "dir", false),
     /** Generation command line argument. */
-    ACT_TO_GENERATE("generate", 'g', 
+    ACT_TO_GENERATE("generate", 'g',
             "generate license and notice", false, null, true),
     /** Audit command line argument. */
     ACT_TO_AUDIT("audit", 'a', "report audit details", false, null, true),
+    /** Generate skeleton mete-data command line argument. */
+    ACT_TO_SKELETON("skeleton", 't',
+            "generates skeleton meta-data", false, null, true),
     /** Print help then exit, ignoring other options. */
     PRINT_HELP("help", 'h', "print help then exit, ignoring other options.", false, null, false);
-    
+
     /**
      * Creates options for the command line.
      * @return not null
