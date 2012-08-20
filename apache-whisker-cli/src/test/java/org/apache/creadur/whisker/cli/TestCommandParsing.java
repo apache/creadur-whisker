@@ -59,6 +59,33 @@ public class TestCommandParsing extends TestCase {
         }
     }
 
+    public void testGenerateAndSkeletonAreMutuallyExclusive() throws Exception {
+        try {
+            subject.configure(
+                args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH",
+                        longOpt(CommandLineOption.ACT_TO_SKELETON.getLongName()),
+                        longOpt(CommandLineOption.ACT_TO_GENERATE.getLongName())));
+
+            fail("Expected audit and generate to together to throw exception");
+        } catch (AlreadySelectedException e) {
+            // expected
+        }
+    }
+
+    public void testSkeletonAndAuditAreMutuallyExclusive() throws Exception {
+        try {
+            subject.configure(
+                args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH",
+                        longOpt(CommandLineOption.ACT_TO_AUDIT.getLongName()),
+                        longOpt(CommandLineOption.ACT_TO_SKELETON.getLongName())));
+
+            fail("Expected audit and generate to together to throw exception");
+        } catch (AlreadySelectedException e) {
+            // expected
+        }
+    }
+
+
     public void testSetGenerateAct() throws Exception {
         checkSetActForOption(Act.GENERATE, CommandLineOption.ACT_TO_GENERATE);
     }
