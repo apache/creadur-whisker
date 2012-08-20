@@ -44,6 +44,10 @@ public class TestMain extends TestCase {
         assertFalse(subject.printHelp(args("--audit")));
     }
 
+    public void testIsSkeletonHelp() throws Exception {
+        assertFalse(subject.printHelp(args("--skeleton")));
+    }
+
     private String[] args(String ...strings) {
         return strings;
     }
