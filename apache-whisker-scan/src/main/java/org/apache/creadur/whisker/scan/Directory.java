@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.scan;
 
@@ -29,8 +29,8 @@ public class Directory implements Comparable<Directory> {
     private String name;
     /** Names resources contained. */
     private Set<String> contents = new TreeSet<String>();
-  
-    
+
+
     /**
      * Gets the directory name.
      * @return the name
@@ -47,7 +47,7 @@ public class Directory implements Comparable<Directory> {
         this.name = name;
         return this;
     }
-    
+
     /**
      * Gets the directory contents.
      * @return the contents
@@ -55,7 +55,7 @@ public class Directory implements Comparable<Directory> {
     public Set<String> getContents() {
         return contents;
     }
-    
+
     /**
      * Sets the directory contents.
      * @param contents the contents to set
@@ -63,7 +63,7 @@ public class Directory implements Comparable<Directory> {
     public void setContents(final Set<String> contents) {
         this.contents = contents;
     }
-    
+
     /**
      * @return the hash code
      * @see java.lang.Object#hashCode()
@@ -75,7 +75,7 @@ public class Directory implements Comparable<Directory> {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
-    
+
     /**
      * Equal if and only if names are equal.
      * @param obj possibly null
@@ -98,7 +98,7 @@ public class Directory implements Comparable<Directory> {
             return false;
         return true;
     }
-    
+
     /**
      * Suitable for logging.
      * @return not null
@@ -108,7 +108,7 @@ public class Directory implements Comparable<Directory> {
     public String toString() {
         return "Directory [name=" + name + "]";
     }
-    
+
     /**
      * Registers a contained resource.
      * @param name not null
@@ -116,7 +116,7 @@ public class Directory implements Comparable<Directory> {
     public void addResource(final String name) {
         contents.add(name);
     }
-    
+
     /**
      * Natural comparison based on name.
      * @param other another directory
@@ -130,4 +130,3 @@ public class Directory implements Comparable<Directory> {
         return this.name.compareTo(other.name);
     }
 }
-

@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.scan;
 
@@ -31,7 +31,7 @@ import java.util.TreeSet;
  * Scans directories for resources, within a file system.
  */
 public class FromFileSystem {
-    
+
     /**
      * Base constructor.
      */
@@ -40,15 +40,19 @@ public class FromFileSystem {
     }
 
     /**
-     * Builds 
+     * Builds description based on given directory.
      * @param base names the base directory, not null
      * @return collected directories within the base, not null
      * @throws IOException when the scanning fails
      */
-    public Collection<Directory> withBase(final String base) throws IOException {
+    public Collection<Directory> withBase(final String base)
+            throws IOException {
         return new Builder(base).build();
     }
-    
+
+    /**
+     * Builds a description of a file system.
+     */
     private final static class Builder {
         /** Initial capacity for the backing array. */
         private static final int DEFAULT_INITIAL_CAPACITY = 64;
@@ -60,9 +64,9 @@ public class FromFileSystem {
         private final Queue<Work> workInProgress;
         /** Stores work done. */
         private final Collection<Work> workDone;
-        
+
         /**
-         * Constructs a builder with given base 
+         * Constructs a builder with given base
          * (and default backing array).
          * @param base not null
          */
@@ -82,7 +86,7 @@ public class FromFileSystem {
             workInProgress = new LinkedList<Work>();
             workDone = new ArrayList<Work>(initialCapacity);
         }
-        
+
         /**
          * Builds directories.
          * @return not null
@@ -106,7 +110,7 @@ public class FromFileSystem {
         private Builder put(final File file) {
             return put(new Work(file));
         }
-        
+
         /**
          * Queues work.
          * @param work not null
@@ -122,7 +126,7 @@ public class FromFileSystem {
             }
             return this;
         }
-        
+
         /**
          * Notes that work has already been done.
          * @param work not null
@@ -154,19 +158,23 @@ public class FromFileSystem {
             directories.add(next.build());
             return next;
         }
-        
+
         /**
          * Computes the contents of a directory.
          */
-        private final static class Work {
+        private static final class Work {
             /** Represents base directory. */
             private static final String BASE_DIRECTORY = ".";
             /** Names the directory. */
             private final String name;
             /** The directory worked on. */
             private final File file;
-            
-            public Work(File file) {
+
+            /**
+             * Constructs work.
+             * @param file not null
+             */
+            public Work(final File file) {
                 this(BASE_DIRECTORY, file);
             }
 
@@ -176,13 +184,13 @@ public class FromFileSystem {
              * @param file not null
              */
             public Work(final String name, final File file) {
-                if (! file.exists()) {
+                if (!file.exists()) {
                     throw new IllegalArgumentException(
-                            "Expected '"+ file.getAbsolutePath() + "' to exist");
+                            "Expected '" + file.getAbsolutePath() + "' to exist");
                 }
-                if (! file.isDirectory()) {
+                if (!file.isDirectory()) {
                     throw new IllegalArgumentException(
-                            "Expected '"+ file.getAbsolutePath() + "' to be a directory");
+                            "Expected '" + file.getAbsolutePath() + "' to be a directory");
                 }
                 this.name = name;
                 this.file = file;
@@ -298,7 +306,7 @@ public class FromFileSystem {
                         + ((name == null) ? 0 : name.hashCode());
                 return result;
             }
-            
+
             /**
              * Equal when both name and file are equal.
              * @param obj possibly null
@@ -331,7 +339,7 @@ public class FromFileSystem {
                 }
                 return true;
             }
-            
+
             /**
              * Something suitable for logging.
              * @return not null

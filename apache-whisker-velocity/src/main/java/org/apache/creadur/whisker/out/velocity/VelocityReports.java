@@ -180,10 +180,10 @@ public class VelocityReports implements LogChute {
                 default:
                     products.add(product);
             }
-                
-                
+
+
         }
-        final Product[] pruductArray = new Product[products.size()]; 
+        final Product[] pruductArray = new Product[products.size()];
         merge(products.toArray(pruductArray), context(work));
     }
 
