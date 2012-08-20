@@ -146,7 +146,7 @@ public final class Main {
         } else if (CommandLineOption.ACT_TO_GENERATE.isSetOn(commandLine)) {
             whisker.setAct(Act.GENERATE);
         } else if (CommandLineOption.ACT_TO_SKELETON.isSetOn(commandLine)) {
-            whisker.setAct(Act.TEMPLATE);
+            whisker.setAct(Act.SKELETON);
         }
 
         if (whisker.getSource() == null

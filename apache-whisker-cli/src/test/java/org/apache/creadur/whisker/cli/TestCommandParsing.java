@@ -68,7 +68,7 @@ public class TestCommandParsing extends TestCase {
     }
 
     public void testSetSkeletonAct() throws Exception {
-        checkSetActForOption(Act.TEMPLATE, CommandLineOption.ACT_TO_SKELETON);
+        checkSetActForOption(Act.SKELETON, CommandLineOption.ACT_TO_SKELETON);
     }
 
 

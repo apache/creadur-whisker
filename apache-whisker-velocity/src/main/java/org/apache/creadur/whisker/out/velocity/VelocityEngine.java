@@ -51,10 +51,10 @@ public class VelocityEngine extends AbstractEngine {
      * @param writerFactory not null
      * @return this engine, not null
      * @throws Exception when generation fails
-     * @see AbstractEngine#generateTemplate(Collection, ResultWriterFactory)
+     * @see AbstractEngine#skeleton(Collection, ResultWriterFactory)
      */
     @Override
-    public final AbstractEngine generateTemplate(
+    public final AbstractEngine skeleton(
             final Collection<Directory> withBase,
             final ResultWriterFactory writerFactory)
                 throws Exception {

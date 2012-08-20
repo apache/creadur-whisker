@@ -36,7 +36,7 @@ public abstract class AbstractEngine {
      * @return this
      * @throws Exception when creation fails
      */
-    public abstract AbstractEngine generateTemplate(
+    public abstract AbstractEngine skeleton(
             Collection<Directory> withBase,
             ResultWriterFactory writerFactory) throws Exception;
 

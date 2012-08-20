@@ -30,7 +30,7 @@ public enum Act {
     /** Writes report on directories. */
     REPORT(true),
     /** Outlines the directory structure. */
-    TEMPLATE(true);
+    SKELETON(true);
 
     /** Is the source required to perform this operation? */
     private final boolean isSourceRequired;

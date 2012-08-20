@@ -145,8 +145,8 @@ public class Whisker {
                 return report();
             case AUDIT:
                 return validate();
-            case TEMPLATE:
-                return template();
+            case SKELETON:
+                return skeleton();
             case GENERATE:
             default:
                 return generate();
@@ -158,8 +158,8 @@ public class Whisker {
      * @throws Exception when the report creation fails
      * @return this, not null
      */
-    private Whisker template() throws Exception {
-        engine.generateTemplate(directories(), getWriterFactory());
+    private Whisker skeleton() throws Exception {
+        engine.skeleton(directories(), getWriterFactory());
         return this;
     }
 
