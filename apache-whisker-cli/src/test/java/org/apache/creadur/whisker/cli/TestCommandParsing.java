@@ -23,21 +23,14 @@ import junit.framework.TestCase;
 import org.apache.commons.cli.AlreadySelectedException;
 import org.apache.commons.cli.ParseException;
 import org.apache.creadur.whisker.app.Act;
+import org.apache.creadur.whisker.app.StreamableResource;
 import org.apache.creadur.whisker.app.Whisker;
 import org.apache.creadur.whisker.app.load.StreamableClassPathResource;
+import org.apache.creadur.whisker.app.load.StreamableFileNameResource;
 
-/**
- *
- */
 public class TestCommandParsing extends TestCase {
 
-    /**
-     *
-     */
     private static final String LONG_OPT = "--";
-    /**
-     *
-     */
     private static final String SHORT_OPT = "-";
     private Main subject;
 
@@ -204,10 +197,20 @@ public class TestCommandParsing extends TestCase {
      */
     private void exerciseLicenseDescriptor(String aPath, String arg)
             throws ParseException {
-        assertEquals("License descriptor arg should set property on Whisker", aPath,
-                ((StreamableClassPathResource)subject.configure(
+        final StreamableResource streamableResource = subject.configure(
                         args(arg, aPath, longOpt(CommandLineOption.ACT_TO_GENERATE.getLongName())))
-                            .getLicenseDescriptor()).getName());
+                            .getLicenseDescriptor();
+
+        assertEquals("License descriptor arg should set property on Whisker", aPath,
+                name(streamableResource));
+    }
+
+    private String name(final StreamableResource streamableResource) {
+        if (streamableResource instanceof StreamableClassPathResource) {
+            return ((StreamableClassPathResource)streamableResource).getName();
+        } else {
+            return ((StreamableFileNameResource)streamableResource).getFileName();
+        }
     }
 
     private String[] args(String ...strings) {

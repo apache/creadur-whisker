@@ -55,7 +55,18 @@ public final class StreamableClassPathResource extends StreamableResource {
         return name;
     }
 
-
+    /**
+     * Is this resource found on the classpath?
+     * @return true when the resource is found on the classpath,
+     * null otherwise
+     */
+    public boolean exists()  {
+        try {
+            return open() != null;
+        } catch (IOException e) {
+            return false;
+        }
+    }
 
     /**
      * Opens a resource on the classpath.

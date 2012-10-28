@@ -137,9 +137,8 @@ public final class Main {
         whisker.setEngine(new VelocityEngine(new SystemLog()));
         whisker.setSource(CommandLineOption.SOURCE.getOptionValue(commandLine));
         whisker.setLicenseDescriptor(
-                new StreamableResourceFactory().streamFromClassPathResource(
-                        CommandLineOption.LICENSE_DESCRIPTION
-                            .getOptionValue(commandLine)));
+                new StreamableResourceFactory().streamFromResource(
+                        licenseDescriptorName(commandLine)));
         whisker.setWriterFactory(new WriteResultsToSystemOutFactory());
         if (CommandLineOption.ACT_TO_AUDIT.isSetOn(commandLine)) {
             whisker.setAct(Act.AUDIT);
@@ -156,6 +155,17 @@ public final class Main {
                     + CommandLineOption.SOURCE.getDescription());
         }
         return whisker;
+    }
+
+    /**
+     * Extracts the license descriptor name value,
+     * @param commandLine not null
+     * @return the value for the license descriptor name
+     * passed from the command line
+     */
+    private String licenseDescriptorName(final CommandLine commandLine) {
+        return CommandLineOption.LICENSE_DESCRIPTION
+            .getOptionValue(commandLine);
     }
 
     /**

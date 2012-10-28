@@ -59,4 +59,21 @@ public final class StreamableResourceFactory {
     public StreamableResource streamFromFileResource(final File file) {
         return new StreamableFileResource(file);
     }
+
+    /**
+     * When the resource is found on the classpath,
+     * builds an instance that streams, on demand,
+     * from the classpath. Otherwise, builds an
+     * instances that streams from the file system.
+     * @param resourceName
+     * @return not null
+     */
+    public StreamableResource streamFromResource(final String resourceName) {
+        final StreamableClassPathResource streamFromClasspath =
+                new StreamableClassPathResource(resourceName);
+        if (streamFromClasspath.exists()) {
+            return streamFromClasspath;
+        }
+        return streamFromFileResource(resourceName);
+    }
 }
