@@ -43,12 +43,12 @@ public class Descriptor {
     private final Map<String, String> notices;
     /** Directories expected to be contained within the release. */
     private final Collection<WithinDirectory> contents;
-    
+
 
     /**
      * Constructs a description of the expected licensing qualities of a
      * distribution, with no additional primary copyright notice.
-     * 
+     *
      * @param primaryLicense
      *            not null
      * @param primaryOrganisationId
@@ -65,7 +65,7 @@ public class Descriptor {
      *            not null, possibly empty
      */
     public Descriptor(final License primaryLicense,
-            final String primaryOrganisationId, 
+            final String primaryOrganisationId,
             final String primaryNotice,
             final Map<String, License> licenses,
             final Map<String, String> notices,
@@ -77,19 +77,19 @@ public class Descriptor {
                 primaryNotice,
                 licenses,
                 notices,
-                organisations, 
+                organisations,
                 contents);
     }
-    
+
     /**
      * Constructs a description of the expected licensing qualities of a
      * distribution, with a primary additional copyright notice.
-     * 
+     *
      * @param primaryLicense
      *            not null
-     * @param primaryCopyrightNotice 
+     * @param primaryCopyrightNotice
      *            optional primary copyright notice, possibly null
-     *            
+     *
      * @param primaryOrganisationId
      *            not null
      * @param primaryNotice
@@ -105,7 +105,7 @@ public class Descriptor {
      */
     public Descriptor(final License primaryLicense,
             final String primaryCopyrightNotice,
-            final String primaryOrganisationId, 
+            final String primaryOrganisationId,
             final String primaryNotice,
             final Map<String, License> licenses,
             final Map<String, String> notices,
@@ -123,7 +123,7 @@ public class Descriptor {
     }
 
     /**
-     * Gets an additional copyright notice needed 
+     * Gets an additional copyright notice needed
      * for some primary licenses.
      * @return optional primary copyright notice,
      * possibly null
@@ -140,10 +140,10 @@ public class Descriptor {
     public boolean isPrimaryCopyrightNotice() {
         return primaryCopyrightNotice != null;
     }
-    
+
     /**
      * Gets the principle NOTICE for the main work.
-     * 
+     *
      * @return the primaryNotice
      */
     public String getPrimaryNotice() {
@@ -152,7 +152,7 @@ public class Descriptor {
 
     /**
      * Collates NOTICE meta-data for resources.
-     * 
+     *
      * @return not null, possibly empty
      */
     public Map<String, Collection<Resource>> getResourceNotices() {
@@ -171,7 +171,7 @@ public class Descriptor {
 
     /**
      * Collates NOTICE meta-data not linked to any resource.
-     * 
+     *
      * @return not null, possibly empty
      */
     public Set<String> getOtherNotices() {
@@ -182,7 +182,7 @@ public class Descriptor {
 
     /**
      * Gets the license with the given id.
-     * 
+     *
      * @param id
      *            not null
      * @return the license with the given id, or null
@@ -193,7 +193,7 @@ public class Descriptor {
 
     /**
      * Gets the principle license under which the work is licensed.
-     * 
+     *
      * @return the principle license, not null
      */
     public License getPrimaryLicense() {
@@ -202,7 +202,7 @@ public class Descriptor {
 
     /**
      * Gets the contents expected in the distribution.
-     * 
+     *
      * @return not null, possibly null
      */
     public Collection<WithinDirectory> getContents() {
@@ -211,7 +211,7 @@ public class Descriptor {
 
     /**
      * Is the given license the principle license for the main work?
-     * 
+     *
      * @param license
      *            not null
      * @return true when the given license is the primary license, not null
@@ -223,7 +223,7 @@ public class Descriptor {
     /**
      * Is the given individual or group the principle organisation with
      * responsibility for the main work.
-     * 
+     *
      * @param byOrganisation
      *            not null
      * @return true when the given organisation is primary
@@ -233,40 +233,25 @@ public class Descriptor {
     }
 
     /**
-     * Is this directory expected to contain only material with the primary
-     * license?
-     * 
-     * @param directory
-     *            not null
-     * @return true when the directory contains only material with the primary
-     *         license, false otherwise
-     */
-    public boolean isOnlyPrimary(final WithinDirectory directory) {
-        final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
-        directory.accept(collator);
-        return collator.isOnlyLicense(getPrimaryLicense())
-                && collator.isOnlyOrganisation(this.primaryOrganisationId);
-    }
-
-    /**
-     * Is this collection of resources licensed under the primary license by the
-     * primary organisation?
-     * 
-     * @param license
+     * Is this collection of resources expected to contain only material
+     * licensed under the primary license by the
+     * primary organisation with the primary copyright notice?
+     *
+     * @param contentElement
      *            not null
      * @return true when the contents are all licensed under the primary license
      *         by the primary organisation
      */
-    public boolean isOnlyPrimary(final ContentElement license) {
+    public boolean isOnlyPrimary(final ContentElement contentElement) {
         final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
-        license.accept(collator);
+        contentElement.accept(collator);
         return collator.isOnlyLicense(getPrimaryLicense())
                 && collator.isOnlyOrganisation(this.primaryOrganisationId);
     }
 
     /**
      * Traverses the content directories.
-     * 
+     *
      * @param visitor
      *            possibly null
      */
@@ -278,7 +263,7 @@ public class Descriptor {
 
     /**
      * Traverses the given directory.
-     * 
+     *
      * @param visitor
      *            possibly null
      * @param directoryName
@@ -295,7 +280,7 @@ public class Descriptor {
 
     /**
      * Is a NOTICE document required?
-     * 
+     *
      * @return true when a NOTICE is required, false otherwise
      */
     public boolean isNoticeRequired() {
@@ -304,7 +289,7 @@ public class Descriptor {
 
     /**
      * Does any resource have a required notice?
-     * 
+     *
      * @return true when at least one required third party notice exists, false
      *         otherwise
      */
@@ -314,7 +299,7 @@ public class Descriptor {
 
     /**
      * Does the work described have a primary notice?
-     * 
+     *
      * @return true unless the primary notice is null or whitespace
      */
     public boolean primaryNoticeExists() {
@@ -324,7 +309,7 @@ public class Descriptor {
 
     /**
      * Is this the work of the primary organisation only?
-     * 
+     *
      * @return true when no third party resources are contained, false when
      *         third party resources exist. In particular, true when
      *         contents are empty.
