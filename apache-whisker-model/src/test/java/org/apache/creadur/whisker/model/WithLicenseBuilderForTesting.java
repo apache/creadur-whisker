@@ -24,6 +24,8 @@ import java.util.Map;
 
 public class WithLicenseBuilderForTesting {
 
+    public static final String A_COPYRIGHT_NOTICE = "copyright (c) 2525 someone";
+
     License license = new LicenseBuilderForTesting().build();
     @SuppressWarnings("unchecked")
     Collection<ByOrganisation> organisations = Collections.EMPTY_LIST;
@@ -38,5 +40,13 @@ public class WithLicenseBuilderForTesting {
 
     public WithLicense build() {
         return new WithLicense(license, copyrightNotice, parameters, organisations);
+    }
+
+    public WithLicenseBuilderForTesting withCopyrightNotice() {
+        return withCopyrightNotice(A_COPYRIGHT_NOTICE);
+    }
+
+    public WithLicenseBuilderForTesting withNoCopyrightNotice() {
+        return withCopyrightNotice(null);
     }
 }
