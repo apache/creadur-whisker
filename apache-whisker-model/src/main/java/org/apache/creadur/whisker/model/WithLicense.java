@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.model;
 
@@ -41,7 +41,7 @@ public class WithLicense implements Comparable<WithLicense> {
      * @param license License shared by contained resources,
      * not null
      * @param copyrightNotice copyright claim
-     * shared by contained resources, not null
+     * shared by contained resources, possibly null
      * @param parameters parameters to specialise
      * the license family template, not null
      * @param organisations resources grouped by
@@ -60,10 +60,21 @@ public class WithLicense implements Comparable<WithLicense> {
     /**
      * Gets the copyright claim shared
      * by the resources contained.
-     * @return not null
+     * @return possibly null
      */
     public String getCopyrightNotice() {
         return this.copyrightNotice;
+    }
+
+
+    /**
+     * Indicates whether a copyright notice
+     * accumpianies this license.
+     * @return true when {@link #getCopyrightNotice()} is not null,
+     * false when {@link #getCopyrightNotice()} is null
+     */
+    public boolean hasCopyrightNotice() {
+        return getCopyrightNotice() != null;
     }
 
     /**
