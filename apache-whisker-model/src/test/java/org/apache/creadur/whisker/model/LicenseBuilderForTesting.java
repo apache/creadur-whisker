@@ -23,10 +23,23 @@ import java.util.Collections;
 
 public class LicenseBuilderForTesting {
 
-    private static final String DEFAULT_NAME = "Example License";
-    private static final String DEFAULT_URL = "http://example.org";
-    private static final String DEFAULT_ID = "example.org";
-    private static final String DEFAULT_LICENSE_TEXT = "This is the license text";
+    private static final String DEFAULT_PRIMARY_TEXT = "License text for the primary license.";
+    public static final String DEFAULT_PRIMARY_URL = "http://primary.example.org";
+    public static final String DEFAULT_PRIMARY_NAME = "Primary License";
+    public static final String DEFAULT_PRIMARY_ID = "primary.example.org";
+    public static final String DEFAULT_NAME = "Example License";
+    public static final String DEFAULT_URL = "http://example.org";
+    public static final String DEFAULT_ID = "example.org";
+    public static final String DEFAULT_LICENSE_TEXT = "This is the license text";
+
+    public static License defaultPrimaryLicense() {
+        return new LicenseBuilderForTesting()
+            .withId(DEFAULT_PRIMARY_ID)
+            .withName(DEFAULT_PRIMARY_NAME)
+            .withUrl(DEFAULT_PRIMARY_URL)
+            .withText(DEFAULT_PRIMARY_TEXT)
+            .build();
+    }
 
     boolean isSourceRequired = false;
     String baseText = DEFAULT_LICENSE_TEXT;
@@ -37,5 +50,25 @@ public class LicenseBuilderForTesting {
 
     public License build() {
         return new License(isSourceRequired, baseText, expectedParameters, id, url, name);
+    }
+
+    public LicenseBuilderForTesting withId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public LicenseBuilderForTesting withUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public LicenseBuilderForTesting withName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public LicenseBuilderForTesting withText(String baseText) {
+        this.baseText = baseText;
+        return this;
     }
 }
