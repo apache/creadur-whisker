@@ -257,7 +257,7 @@ public class Descriptor {
      * @return true when the contents are all licensed under the primary license
      *         by the primary organisation
      */
-    public boolean isOnlyPrimary(final WithLicense license) {
+    public boolean isOnlyPrimary(final ContentElement license) {
         final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
         license.accept(collator);
         return collator.isOnlyLicense(getPrimaryLicense())

@@ -21,14 +21,14 @@ package org.apache.creadur.whisker.model;
 /**
  * A resource expected in a software distribution.
  */
-public class Resource implements Comparable<Resource> {
+public class Resource implements Comparable<Resource>, ContentElement {
 
     /** Names this resource. */
     private final String name;
     /** Optional link to a notice for this resource. */
     private final String noticeId;
-    /** 
-     * Optional describes how source may be obtained 
+    /**
+     * Optional describes how source may be obtained
      * for this resource.
      */
     private final String source;

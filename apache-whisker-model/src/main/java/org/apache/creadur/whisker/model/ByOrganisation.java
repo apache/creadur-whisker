@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.model;
 
@@ -24,7 +24,7 @@ import java.util.Collection;
  * Relates the responsible group or individual to one
  * or more resources.
  */
-public class ByOrganisation implements Comparable<ByOrganisation> {
+public class ByOrganisation implements Comparable<ByOrganisation>, ContentElement {
 
     /** The responsible group or individual. */
     private final Organisation organisation;
@@ -154,7 +154,7 @@ public class ByOrganisation implements Comparable<ByOrganisation> {
             }
         }
     }
-    
+
     /**
      * Describes object suitably for logging.
      * @return something suitable for logging

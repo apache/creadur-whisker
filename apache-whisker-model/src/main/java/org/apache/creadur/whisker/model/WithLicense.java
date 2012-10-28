@@ -25,7 +25,7 @@ import java.util.Map;
 /**
  * Groups resources sharing a license and claimed copyright.
  */
-public class WithLicense implements Comparable<WithLicense> {
+public class WithLicense implements Comparable<WithLicense>, ContentElement {
 
     /** License shared by contained resources, not null. */
     private final License license;

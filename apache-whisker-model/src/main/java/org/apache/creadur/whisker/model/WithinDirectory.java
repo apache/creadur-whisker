@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.model;
 
@@ -24,7 +24,7 @@ import java.util.Collection;
  * Links resources expected within a directory in the distribution
  * to licensing meta-data.
  */
-public class WithinDirectory implements Comparable<WithinDirectory> {
+public class WithinDirectory implements Comparable<WithinDirectory>, ContentElement {
 
     /** Resources grouped by license applicable. */
     private final Collection<WithLicense> licenses;
@@ -36,7 +36,7 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
     /**
      * Constructs a description of a directory
      * @param name directory name, not null
-     * @param licenses resources contained, 
+     * @param licenses resources contained,
      * grouped by license applicable, not null
      * @param publicDomain resources in the public domain,
      * grouped by responsible organisation
@@ -140,7 +140,7 @@ public class WithinDirectory implements Comparable<WithinDirectory> {
                 }
             }
 
-            for (final WithLicense license : getLicenses()) {
+            for (final ContentElement license : getLicenses()) {
                 license.accept(visitor);
             }
         }
