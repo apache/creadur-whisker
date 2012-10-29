@@ -30,6 +30,7 @@ import static org.apache.creadur.whisker.model.OrganisationBuilderForTesting.*;
 public class DescriptorBuilderForTesting {
 
     public static final String DEFAULT_PRIMARY_COPYRIGHT_NOTICE = "Copyright (c) Primary";
+    public static final String DEFAULT_SUBSIDARY_COPYRIGHT_NOTICE = "Copyright (c) Secondary";
 
     License primaryLicense = defaultPrimaryLicense();
     String primaryCopyrightNotice = DEFAULT_PRIMARY_COPYRIGHT_NOTICE;
@@ -39,6 +40,8 @@ public class DescriptorBuilderForTesting {
     Map<String, License> licenses = new HashMap<String, License>();
     Map<String, String> notices = new HashMap<String, String>();
     Map<String, Organisation> organisations = new HashMap<String, Organisation>();
+
+    String subsidaryCopyrightNotice;
 
     public Descriptor build() {
         primaryLicense.storeIn(licenses);
@@ -52,6 +55,15 @@ public class DescriptorBuilderForTesting {
             notices,
             organisations,
             contents);
+    }
+
+    public DescriptorBuilderForTesting withSubsidaryCopyrightNotice() {
+        return withSubsidaryCopyrightNotice(DEFAULT_SUBSIDARY_COPYRIGHT_NOTICE);
+    }
+
+    public DescriptorBuilderForTesting withSubsidaryCopyrightNotice(String subsidaryCopyrightNotice) {
+        this.subsidaryCopyrightNotice = subsidaryCopyrightNotice;
+        return this;
     }
 
     public DescriptorBuilderForTesting withThirdParty(
@@ -90,9 +102,8 @@ public class DescriptorBuilderForTesting {
         byOrgs.add(new ByOrganisation(org, resources));
 
         Collection<WithLicense> withLicenses = new ArrayList<WithLicense>();
-        String copyright = "Copyright Blah";
         Map<String, String> params = Collections.emptyMap();
-        withLicenses.add(new WithLicense(license, copyright, params, byOrgs));
+        withLicenses.add(new WithLicense(license, subsidaryCopyrightNotice, params, byOrgs));
 
         Collection<ByOrganisation> publicDomain = Collections.emptyList();
 

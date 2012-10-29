@@ -243,10 +243,13 @@ public class Descriptor {
      *         by the primary organisation
      */
     public boolean isOnlyPrimary(final ContentElement contentElement) {
+        final NoCopyrightNoticeVerifier verifier = new NoCopyrightNoticeVerifier();
         final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
         contentElement.accept(collator);
+        contentElement.accept(verifier);
         return collator.isOnlyLicense(getPrimaryLicense())
-                && collator.isOnlyOrganisation(this.primaryOrganisationId);
+                && collator.isOnlyOrganisation(this.primaryOrganisationId)
+                && !verifier.isCopyrightNoticePresent();
     }
 
     /**
