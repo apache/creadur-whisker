@@ -37,7 +37,7 @@ import org.apache.creadur.whisker.model.WithinDirectory;
 import junit.framework.TestCase;
 
 public class TestLicenseGeneration extends TestCase {
-    
+
     StringResultWriterFactory writerFactory;
     VelocityEngine subject;
     String primaryLicenseText = "This is the primary license text";
@@ -49,10 +49,12 @@ public class TestLicenseGeneration extends TestCase {
     Map<String, License> licenses = new HashMap<String, License>();
     Map<String, String> notices = new HashMap<String, String>();
     Map<String, Organisation> organisations = new HashMap<String, Organisation>();
-    
+    String secondaryCopyright;
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+        secondaryCopyright = "Copyright (c) this is secondary";
         writerFactory = new StringResultWriterFactory();
         subject = new VelocityEngine(new EmptyLog());
         primaryLicense.storeIn(licenses);
@@ -69,7 +71,7 @@ public class TestLicenseGeneration extends TestCase {
                 directoryName);
         contents.add(withinDirectory);
     }
-    
+
     private Collection<Resource> buildResources() {
         String noticeId = "notice:id";
         notices.put(noticeId, "Some notice text");
@@ -85,46 +87,61 @@ public class TestLicenseGeneration extends TestCase {
         Collection<ByOrganisation> byOrgs = new ArrayList<ByOrganisation>();
         Collection<Resource> resources = buildResources();
         byOrgs.add(new ByOrganisation(org, resources));
-        
+
         Collection<WithLicense> withLicenses = new ArrayList<WithLicense>();
-        String copyright = "Copyright Blah";
         Map<String, String> params = Collections.emptyMap();
-        withLicenses.add(new WithLicense(license, copyright, params, byOrgs));
-        
+        withLicenses.add(new WithLicense(license, secondaryCopyright, params, byOrgs));
+
         Collection<ByOrganisation> publicDomain = Collections.emptyList();
-        
+
         final WithinDirectory withinDirectory = new WithinDirectory(directoryName, withLicenses, publicDomain);
         return withinDirectory;
     }
 
     public void testThatWhenThereAreNoThirdPartyContentsFooterIsNotShown() throws Exception {
-        Descriptor work = 
-                new Descriptor(primaryLicense, primaryOrg,  primaryNotice, 
+        Descriptor work =
+                new Descriptor(primaryLicense, primaryOrg,  primaryNotice,
                         licenses, notices, organisations, contents);
-        
+
         subject.generate(work, writerFactory);
 
         assertTrue("Check that work is suitable for this test", work.isPrimaryOnly());
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
-        assertEquals("When no third party contents, expect that only the license text is output", 
-                primaryLicenseText, 
+        assertEquals("When no third party contents, expect that only the license text is output",
+                primaryLicenseText,
                 writerFactory.firstOutputFor(Result.LICENSE).trim());
     }
-    
+
     public void testThatFooterIsShownWhenThereAreThirdPartyContents() throws Exception {
         addDirectory(primaryLicense, thirdPartyOrg, "lib");
-        
-        Descriptor work = 
-                new Descriptor(primaryLicense, primaryOrg,  primaryNotice, 
+
+        Descriptor work =
+                new Descriptor(primaryLicense, primaryOrg,  primaryNotice,
                         licenses, notices, organisations, contents);
-        
+
         assertFalse("Check that work is suitable for this test", work.isPrimaryOnly());
-        
+
         subject.generate(work, writerFactory);
 
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
-        assertTrue("Expect information when third party contents present: " + writerFactory.firstOutputFor(Result.LICENSE), 
-                StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE), 
+        assertTrue("Expect information when third party contents present: " + writerFactory.firstOutputFor(Result.LICENSE),
+                StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
                         "This distribution contains third party resources."));
+    }
+
+    public void testSecondaryCopyrightNoticeForPrimaryLicense() throws Exception {
+        final String primaryCopyrightNotice = "Copyright (c) this is primary";
+        addDirectory(primaryLicense, new Organisation(primaryOrg, "primary.org", "http://example.org"), "lib");
+        Descriptor work =
+                new Descriptor(primaryLicense, primaryCopyrightNotice, primaryOrg,  primaryNotice,
+                        licenses, notices, organisations, contents);
+
+        subject.generate(work, writerFactory);
+
+        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
+        assertTrue("Expect secondary copyright to be presented: " + writerFactory.firstOutputFor(Result.LICENSE),
+                StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
+                        secondaryCopyright));
+
     }
 }
