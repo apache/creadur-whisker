@@ -26,6 +26,7 @@ def reader = new BufferedReader(new InputStreamReader(new FileInputStream(licens
 
 def primary = false
 def dependent = false
+def resource = false
 
 def line = reader.readLine()
 while (line != null) {
@@ -35,12 +36,16 @@ while (line != null) {
     if (line.contains("Copyright (c) DEPENDENT")) {
         dependent = true
     }
+    if (dependent && line.contains("other.text")) {
+        resource = true
+    }
 
     line = reader.readLine()
 }
 
 assert primary
 assert dependent
+assert resource
 
 
 return true;

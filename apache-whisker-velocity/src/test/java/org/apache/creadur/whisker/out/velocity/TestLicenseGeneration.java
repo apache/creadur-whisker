@@ -50,10 +50,12 @@ public class TestLicenseGeneration extends TestCase {
     Map<String, String> notices = new HashMap<String, String>();
     Map<String, Organisation> organisations = new HashMap<String, Organisation>();
     String secondaryCopyright;
+    String resourceName;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+        resourceName = "resource";
         secondaryCopyright = "Copyright (c) this is secondary";
         writerFactory = new StringResultWriterFactory();
         subject = new VelocityEngine(new EmptyLog());
@@ -77,8 +79,7 @@ public class TestLicenseGeneration extends TestCase {
         notices.put(noticeId, "Some notice text");
         Collection<Resource> resources = new ArrayList<Resource>();
         String source = "";
-        String name = "resource";
-        resources.add(new Resource(name, noticeId, source));
+        resources.add(new Resource(resourceName, noticeId, source));
         return resources;
     }
 
@@ -142,6 +143,9 @@ public class TestLicenseGeneration extends TestCase {
         assertTrue("Expect secondary copyright to be presented: " + writerFactory.firstOutputFor(Result.LICENSE),
                 StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
                         secondaryCopyright));
+        assertTrue("Expect resource to be indicated: " + writerFactory.firstOutputFor(Result.LICENSE),
+                StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
+                        resourceName));
 
     }
 }
