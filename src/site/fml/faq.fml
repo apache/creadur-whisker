@@ -591,6 +591,22 @@ an informal <a href='./examples/3rd-party-group-sample.xml'>group</a>
       <a href='./mail-lists.html'>on list</a>.</p>
       </answer>
     </faq>
+    <faq id="when-source-links">
+        <question>Can Whisker Generate Source Links?</question>
+        <answer>
+            <p>
+            Yes - use the <code>source</code> element.
+            </p>
+            <p>
+            Learn about the <code>source</code> element
+            <a href='./meta-data.html#Source_Links'>here</a>.
+            </p>
+            <p>
+            Learn about source clauses <a href='#what-source-clause'>here</a>.
+            </p>
+        </answer>
+    </faq>
+
   </part>
   <part id="licensing">
     <title>Licensing</title>
@@ -841,6 +857,111 @@ Both are maintained by the
             </p>
             <p>
  Learn more about Open Source <a href='http://opensource.org/history'>here</a>.
+            </p>
+        </answer>
+    </faq>
+
+    <faq id="what-copyleft">
+        <question>What Do You Mean By Copyleft?</question>
+        <answer>
+            <p>
+            A reciprocal
+            <a href='#what-is-an-open-source-license'>open source</a>
+            copyright
+            <a href='#what-is-a-license'>license</a>
+            limiting some rights of <a href='#what-is-downstream'>downstream consumers</a>
+            to distribute under more restrictive licenses
+            (following <a href='http://www.rosenlaw.com/oslbook.htm' target='_blank'>Open Source Licensing</a>,
+            Lawrence Rosen).
+            </p>
+            <p>
+            Read more about copyleft <a href='http://www.gnu.org/copyleft/' target='_blank'>here</a>.
+            </p>
+            <p>
+            Read more about open source licenses <a href='#more-resources'>here</a>.
+            </p>
+            <p>
+            Learn more about Free Software <a href='http://www.fsf.org/' target='_blank'>here</a>.
+            </p>
+            <p>
+            Learn more about weak copyleft <a href='#what-weak-copyleft'>here</a>.
+            </p>
+        </answer>
+    </faq>
+
+    <faq id="what-weak-copyleft">
+        <question>What Do You Mean By Weak Copyleft?</question>
+        <answer>
+            <p>
+            A <a href='#what-copyleft'>copyleft</a> license that allows some forms
+            of derivative work to be distributed under more restrictive licenses
+            by <a href='#what-is-downstream'>downstream consumers</a>.
+            </p>
+            <p>
+            Read more about copyleft <a href='#what-copyleft'>here</a>.
+            </p>
+            <p>
+            Read more about open source licenses <a href='#more-resources'>here</a>.
+            </p>
+        </answer>
+    </faq>
+
+    <faq id="what-source-clause">
+        <question>What Do You Mean By Source Clause?</question>
+        <answer>
+            <p>
+            Some (typically <a href='#what-weak-copyleft'>weak copyleft</a>)
+            <a href='#what-is-an-open-source-license'>open source</a>
+            licenses ask that distributors of binaries built from their sources
+            facilitate <a href='#what-is-downstream'>downstream consumers</a>
+            in obtaining the source for the distributed binary.
+            The part of the license explaining exactly
+            what this means we refer to as a <em>source clause</em>.
+            </p>
+            <p>
+            For example, the
+            <a href='http://www.opensource.org/licenses/CDDL-1.0' target='_blank'>CDDL 1.0</a>
+            contains:
+            </p>
+            <blockquote>
+            <p>3.1. Availability of Source Code.</p>
+            <p>
+Any Covered Software that You distribute or otherwise make available in Executable form must
+also be made available in Source Code form and that Source Code form must be distributed
+only under the terms of this License. You must include a copy of this License with every
+copy of the Source Code form of the Covered Software You distribute or otherwise make
+available. You must inform recipients of any such Covered Software in Executable form as to
+how they can obtain such Covered Software in Source Code form in a reasonable manner on or
+through a medium customarily used for software exchange.
+</p>
+            </blockquote>
+            <p>
+            A distributor of CDDL licensed materials should consider including
+            (within the distribution) either the source, or information about how the source
+            could be obtain - perhaps in the form of an URL linking to the source.
+            </p>
+            <p>
+            Source clauses differ. Read,
+            understand and comply with each. The term <em>source clause</em>
+            is a useful
+            <a href='http://en.wiktionary.org/wiki/aide-m%C3%A9moire#English'>aide memoire</a>:
+
+            when a license has a source clause distributors need to remember to act to
+            satisfy it.
+            </p>
+            <p>
+            Learn how Whisker can help <a href='#when-source-links'>here</a>.
+            </p>
+            <p>
+            Learn about copyright and software licensing
+            <a href='#more-resources'>here</a>.
+            </p>
+            <p>
+            Read more about licenses <a href='#what-is-a-license'>here</a>.
+            </p>
+            <p>
+            Read more about weak copyleft licenses
+            <a href='#what-weak-copyleft'>here</a>.
             </p>
         </answer>
     </faq>

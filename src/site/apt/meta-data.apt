@@ -467,7 +467,8 @@ All rights reserved.
 
 *** Background
 
- Some weak copyleft licenses contain a source clause
+ Some {{{./faq.html#what-weak-copyleft}weak copyleft}} licenses contain a
+ {{{./faq.html#what-source-clause}source clause}}
  (for example, the {{{http://www.opensource.org/licenses/CDDL-1.0} CDDL 1.0}}).
  A good way to satisfy a source clause is to include the source
  within the distribution. An alternative approach (which is advantageous
@@ -483,6 +484,17 @@ All rights reserved.
  creators by including a link.
 
  Including a source URL generates an appropriate entry in the NOTICE.
+
+*** Learn More
+
+ Learn more about source clauses {{{./faq.html#what-source-clause}here}}.
+
+ Learn about copyright and software licensing {{{./faq.html#more-resources'}here}}.
+
+ Read more about licenses {{{./faq.html#what-is-a-license}here}}.
+
+ Read more about weak copyleft licenses
+            {{{./faq.html#what-weak-copyleft'}here}}.
 
 * A Sample
 
