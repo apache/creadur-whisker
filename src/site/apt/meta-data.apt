@@ -18,7 +18,7 @@
 ~~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 ~~  KIND, either express or implied.  See the License for the
 ~~  specific language governing permissions and limitations
-~~  under the License.    
+~~  under the License.
 ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -34,49 +34,49 @@ Apache Whisker Meta-Data Model
 
  The meta data relates licensing information about the contents of an assembled release
  efficiently. It break down into three sections:
- 
+
  [[I]] Licenses, notices and organisations each described here once (then reused);
- 
+
  [[I]] Primary license, notice and organisation for the application released; and
- 
- [[I]] Contents of each directory, grouped by organisation and license. 
- 
+
+ [[I]] Contents of each directory, grouped by organisation and license.
+
 * Some Objects Modeled
 
-** {Section I} - Licenses, Notices and Organisations 
+** {Section I} - Licenses, Notices and Organisations
 
 [meta-data-section1.png] Section I
- 
- License, notice and organisations are define independently. Each can then be efficiently 
+
+ License, notice and organisations are define independently. Each can then be efficiently
  referenced in many places by simple <<<id>>>. Each <<<id>>> must be a unique <<<ID>>> (in xml terms). Adopting
  a regular naming convention is recommended. Some typical conventions:
- 
+
   * use the domain name as the <<<id>>> for an organisation;
-  
-  * use the {{{http://www.opensource.org} Open Source Initiative}} code as the <<<id>>> 
+
+  * use the {{{http://www.opensource.org} Open Source Initiative}} code as the <<<id>>>
     for an open source license
- 
+
  Note that <<<organisation>>> includes any entity attributed as creator. Including (for example)
- 
+
   * the name of an author;
-  
+
   * a pseudonym;
-  
+
   * a corporation;
-  
+
   * a development community;
-  
+
   * the Apache Software Foundation.
 
 ** {Section II} - Primary Details
 
- The primary license, notice and organisation associated with the work reference data in {{{Section I}Section I}} by <<<id>>>. 
+ The primary license, notice and organisation associated with the work reference data in {{{Section I}Section I}} by <<<id>>>.
  This is the collective copyright for the act of composition. The components aggregated in the distribution
  are detailed in {{{Section III}Section III}}.
-  
+
 ** {Section III} - Contents
 
- This final section groups resources contained in each directory by organisation and license. 
+ This final section groups resources contained in each directory by organisation and license.
 
 [meta-data-section3.png] Section III
 
@@ -85,7 +85,7 @@ Apache Whisker Meta-Data Model
  in {{{Section I} Section I}}.
 
  Directories are modeled using a flat structure without nesting. Paths are relative to the
- root directory of the distribution (indicated by '.') and separated by <<<//>>>. 
+ root directory of the distribution (indicated by '.') and separated by <<<//>>>.
 
 +------------------------------------------------------------------------+
 
@@ -99,22 +99,22 @@ Apache Whisker Meta-Data Model
         <with-license ...
     </within>
     <within dir='WEB-INF/lib'>
-        <with-license ...    
+        <with-license ...
     </within>
 
 +------------------------------------------------------------------------+
 
- 
-* Described By DTD 
+
+* Described By DTD
 
  Useful for visual editors.
 
 +------------------------------------------------------------------------+
 <!DOCTYPE manifest [
 
-<!ELEMENT manifest (licenses, notices, organisations, 
+<!ELEMENT manifest (licenses, notices, organisations,
     primary-license, primary-notice?, primary-organisation?, within*)>
-<!-- Collects license descriptions -->    
+<!-- Collects license descriptions -->
 <!ELEMENT licenses (license*)>
 <!-- Describes a copyright license -->
 <!ELEMENT license (template?, text)>
@@ -194,15 +194,15 @@ Apache Whisker Meta-Data Model
 
 ** Public Domain
 
- Some contemporary laws make it surprisingly difficult for an author to place a work in the public domain. 
+ Some contemporary laws make it surprisingly difficult for an author to place a work in the public domain.
  See <<<{{{http://creativecommons.org} creativecommons.org}}>>>
- for {{{http://creativecommons.org/about/cc0} more}} 
+ for {{{http://creativecommons.org/about/cc0} more}}
  {{{http://creativecommons.org/weblog/entry/23830} explanation}}.
- 
- Whisker supports works in the public domain through <<<public-domain>>> blocks <<<within>>> a directory. 
+
+ Whisker supports works in the public domain through <<<public-domain>>> blocks <<<within>>> a directory.
  A <<<resource>>> in the public domain should be grouped <<<by-organisation>>> within the <<<public-domain>>>
  block.
- 
+
 +------------------------------------------------------------------------+
 
     <within dir='.'>
@@ -218,7 +218,7 @@ Apache Whisker Meta-Data Model
 *** A Public Domain Example
 
  This simple example illustrates how <Guide to the Lakes> by William Wordsworth
- (now in the public domain) may be indicated. 
+ (now in the public domain) may be indicated.
  Source is {{{./examples/public-domain.xml}here}}.
 
 +------------------------------------------------------------------------+
@@ -231,27 +231,27 @@ Apache Whisker Meta-Data Model
     <notices/>
     <organisations>
         <organisation id="ORG" name='An Organisation'/>
-        <!-- 
+        <!--
         The original author must still be credited
         even for works in the public domain.
-        Copyrights to the works of William Wordsworth 
+        Copyrights to the works of William Wordsworth
         (1770-1850)
-        have now expired. 
+        have now expired.
                                               -->
         <organisation id="WilliamWordsworth" name='William Wordsworth'/>
     </organisations>
     <primary-license id='LICENSE'/>
     <primary-organisation id='ORG'/>
-    
+
     <within dir='.'>
-        <!-- 
+        <!--
             The public domain block should be included
-            when the directory contains a resources 
-            in the public domain. 
+            when the directory contains a resources
+            in the public domain.
                      -->
         <public-domain>
             <by-organisation id='WilliamWordsworth'>
-            <!-- 
+            <!--
                 Copyrights to 'Guide to the Lakes'
                 by William Wordsworth have now expired.
                 It is in the public domain.
@@ -273,19 +273,19 @@ Apache Whisker Meta-Data Model
 +------------------------------------------------------------------------+
 
  <<Do not>> confuse a <copyright notice> with the <<<NOTICE>>> that some licenses require to be
- distributed. A typical <<<NOTICE>>> contains attribution information 
+ distributed. A typical <<<NOTICE>>> contains attribution information
  (for example <This products contains software developed by the Apache Software Foundation>)
  as well as a copyright notice.
- 
- Many license definitions (for example, The {{{http://www.opensource.org/licenses/mit-license.php} MIT License}}) 
+
+ Many license definitions (for example, The {{{http://www.opensource.org/licenses/mit-license.php} MIT License}})
  conventionally include a copyright notice. The contents of these copyright notices vary widely.
- 
- Whisker separates <<<copyright-notice>>> from <<<license>>> to reduce duplication. 
- (Optionally) a <<<copyright-notice>>> begins a <<<with-license>>> block, 
- before <<<resource>>> grouped <<<by-organisation>>> 
+
+ Whisker separates <<<copyright-notice>>> from <<<license>>> to reduce duplication.
+ (Optionally) a <<<copyright-notice>>> begins a <<<with-license>>> block,
+ before <<<resource>>> grouped <<<by-organisation>>>
  sharing this <<<copyright-notice>>> and <<<license>>>.
- 
-+------------------------------------------------------------------------+ 
+
++------------------------------------------------------------------------+
     <with-license id='MIT'>
         <copyright-notice>
 Copyright (c) YEAR A.N.AUTHOR
@@ -299,10 +299,10 @@ All rights reserved.
 
 *** An Example Separation Into License and Notice
 
- Here is an example instance of the 
- {{{http://www.opensource.org/licenses/mit-license.php} MIT License}} 
+ Here is an example instance of the
+ {{{http://www.opensource.org/licenses/mit-license.php} MIT License}}
 
-+------------------------------------------------------------------------+ 
++------------------------------------------------------------------------+
 Copyright (c) YEAR-YEAR A.N.AUTHOR
 All rights reserved.
 
@@ -324,16 +324,16 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-+------------------------------------------------------------------------+ 
++------------------------------------------------------------------------+
 
 
- To allow the <<<license>>> to be reused, add the <<<text>>> 
+ To allow the <<<license>>> to be reused, add the <<<text>>>
  excluding the copyright notice.
 
-+------------------------------------------------------------------------+ 
-        <license 
-            name='MIT License' 
-            id='MIT' 
++------------------------------------------------------------------------+
+        <license
+            name='MIT License'
+            id='MIT'
             url='http://www.opensource.org/licenses/mit-license.php'>
             <text>
 Permission is hereby granted, free  of charge, to any person obtaining
@@ -356,11 +356,11 @@ OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             </text>
         </license>
-+------------------------------------------------------------------------+ 
++------------------------------------------------------------------------+
 
  Add the appropriate <<<copyright-notice>>> applying to the <<<resource>>>.
 
-+------------------------------------------------------------------------+ 
++------------------------------------------------------------------------+
 
         <with-license id='MIT'>
         <copyright-notice>
@@ -370,18 +370,18 @@ All rights reserved.
             <by-organisation id='example.org'>
                 <resource name='mit-licensed-document-by-A-N-Author.txt'/>
                 ...
-+------------------------------------------------------------------------+ 
++------------------------------------------------------------------------+
 
 
 ** Templates For License Families
 
- Some familiar open source licenses (for example, 
+ Some familiar open source licenses (for example,
  the {{{http://www.opensource.org/licenses/BSD-3-Clause}BSD 3-Clause License}}) are better understood
- as families of licenses. Each family is based on a parameterised template. When the license is used, 
+ as families of licenses. Each family is based on a parameterised template. When the license is used,
  an appropriate value is substituted for each parameter.
- 
+
  Whisker supports template licenses with parameter substitution. Parameter names are defined by <<<parameter-name>>> elements
- within a <<<template>>> block. 
+ within a <<<template>>> block.
 
 +------------------------------------------------------------------------+
         <license ...
@@ -390,9 +390,9 @@ All rights reserved.
                 ...
             </template>
             ...
-+------------------------------------------------------------------------+ 
- 
- Each <<<$\{parameter name\}>>> within the license <<<text>>> will be substituted by 
++------------------------------------------------------------------------+
+
+ Each <<<$\{parameter name\}>>> within the license <<<text>>> will be substituted by
  the <<<value>>> with matching <<<name>>> within a <<<parameter>>> in a <<<license-parameters>>> block. When referring
  to a template license, this block is required. All parameter names defined must have exactly one value specified.
 
@@ -406,10 +406,10 @@ All rights reserved.
 +------------------------------------------------------------------------+
 
 
- 
-*** A Template Example 
 
- This simple template example features a <<<Hello, World>>> license. 
+*** A Template Example
+
+ This simple template example features a <<<Hello, World>>> license.
  Source is {{{./examples/template-license.xml}here}}.
 
 +------------------------------------------------------------------------+
@@ -417,9 +417,9 @@ All rights reserved.
     <licenses>
         <!-- A template license -->
         <license id='TL1' name='A Template License'>
-            <!-- 
+            <!--
                 Parameter names in this section.
-                Values must be set for all parameters. 
+                Values must be set for all parameters.
                                                 -->
             <template>
                 <!-- ${FOO} will be substituted wherever it occurs -->
@@ -429,18 +429,18 @@ All rights reserved.
             </template>
             <!-- Wherever ${FOO} and ${BAR} are found will be substituted.-->
             <text>
-                ${BAR}, ${FOO}.            
+                ${BAR}, ${FOO}.
             </text>
         </license>
     </licenses>
     ...
     <within dir='.'>
         <with-license id='TL1'>
-            <!-- 
+            <!--
                 When a template license is referenced,
                 a license-parameter block must exist
                 and contain one value for each defined
-                parameter 
+                parameter
                                                         -->
             <license-parameters>
                 <parameter>
@@ -457,7 +457,7 @@ All rights reserved.
             <!--
                 After substituting values for parameters,
                 the license reads: Hello, world.
-                                                        -->                                        
+                                                        -->
         </with-license>
     </within>
 </manifest>
@@ -465,15 +465,28 @@ All rights reserved.
 
 ** Source Links
 
- Some weak copyleft licenses (for example, the {{{http://www.opensource.org/licenses/CDDL-1.0} CDDL 1.0}}) 
- require that distributions either include the source, or a link to the source. Not every 
- artifact distributed under these licenses embeds this information. 
- 
- Whisker supports source links for a <<<resource>>> through the optional <<<source>>> attribute. 
+*** Background
 
-* A Sample 
+ Some weak copyleft licenses contain a source clause
+ (for example, the {{{http://www.opensource.org/licenses/CDDL-1.0} CDDL 1.0}}).
+ A good way to satisfy a source clause is to include the source
+ within the distribution. An alternative approach (which is advantageous
+ when size is important)
+ is to include a URL linking
+ to the source within the <<<NOTICE>>> or <<<LICENSE>>>.
 
-  Describes components assembled into the {{{http://james.apache.org}Apache James}} 
+*** Support For Source URLs
+
+ Whisker supports source links for a <<<resource>>> through the optional
+ <<<source>>> attribute. The primary motivation for this is to support
+ weak copyleft licenses, though many people like the idea of crediting
+ creators by including a link.
+
+ Including a source URL generates an appropriate entry in the NOTICE.
+
+* A Sample
+
+  Describes components assembled into the {{{http://james.apache.org}Apache James}}
   {{{http://james.apache.org/server}mail server}}.
   Find the source {{{./examples/james.xml}here}}.
 
@@ -481,13 +494,13 @@ All rights reserved.
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
     <licenses>
-        <license 
-            name='Day Specification License with Addendum' 
+        <license
+            name='Day Specification License with Addendum'
             id='DaySpecLicensePlusAddendum'
             url='http://www.day.com/content/dam/day/downloads/jsr283/LICENSE.txt'>
             <text>
-Day Management AG ("Licensor") is willing to license this specification to you ONLY UPON 
-THE CONDITION THAT YOU ACCEPT ALL OF THE TERMS CONTAINED IN THIS LICENSE AGREEMENT 
+Day Management AG ("Licensor") is willing to license this specification to you ONLY UPON
+THE CONDITION THAT YOU ACCEPT ALL OF THE TERMS CONTAINED IN THIS LICENSE AGREEMENT
 ("Agreement"). Please read the terms and conditions of this Agreement carefully.
 
 Content Repository for JavaTM Technology API Specification ("Specification")
@@ -501,99 +514,99 @@ All rights reserved.
 
 NOTICE; LIMITED LICENSE GRANTS
 
-1. License for Purposes of Evaluation and Developing Applications. Licensor hereby grants 
-   you a fully-paid, non-exclusive, non-transferable, worldwide, limited license (without the 
-   right to sublicense), under Licensor's applicable intellectual property rights to view, 
-   download, use and reproduce the Specification only for the purpose of internal evaluation. 
-   This includes developing applications intended to run on an implementation of the 
-   Specification provided that such applications do not themselves implement any portion(s) 
+1. License for Purposes of Evaluation and Developing Applications. Licensor hereby grants
+   you a fully-paid, non-exclusive, non-transferable, worldwide, limited license (without the
+   right to sublicense), under Licensor's applicable intellectual property rights to view,
+   download, use and reproduce the Specification only for the purpose of internal evaluation.
+   This includes developing applications intended to run on an implementation of the
+   Specification provided that such applications do not themselves implement any portion(s)
    of the Specification.
 
-2. License for the Distribution of Compliant Implementations. Licensor also grants you a 
-   perpetual, non-exclusive, non-transferable, worldwide, fully paid-up, royalty free, limited 
-   license (without the right to sublicense) under any applicable copyrights or, subject to 
-   the provisions of subsection 4 below, patent rights it may have covering the Specification 
+2. License for the Distribution of Compliant Implementations. Licensor also grants you a
+   perpetual, non-exclusive, non-transferable, worldwide, fully paid-up, royalty free, limited
+   license (without the right to sublicense) under any applicable copyrights or, subject to
+   the provisions of subsection 4 below, patent rights it may have covering the Specification
    to create and/or distribute an Independent Implementation of the Specification that:
-    
-      (a) fully implements the Specification including all its required interfaces and 
-          functionality; 
-      (b) does not modify, subset, superset or otherwise extend the Licensor Name Space, 
-          or include any public or protected packages, classes, Java interfaces, fields 
-          or methods within the Licensor Name Space other than those required/authorized 
-          by the Specification or Specifications being implemented; and 
-      (c) passes the Technology Compatibility Kit (including satisfying the requirements 
-          of the applicable TCK Users Guide) for such Specification ("Compliant Implementation"). 
-          In addition, the foregoing license is expressly conditioned on your not acting 
-          outside its scope. No license is granted hereunder for any other purpose (including, 
-          for example, modifying the Specification, other than to the extent of your fair use 
+
+      (a) fully implements the Specification including all its required interfaces and
+          functionality;
+      (b) does not modify, subset, superset or otherwise extend the Licensor Name Space,
+          or include any public or protected packages, classes, Java interfaces, fields
+          or methods within the Licensor Name Space other than those required/authorized
+          by the Specification or Specifications being implemented; and
+      (c) passes the Technology Compatibility Kit (including satisfying the requirements
+          of the applicable TCK Users Guide) for such Specification ("Compliant Implementation").
+          In addition, the foregoing license is expressly conditioned on your not acting
+          outside its scope. No license is granted hereunder for any other purpose (including,
+          for example, modifying the Specification, other than to the extent of your fair use
           rights, or distributing the Specification to third parties).
 
 3. Pass-through Conditions. You need not include limitations (a)-(c) from the previous paragraph
-   or any other particular "pass through" requirements in any license You grant concerning the 
-   use of your Independent Implementation or products derived from it. However, except with 
-   respect to Independent Implementations (and products derived from them) that satisfy 
-   limitations (a)-(c) from the previous paragraph, You may neither: 
-   
-       (a) grant or otherwise pass through to your licensees any licenses under Licensor's 
-           applicable intellectual property rights; nor 
-       (b) authorize your licensees to make any claims concerning their implementation's 
+   or any other particular "pass through" requirements in any license You grant concerning the
+   use of your Independent Implementation or products derived from it. However, except with
+   respect to Independent Implementations (and products derived from them) that satisfy
+   limitations (a)-(c) from the previous paragraph, You may neither:
+
+       (a) grant or otherwise pass through to your licensees any licenses under Licensor's
+           applicable intellectual property rights; nor
+       (b) authorize your licensees to make any claims concerning their implementation's
            compliance with the Specification.
 
-4. Reciprocity Concerning Patent Licenses. With respect to any patent claims covered by the 
-   license granted under subparagraph 2 above that would be infringed by all technically 
-   feasible implementations of the Specification, such license is conditioned upon your 
-   offering on fair, reasonable and non-discriminatory terms, to any party seeking it from 
-   You, a perpetual, non-exclusive, non-transferable, worldwide license under Your patent 
-   rights that are or would be infringed by all technically feasible implementations of the 
+4. Reciprocity Concerning Patent Licenses. With respect to any patent claims covered by the
+   license granted under subparagraph 2 above that would be infringed by all technically
+   feasible implementations of the Specification, such license is conditioned upon your
+   offering on fair, reasonable and non-discriminatory terms, to any party seeking it from
+   You, a perpetual, non-exclusive, non-transferable, worldwide license under Your patent
+   rights that are or would be infringed by all technically feasible implementations of the
    Specification to develop, distribute and use a Compliant Implementation.
 
-5. Definitions. For the purposes of this Agreement: "Independent Implementation" shall mean an 
-   implementation of the Specification that neither derives from any of Licensor's source code 
-   or binary code materials nor, except with an appropriate and separate license from Licensor, 
-   includes any of Licensor's source code or binary code materials; "Licensor Name Space" shall 
-   mean the public class or interface declarations whose names begin with "java", "javax", 
-   "javax.jcr" or their equivalents in any subsequent naming convention adopted by Licensor 
-   through the Java Community Process, or any recognized successors or replacements thereof; 
-   and "Technology Compatibility Kit" or "TCK" shall mean the test suite and accompanying TCK 
-   User's Guide provided by Licensor which corresponds to the particular version of the 
+5. Definitions. For the purposes of this Agreement: "Independent Implementation" shall mean an
+   implementation of the Specification that neither derives from any of Licensor's source code
+   or binary code materials nor, except with an appropriate and separate license from Licensor,
+   includes any of Licensor's source code or binary code materials; "Licensor Name Space" shall
+   mean the public class or interface declarations whose names begin with "java", "javax",
+   "javax.jcr" or their equivalents in any subsequent naming convention adopted by Licensor
+   through the Java Community Process, or any recognized successors or replacements thereof;
+   and "Technology Compatibility Kit" or "TCK" shall mean the test suite and accompanying TCK
+   User's Guide provided by Licensor which corresponds to the particular version of the
    Specification being tested.
 
-6. Termination. This Agreement will terminate immediately without notice from Licensor if 
-   you fail to comply with any material provision of or act outside the scope of the licenses 
+6. Termination. This Agreement will terminate immediately without notice from Licensor if
+   you fail to comply with any material provision of or act outside the scope of the licenses
    granted above.
 
-7. Trademarks. No right, title, or interest in or to any trademarks, service marks, or trade 
-   names of Licensor is granted hereunder. Java is a registered trademark of Sun Microsystems, 
+7. Trademarks. No right, title, or interest in or to any trademarks, service marks, or trade
+   names of Licensor is granted hereunder. Java is a registered trademark of Sun Microsystems,
    Inc. in the United States and other countries.
 
-8. Disclaimer of Warranties. The Specification is provided "AS IS". LICENSOR MAKES NO 
-   REPRESENTATIONS OR WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, 
-   WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT 
-   (INCLUDING AS A CONSEQUENCE OF ANY PRACTICE OR IMPLEMENTATION OF THE SPECIFICATION), 
-   OR THAT THE CONTENTS OF THE SPECIFICATION ARE SUITABLE FOR ANY PURPOSE. This document 
-   does not represent any commitment to release or implement any portion of the Specification 
+8. Disclaimer of Warranties. The Specification is provided "AS IS". LICENSOR MAKES NO
+   REPRESENTATIONS OR WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO,
+   WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT
+   (INCLUDING AS A CONSEQUENCE OF ANY PRACTICE OR IMPLEMENTATION OF THE SPECIFICATION),
+   OR THAT THE CONTENTS OF THE SPECIFICATION ARE SUITABLE FOR ANY PURPOSE. This document
+   does not represent any commitment to release or implement any portion of the Specification
    in any product.
 
-   The Specification could include technical inaccuracies or typographical errors. Changes are 
-   periodically added to the information therein; these changes will be incorporated into new 
-   versions of the Specification, if any. Licensor may make improvements and/or changes to the 
-   product(s) and/or the program(s) described in the Specification at any time. Any use of such 
-   changes in the Specification will be governed by the then-current license for the applicable 
+   The Specification could include technical inaccuracies or typographical errors. Changes are
+   periodically added to the information therein; these changes will be incorporated into new
+   versions of the Specification, if any. Licensor may make improvements and/or changes to the
+   product(s) and/or the program(s) described in the Specification at any time. Any use of such
+   changes in the Specification will be governed by the then-current license for the applicable
    version of the Specification.
 
-9. Limitation of Liability. TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT WILL LICENSOR 
-   BE LIABLE FOR ANY DAMAGES, INCLUDING WITHOUT LIMITATION, LOST REVENUE, PROFITS OR DATA, OR 
-   FOR SPECIAL, INDIRECT, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND 
-   REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF OR RELATED TO ANY FURNISHING, 
-   PRACTICING, MODIFYING OR ANY USE OF THE SPECIFICATION, EVEN IF LICENSOR HAS BEEN ADVISED 
+9. Limitation of Liability. TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT WILL LICENSOR
+   BE LIABLE FOR ANY DAMAGES, INCLUDING WITHOUT LIMITATION, LOST REVENUE, PROFITS OR DATA, OR
+   FOR SPECIAL, INDIRECT, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND
+   REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF OR RELATED TO ANY FURNISHING,
+   PRACTICING, MODIFYING OR ANY USE OF THE SPECIFICATION, EVEN IF LICENSOR HAS BEEN ADVISED
    OF THE POSSIBILITY OF SUCH DAMAGES.
 
-10. Report. If you provide Licensor with any comments or suggestions in connection with your 
-    use of the Specification ("Feedback"), you hereby: (i) agree that such Feedback is provided 
-    on a non-proprietary and non-confidential basis, and (ii) grant Licensor a perpetual, 
-    non-exclusive, worldwide, fully paid-up, irrevocable license, with the right to sublicense 
-    through multiple levels of sublicensees, to incorporate, disclose, and use without 
-    limitation the Feedback for any purpose related to the Specification and future versions, 
+10. Report. If you provide Licensor with any comments or suggestions in connection with your
+    use of the Specification ("Feedback"), you hereby: (i) agree that such Feedback is provided
+    on a non-proprietary and non-confidential basis, and (ii) grant Licensor a perpetual,
+    non-exclusive, worldwide, fully paid-up, irrevocable license, with the right to sublicense
+    through multiple levels of sublicensees, to incorporate, disclose, and use without
+    limitation the Feedback for any purpose related to the Specification and future versions,
     implementations, and test suites thereof.
 
 Day Specification License Addendum
@@ -1005,7 +1018,7 @@ herein is intended or shall be deemed to constitute any admission
 of liability.
         </text>
         </license>
-        <license name='MIT License' id='MIT' 
+        <license name='MIT License' id='MIT'
             url='http://www.opensource.org/licenses/mit-license.php'>
             <text>
 Permission is hereby granted, free  of charge, to any person obtaining
@@ -1044,39 +1057,39 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   The above copyright notice and this permission notice shall be
   included in all copies or substantial portions of the Software.
 
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-  NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
   OTHER DEALINGS IN THE SOFTWARE.
 
 
   Portions of the Software have been derived from source code
   developed by Silver Egg Technology under the following license:
-    
+
     Copyright (c) 2001 Silver Egg Technology
-    
+
     Permission is hereby granted, free of charge, to any person
     obtaining a copy of this software and associated documentation
-    files (the "Software"), to deal in the Software without 
-    restriction, including without limitation the rights to use, 
-    copy, modify, merge, publish, distribute, sub-license, and/or 
+    files (the "Software"), to deal in the Software without
+    restriction, including without limitation the rights to use,
+    copy, modify, merge, publish, distribute, sub-license, and/or
     sell copies of the Software, and to permit persons to whom the
-    Software is furnished to do so, subject to the following 
+    Software is furnished to do so, subject to the following
     conditions:
-    
+
     The above copyright notice and this permission notice shall be
     included in all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-    OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-    NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+    OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     OTHER DEALINGS IN THE SOFTWARE.
         </text>
@@ -1095,7 +1108,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   3. Neither the name of the copyright holders nor the names of its
      contributors may be used to endorse or promote products derived from
      this software without specific prior written permission.
- 
+
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -1109,8 +1122,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   THE POSSIBILITY OF SUCH DAMAGE.
             </text>
         </license>
-        
-        <license name='BSD (3-clause)' id ='BSD3Clause' 
+
+        <license name='BSD (3-clause)' id ='BSD3Clause'
             url='http://www.opensource.org/licenses/BSD-3-Clause'>
                 <template>
                     <parameter-name>organisation</parameter-name>
@@ -1142,22 +1155,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </license>
         <license name='Bouncy Castle Licence' id='BouncyCastleLicense' url='http://www.bouncycastle.org/licence.html'>
             <text>
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
-and associated documentation files (the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-and/or sell copies of the Software, and to permit persons to whom the Software is furnished to 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+and associated documentation files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to
 do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial 
+The above copyright notice and this permission notice shall be included in all copies or substantial
 portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS 
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS 
-OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER 
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-            </text>         
+            </text>
         </license>
         <license name='Apache License, Version 2' id='ApacheLicenseVersion2' url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
@@ -1361,32 +1374,32 @@ if and wherever such third-party acknowledgements normally appear.
 The names "Spring", "Spring Framework", and "Spring Web Flow" must
 not be used to endorse or promote products derived from this
 software without prior written permission. For written permission,
-please contact enquiries@springsource.com.        
+please contact enquiries@springsource.com.
         </notice>
         <notice id='org.jasypt:jasypt:jar:1.6'>
-This distribution includes cryptographic software.  The country in 
-which you currently reside may have restrictions on the import, 
-possession, use, and/or re-export to another country, of 
-encryption software.  BEFORE using any encryption software, please 
+This distribution includes cryptographic software.  The country in
+which you currently reside may have restrictions on the import,
+possession, use, and/or re-export to another country, of
+encryption software.  BEFORE using any encryption software, please
 check your country's laws, regulations and policies concerning the
-import, possession, or use, and re-export of encryption software, to 
+import, possession, or use, and re-export of encryption software, to
 see if this is permitted.  See http://www.wassenaar.org/ for more
 information.
 
 The U.S. Government Department of Commerce, Bureau of Industry and
-Security (BIS), has classified this software as Export Commodity 
+Security (BIS), has classified this software as Export Commodity
 Control Number (ECCN) 5D002.C.1, which includes information security
 software using or performing cryptographic functions with asymmetric
-algorithms.  The form and manner of this distribution makes it 
-eligible for export under the License Exception ENC Technology 
-Software Unrestricted (TSU) exception (see the BIS Export 
-Administration Regulations, Section 740.13) for both object code and 
+algorithms.  The form and manner of this distribution makes it
+eligible for export under the License Exception ENC Technology
+Software Unrestricted (TSU) exception (see the BIS Export
+Administration Regulations, Section 740.13) for both object code and
 source code.
 
-The following provides more details on the cryptographic software 
+The following provides more details on the cryptographic software
 used (note that this software is not included in the distribution):
 
-  * The PBE Encryption facilities require the Java Cryptography 
+  * The PBE Encryption facilities require the Java Cryptography
     extensions: http://java.sun.com/javase/technologies/security/.
 
  ---------------------------------
@@ -1401,45 +1414,45 @@ ICU License - ICU 1.8.1 and later
 
 COPYRIGHT AND PERMISSION NOTICE
 
-Copyright (c) 1995-2006 International Business Machines 
+Copyright (c) 1995-2006 International Business Machines
 Corporation and others
 
 All rights reserved.
 
-Permission is hereby granted, free of charge, to any 
-person obtaining a copy of this software and associated 
-documentation files (the "Software"), to deal in the 
-Software without restriction, including without limitation 
-the rights to use, copy, modify, merge, publish, 
-distribute, and/or sell copies of the Software, and to 
-permit persons to whom the Software is furnished to do so, 
-provided that the above copyright notice(s) and this 
-permission notice appear in all copies of the Software and 
-that both the above copyright notice(s) and this 
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish,
+distribute, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so,
+provided that the above copyright notice(s) and this
+permission notice appear in all copies of the Software and
+that both the above copyright notice(s) and this
 permission notice appear in supporting documentation.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY 
-KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
-WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
-PURPOSE AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. IN NO 
-EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN 
-THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL 
-INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES 
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, 
-WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER 
-TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. IN NO
+EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN
+THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL
+INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE
 USE OR PERFORMANCE OF THIS SOFTWARE.
 
-Except as contained in this notice, the name of a copyright 
-holder shall not be used in advertising or otherwise to 
-promote the sale, use or other dealings in this Software 
-without prior written authorization of the copyright holder. 
+Except as contained in this notice, the name of a copyright
+holder shall not be used in advertising or otherwise to
+promote the sale, use or other dealings in this Software
+without prior written authorization of the copyright holder.
         </notice>
     </notices>
     <organisations>
-        <organisation 
-            id='SpringFramework' 
-            name='The Spring Framework Project' 
+        <organisation
+            id='SpringFramework'
+            name='The Spring Framework Project'
             url='http://www.springframework.org'/>
         <organisation
             id='Boilerpipe'
@@ -1460,7 +1473,7 @@ without prior written authorization of the copyright holder.
             name='Brian Wellington'/>
         <organisation
             id='serp.sourceforge.net'
-            name = "The Serp Project" 
+            name = "The Serp Project"
             url='http://serp.sourceforge.net/'/>
         <organisation
             id='person:Drew.Noakes'
@@ -1470,20 +1483,20 @@ without prior written authorization of the copyright holder.
             name='Doug Lea'/>
         <organisation
             id='TheAOPAlliance'
-            name='The AOP Alliance' 
+            name='The AOP Alliance'
             url='http://aopalliance.sourceforge.net/'/>
-        <organisation 
-            id='apache.org' 
-            name='The Apache Software Foundation' 
-            url='http://www.apache.org/'/>  
-        <organisation 
-            id='TanukiSoftware' 
-            name='Tanuki Software' 
-            url='http://www.tanukisoftware.com/'/>  
-        <organisation 
-            id='OW2' 
-            name='OW2' 
-            url='http://www.ow2.org/'/>  
+        <organisation
+            id='apache.org'
+            name='The Apache Software Foundation'
+            url='http://www.apache.org/'/>
+        <organisation
+            id='TanukiSoftware'
+            name='Tanuki Software'
+            url='http://www.tanukisoftware.com/'/>
+        <organisation
+            id='OW2'
+            name='OW2'
+            url='http://www.ow2.org/'/>
         <organisation
             id='qos.ch'
             name='QOS.ch'
@@ -1500,17 +1513,17 @@ without prior written authorization of the copyright holder.
             />
         <organisation
             id='fusesource.org'
-            name='FuseSource' 
+            name='FuseSource'
             url='http://www.fusesource.org'/>
-        <organisation 
-            id='day.com' 
-            name='Day Software' 
+        <organisation
+            id='day.com'
+            name='Day Software'
             url='http://www.day.com'/>
-        <organisation 
+        <organisation
             id='jasypt.org'
             name='The JASYPT team'
             url='http://www.jasypt.org'/>
-            
+
     </organisations>
     <primary-license id='ApacheLicenseVersion2'/>
     <primary-notice>
@@ -1525,7 +1538,7 @@ This product includes software developed at
 The Apache Software Foundation (http://www.apache.org/).
     </primary-notice>
     <primary-organisation id='apache.org'/>
-    
+
     <within dir='.'>
         <with-license id='ApacheLicenseVersion2'>
             <by-organisation id='apache.org'>
@@ -1571,7 +1584,7 @@ The Apache Software Foundation (http://www.apache.org/).
             </by-organisation>
         </with-license>
         <with-license id='ApacheLicenseVersion2'>
-            <by-organisation id='apache.org'>        
+            <by-organisation id='apache.org'>
                 <resource name='database.properties'/>
                 <resource name='dnsservice.xml'/>
                 <resource name='domainlist.xml'/>
@@ -1595,14 +1608,14 @@ The Apache Software Foundation (http://www.apache.org/).
     </within>
     <within dir='conf/META-INF'>
         <with-license id='ApacheLicenseVersion2'>
-            <by-organisation id='apache.org'>  
+            <by-organisation id='apache.org'>
                 <resource name='persistence.xml'/>
             </by-organisation>
         </with-license>
     </within>
     <within dir='conf/context'>
         <with-license id='ApacheLicenseVersion2'>
-            <by-organisation id='apache.org'>        
+            <by-organisation id='apache.org'>
                 <resource name='james-mailbox-jcr-context.xml'/>
                 <resource name='james-mailbox-jpa-context.xml'/>
                 <resource name='james-mailbox-maildir-context.xml'/>
@@ -1613,39 +1626,39 @@ The Apache Software Foundation (http://www.apache.org/).
     </within>
     <within dir='conf/lib'>
         <with-license id='ApacheLicenseVersion2'>
-            <by-organisation id='apache.org'>  
+            <by-organisation id='apache.org'>
                 <resource name='README.txt'/>
             </by-organisation>
         </with-license>
     </within>
     <within dir='log'>
     <with-license id='ApacheLicenseVersion2'>
-            <by-organisation id='apache.org'>  
+            <by-organisation id='apache.org'>
                 <resource name='.dummy'/>
             </by-organisation>
         </with-license>
     </within>
     <within dir='var'>
         <with-license id='ApacheLicenseVersion2'>
-            <by-organisation id='apache.org'>  
+            <by-organisation id='apache.org'>
                 <resource name='README.txt'/>
             </by-organisation>
         </with-license>
     </within>
     <within dir='var/mail'>
         <with-license id='ApacheLicenseVersion2'>
-            <by-organisation id='apache.org'>  
+            <by-organisation id='apache.org'>
                 <resource name='README.txt'/>
             </by-organisation>
         </with-license>
     </within>
     <within dir='var/store'>
         <with-license id='ApacheLicenseVersion2'>
-            <by-organisation id='apache.org'>  
+            <by-organisation id='apache.org'>
                 <resource name='README.txt'/>
             </by-organisation>
         </with-license>
-    </within>    
+    </within>
     <within dir='lib'>
         <public-domain>
             <by-organisation id='TheAOPAlliance'>
@@ -1694,7 +1707,7 @@ All rights reserved.
             </by-organisation>
         </with-license>
         <with-license id='ApacheLicenseVersion2'>
-             <by-organisation id='oracle.com'>   
+             <by-organisation id='oracle.com'>
                 <resource name='rome-0.9.jar'/>
             </by-organisation>
             <by-organisation id='jasypt.org'>
@@ -1815,9 +1828,9 @@ All rights reserved.
             </by-organisation>
             <by-organisation id='person:John.Cowan'>
                 <resource name='tagsoup-1.2.jar'/>
-            </by-organisation>            
+            </by-organisation>
         </with-license>
-        <with-license 
+        <with-license
             id='BSD3ClauseGeneric'>
             <copyright-notice>
 ASM: a very small and fast Java bytecode manipulation framework
@@ -1827,8 +1840,8 @@ All rights reserved.
             <by-organisation id='OW2'>
                 <resource name='asm-3.1.jar'/>
             </by-organisation>
-        </with-license> 
-        <with-license 
+        </with-license>
+        <with-license
             id='BouncyCastleLicense'>
             <copyright-notice>
             Copyright (c) 2000 - 2011 The Legion Of The Bouncy Castle (http://www.bouncycastle.org)
