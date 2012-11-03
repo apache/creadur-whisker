@@ -1,5 +1,5 @@
   ------
-  With A Corporate Third Party Work  
+  With A Corporate Third Party Work
   ------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~
@@ -18,7 +18,7 @@
 ~~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 ~~  KIND, either express or implied.  See the License for the
 ~~  specific language governing permissions and limitations
-~~  under the License.    
+~~  under the License.
 ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -26,81 +26,81 @@ With A Corporate Third Party Work
 
  {{{http://creadur.apache.org/whisker} Apache Whisker}} is based around
  {{{../meta-data.html}meta-data}} describing the licensing qualities
- of documents included within 
+ of documents included within
  {{{../faq.html#complex-software-applications}complex software distributions}}.
- Whisker just helps to maintain information more efficiently, and is 
+ Whisker just helps to maintain information more efficiently, and is
  {{{../faq.html#what-whisker-is-not}no substitute}} for solid legal work.
  Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
- 
- For this example, we'll add the meta-data for a third party work licensed from 
- a for- or non-profit corporation.   
- 
+
+ For this example, we'll add the meta-data for a third party work licensed from
+ a for- or non-profit corporation.
+
  If this isn't quite what you're looking for, take a look at:
- 
+
    * {{{./in-5-mins.html}Whisker in 5 minutes}}, an MIT licensed project
-   
-   * including a 3rd Party work licensed by 
-    
+
+   * including a 3rd Party work licensed by
+
       * an {{{./3rd-party-individual.html}individual}}
 
       * an {{{./3rd-party-group.html}informal group}}
 
-   * {{{./license-family.html}Parameterising a template}} for a 
-     {{{../faq.html#what-is-license-family}license family}}, 
-     featuring the 
+   * {{{./license-family.html}Parameterising a template}} for a
+     {{{../faq.html#what-is-license-family}license family}},
+     featuring the
      {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
 
- 
+
   or dive into sample meta-data:
- 
+
    * {{{./james.xml} Apache James}}
 
    * {{{./public-domain.xml} Public Domain}}
 
    * {{{./template-license.xml} Template License}}
-    
+
    * {{{./license-family-sample.xml}License Family}}
-   
+
    * Whisker In 5 Minutes featuring the {{{./in-5-mins-sample.xml}MIT License}}
-   
-   * distributing work licensed from 
-      
+
+   * distributing work licensed from
+
       * an {{{./3rd-party-individual-sample.xml} individual maintainer}}
-      
+
       * a for- or non-profit {{{./3rd-party-corporate-sample.xml}corporation}}
 
       * an informal {{{./3rd-party-group-sample.xml}group}}
-   
- Whisker treats individual maintainers, 
+
+ Whisker treats individual maintainers,
  groups, for- and non-profit corporations as {{{../faq.html#what-is-org}organisations}},
  so these examples are almost identical.
- 
- 
- If you're using an IDE then see the 
-  {{{../meta-data.html}meta data reference}} for a 
-  {{{../faq.html#why-dtd}DTD}}. 
-  
- If you have 
-  any questions, please try the {{{../faq.html}FAQ}} before asking on the 
+
+
+ If you're using an IDE then see the
+  {{{../meta-data.html}meta data reference}} for a
+  {{{../faq.html#why-dtd}DTD}}.
+
+ If you have
+  any questions, please try the {{{../faq.html}FAQ}} before asking on the
   {{{../mail-lists.html}mail lists}}.
- 
+
 * The Story So Far
 
-  Let's assume <<<foo>>> is a simple project, 
-  with a single original source file: <<<HelloWorld.py>>>.  
+  Let's assume <<<foo>>> is a simple project,
+  with a single original source file: <<<HelloWorld.py>>>.
   The source for <<<foo>>> looks something like:
 
 +---------------------------------------+
-  foo--| 
+  foo--|
        | HelloWorld.py
        | LICENSE
 +---------------------------------------+
 
 ** Starting Definitions
 
-  Whisker describes each {{{../faq.html#what-is-a-license}license}}, 
-  {{{../faq.html#what-notice}notice}} 
-  and {{{../faq.html#what-is-org}organisation}} once 
+  Whisker describes each {{{../faq.html#what-is-a-license}license}},
+  {{{../faq.html#what-notice}notice}}
+  and {{{../faq.html#what-is-org}organisation}} once
   above, and then {{{../faq.html#why-ids}references by id}} below. So, the meta-data for
   project <<<foo>>> is structured along these lines:
 
@@ -116,11 +116,11 @@ With A Corporate Third Party Work
     ...
 +---------------------------------------+
 
-  Let's say that the 
+  Let's say that the
   {{{http://www.apache.org/licenses/LICENSE-2.0.html}Apache License, Version 2}}
-  is the {{{../faq.html#what-is-primary}primary license}} 
-  for the project, but <<<foo>>> opts not to 
-  {{{../faq.html#notice-needed-for-al2}include a primary notice}}. 
+  is the {{{../faq.html#what-is-primary}primary license}}
+  for the project, but <<<foo>>> opts not to
+  {{{../faq.html#notice-needed-for-al2}include a primary notice}}.
   The text for this license is included in <<<licenses>>> above,
   and this data is referenced by <<<id>>> as <<<primary-license>>> below:
 
@@ -128,9 +128,9 @@ With A Corporate Third Party Work
 <manifest>
     <!-- Definitions -->
     <licenses>
-        <license 
-            name='Apache License, Version 2' 
-            id='osi:AL2' 
+        <license
+            name='Apache License, Version 2'
+            id='osi:AL2'
             url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
@@ -320,21 +320,21 @@ With A Corporate Third Party Work
     ...
 +---------------------------------------+
 
-  Let's assume that our project <<<foo>>> is here at Apache. So the 
+  Let's assume that our project <<<foo>>> is here at Apache. So the
   {{{../faq.html#what-is-primary}primary organisation}} is the
-  {{{http://www.apache.org/foundation}Apache Software Foundation}}. 
-  This organisation is described once in <<<organisations>>> (above) then 
+  {{{http://www.apache.org/foundation}Apache Software Foundation}}.
+  This organisation is described once in <<<organisations>>> (above) then
   referenced by id as the
-  <<<primary-organisation>>> (below). 
+  <<<primary-organisation>>> (below).
 
 +---------------------------------------+
 <manifest>
     ...
     <organisations>
-        <organisation 
-            id='apache.org' 
-            name='The Apache Software Foundation' 
-            url='http://www.apache.org/'/>  
+        <organisation
+            id='apache.org'
+            name='The Apache Software Foundation'
+            url='http://www.apache.org/'/>
     </organisations>
     ...
     <primary-organisation id='apache.org'/>
@@ -342,13 +342,13 @@ With A Corporate Third Party Work
 +---------------------------------------+
 
 ** Starting Contents
-  
+
   Let's assume that the distribution for <<<foo>>> just contains the single
-  source file <<<HelloWorld.py>>> (plus legal documentation generated by Whisker), 
+  source file <<<HelloWorld.py>>> (plus legal documentation generated by Whisker),
   like this:
 
 +---------------------------------------+
-  foo--| 
+  foo--|
        | HelloWorld.py
 +---------------------------------------+
 
@@ -366,34 +366,34 @@ With A Corporate Third Party Work
     </within>
 </manifest>
 +---------------------------------------+
-  
-   It is essential that the <<<id>>> attributes in the <<<with-license>>> 
+
+   It is essential that the <<<id>>> attributes in the <<<with-license>>>
    and <<<by-organisation>>> elements match the ids assigned above. This
    allows the details entered above to be re-used consistently.
-  
+
 * Adding A Third Party to the Distribution
 
   Let's add <<<boo.png>>> to the distribution,
-  licensed under the same Apache License 
+  licensed under the same Apache License
   by (let's say) <The Example Foundation> (of <<<example.org>>>) a hypothetical
-  non-profit corporation. 
-  If <<<example.org>>> had chosen a different license, 
-  then this license might have to be added but 
+  non-profit corporation.
+  If <<<example.org>>> had chosen a different license,
+  then this license might have to be added but
   otherwise the process would be analogous.
-  
-** Add Organisation  
+
+** Add Organisation
 
   As far as Whisker is
-  concerned, data about a for- or non-profit corporation 
+  concerned, data about a for- or non-profit corporation
   (like <The Example Foundation>) is entered
-  entered as an {{{../faq.html#what-is-org}organisation}}. 
-  By checking that <The Example Foundation> isn't already described in the 
+  entered as an {{{../faq.html#what-is-org}organisation}}.
+  By checking that <The Example Foundation> isn't already described in the
   <<<organisations>>>, we discover that an <<<organisation>>>
   needs to be added. Pay particular attention to the <<<id>>> -
   we'll need to refer to this later when the contents are updated.
-  For this example, we'll {{{../faq.html#id-freedom}pick}} 
-  <<<example.org>>> as <<<id>>>. 
-  
+  For this example, we'll {{{../faq.html#id-freedom}pick}}
+  <<<example.org>>> as <<<id>>>.
+
 +---------------------------------------+
 <manifest>
     <!-- Definitions -->
@@ -419,22 +419,22 @@ With A Corporate Third Party Work
   suppose that the contents of the new distribution are:
 
 +---------------------------------------+
-  foo--| 
+  foo--|
        | HelloWorld.py
        | boo.png         <- Newly added
 +---------------------------------------+
 
-  We need to add <<<boo.png>>> to the 
-  {{{../faq.html#how-contents}contents}}, 
+  We need to add <<<boo.png>>> to the
+  {{{../faq.html#how-contents}contents}},
   into a new group of resources
   within the {{{../faq.html#how-root-dir}root directory}}. Resources
   are grouped by organisation, so the <<<by-organisation>>> containing
-  the new resource named <<<boo.png>>> needs to refer (by <<<id>>>) 
-  to the <<<organisation>>> we added earlier. After checking that 
+  the new resource named <<<boo.png>>> needs to refer (by <<<id>>>)
+  to the <<<organisation>>> we added earlier. After checking that
   <The Example Foundation>
   doesn't distribute a <<<NOTICE>>> for <<<boo.png>>>, we can complete
-  the resource entry. 
-   
+  the resource entry.
+
 +---------------------------------------+
     ...
     <!-- Contents -->
@@ -451,12 +451,12 @@ With A Corporate Third Party Work
 
   That's about all there is to the addition of this new resource licensed from
   a for- or non-profit organisation.
- 
-  If <The Example Foundation> had distributed a <<<NOTICE>>> for this resource, then 
+
+  If <The Example Foundation> had distributed a <<<NOTICE>>> for this resource, then
   (after finding that the <<<NOTICE>>> is not already included) a
   <<<notice>>> description would need to be added to <<<notices>>>
   above and referenced by id from the resource. Something like:
-  
+
 +---------------------------------------+
     ...
     <!-- Contents -->
@@ -470,11 +470,11 @@ With A Corporate Third Party Work
     </within>
 </manifest>
 +---------------------------------------+
-  
+
 
 * And Finally
 
-  We end up with this meta-data 
+  We end up with this meta-data
   ({{{./3rd-party-corporate-sample.xml}open}}
   as an annotated sample):
 
@@ -483,9 +483,9 @@ With A Corporate Third Party Work
 <manifest>
     <!-- Definitions -->
     <licenses>
-        <license 
-            name='Apache License, Version 2' 
-            id='osi:AL2' 
+        <license
+            name='Apache License, Version 2'
+            id='osi:AL2'
             url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
@@ -669,10 +669,10 @@ With A Corporate Third Party Work
     </licenses>
     <notices/>
     <organisations>
-        <organisation 
-            id='apache.org' 
-            name='The Apache Software Foundation' 
-            url='http://www.apache.org/'/>  
+        <organisation
+            id='apache.org'
+            name='The Apache Software Foundation'
+            url='http://www.apache.org/'/>
         <organisation
            id='example.org'
            name='The Example Foundation'
@@ -680,9 +680,9 @@ With A Corporate Third Party Work
         />
     </organisations>
     <primary-license id='osi:AL2'/>
-    <primary-notice/>        
+    <primary-notice/>
     <primary-organisation id='apache.org'/>
-        
+
     <!-- Contents -->
     <within dir='.'>
         <with-license id='osi:AL2'>
@@ -696,11 +696,11 @@ With A Corporate Third Party Work
     </within>
 </manifest>
 +---------------------------------------+
-   
-    From this meta-data, Whisker (either from the 
+
+    From this meta-data, Whisker (either from the
     {{{../apache-whisker-cli/index.html}command line}} or
-    integrated into a 
-    {{{../apache-whisker-plugin4maven/index.html}Maven build}}) 
+    integrated into a
+    {{{../apache-whisker-plugin4maven/index.html}Maven build}})
     generates a <<<LICENSE>>> similar to:
 
 +---------------------------------------+
@@ -886,9 +886,8 @@ With A Corporate Third Party Work
 This distribution contains third party resources.
 Within the . directory
     licensed under the Apache License, Version 2 http://www.apache.org/licenses/LICENSE-2.0.txt  (as above)
-        from The Example Foundation  http://example.org/ 
+        from The Example Foundation  http://example.org/
             boo.png
 
 
 +---------------------------------------+
-   

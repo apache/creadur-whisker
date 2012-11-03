@@ -18,43 +18,43 @@
 ~~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 ~~  KIND, either express or implied.  See the License for the
 ~~  specific language governing permissions and limitations
-~~  under the License.    
+~~  under the License.
 ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 What Is Apache Whisker?
 
-  Apache Whisker assists assembled applications maintain correct legal 
-  documentation. 
+  Apache Whisker assists assembled applications maintain correct legal
+  documentation.
 
   Apache Whisker is part of the {{{http://creadur.apache.org}Apache Creadur}}
-  language- and build-agnostic suite of tools for auditing and comprehending 
-  software distributions. Our community develops 
+  language- and build-agnostic suite of tools for auditing and comprehending
+  software distributions. Our community develops
   {{{http://www.opensource.org/} open source software}} the
   {{{http://www.apache.org/foundation/how-it-works.html} Apache Way}}.
-  
-  Whisker just helps to maintain information more efficiently, and is 
-  {{{./faq.html#what-whisker-is-not}no substitute}} 
-  for solid legal work. No part of our documentation is 
-  {{{./faq.html#what-this-documentation-is-not}legal advice}}, 
-  and readers are assumed to have a practical understanding of the relevant laws. 
-  
+
+  Whisker just helps to maintain information more efficiently, and is
+  {{{./faq.html#what-whisker-is-not}no substitute}}
+  for solid legal work. No part of our documentation is
+  {{{./faq.html#what-this-documentation-is-not}legal advice}},
+  and readers are assumed to have a practical understanding of the relevant laws.
+
   Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
 
 * How Can Whisker Help?
 
  Whisker can
- 
+
   * verify - checking meta-data quality against a distribution
 
   * generate - legal documents from meta-data
- 
+
  Particular useful for complex assembled applications.
-   
+
 ** What's An Assembled Application?
 
   An assembled application is composed from libraries and frameworks.
-  
+
   Read more {{{./faq.html#complex-software-applications}here}}.
 
 ** What Legal Documentation?
@@ -62,65 +62,65 @@ What Is Apache Whisker?
   NOTICE and LICENSE are supported examples.
 
 ** How Does Whisker Work?
- 
-  Licensing {{{./meta-data.html} meta-data}} describes the legal qualities of the components 
-  assembled.  
- 
+
+  Licensing {{{./meta-data.html} meta-data}} describes the legal qualities of the components
+  assembled.
+
 
 * How Can I Use Whisker?
 
- * From the {{{./apache-whisker-cli/index.html} command line}} 
- 
+ * From the {{{./apache-whisker-cli/index.html} command line}}
+
  * As a {{{./apache-whisker-plugin4maven/index.html} plugin for Maven}}
 
 * Getting Started
 
- Browse the {{{./xref/index.html}source}}, 
+ Browse the {{{./xref/index.html}source}},
  read the {{{./apidocs/index.html}javadocs}},
  take a look
- 
+
    * {{{./examples/in-5-mins.html}Whisker In 5 Minutes}}
- 
- 
+
+
  dive into sample meta-data
- 
+
    * {{{./examples/james.xml} Apache James}}
 
    * {{{./examples/public-domain.xml} Public Domain}}
 
    * {{{./examples/template-license.xml} Template License}}
-   
+
    * {{{./examples/license-family-sample.xml}License Family}}
-   
-   * Whisker In 5 Minutes featuring the 
+
+   * Whisker In 5 Minutes featuring the
      {{{./examples/in-5-mins-sample.xml}MIT License}}
-   
-   * distributing work licensed from 
-      
+
+   * distributing work licensed from
+
       * an {{{./examples/3rd-party-individual-sample.xml} individual maintainer}}
-      
+
       * a for- or non-profit {{{./examples/3rd-party-corporate-sample.xml}corporation}}
 
       * an informal {{{./examples/3rd-party-group-sample.xml}group}}
-      
+
  or browse the {{{./faq.html}FAQ}}.
 
- A warm welcome is guaranteed on our 
+ A warm welcome is guaranteed on our
  {{{../mail-lists.html}mail lists}}.
-      
+
 ** More Examples
- 
- * Including a 3rd Party work licensed by 
-  
+
+ * Including a 3rd Party work licensed by
+
     * an {{{./examples/3rd-party-individual.html}individual}}
- 
+
     * a for- or non-profit {{{./examples/3rd-party-corporate.html}corporation}}
-    
+
     * an {{{./examples/3rd-party-group.html}informal group}}
-    
- * {{{./examples/license-family.html}Parameterising a template}} for a 
-     {{{./faq.html#what-is-license-family}license family}}, 
-     featuring the 
+
+ * {{{./examples/license-family.html}Parameterising a template}} for a
+     {{{./faq.html#what-is-license-family}license family}},
+     featuring the
      {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
- 
- 
+
+

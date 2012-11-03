@@ -1,5 +1,5 @@
   ------
-  Parameterising a Template for a License Family  
+  Parameterising a Template for a License Family
   ------
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~
@@ -18,7 +18,7 @@
 ~~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 ~~  KIND, either express or implied.  See the License for the
 ~~  specific language governing permissions and limitations
-~~  under the License.    
+~~  under the License.
 ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -26,80 +26,80 @@ Parameterising a Template for a License Family
 
  {{{http://creadur.apache.org/whisker} Apache Whisker}} is based around
  {{{../meta-data.html}meta-data}} describing the licensing qualities
- of documents included within 
+ of documents included within
  {{{../faq.html#complex-software-applications}complex software distributions}}.
- Whisker just helps to maintain information more efficiently, and is 
+ Whisker just helps to maintain information more efficiently, and is
  {{{../faq.html#what-whisker-is-not}no substitute}}
  for solid legal work.
  Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
- 
+
  For this example, we'll add the meta-data for a third party work whose
- license is parameterised using a 
- {{{../faq.html#what-is-license-family}license family}} template, 
- featuring the 
-    {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}  
- 
+ license is parameterised using a
+ {{{../faq.html#what-is-license-family}license family}} template,
+ featuring the
+    {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
+
  If this isn't quite what you're looking for, take a look at:
- 
+
    * {{{./in-5-mins.html}Whisker in 5 minutes}}, an MIT licensed project
-   
-   * including a 3rd Party work licensed by 
-   
+
+   * including a 3rd Party work licensed by
+
        * an {{{./3rd-party-individual.html}individual}}
 
-       * a for- or non-profit 
+       * a for- or non-profit
          {{{./3rd-party-corporate.html}corporation}}
-       
+
        * an {{{./3rd-party-group.html}informal group}}
-       
- 
- 
+
+
+
   or dive into sample meta-data:
- 
+
    * {{{./james.xml} Apache James}}
 
    * {{{./public-domain.xml} Public Domain}}
 
-   * {{{./template-license.xml} Template License}} 
-   
+   * {{{./template-license.xml} Template License}}
+
    * {{{./license-family-sample.xml}License Family}}
-   
+
    * Whisker In 5 Minutes featuring the {{{./in-5-mins-sample.xml}MIT License}}
-   
-   * distributing work licensed from 
-      
+
+   * distributing work licensed from
+
       * an {{{./3rd-party-individual-sample.xml} individual maintainer}}
-      
+
       * a for- or non-profit {{{./3rd-party-corporate-sample.xml}corporation}}
 
       * an informal {{{./3rd-party-group-sample.xml}group}}
-  
- 
- If you're using an IDE then see the 
-  {{{../meta-data.html}meta data reference}} for a 
-  {{{../faq.html#why-dtd}DTD}}. 
-  
- If you have 
-  any questions, please try the {{{../faq.html}FAQ}} before asking on the 
+
+
+ If you're using an IDE then see the
+  {{{../meta-data.html}meta data reference}} for a
+  {{{../faq.html#why-dtd}DTD}}.
+
+ If you have
+  any questions, please try the {{{../faq.html}FAQ}} before asking on the
   {{{../mail-lists.html}mail lists}}.
- 
+
 * The Story So Far
 
-  Let's assume <<<foo>>> is a simple project, 
-  with a single original source file: <<<HelloWorld.py>>>.  
+  Let's assume <<<foo>>> is a simple project,
+  with a single original source file: <<<HelloWorld.py>>>.
   The source for <<<foo>>> looks something like:
 
 +---------------------------------------+
-  foo--| 
+  foo--|
        | HelloWorld.py
        | LICENSE
 +---------------------------------------+
 
 ** Starting Definitions
 
-  Whisker describes each {{{../faq.html#what-is-a-license}license}}, 
-  {{{../faq.html#what-notice}notice}} 
-  and {{{../faq.html#what-is-org}organisation}} once 
+  Whisker describes each {{{../faq.html#what-is-a-license}license}},
+  {{{../faq.html#what-notice}notice}}
+  and {{{../faq.html#what-is-org}organisation}} once
   above, and then {{{../faq.html#why-ids}references by id}} below. So, the meta-data for
   project <<<foo>>> is structured along these lines:
 
@@ -115,11 +115,11 @@ Parameterising a Template for a License Family
     ...
 +---------------------------------------+
 
-  Let's say that the 
+  Let's say that the
   {{{http://www.apache.org/licenses/LICENSE-2.0.html}Apache License, Version 2}}
-  is the {{{../faq.html#what-is-primary}primary license}} 
-  for the project, but <<<foo>>> opts not to 
-  {{{../faq.html#notice-needed-for-al2}include a primary notice}}. 
+  is the {{{../faq.html#what-is-primary}primary license}}
+  for the project, but <<<foo>>> opts not to
+  {{{../faq.html#notice-needed-for-al2}include a primary notice}}.
   The text for this license is included in <<<licenses>>> above,
   and this data is referenced by <<<id>>> as <<<primary-license>>> below:
 
@@ -127,9 +127,9 @@ Parameterising a Template for a License Family
 <manifest>
     <!-- Definitions -->
     <licenses>
-        <license 
-            name='Apache License, Version 2' 
-            id='osi:AL2' 
+        <license
+            name='Apache License, Version 2'
+            id='osi:AL2'
             url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
@@ -319,21 +319,21 @@ Parameterising a Template for a License Family
     ...
 +---------------------------------------+
 
-  Let's assume that our project <<<foo>>> is here at Apache. So the 
+  Let's assume that our project <<<foo>>> is here at Apache. So the
   {{{../faq.html#what-is-primary}primary organisation}} is the
-  {{{http://www.apache.org/foundation}Apache Software Foundation}}. 
-  This organisation is described once in <<<organisations>>> (above) then 
+  {{{http://www.apache.org/foundation}Apache Software Foundation}}.
+  This organisation is described once in <<<organisations>>> (above) then
   referenced by id as the
-  <<<primary-organisation>>> (below). 
+  <<<primary-organisation>>> (below).
 
 +---------------------------------------+
 <manifest>
     ...
     <organisations>
-        <organisation 
-            id='apache.org' 
-            name='The Apache Software Foundation' 
-            url='http://www.apache.org/'/>  
+        <organisation
+            id='apache.org'
+            name='The Apache Software Foundation'
+            url='http://www.apache.org/'/>
     </organisations>
     ...
     <primary-organisation id='apache.org'/>
@@ -341,13 +341,13 @@ Parameterising a Template for a License Family
 +---------------------------------------+
 
 ** Starting Contents
-  
+
   Let's assume that the distribution for <<<foo>>> just contains the single
-  source file <<<HelloWorld.py>>> (plus legal documentation generated by Whisker), 
+  source file <<<HelloWorld.py>>> (plus legal documentation generated by Whisker),
   like this:
 
 +---------------------------------------+
-  foo--| 
+  foo--|
        | HelloWorld.py
 +---------------------------------------+
 
@@ -365,90 +365,90 @@ Parameterising a Template for a License Family
     </within>
 </manifest>
 +---------------------------------------+
-  
-   It is essential that the <<<id>>> attributes in the <<<with-license>>> 
+
+   It is essential that the <<<id>>> attributes in the <<<with-license>>>
    and <<<by-organisation>>> elements match the ids assigned above. This
    allows the details entered above to be re-used consistently.
-  
+
 * Adding A Third Party Work to the Distribution
 
   Let's add <<<boo.png>>> to the distribution,
   licensed with the
-  {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}} 
+  {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
   from the (hypothetical) <Example Project>. The license shipped is
-  
+
 +---------------------------------------+
   Copyright (c) 2000-2010 The Example Project. All rights reserved.
 
-Redistribution and use in source and binary forms, with or without modification, 
+Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
 
-    1. Redistributions of source code must retain the above copyright notice, 
+    1. Redistributions of source code must retain the above copyright notice,
        this list of conditions and the following disclaimer.
-    
-    2. Redistributions in binary form must reproduce the above copyright notice, 
-       this list of conditions and the following disclaimer in the documentation 
+
+    2. Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimer in the documentation
        and/or other materials provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
-BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY 
-OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +---------------------------------------+
 
-  Consulting the 
+  Consulting the
   {{{http://opensource.org/licenses/index.html}open source initiative}},
-  we find this corresponds to the 
+  we find this corresponds to the
   {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
   template
- 
+
 +---------------------------------------+
 Copyright (c) <YEAR>, <OWNER>
 All rights reserved.
 
-Redistribution and use in source and binary forms, with or without modification, 
+Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
 
-    * Redistributions of source code must retain the above copyright notice, 
+    * Redistributions of source code must retain the above copyright notice,
       this list of conditions and the following disclaimer.
-      
-    * Redistributions in binary form must reproduce the above copyright notice, 
-      this list of conditions and the following disclaimer in the documentation 
+
+    * Redistributions in binary form must reproduce the above copyright notice,
+      this list of conditions and the following disclaimer in the documentation
       and/or other materials provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
-BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY 
-OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +---------------------------------------+
 
   Yes, the license is indeed part of the BSD (2 Clause) license family.
   Checking <<<licenses>>> verifies that we need to add this as a new
-  template <<<license>>> with two parameters. We have a 
-  {{{../faq.html#parameter-name-freedom}free choice}} 
+  template <<<license>>> with two parameters. We have a
+  {{{../faq.html#parameter-name-freedom}free choice}}
   of <<<parameter-name>>> but it's conventional to reuse (where possible)
   standard names - in this case <<<YEAR>>> and <<<OWNER>>>.
-  Define them within in a <<<template>>> element and then values   
+  Define them within in a <<<template>>> element and then values
   will be substituted for <<<$\{YEAR\}>>> and <<<$\{OWNER\}>>> within
   the text.
-  
+
 +---------------------------------------+
 <manifest>
         ...
-        <license 
-            id='osi:BSD2' 
+        <license
+            id='osi:BSD2'
             name='BSD (2 Clause)'
             url='http://opensource.org/licenses/BSD-2-Clause'
             >
@@ -460,49 +460,49 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Copyright (c) ${YEAR}, ${OWNER}
 All rights reserved.
 
-Redistribution and use in source and binary forms, with or without modification, 
+Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
 
-    * Redistributions of source code must retain the above copyright notice, 
+    * Redistributions of source code must retain the above copyright notice,
       this list of conditions and the following disclaimer.
-      
-    * Redistributions in binary form must reproduce the above copyright notice, 
-      this list of conditions and the following disclaimer in the documentation 
+
+    * Redistributions in binary form must reproduce the above copyright notice,
+      this list of conditions and the following disclaimer in the documentation
       and/or other materials provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
-BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY 
-OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             </text>
         </license>
         ...
 +---------------------------------------+
 
- Comparing the text of the license instance with the template (we just created), 
- we find that <<<YEAR>>> should be <2000-2010> and 
- <<<OWNER>>> should be <The Example Project>. We'll need to 
+ Comparing the text of the license instance with the template (we just created),
+ we find that <<<YEAR>>> should be <2000-2010> and
+ <<<OWNER>>> should be <The Example Project>. We'll need to
  add these later as <<<license-parameters>>>.
- We note the {{{../faq.html#id-freedom}id chosen}} 
- - <<<osi:BSD2>>> - for {{{../faq.html#why-ids}later}}. 
-  
+ We note the {{{../faq.html#id-freedom}id chosen}}
+ - <<<osi:BSD2>>> - for {{{../faq.html#why-ids}later}}.
 
-** Add Organisation  
 
-  After verifying that <The Example Project> isn't already 
-  described in the <<<organisations>>>, we add this new 
-  <<<organisation>>>, noting the 
-  {{{../faq.html#id-freedom}id chosen}} for 
-  {{{../faq.html#why-ids}later}}. 
-  (Read more about adding organisations 
+** Add Organisation
+
+  After verifying that <The Example Project> isn't already
+  described in the <<<organisations>>>, we add this new
+  <<<organisation>>>, noting the
+  {{{../faq.html#id-freedom}id chosen}} for
+  {{{../faq.html#why-ids}later}}.
+  (Read more about adding organisations
   {{{../faq.html#add-org-example}here}}.)
-  
+
 +---------------------------------------+
 <manifest>
     <organisations>
@@ -522,19 +522,19 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   suppose that the contents of the new distribution are:
 
 +---------------------------------------+
-  foo--| 
+  foo--|
        | HelloWorld.py
        | boo.png         <- Newly added
 +---------------------------------------+
 
-  We need to add <<<boo.png>>> to the 
-  {{{../faq.html#how-contents}contents}}, 
+  We need to add <<<boo.png>>> to the
+  {{{../faq.html#how-contents}contents}},
   into a new group of resources
-  within the {{{../faq.html#how-root-dir}root directory}}. 
-  Within each <<<dir>>>, resources contained within the 
+  within the {{{../faq.html#how-root-dir}root directory}}.
+  Within each <<<dir>>>, resources contained within the
   directory are grouped <<<with-license>>>. The new resource
   - <<<boo.png>>> - is the first with the <BSD (2 Clause) License>,
-  so we need to add a new <<<with-license>>> with <<<id>>> 
+  so we need to add a new <<<with-license>>> with <<<id>>>
   attribute <<<osi:BSD2>>>, the <<<id>>> we chose when we
   added the license earlier.
 
@@ -546,7 +546,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </with-license>
         ...
 +---------------------------------------+
-  
+
   The <<<license>>> we added earlier is a template,
   so we need to include the parameter values
   as <<<license-parameters>>>. These will be substituted
@@ -571,13 +571,13 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </with-license>
         ...
 +---------------------------------------+
-  
+
   Within each license, resources are grouped by organisation.
   So the <<<by-organisation>>> containing
-  the new resource named <<<boo.png>>> needs to 
-  {{{../faq.html#why-ids}refer}} (by <<<id>>>) 
-  to the <<<organisation>>> we added earlier - <<<example.org>>>. 
-   
+  the new resource named <<<boo.png>>> needs to
+  {{{../faq.html#why-ids}refer}} (by <<<id>>>)
+  to the <<<organisation>>> we added earlier - <<<example.org>>>.
+
 +---------------------------------------+
     ...
     <within dir='.'>
@@ -601,11 +601,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +---------------------------------------+
 
   That's about all there is to adding <<<boo.png>>>,
-  a new BSD (2 Clause) licensed resource. 
+  a new BSD (2 Clause) licensed resource.
 
 * And Finally
 
-  We end up with this meta-data 
+  We end up with this meta-data
   ({{{./license-family-sample.xml}open}}
   as an annotated sample):
 
@@ -614,9 +614,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <manifest>
     <!-- Definitions -->
     <licenses>
-        <license 
-            name='Apache License, Version 2' 
-            id='osi:AL2' 
+        <license
+            name='Apache License, Version 2'
+            id='osi:AL2'
             url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
@@ -797,8 +797,8 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    END OF TERMS AND CONDITIONS
 </text>
         </license>
-        <license 
-            id='osi:BSD2' 
+        <license
+            id='osi:BSD2'
             name='BSD (2 Clause)'
             url='http://opensource.org/licenses/BSD-2-Clause'
             >
@@ -810,35 +810,35 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Copyright (c) ${YEAR}, ${OWNER}
 All rights reserved.
 
-Redistribution and use in source and binary forms, with or without modification, 
+Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
 
-    * Redistributions of source code must retain the above copyright notice, 
+    * Redistributions of source code must retain the above copyright notice,
       this list of conditions and the following disclaimer.
-      
-    * Redistributions in binary form must reproduce the above copyright notice, 
-      this list of conditions and the following disclaimer in the documentation 
+
+    * Redistributions in binary form must reproduce the above copyright notice,
+      this list of conditions and the following disclaimer in the documentation
       and/or other materials provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
-BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY 
-OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             </text>
         </license>
     </licenses>
     <notices/>
     <organisations>
-        <organisation 
-            id='apache.org' 
-            name='The Apache Software Foundation' 
-            url='http://www.apache.org/'/>  
+        <organisation
+            id='apache.org'
+            name='The Apache Software Foundation'
+            url='http://www.apache.org/'/>
         <organisation
            id='example.org'
            name='The Example Project'
@@ -846,9 +846,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         />
     </organisations>
     <primary-license id='osi:AL2'/>
-    <primary-notice/>        
+    <primary-notice/>
     <primary-organisation id='apache.org'/>
-        
+
     <!-- Contents -->
     <within dir='.'>
         <with-license id='osi:AL2'>
@@ -874,11 +874,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </within>
 </manifest>
 +---------------------------------------+
-   
-    From this meta-data, Whisker (either from the 
+
+    From this meta-data, Whisker (either from the
     {{{../apache-whisker-cli/index.html}command line}} or
-    integrated into a 
-    {{{../apache-whisker-plugin4maven/index.html}Maven build}}) 
+    integrated into a
+    {{{../apache-whisker-plugin4maven/index.html}Maven build}})
     generates a <<<LICENSE>>> similar to:
 
 +---------------------------------------+
@@ -1065,34 +1065,33 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 This distribution contains third party resources.
 Within the . directory
     licensed under the BSD (2 Clause) http://opensource.org/licenses/BSD-2-Clause  (as follows)
- 
-            
+
+
             Copyright (c) 2000-2010, The Example Project
             All rights reserved.
-            
-            Redistribution and use in source and binary forms, with or without modification, 
+
+            Redistribution and use in source and binary forms, with or without modification,
             are permitted provided that the following conditions are met:
-            
-                * Redistributions of source code must retain the above copyright notice, 
+
+                * Redistributions of source code must retain the above copyright notice,
                   this list of conditions and the following disclaimer.
-                  
-                * Redistributions in binary form must reproduce the above copyright notice, 
-                  this list of conditions and the following disclaimer in the documentation 
+
+                * Redistributions in binary form must reproduce the above copyright notice,
+                  this list of conditions and the following disclaimer in the documentation
                   and/or other materials provided with the distribution.
-            
-            THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-            ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-            WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-            IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-            INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
-            BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
-            DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY 
-            OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
-            NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+
+            THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+            ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+            WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+            IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+            INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+            BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+            DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+            OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+            NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
             EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-                            
-        from The Example Project  http://example.org/ 
+
+        from The Example Project  http://example.org/
             boo.png
 
 +---------------------------------------+
-   

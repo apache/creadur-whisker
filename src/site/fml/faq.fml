@@ -15,10 +15,10 @@
   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
   KIND, either express or implied.  See the License for the
   specific language governing permissions and limitations
-  under the License.    
+  under the License.
 -->
 <faqs id="FAQ" title="Frequently Asked Questions">
-  <part id="meta-data"> 
+  <part id="meta-data">
     <title>Meta Data</title>
     <faq id="why-ids">
       <question>Why Reference Licenses, Notices and Organisations by ID?</question>
@@ -29,7 +29,7 @@
       <p>
       Each license, notice and organisation should be described once, and then
       referenced by <code>id</code>. For complex projects, this reduces duplication
-      and eases maintenance.   
+      and eases maintenance.
       </p>
       </answer>
     </faq>
@@ -38,7 +38,7 @@
       <answer>
       <p>
 IDs need to be unique (within the document)
-but otherwise you are free. 
+but otherwise you are free.
       </p>
       </answer>
     </faq>
@@ -49,14 +49,14 @@ but otherwise you are free.
       Yes, but...
       </p>
       <p>
-Whisker adopts the convention that <code>name</code> attributes 
+Whisker adopts the convention that <code>name</code> attributes
 (for example, on <code>license</code> elements) are used
 for presentation, so it is strong recommended that a suitably
-human-readable title is chosen. 
+human-readable title is chosen.
       </p>
       <p>
 Where possibly, pick the standard name for this license: either the
-title within the text, or the name adopted by a standards organisation 
+title within the text, or the name adopted by a standards organisation
 for example  <a href='http://www.opensource.org'>The Open Source Initiative</a>.
       </p>
       </answer>
@@ -68,7 +68,7 @@ for example  <a href='http://www.opensource.org'>The Open Source Initiative</a>.
 Whisker adopts the convention that <code>url</code> attributes
 (for example, on <code>license</code> elements) are used to present
 a reference location for a reader. It is recommended that a
-standard URL is given, where possible, for example from the 
+standard URL is given, where possible, for example from the
 <a href='http://www.opensource.org'>The Open Source Initiative</a>.
        </p>
       </answer>
@@ -80,7 +80,7 @@ standard URL is given, where possible, for example from the
       Yes
       </p>
       <p>
-Where possible, we recommend reusing the name adopted by a standards organisation, 
+Where possible, we recommend reusing the name adopted by a standards organisation,
 for example  <a href='http://www.opensource.org'>The Open Source Initiative</a>.
       </p>
       </answer>
@@ -97,60 +97,60 @@ for example  <a href='http://www.opensource.org'>The Open Source Initiative</a>.
         <question>What do you mean by 'primary'?</question>
         <answer>
             <p>
-Whisker documentation often talks about a <em>primary license</em>, 
+Whisker documentation often talks about a <em>primary license</em>,
 a <em>primary organisation</em> and so on.
-The meta-data contains elements like <code>primary-license</code> and 
+The meta-data contains elements like <code>primary-license</code> and
 <code>primary-notice</code>. Though the intended meaning might accord
-with intuition, a more precise description may help to deepen 
+with intuition, a more precise description may help to deepen
 understanding of software licensing.
             </p>
             <p>
-By <em>primary</em>, we mean the 
+By <em>primary</em>, we mean the
 main license, notice or organisation associated with the project.
 Take, for example, a project here at <a href='http://www.apache.org'>Apache</a>.
-In this case, the primary license would be 
+In this case, the primary license would be
 <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>The Apache License, Version 2</a>
-(<abbr title='The Apache License, Version 2'><code>AL2</code></abbr>) 
-and the primary organisation 
+(<abbr title='The Apache License, Version 2'><code>AL2</code></abbr>)
+and the primary organisation
 <a href='http://www.apache.org/foundation/'>The Apache Software Foundation</a>.
             </p>
             <p>
-The <em>primary license</em> should cover most of the original content contributed 
-by the project to the software distributed. Apache, for example, 
-<a href='http://www.apache.org/legal/src-headers.html'>insists</a> that 
-original source is 
+The <em>primary license</em> should cover most of the original content contributed
+by the project to the software distributed. Apache, for example,
+<a href='http://www.apache.org/legal/src-headers.html'>insists</a> that
+original source is
 <abbr title='The Apache License, Version 2'><code>AL2</code></abbr> licensed.
-The <em>primary organisation</em> should be the legal entity 
-issuing the primary license. Apache, for example, uses 
+The <em>primary organisation</em> should be the legal entity
+issuing the primary license. Apache, for example, uses
 <a href='http://www.apache.org/licenses/index.html#clas'>contributor license agreements</a>,
 <a href='http://www.apache.org/licenses/index.html#grants'>grants</a> and
 <code><abbr title='The Apache License, Version 2'>AL2</abbr> Section 5</code>
 to allow the foundation to issue open source licenses.
-            </p>            
+            </p>
         </answer>
     </faq>
     <faq id='primary-license-organisation-relationship'>
         <question>What is the relationship between the Primary License and the Primary Organsation?</question>
         <answer>
             <p>
-The <em>primary license</em> covers most of the original content contributed 
-by the project to the software distributed. Apache, for example, 
-<a href='http://www.apache.org/legal/src-headers.html'>insists</a> that 
-original source is 
+The <em>primary license</em> covers most of the original content contributed
+by the project to the software distributed. Apache, for example,
+<a href='http://www.apache.org/legal/src-headers.html'>insists</a> that
+original source is
 <abbr title='The Apache License, Version 2'><code>AL2</code></abbr> licensed.
             </p>
             <p>
-The <em>primary organisation</em> should be the legal entity 
-issuing the <em>primary license</em>. Apache, for example, uses 
+The <em>primary organisation</em> should be the legal entity
+issuing the <em>primary license</em>. Apache, for example, uses
 <a href='http://www.apache.org/licenses/index.html#clas'>contributor license agreements</a>,
 <a href='http://www.apache.org/licenses/index.html#grants'>grants</a> and
 <code><abbr title='The Apache License, Version 2'>AL2</abbr> Section 5</code>
-to allow the foundation to issue open source licenses. Alternatively 
-(as practiced by 
+to allow the foundation to issue open source licenses. Alternatively
+(as practiced by
 <a href='http://www.gnu.org/prep/maintain/html_node/Copyright-Papers.html#Copyright-Papers'>GNU</a>,
-for example) 
+for example)
 copyright may be assigned to the organisation by its contributions.
-            </p>            
+            </p>
         </answer>
     </faq>
     <faq id='what-is-org'>
@@ -159,12 +159,12 @@ copyright may be assigned to the organisation by its contributions.
             <p>
 Whisker uses <em>organisation</em> to identify and describe groups or individuals
 who license the third party works distributed. This includes a wide variety of
-entities, for example 
+entities, for example
             </p>
             <ul>
-<li>non-profit corporations such as 
-<a href='http://www.apache.org/foundation'>The Apache Software Foundation</a>, 
-<a href='http://www.fsf.org/about/'>The Free Software Foundation</a> and 
+<li>non-profit corporations such as
+<a href='http://www.apache.org/foundation'>The Apache Software Foundation</a>,
+<a href='http://www.fsf.org/about/'>The Free Software Foundation</a> and
 <a href='http://www.gnome.org/foundation/'>The GNOME Foundation</a>;
 </li>
 <li>
@@ -172,14 +172,14 @@ for-profit corporations such as
 VMWare Inc., Google Inc. and IBM Corporation;
 </li>
 <li>
-academic institutions such as the 
+academic institutions such as the
 <a href='http://berkeley.edu/'>University of California, Berkeley</a>,
 the
 <a href='http://web.mit.edu/'>Massachusetts Institute of Technology</a> and
-<a href='http://osuosl.org/'>Oregon State University</a>; 
+<a href='http://osuosl.org/'>Oregon State University</a>;
 </li>
 <li>
-groups and collectives such as 
+groups and collectives such as
 <a href='http://www.bouncycastle.org'>The Legion of the Bouncy Castle</a> and
 <a href='http://www.joda.org'>Joda</a>
 </li>
@@ -193,7 +193,7 @@ groups and collectives such as
             <p>
  See <a href='#add-org-example'>here</a> for examples.
             </p>
-        </answer>    
+        </answer>
     </faq>
     <faq id='where-is-dtd'>
         <question>Does an organisation have to be a formal corporation or company?</question>
@@ -202,13 +202,13 @@ groups and collectives such as
             No
             </p>
             <p>
-            As far as Whisker is concerned, 
+            As far as Whisker is concerned,
             a wide variety of entities are organisations,
             as well as some individual maintainers.
             </p>
             <p>
-            Read more <a href='#what-is-org'>here</a> and see comments 
-            on <a href='#third-party-ad-hoc'>informal groups</a>. 
+            Read more <a href='#what-is-org'>here</a> and see comments
+            on <a href='#third-party-ad-hoc'>informal groups</a>.
             </p>
         </answer>
     </faq>
@@ -216,15 +216,15 @@ groups and collectives such as
         <question>What about third party software licensed from an individual?</question>
         <answer>
             <p>
-As far as Whisker is concerned, each individual maintainer is an  
-organisation.  
+As far as Whisker is concerned, each individual maintainer is an
+organisation.
             </p>
             <p>
-            See this 
+            See this
             <a href='./examples/3rd-party-individual.html'>example</a>.
             </p>
             <p>
-            Read more <a href='#what-is-org'>here</a>. 
+            Read more <a href='#what-is-org'>here</a>.
             </p>
         </answer>
     </faq>
@@ -232,15 +232,15 @@ organisation.
         <question>What about third party software licensed from a corporation?</question>
         <answer>
             <p>
-As far as Whisker is concerned, each corporation (whether non-profit or for-profit) is an  
+As far as Whisker is concerned, each corporation (whether non-profit or for-profit) is an
 organisation.
             </p>
             <p>
-            See this 
+            See this
             <a href='./examples/3rd-party-corporate.html'>example</a>.
             </p>
             <p>
-            Read more <a href='#what-is-org'>here</a>. 
+            Read more <a href='#what-is-org'>here</a>.
             </p>
         </answer>
     </faq>
@@ -249,16 +249,16 @@ organisation.
         <answer>
             <p>
 As far as Whisker is concerned, each group or collective is an organisation.
-You might want to check that the <a href='#licensor'>licensor</a> 
+You might want to check that the <a href='#licensor'>licensor</a>
 has the rights required to issue the license,
-though, before adding it to your distribution. 
+though, before adding it to your distribution.
             </p>
             <p>
-            See this 
+            See this
             <a href='./examples/3rd-party-group.html'>example</a>.
             </p>
             <p>
-            Read more <a href='#what-is-org'>here</a>.  
+            Read more <a href='#what-is-org'>here</a>.
             </p>
         </answer>
     </faq>
@@ -272,7 +272,7 @@ though, before adding it to your distribution.
             Apologies to those tripped up by this choice
             </p>
         </answer>
-    </faq>    
+    </faq>
     <faq id='where-is-dtd'>
         <question>Is a DTD available?</question>
         <answer>
@@ -286,13 +286,13 @@ though, before adding it to your distribution.
         <question>Why only a DTD?</question>
         <answer>
             <p>
-The <a href='http://www.xml.com/axml/target.html#dt-doctype'>DTD</a> is 
+The <a href='http://www.xml.com/axml/target.html#dt-doctype'>DTD</a> is
 aimed at IDE users and developers,
 and is not prescriptive but descriptive.
             </p>
             <p>
 For the present, schema validation is not enforced.
-If it were, probably a language like 
+If it were, probably a language like
 <a href='http://relaxng.org/'>Relax NG</a> would be chosen.
             </p>
         </answer>
@@ -301,13 +301,13 @@ If it were, probably a language like
         <question>I prefer to use an IDE. Can it help me write the meta-data?</question>
         <answer>
             <p>
-            A DTD is available in the 
+            A DTD is available in the
             <a href='meta-data.html#Described_By_DTD'>meta data reference</a>,
-            which should be of some use. 
+            which should be of some use.
             </p>
             <p>
 There are currently no known plugins. If you know of a plugin please
-<a href='./mail-lists.html'>let us know</a> or 
+<a href='./mail-lists.html'>let us know</a> or
 <a href='./source-repository.html'>contribute a patch</a> for this documentation.
             </p>
         </answer>
@@ -322,8 +322,8 @@ There are currently no known plugins. If you know of a plugin please
             As in &lt;within dir='.'&gt;
             </p>
             <p>
-Read how directories are modeled <a href='#how-dir-model'>here</a>           
-            </p>            
+Read how directories are modeled <a href='#how-dir-model'>here</a>
+            </p>
         </answer>
     </faq>
     <faq id='how-dir-model'>
@@ -334,7 +334,7 @@ Read how directories are modeled <a href='#how-dir-model'>here</a>
  elements.
             </p>
             <p>
-Read why <a href='#why-dir-model'>here</a>           
+Read why <a href='#why-dir-model'>here</a>
             </p>
             <p>
 See how the root directory is modelled <a href='#how-root-dir'>here</a>
@@ -349,40 +349,40 @@ See how the root directory is modelled <a href='#how-root-dir'>here</a>
             </p>
             <p>
  Within a file system, the containment relationship between
- directories typically forms a natural tree. Modern file systems 
+ directories typically forms a natural tree. Modern file systems
  typically allow cyclic links only with special links (for example,
-  <code>symbolic links</code> in 
+  <code>symbolic links</code> in
   <a href='http://dbpedia.org/resource/Unix-like'>*nix</a>).
   Including these links would allow directory containment
   to become a graph. XML element containment forms a natural
-  tree structure, but representing a graph in XML requires 
+  tree structure, but representing a graph in XML requires
   links to break this structure.
-  This would introduce more complexity 
-  and more ways to make mistakes but little gain. 
+  This would introduce more complexity
+  and more ways to make mistakes but little gain.
             </p>
             <p>
-Read how directories are modeled <a href='#how-dir-model'>here</a>           
+Read how directories are modeled <a href='#how-dir-model'>here</a>
             </p>
             <p>
 See how the root directory is modelled <a href='#how-root-dir'>here</a>
             </p>
         </answer>
     </faq>
-    
+
     <faq id='how-contents'>
         <question>How are the contents of a distribution represented?</question>
         <answer>
             <p>
-Resources are grouped       
+Resources are grouped
             </p>
             <ul>
                 <li><code>by-organisation</code></li>
                 <li><code>with-license</code></li>
                 <li><code>within</code> a directory.</li>
             </ul>
-            <p> 
-The directory structure is not represented by 
-nesting <code>within</code> elements. These elements are simply listed. 
+            <p>
+The directory structure is not represented by
+nesting <code>within</code> elements. These elements are simply listed.
             </p>
             <p>
 See the <a href='#sample-meta-data'>samples</a> for examples.
@@ -394,7 +394,7 @@ See the <a href='#sample-meta-data'>samples</a> for examples.
         <question>Are license families supported?</question>
         <answer>
             <p>
-Yes       
+Yes
             </p>
             <p>
 Add a template <code>license</code> and parameterise.
@@ -421,15 +421,15 @@ Read more about license families <a href='#what-is-license-family'>here</a>.
 Templates are not strictly necessary.
             </p><p>
 Just pasting every complete license into the <code>text</code> would work,
-though the meta-data would be less concise than using templates. 
+though the meta-data would be less concise than using templates.
 There is some additional work involved with drawing up each template,
-so you might think that this is not a worthwhile tradeoff. 
+so you might think that this is not a worthwhile tradeoff.
             </p><p>
 But there are reasons why using templates today may benefit a project
 tomorrow.
             </p>
             <p>
-License families share important legal qualities. In the future, it should 
+License families share important legal qualities. In the future, it should
 be possible to
 automate some licensing policy checks but only if licenses are
 categorised in a form which enables automated reasoning.
@@ -438,7 +438,7 @@ Using a template for all members of a family is likely to help.
             <p>
 Read more about license families <a href='#what-is-license-family'>here</a>.
             </p>
-            
+
         </answer>
     </faq>
     <faq id='what-primary-copyright-notice'>
@@ -492,18 +492,18 @@ is positioned above the
         <question>When do I need to add a primary copyright notice?</question>
         <answer>
             <p>
-<a href='#what-is-license-family'>Template licenses</a> 
-(for example the 
+<a href='#what-is-license-family'>Template licenses</a>
+(for example the
 <a href='http://opensource.org/licenses/BSD-2-Clause'>BSD License 2 Clause</a>)
-typically includes a 
-parameterised copyright notice. Licenses 
+typically includes a
+parameterised copyright notice. Licenses
 <a href='#when-notice-needed'>with</a> a <code>NOTICE</code>
-(for example the 
+(for example the
 <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2</a>)
 usually include the copyright notice in the <code>NOTICE</code>.
             </p><p>
-Some other licenses (for example the 
-<a href='http://opensource.org/licenses/mit-license.php/'>MIT License</a>) 
+Some other licenses (for example the
+<a href='http://opensource.org/licenses/mit-license.php/'>MIT License</a>)
 conventionally include a copyright notice above the text:
 to use these licenses with Whisker, add a primary copyright notice
 and use the plain license text.
@@ -522,7 +522,7 @@ and use the plain license text.
         </answer>
     </faq>
 
-    
+
     <faq id='sample-meta-data'>
         <question>Are any samples available?</question>
         <answer>
@@ -533,9 +533,9 @@ and use the plain license text.
             See
             </p>
             <ul>
-                <li> 
-<a href='./examples/james.xml'>Apache James</a>, sample meta-data 
-for a complex open source application; 
+                <li>
+<a href='./examples/james.xml'>Apache James</a>, sample meta-data
+for a complex open source application;
                 </li>
                 <li>
 <a href='./examples/template-license.xml'>Template License</a>, an
@@ -543,56 +543,56 @@ annotated outline useful for new meta-data; or
                  </li>
                  <li>simple annotated educational samples for
                  <ul>
-                    <li> 
+                    <li>
 <a href='./examples/public-domain.xml'>public domain</a>
                     </li>
                     <li>
 <a href='./examples/license-family-sample.xml'>license family</a> using a template
                     </li>
-                    <li>                    
-Whisker In 5 Minutes featuring the 
+                    <li>
+Whisker In 5 Minutes featuring the
 <a href='./examples/in-5-mins-sample.xml'>MIT License</a>
                     </li>
                     <li>
-distributing work licensed from 
+distributing work licensed from
                         <ul>
-                            <li>                      
+                            <li>
 an <a href='./examples/3rd-party-individual-sample.xml'>individual maintainer</a>
                             </li><li>
 a for- or non-profit <a href='./examples/3rd-party-corporate-sample.xml'>corporation</a>
                             </li><li>
 an informal <a href='./examples/3rd-party-group-sample.xml'>group</a>
                             </li>
-                            
-                        </ul>                            
+
+                        </ul>
                     </li>
                  </ul>
                  </li>
             </ul>
         </answer>
     </faq>
-        
+
   </part>
-  <part id="generation"> 
+  <part id="generation">
     <title>Generating Licensing Documents</title>
     <faq id="when-notice">
       <question>When will a NOTICE be generated?</question>
       <answer>
-      <p>Whisker should generate a <code>NOTICE</code> document only when 
-      <a href='#when-notice-needed'>needed</a>. 
+      <p>Whisker should generate a <code>NOTICE</code> document only when
+      <a href='#when-notice-needed'>needed</a>.
       Examples include:</p>
       <ul>
         <li>when the primary notice is not empty; and</li>
         <li>when at least one distributed artifact requires an attribution.</li>
       </ul>
       <p>If you have a use case where an unnecessary <code>NOTICE</code> is generated,
-      or when a <code>NOTICE</code> isn't generated when it is needed please open an 
-      <a href='./issue-tracking.html'>issue</a> or let us know 
+      or when a <code>NOTICE</code> isn't generated when it is needed please open an
+      <a href='./issue-tracking.html'>issue</a> or let us know
       <a href='./mail-lists.html'>on list</a>.</p>
       </answer>
     </faq>
   </part>
-  <part id="licensing"> 
+  <part id="licensing">
     <title>Licensing</title>
        <faq id="what-whisker-is-not">
         <question>Will Whisker Automagically Solve my Licensing Problems?</question>
@@ -601,8 +601,8 @@ an informal <a href='./examples/3rd-party-group-sample.xml'>group</a>
             No
             </p>
             <p>
-Whisker is just an efficient way to maintain licensing documentation for 
-<a href='#complex-software-applications'>complex applications</a>. It is no 
+Whisker is just an efficient way to maintain licensing documentation for
+<a href='#complex-software-applications'>complex applications</a>. It is no
 substitute for accurate legal legwork.
             </p>
             <p>
@@ -619,7 +619,7 @@ Learn about copyright and software licensing <a href='#more-resources'>here</a>.
             <p>
 This documentation guides users assumed to have a practical understanding of the relevant
 laws in appropriate jurisdictions. In order to explain how Whisker can help,
-we need to agree some terms with the reader.       
+we need to agree some terms with the reader.
             </p>
             <p>
 Learn about copyright and software licensing <a href='#more-resources'>here</a>.
@@ -641,25 +641,25 @@ thinking in particular about copyright or patent permissions.
             <p>
 Whisker focuses on tracking explicit licenses, and so almost always
 when we talk about a license, we're thinking about a
-written document conditionally granting some copyright 
-and patents permissions for a work.  
+written document conditionally granting some copyright
+and patents permissions for a work.
             </p>
             <p>
 Learn about copyright and software licensing <a href='#more-resources'>here</a>.
             </p>
             <p>
-We adopt the convention  <code>LICENSE</code> for the principle licensing 
-document. Read more about this convention <a href='#what-license'>here</a>. 
+We adopt the convention  <code>LICENSE</code> for the principle licensing
+document. Read more about this convention <a href='#what-license'>here</a>.
             </p>
         </answer>
     </faq>
-     
+
       <faq id="what-license">
         <question>What do you mean by <code>LICENSE</code>?</question>
         <answer>
             <p>
-We adopt the convention that <code>LICENSE</code> means the principle licensing 
-document for the project. 
+We adopt the convention that <code>LICENSE</code> means the principle licensing
+document for the project.
             </p>
            <p>
 Learn about copyright and software licensing <a href='#more-resources'>here</a>.
@@ -675,12 +675,12 @@ A <code>NOTICE</code> is informational documentation, whose retention
 is required by a license condition.
             </p>
             <p>
-Some licenses (for example the 
+Some licenses (for example the
 <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2</a>)
 may require the retention of a document named <code>NOTICE</code> (or at least its contents).
-By <code>NOTICE</code> we mean information that <code>MUST</code> be preserved 
+By <code>NOTICE</code> we mean information that <code>MUST</code> be preserved
 to satisfy some condition of a license. Take care not to confuse <code>NOTICE</code> with
-<a href='#notice-vs-copyright-notice'>copyright notice</a> or 
+<a href='#notice-vs-copyright-notice'>copyright notice</a> or
 <a href='#notice-vs-license'><code>LICENSE</code></a>.
              </p>
         </answer>
@@ -691,7 +691,7 @@ to satisfy some condition of a license. Take care not to confuse <code>NOTICE</c
             <p>
 A phrase or symbol informing a reader about a underlying claim of copyright ownership.
             </p><p>
-For example <em>"Copyright (c) 2525 Apache Software Foundation"</em>   
+For example <em>"Copyright (c) 2525 Apache Software Foundation"</em>
             </p><p>
 Though copyright laws differ from country to country, copyright notices
 are may well be considered important, and may be governed by statue.
@@ -704,25 +704,25 @@ are may well be considered important, and may be governed by statue.
 Learn about copyright and software licensing <a href='#more-resources'>here</a>.
            </p>
         </answer>
-     </faq>    
-         
+     </faq>
+
      <faq id="notice-vs-copyright-notice">
         <question>What is the difference between a <code>NOTICE</code> and a copyright notice?</question>
         <answer>
             <p>
-A <code>NOTICE</code> is informational documentation, whereas a copyright notice 
+A <code>NOTICE</code> is informational documentation, whereas a copyright notice
 informs a reader about a legal claim of ownership. A license may be conditional
 on the redistribution of the contents of a <code>NOTICE</code> but typically
 a copyright notice is governed directly by statue.
             </p><p>
 A <code>NOTICE</code> document often contains
-copyright notices, but is not limited to just this sort of content. 
+copyright notices, but is not limited to just this sort of content.
             </p>
             <p>
-Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>. 
+Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>.
            </p>
            <p>
-Read more on copyright notices <a href='#what-copyright-notice'>here</a>. 
+Read more on copyright notices <a href='#what-copyright-notice'>here</a>.
            </p>
            <p>
 Learn about copyright and software licensing <a href='#more-resources'>here</a>.
@@ -733,19 +733,19 @@ Learn about copyright and software licensing <a href='#more-resources'>here</a>.
         <question>What is the difference between a <code>NOTICE</code> and a <code>LICENSE</code>?</question>
         <answer>
             <p>
-A <code>NOTICE</code> is informational documentation, whereas a <code>LICENSE</code> 
-is legal documentation. 
+A <code>NOTICE</code> is informational documentation, whereas a <code>LICENSE</code>
+is legal documentation.
 A <code>NOTICE</code> may be subject to a <a href='#when-notice-needed'>retention clause</a>.
             </p>
             <p>
-Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>. 
+Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>.
             </p>
            <p>
 Learn about copyright and software licensing <a href='#more-resources'>here</a>.
            </p>
         </answer>
     </faq>
-    
+
     <faq id="when-notice-needed">
         <question>When is a <code>NOTICE</code> needed?</question>
         <answer>
@@ -756,12 +756,12 @@ Learn about copyright and software licensing <a href='#more-resources'>here</a>.
 Some licenses require <code>NOTICE</code> documents to be retained.
 For example, clause 4.4 in the
 <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2</a>
-is a retention clause covering any <code>NOTICE</code> distributed with the original. 
+is a retention clause covering any <code>NOTICE</code> distributed with the original.
 When creating or distributing a modified version of a project licensed with a retention clause,
-you need to ensure that the <code>NOTICE</code> is distributed. 
+you need to ensure that the <code>NOTICE</code> is distributed.
             </p>
             <p>
-Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>. 
+Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>.
             </p>
             <p>
 Learn about copyright and software licensing <a href='#more-resources'>here</a>.
@@ -772,46 +772,46 @@ Learn about copyright and software licensing <a href='#more-resources'>here</a>.
         <question>Do I need to add a <code>NOTICE</code> for my Apache Licensed Project?</question>
         <answer>
             <p>
-Not necessarily, though Apache Software Foundation projects 
-MUST include a <code>NOTICE</code> 
-of <a href='http://www.apache.org/legal/src-headers.html#notice'>standard form</a>. 
+Not necessarily, though Apache Software Foundation projects
+MUST include a <code>NOTICE</code>
+of <a href='http://www.apache.org/legal/src-headers.html#notice'>standard form</a>.
             </p>
             <p>
 The <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2</a>
 requires that a <code>NOTICE</code> is retained but if your project contains only
 original files then you could opt not to have a <code>NOTICE</code>. Please read
-<a href='#when-notice-needed'>this</a>.  
+<a href='#when-notice-needed'>this</a>.
             </p>
             <p>
-It is polite to include a minimal <code>NOTICE</code>. Otherwise, 
-<a href='#what-is-downstream'>downstream consumers</a> may need to manually verify that no 
-<code>NOTICE</code> exists 
+It is polite to include a minimal <code>NOTICE</code>. Otherwise,
+<a href='#what-is-downstream'>downstream consumers</a> may need to manually verify that no
+<code>NOTICE</code> exists
 for the release.
             </p>
             <p>
-Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>. 
+Read more on <code>NOTICE</code> documents <a href='#what-notice'>here</a>.
            </p>
         </answer>
     </faq>
-    
+
     <faq id='complex-software-applications'>
         <question>When is Whisker needed?</question>
         <answer>
             <p>
 For projects distributing applications containing only a few third party dependencies,
 manually maintaining and verifying the <code>LICENSE</code> and <code>NOTICE</code> documents
-shipped is not a major burden. When releasing complex applications containing scores of 
+shipped is not a major burden. When releasing complex applications containing scores of
 third party dependencies from dozens of sources, producing accurate licensing documentation
 without automation takes a lot of time. This is where Whisker has the biggest value.
             </p>
         </answer>
     </faq>
-    
+
     <faq id="licensor">
         <question>What do you mean by licensor?</question>
         <answer>
             <p>
-The entity issuing the license.            
+The entity issuing the license.
             </p>
         </answer>
     </faq>
@@ -824,7 +824,7 @@ Software flows downstream from the source to the end user.
 Dependencies are <em>upstream</em> of a project, and software
 that relies on a project are <em>downstream consumers</em>.
             </p>
-            
+
         </answer>
     </faq>
 
@@ -832,12 +832,12 @@ that relies on a project are <em>downstream consumers</em>.
         <question>What is an Open Source License?</question>
         <answer>
             <p>
-An open-source license complies with the 
+An open-source license complies with the
 <a href='http://opensource.org/docs/osd'>Open Source Definition</a>.
-Open Source Licenses are those on this 
-<a href='http://opensource.org/licenses/index.html'>list</a>. 
-Both are maintained by the 
-<a href='http://www.opensource.org'>Open Source Initiative</a>.   
+Open Source Licenses are those on this
+<a href='http://opensource.org/licenses/index.html'>list</a>.
+Both are maintained by the
+<a href='http://www.opensource.org'>Open Source Initiative</a>.
             </p>
             <p>
  Learn more about Open Source <a href='http://opensource.org/history'>here</a>.
@@ -845,17 +845,17 @@ Both are maintained by the
         </answer>
     </faq>
 
-    
+
     <faq id="what-is-license-family">
         <question>What do you mean by a license family?</question>
         <answer>
             <p>
-<a href='#what-is-an-open-source-license'>Open source licenses</a> 
-are designed to be re-usable: 
-both you and I can use the same basic text to license our works. 
+<a href='#what-is-an-open-source-license'>Open source licenses</a>
+are designed to be re-usable:
+both you and I can use the same basic text to license our works.
 Many license texts can be reused without modification (for example,
 the <a href='http://www.apache.org/licenses/LICENSE-2.0.html'>Apache License, Version 2</a>).
-Others require that a small number of details are changed.   
+Others require that a small number of details are changed.
             </p>
 <p>For example, to use the
 <a href='http://opensource.org/licenses/BSD-2-Clause'>BSD License (2 Clause)</a>
@@ -864,13 +864,13 @@ licenses of this sort a <em>license family</em> to emphasis that the text is
 a template from which instances of the licenses are created by parameterisation.
 </p>
 <p>
-Each family shares the share legal qualities, typically differing only in details 
+Each family shares the share legal qualities, typically differing only in details
 related
 to the act of publication. Knowing that a license belongs to a family allows
 knowledge about that family to be applied without extensive analysis of the text.
 So, for example, even though BSD License (2 Clause) texts differ we can confidently
-state that each is an 
-<a href='#what-is-an-open-source-license'>Open Source License</a>. 
+state that each is an
+<a href='#what-is-an-open-source-license'>Open Source License</a>.
 </p>
             <p>
 Learn how Whisker supports license families <a href='#how-license-family'>here</a>.
@@ -885,7 +885,7 @@ Learn about copyright and software licensing <a href='#more-resources'>here</a>.
     </faq>
 
   </part>
-  <part id="examples"> 
+  <part id="examples">
     <title>Is there an Example...</title>
     <faq id="mit-example">
     <question>Using the MIT License?</question>
@@ -915,7 +915,7 @@ Learn about copyright and software licensing <a href='#more-resources'>here</a>.
             Read more about organisations <a href='#what-is-org'>here</a>.
             </p>
         </answer>
-    </faq>    
+    </faq>
 
     <faq id="3rd-party-individual-example">
         <question>Of a Third Party Dependency licensed from an Individual?</question>
@@ -934,9 +934,9 @@ Learn about copyright and software licensing <a href='#more-resources'>here</a>.
         <answer>
             <p><a href='examples/3rd-party-group.html'>Yes</a></p>
         </answer>
-    </faq>    
+    </faq>
   </part>
-  <part id="learning"> 
+  <part id="learning">
     <title>Learning</title>
     <faq id="more-resources">
       <question>I'm interested in learning more about software licensing. Where should I start?</question>
@@ -946,14 +946,13 @@ Learn about copyright and software licensing <a href='#more-resources'>here</a>.
       </p>
       <ul>
         <li><a href='http://www.rosenlaw.com/oslbook.htm'>Open Source Licensing</a> by Lawrence Rosen</li>
-        <li><a href='http://www.softwarefreedom.org/'>Software Freedom Law Center</a> 
+        <li><a href='http://www.softwarefreedom.org/'>Software Freedom Law Center</a>
         <a href='http://www.softwarefreedom.org/resources/'>publications</a></li>
         <li><a href='http://www.ifosslr.org/'>International Free and Open Source Software Law Review</a></li>
         <li><a href='http://ifosslawbook.org'>The International Free and Open Source Software Law Book</a></li>
       </ul>
-      
+
       </answer>
     </faq>
   </part>
-  
 </faqs>

@@ -15,7 +15,7 @@
   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
   KIND, either express or implied.  See the License for the
   specific language governing permissions and limitations
-  under the License.    
+  under the License.
 -->
 <project name="Apache Whisker&trade;">
   <bannerRight>
@@ -24,26 +24,26 @@
     <src>http://www.apache.org/images/asf_logo_wide.jpg</src>
     <href>http://www.apache.org/</href>
   </bannerRight>
-  
+
   <poweredBy>
-      <logo name="ApacheCon EU 2012 November 5-8 Sinsheim, Germany" 
+      <logo name="ApacheCon EU 2012 November 5-8 Sinsheim, Germany"
             href="http://www.apachecon.eu/"
             img="http://www.apache.org/events/logos-banners/ApacheCon-2012-Europe/EU_square_20.png"/>
 
-      <logo name="ApacheCon NA 2012 November 26-28 Portland, Oregon" 
+      <logo name="ApacheCon NA 2012 November 26-28 Portland, Oregon"
             href="http://na.apachecon.com/"
             img="http://www.apache.org/events/logos-banners/ApacheCon-2013-NorthAmerica/NA_square_20.png"/>
-      <logo name="Maven" 
+      <logo name="Maven"
             href="http://maven.apache.org/"
             img="http://maven.apache.org/images/logos/maven-feather.png"/>
-            
+
   </poweredBy>
 
   <body>
     <head>
-        <link 
-            href='http://fonts.googleapis.com/css?family=Mate+SC' 
-            rel='stylesheet' 
+        <link
+            href='http://fonts.googleapis.com/css?family=Mate+SC'
+            rel='stylesheet'
             type='text/css'/>
     </head>
     <breadcrumbs>
@@ -51,7 +51,7 @@
       <item name="Creadur" href="http://creadur.apache.org/"/>
       <item name="Whisker" href="http://creadur.apache.org/whisker/"/>
     </breadcrumbs>
-  
+
     <menu name='Apache Whisker&trade;' inherit="bottom">
        <item name='Introducing Whisker' href='index.html'/>
        <item name='Meta Data' href='meta-data.html'/>
@@ -61,7 +61,7 @@
        <item name='Source Cross-ref' href='xref/index.html'/>
        <item name="FAQ" href="faq.html"/>
     </menu>
-    
+
     <menu name='Examples'>
         <item name="In 5 Minutes" href="examples/in-5-mins.html"/>
         <item name="3rd Party (Individual)" href="examples/3rd-party-individual.html"/>
@@ -80,36 +80,36 @@
         <item name="3rd Party (Group)" href="examples/3rd-party-group-sample.xml"/>
         <item name="MIT License" href="examples/in-5-mins-sample.xml"/>
     </menu>
-    
+
     <menu name="Apache Creadur &trade;" inherit="bottom">
 		<item name='Creadur Project Home' href="http://creadur.apache.org"/>
-		<item name='Apache Rat' href="http://creadur.apache.org/rat"/>  
+		<item name='Apache Rat' href="http://creadur.apache.org/rat"/>
 		<item name='Apache Tentacles' href="http://creadur.apache.org/tentacles"/>
 		<item name='Security' href='http://www.apache.org/security/'/>
 		<item name='License' href='http://www.apache.org/licenses/'/>
 		<item name='Sponsorship' href='http://www.apache.org/foundation/sponsorship.html'/>
 		<item name='Thanks' href='http://www.apache.org/foundation/thanks.html'/>
 	</menu>
-    
+
     <menu name="The Apache Software Foundation" inherit="bottom">
-        <item name='About the Foundation' 
+        <item name='About the Foundation'
             href="http://www.apache.org/foundation"/>
-        <item name='The projects' 
+        <item name='The projects'
             href="http://projects.apache.org"/>
-        <item name='The people' 
+        <item name='The people'
             href="http://people.apache.org"/>
-        <item name='How we work' 
+        <item name='How we work'
             href='http://www.apache.org/foundation/how-it-works.html'/>
-        <item name='Our history' 
+        <item name='Our history'
             href='http://www.apache.org/foundation/how-it-works.html#history'/>
-        <item name='News' 
+        <item name='News'
             href='http://blogs.apache.org/foundation/'/>
     </menu>
-   
+
     <menu name="Contribute" inherit="bottom">
       <item name="Get Involved" href='http://www.apache.org/foundation/getinvolved.html'/>
     </menu>
-    
+
     <menu name="Committer Info" inherit="bottom">
       <item name="Committers' FAQ" href='http://www.apache.org/dev/committers.html'/>
       <item name='New Committers Guide' href='http://www.apache.org/dev/new-committers-guide.html'/>
@@ -119,17 +119,17 @@
       <item name='Branding' href='http://www.apache.org/foundation/marks/'/>
       <item name='Media Relations' href='http://www.apache.org/press/'/>
     </menu>
-    
-    
+
+
     <menu ref='reports'/>
-    
+
     <footer>Copyright &#169; 2012 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.
-      Apache Creadur, Creadur, Apache Rat, Apache Tentacles, Apache Whisker, Apache and the Apache feather logo are trademarks 
+      Apache Creadur, Creadur, Apache Rat, Apache Tentacles, Apache Whisker, Apache and the Apache feather logo are trademarks
       of The Apache Software Foundation.
       All other marks mentioned may be trademarks or registered trademarks of their respective owners.
       This is user documentation, not legal advice.
       </footer>
-    
+
   </body>
-    
+
 </project>

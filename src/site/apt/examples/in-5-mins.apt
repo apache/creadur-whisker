@@ -18,7 +18,7 @@
 ~~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 ~~  KIND, either express or implied.  See the License for the
 ~~  specific language governing permissions and limitations
-~~  under the License.    
+~~  under the License.
 ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -26,70 +26,70 @@ Whisker In 5 Minutes
 
  {{{http://creadur.apache.org/whisker} Apache Whisker}} is based around
  {{{../meta-data.html}meta-data}} describing the licensing qualities
- of documents included within 
- {{{../faq.html#complex-software-applications}complex software distributions}}. 
- Whisker just helps to maintain information more efficiently, and is 
+ of documents included within
+ {{{../faq.html#complex-software-applications}complex software distributions}}.
+ Whisker just helps to maintain information more efficiently, and is
  {{{../faq.html#what-whisker-is-not}no substitute}} for solid legal work.
  Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
-  
- 
- For this example, we'll create meta-data for a simple 
- {{{http://opensource.org/licenses/mit-license.php/}MIT licensed}} 
+
+
+ For this example, we'll create meta-data for a simple
+ {{{http://opensource.org/licenses/mit-license.php/}MIT licensed}}
  project. This illustrates any project where
  a NOTICE is not (necessarily) {{{../faq.html#when-notice-needed}required}}.
-  
- If this isn't quite what you're looking for, take a look at other 
+
+ If this isn't quite what you're looking for, take a look at other
  examples which
- 
-   * add third party resources licensed by 
-   
+
+   * add third party resources licensed by
+
        * an {{{./3rd-party-individual.html}individual}}
 
-       * a for- or non-profit 
+       * a for- or non-profit
          {{{./3rd-party-corporate.html}corporation}}
-       
-       * an {{{./3rd-party-group.html}informal group}}
-   
-   * {{{./license-family.html}parameterising a template}} for a 
-     {{{../faq.html#what-is-license-family}license family}}, 
-     featuring the 
-     {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
-   
 
-       
+       * an {{{./3rd-party-group.html}informal group}}
+
+   * {{{./license-family.html}parameterising a template}} for a
+     {{{../faq.html#what-is-license-family}license family}},
+     featuring the
+     {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
+
+
+
   or dive into sample meta-data:
- 
+
    * {{{./james.xml} Apache James}}
 
    * {{{./public-domain.xml} Public Domain}}
 
    * {{{./template-license.xml} Template License}}
-   
+
    * {{{./license-family-sample.xml}License Family}}
-   
-   * distributing work licensed from 
-      
+
+   * distributing work licensed from
+
       * an {{{./3rd-party-individual-sample.xml} individual maintainer}}
-      
+
       * a for- or non-profit {{{./3rd-party-corporate-sample.xml}corporation}}
 
       * an informal {{{./3rd-party-group-sample.xml}group}}
- 
- If you're using an IDE then see the 
-  {{{../meta-data.html}meta data reference}} for a 
-  {{{../faq.html#why-dtd}DTD}}. 
-  
- If you have 
-  any questions, please try the {{{../faq.html}FAQ}} before asking on the 
+
+ If you're using an IDE then see the
+  {{{../meta-data.html}meta data reference}} for a
+  {{{../faq.html#why-dtd}DTD}}.
+
+ If you have
+  any questions, please try the {{{../faq.html}FAQ}} before asking on the
   {{{../mail-lists.html}mail lists}}.
- 
+
 * Basic Structure
 
-  Each license, notice and organisation is described once 
+  Each license, notice and organisation is described once
   above, and then
   {{{../faq.html#why-ids}referenced by id}} below.
   Start with the outline.
- 
+
 +---------------------------------------+
 <manifest>
     <!-- Definitions -->
@@ -99,39 +99,39 @@ Whisker In 5 Minutes
     <primary-license/>
     <primary-notice/>
     <primary-organisation/>
-    
+
     <!-- Contents -->
     <within dir='.'/>
-</manifest> 
+</manifest>
 +---------------------------------------+
 
 * Primary Definitions
 
 ** Add The Primary License
 
-  {{{../faq.html#what-is-a-license}Licenses}} should be entered once 
-  into the <<<licenses>>> 
-  section (at the top), and then {{{../faq.html#why-ids}referenced 
-  by id}}. 
-  
-  This project is MIT licensed, so a description of this license 
+  {{{../faq.html#what-is-a-license}Licenses}} should be entered once
+  into the <<<licenses>>>
+  section (at the top), and then {{{../faq.html#why-ids}referenced
+  by id}}.
+
+  This project is MIT licensed, so a description of this license
   needs to be added into <<<licenses>>>. Choose a <<<name>>> suitable
-  for {{{../faq.html#name-freedom}display}}, 
-  {{{../faq.html#id-freedom}pick an id}} and give an 
+  for {{{../faq.html#name-freedom}display}},
+  {{{../faq.html#id-freedom}pick an id}} and give an
   {{{../faq.html#url-freedom}url}}. Note the <<<id>>> chosen since
   this will be used a little later.
   The MIT license isn't a
-  {{{../faq.html#what-is-license-family}family}}, so the <<<text>>> contains  
-  just the plain license text 
+  {{{../faq.html#what-is-license-family}family}}, so the <<<text>>> contains
+  just the plain license text
   (without {{{../meta-data.html#Templates_For_License_Families}parameters}}).
-  We end up with something like 
-  
+  We end up with something like
+
 +---------------------------------------+
 <manifest>
     <licenses>
-        <license 
-            name='MIT License' 
-            id='osi:mit' 
+        <license
+            name='MIT License'
+            id='osi:mit'
             url='http://www.opensource.org/licenses/mit-license.php'>
             <text>
 Permission is hereby granted, free  of charge, to any person obtaining
@@ -155,19 +155,19 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             </text>
         </license>
     </licenses>
-    ...  
+    ...
 +---------------------------------------+
-  
+
   By primary license we {{{../faq.html#what-is-primary}mean}} the main
   license for the project, covering most of the original resources
-  contributed to the distribution by the project. 
+  contributed to the distribution by the project.
   Reference this {{{../faq.html#why-ids}by id}}
-  in <<<primary-license>>>. For our example, we set the <<<id>>> 
+  in <<<primary-license>>>. For our example, we set the <<<id>>>
   attribute to the id - <<<osi:mit>>> - we picked earlier.
-  Conventionally, a 
-  {{{../faq.html#what-copyright-notice}copyright notice}}  
+  Conventionally, a
+  {{{../faq.html#what-copyright-notice}copyright notice}}
   is positioned above the MIT license text. So we need to add
-  a {{{../faq.html#what-primary-copyright-notice}primary copyright notice}} 
+  a {{{../faq.html#what-primary-copyright-notice}primary copyright notice}}
   (<Copyright (c) 3535 Someone>, let's say).
 
 +---------------------------------------+
@@ -180,12 +180,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </manifest>
 +---------------------------------------+
 
-  Unlike the 
-  {{{http://opensource.org/licenses/apache-2.0}Apache License, Version 2}} 
+  Unlike the
+  {{{http://opensource.org/licenses/apache-2.0}Apache License, Version 2}}
   (for example),
-  the MIT License does not have a <<<NOTICE>>> 
+  the MIT License does not have a <<<NOTICE>>>
   {{{../faq.html#when-notice-needed}retention clause}}. So, there is no need
-  for a <<<primary-notice>>> to be defined. 
+  for a <<<primary-notice>>> to be defined.
 
 +---------------------------------------+
 <manifest>
@@ -194,42 +194,42 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ...
     <primary-notice/>
     ...
-</manifest> 
+</manifest>
 +---------------------------------------+
 
 ** Add The Primary Organisation
 
- {{{../faq.html#third-party-individual}Individual maintainers}}, 
- {{{../faq.html#third-party-ad-hoc}informal groups}}, 
- for- and non-profit 
+ {{{../faq.html#third-party-individual}Individual maintainers}},
+ {{{../faq.html#third-party-ad-hoc}informal groups}},
+ for- and non-profit
  {{{../faq.html#third-party-corporation}corporations}}
- are all modeled by Whisker as <<<organisations>>>. 
- Read more {{{../faq.html#what-is-org}here}}. 
- Let's assume that our example project is maintained by 
+ are all modeled by Whisker as <<<organisations>>>.
+ Read more {{{../faq.html#what-is-org}here}}.
+ Let's assume that our example project is maintained by
  - and licensed from - the (hypothetical)
- <Hypothetical Example Foundation>, whose domain is 
+ <Hypothetical Example Foundation>, whose domain is
  <<<example.org>>>.
- 
+
  This <<<organisation>>> needs to be added into <<<organisations>>>.
- We fill in {{{../faq.html#name-freedom}<<<name>>>}} 
- and {{{../faq.html#url-freedom}<<<url>>>}}, and 
+ We fill in {{{../faq.html#name-freedom}<<<name>>>}}
+ and {{{../faq.html#url-freedom}<<<url>>>}}, and
  {{{../faq.html#id-freedom}pick an id}} (which we'll need to
  {{{../faq.html#why-ids}refer to}} just a little later).
- 
+
 +---------------------------------------+
     ...
     <organisations>
-        <organisation 
-            id='example.org' 
-            name='The Hypothetical Example Foundation' 
+        <organisation
+            id='example.org'
+            name='The Hypothetical Example Foundation'
             url='http://www.example.org'/>
     </organisations>
     ...
 +---------------------------------------+
-  
+
   Find the <<<primary-organisation>>> lower in the document,
   and set the <<<id>>> attribute.
- 
+
 +---------------------------------------+
     ...
     <primary-organisation id='example.org'/>
@@ -238,43 +238,43 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 * Contents
 
-  Meta-data links the contents of a software distribution with 
-  its licensing definitions. This allows Whisker to, for example, 
+  Meta-data links the contents of a software distribution with
+  its licensing definitions. This allows Whisker to, for example,
   generate licensing document and check that every document
   included is expected.
-  
-  Contents are {{{../faq.html#how-contents}described by directory}}. 
-  The resources <<<within>>> 
-  each directory are grouped <<<with-license>>> then 
-  <<<by-organisation>>>. Directories are modeled by a 
-  {{{../faq.html#how-dir-model}flat list}} 
+
+  Contents are {{{../faq.html#how-contents}described by directory}}.
+  The resources <<<within>>>
+  each directory are grouped <<<with-license>>> then
+  <<<by-organisation>>>. Directories are modeled by a
+  {{{../faq.html#how-dir-model}flat list}}
   of <<<within>>> elements.
-  
+
   Work through the distribution, one directory at a time.
   Let's say our distribution is laid out like this:
-  
+
 +---------------------------------------+
   --|- one.txt
     |- two.html
     |- three.py
     |
-    |-alpha-|- five.js 
+    |-alpha-|- five.js
     |       |- six.rb
     |       |- seven.coffee
     |
     |-beta--|- eight.java
-    
+
 +---------------------------------------+
 
-  The root directory of the distribution is 
+  The root directory of the distribution is
   {{{../faq.html#how-root-dir}denoted by '.'}}, and let's
   say that its contents (<<<one.txt>>>, <<<two.html>>>
   and <<<three.py>>>) are all licensed from the primary
-  organisation (<<<example.org>>>) 
+  organisation (<<<example.org>>>)
   using the primary license (MIT). Whisker
   makes no assumptions about license or organisation,
   whether primary or not.
-  Every resource is added <<<by-organisation>>> 
+  Every resource is added <<<by-organisation>>>
   and <<<with-license>>>, referred to {{{../faq.html#why-ids}by id}}.
 
 +---------------------------------------+
@@ -292,8 +292,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 +---------------------------------------+
 
  In directory <<<alpha>>>, let's say that <<<five.js>>>
- and <<<six.rb>>> are similar (MIT licensed by <<<example.org>>>) 
- to those above. 
+ and <<<six.rb>>> are similar (MIT licensed by <<<example.org>>>)
+ to those above.
  We add these immediately.
 
 +---------------------------------------+
@@ -310,10 +310,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  Let's say that <<<seven.coffee>>> is a third party resource
  included within the software distribution. To illustrate how
  to add a third party resource sharing the primary license,
- let's say that <<<seven.coffee>>> is licensed under the 
+ let's say that <<<seven.coffee>>> is licensed under the
  primary (MIT) license from the Apache Software Foundation.
- After checking that details haven't 
- already been added for <<<apache.org>>>, we add an 
+ After checking that details haven't
+ already been added for <<<apache.org>>>, we add an
  <<<organisation>>>
  and {{{../faq.html#why-ids}refer to it}} <<<by-organisation>>> containing the
  <<<resource>>>.
@@ -322,9 +322,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ...
     <organisations>
         ...
-        <organisation 
-            id='apache.org' 
-            name='Apache Software Foundation' 
+        <organisation
+            id='apache.org'
+            name='Apache Software Foundation'
             url='http://www.apache.org'/>
     </organisations>
     ...
@@ -342,23 +342,23 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </manifest>
 +---------------------------------------+
 
- Finally, let's say that directory <<<beta>>> contains only 
+ Finally, let's say that directory <<<beta>>> contains only
  <<<eight.java>>>, again from <<<apache.org>>> but licensed
- this time under the 
+ this time under the
  {{{http://opensource.org/licenses/apache-2.0}Apache License, Version 2}},
  which is the standard license for Apache software.
- 
+
  After checking that this license isn't already in <<<licenses>>>,
- we add the license details and note the id 
+ we add the license details and note the id
  {{{../faq.html#id-freedom}we chose}} - in this case <<<osi:AL2>>>.
- 
+
 +---------------------------------------+
     ...
     <licenses>
         ...
-        <license 
-            name='Apache License, Version 2' 
-            id='osi:AL2' 
+        <license
+            name='Apache License, Version 2'
+            id='osi:AL2'
             url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
@@ -542,11 +542,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         ...
 +---------------------------------------+
 
- The <<<beta>>> directory in our distribution contains only the 
- resource <<<eight.java>>> by <<<apache.org>>> licensed under the 
+ The <<<beta>>> directory in our distribution contains only the
+ resource <<<eight.java>>> by <<<apache.org>>> licensed under the
  Apache License, Version 2. For this example, we will assume
- that no NOTICE is 
- {{{../faq.html#when-notice-needed}required}}. 
+ that no NOTICE is
+ {{{../faq.html#when-notice-needed}required}}.
  So we're ready now to complete the meta-data.
 
 +---------------------------------------+
@@ -560,18 +560,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     </within>
 </manifest>
 +---------------------------------------+
- 
+
 
 * And Finally
 
-  We end up with this meta-data 
+  We end up with this meta-data
   ({{{./in-5-mins-sample.xml}open}}
   as an annotated sample):
 
 +---------------------------------------+
 <manifest>
     <licenses>
-        <license name='MIT License' id='osi:mit' 
+        <license name='MIT License' id='osi:mit'
             url='http://www.opensource.org/licenses/mit-license.php'>
             <text>
 Permission is hereby granted, free  of charge, to any person obtaining
@@ -594,9 +594,9 @@ OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             </text>
         </license>
-         <license 
-            name='Apache License, Version 2' 
-            id='osi:AL2' 
+         <license
+            name='Apache License, Version 2'
+            id='osi:AL2'
             url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
@@ -780,13 +780,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     </licenses>
     <notices/>
     <organisations>
-        <organisation 
-            id='example.org' 
-            name='The Hypothetical Example Foundation' 
+        <organisation
+            id='example.org'
+            name='The Hypothetical Example Foundation'
             url='http://www.example.org'/>
-        <organisation 
-            id='apache.org' 
-            name='Apache Software Foundation' 
+        <organisation
+            id='apache.org'
+            name='Apache Software Foundation'
             url='http://www.apache.org'/>
     </organisations>
     <primary-license id='osi:mit'>
@@ -824,10 +824,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </manifest>
 +---------------------------------------+
 
-    From this meta-data, Whisker (either from the 
+    From this meta-data, Whisker (either from the
     {{{../apache-whisker-cli/index.html}command line}} or
-    integrated into a 
-    {{{../apache-whisker-plugin4maven/index.html}Maven build}}) 
+    integrated into a
+    {{{../apache-whisker-plugin4maven/index.html}Maven build}})
     generates a <<<LICENSE>>> similar to:
 
 +---------------------------------------+
@@ -853,32 +853,32 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-            
+
 
 This distribution contains third party resources.
 Within the alpha directory
     licensed under the MIT License http://www.opensource.org/licenses/mit-license.php  (as above)
-        from Apache Software Foundation  http://www.apache.org 
+        from Apache Software Foundation  http://www.apache.org
             seven.coffee
 
 Within the beta directory
     licensed under the Apache License, Version 2 http://www.apache.org/licenses/LICENSE-2.0.txt  (as follows)
- 
-            
+
+
                                              Apache License
                                        Version 2.0, January 2004
                                     http://www.apache.org/licenses/
-            
+
                TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
-            
+
                1. Definitions.
-            
+
                   "License" shall mean the terms and conditions for use, reproduction,
                   and distribution as defined by Sections 1 through 9 of this document.
-            
+
                   "Licensor" shall mean the copyright owner or entity authorized by
                   the copyright owner that is granting the License.
-            
+
                   "Legal Entity" shall mean the union of the acting entity and all
                   other entities that control, are controlled by, or are under common
                   control with that entity. For the purposes of this definition,
@@ -886,24 +886,24 @@ Within the beta directory
                   direction or management of such entity, whether by contract or
                   otherwise, or (ii) ownership of fifty percent (50%) or more of the
                   outstanding shares, or (iii) beneficial ownership of such entity.
-            
+
                   "You" (or "Your") shall mean an individual or Legal Entity
                   exercising permissions granted by this License.
-            
+
                   "Source" form shall mean the preferred form for making modifications,
                   including but not limited to software source code, documentation
                   source, and configuration files.
-            
+
                   "Object" form shall mean any form resulting from mechanical
                   transformation or translation of a Source form, including but
                   not limited to compiled object code, generated documentation,
                   and conversions to other media types.
-            
+
                   "Work" shall mean the work of authorship, whether in Source or
                   Object form, made available under the License, as indicated by a
                   copyright notice that is included in or attached to the work
                   (an example is provided in the Appendix below).
-            
+
                   "Derivative Works" shall mean any work, whether in Source or Object
                   form, that is based on (or derived from) the Work and for which the
                   editorial revisions, annotations, elaborations, or other modifications
@@ -911,7 +911,7 @@ Within the beta directory
                   of this License, Derivative Works shall not include works that remain
                   separable from, or merely link (or bind by name) to the interfaces of,
                   the Work and Derivative Works thereof.
-            
+
                   "Contribution" shall mean any work of authorship, including
                   the original version of the Work and any modifications or additions
                   to that Work or Derivative Works thereof, that is intentionally
@@ -925,18 +925,18 @@ Within the beta directory
                   Licensor for the purpose of discussing and improving the Work, but
                   excluding communication that is conspicuously marked or otherwise
                   designated in writing by the copyright owner as "Not a Contribution."
-            
+
                   "Contributor" shall mean Licensor and any individual or Legal Entity
                   on behalf of whom a Contribution has been received by Licensor and
                   subsequently incorporated within the Work.
-            
+
                2. Grant of Copyright License. Subject to the terms and conditions of
                   this License, each Contributor hereby grants to You a perpetual,
                   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
                   copyright license to reproduce, prepare Derivative Works of,
                   publicly display, publicly perform, sublicense, and distribute the
                   Work and such Derivative Works in Source or Object form.
-            
+
                3. Grant of Patent License. Subject to the terms and conditions of
                   this License, each Contributor hereby grants to You a perpetual,
                   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
@@ -952,24 +952,24 @@ Within the beta directory
                   or contributory patent infringement, then any patent licenses
                   granted to You under this License for that Work shall terminate
                   as of the date such litigation is filed.
-            
+
                4. Redistribution. You may reproduce and distribute copies of the
                   Work or Derivative Works thereof in any medium, with or without
                   modifications, and in Source or Object form, provided that You
                   meet the following conditions:
-            
+
                   (a) You must give any other recipients of the Work or
                       Derivative Works a copy of this License; and
-            
+
                   (b) You must cause any modified files to carry prominent notices
                       stating that You changed the files; and
-            
+
                   (c) You must retain, in the Source form of any Derivative Works
                       that You distribute, all copyright, patent, trademark, and
                       attribution notices from the Source form of the Work,
                       excluding those notices that do not pertain to any part of
                       the Derivative Works; and
-            
+
                   (d) If the Work includes a "NOTICE" text file as part of its
                       distribution, then any Derivative Works that You distribute must
                       include a readable copy of the attribution notices contained
@@ -986,14 +986,14 @@ Within the beta directory
                       or as an addendum to the NOTICE text from the Work, provided
                       that such additional attribution notices cannot be construed
                       as modifying the License.
-            
+
                   You may add Your own copyright statement to Your modifications and
                   may provide additional or different license terms and conditions
                   for use, reproduction, or distribution of Your modifications, or
                   for any such Derivative Works as a whole, provided Your use,
                   reproduction, and distribution of the Work otherwise complies with
                   the conditions stated in this License.
-            
+
                5. Submission of Contributions. Unless You explicitly state otherwise,
                   any Contribution intentionally submitted for inclusion in the Work
                   by You to the Licensor shall be under the terms and conditions of
@@ -1001,12 +1001,12 @@ Within the beta directory
                   Notwithstanding the above, nothing herein shall supersede or modify
                   the terms of any separate license agreement you may have executed
                   with Licensor regarding such Contributions.
-            
+
                6. Trademarks. This License does not grant permission to use the trade
                   names, trademarks, service marks, or product names of the Licensor,
                   except as required for reasonable and customary use in describing the
                   origin of the Work and reproducing the content of the NOTICE file.
-            
+
                7. Disclaimer of Warranty. Unless required by applicable law or
                   agreed to in writing, Licensor provides the Work (and each
                   Contributor provides its Contributions) on an "AS IS" BASIS,
@@ -1016,7 +1016,7 @@ Within the beta directory
                   PARTICULAR PURPOSE. You are solely responsible for determining the
                   appropriateness of using or redistributing the Work and assume any
                   risks associated with Your exercise of permissions under this License.
-            
+
                8. Limitation of Liability. In no event and under no legal theory,
                   whether in tort (including negligence), contract, or otherwise,
                   unless required by applicable law (such as deliberate and grossly
@@ -1028,7 +1028,7 @@ Within the beta directory
                   work stoppage, computer failure or malfunction, or any and all
                   other commercial damages or losses), even if such Contributor
                   has been advised of the possibility of such damages.
-            
+
                9. Accepting Warranty or Additional Liability. While redistributing
                   the Work or Derivative Works thereof, You may choose to offer,
                   and charge a fee for, acceptance of support, warranty, indemnity,
@@ -1039,10 +1039,9 @@ Within the beta directory
                   defend, and hold each Contributor harmless for any liability
                   incurred by, or claims asserted against, such Contributor by reason
                   of your accepting any such warranty or additional liability.
-            
-               END OF TERMS AND CONDITIONS    
-        from Apache Software Foundation  http://www.apache.org 
+
+               END OF TERMS AND CONDITIONS
+        from Apache Software Foundation  http://www.apache.org
             eight.java
 +---------------------------------------+
 
- 
