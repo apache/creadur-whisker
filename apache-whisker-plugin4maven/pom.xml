@@ -15,7 +15,7 @@
   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
   KIND, either express or implied.  See the License for the
   specific language governing permissions and limitations
-  under the License.    
+  under the License.
 -->
 <project
   xmlns="http://maven.apache.org/POM/4.0.0"
@@ -34,7 +34,7 @@
   <artifactId>apache-whisker-plugin4maven</artifactId>
   <packaging>maven-plugin</packaging>
 
-  <dependencies>      
+  <dependencies>
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-plugin-api</artifactId>
@@ -50,19 +50,19 @@
         <groupId>commons-logging</groupId>
         <artifactId>commons-logging-api</artifactId>
     </dependency>
-  
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-scan</artifactId>
       <version>${project.version}</version>
     </dependency>
-    
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-model</artifactId>
@@ -73,20 +73,20 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-app</artifactId>
       <version>${project.version}</version>
-    </dependency>    
-    
+    </dependency>
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-xml</artifactId>
       <version>${project.version}</version>
-    </dependency>    
-    
-    
+    </dependency>
+
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-velocity</artifactId>
       <version>${project.version}</version>
-    </dependency>    
+    </dependency>
   </dependencies>
 
 
@@ -96,6 +96,7 @@
         <artifactId>maven-invoker-plugin</artifactId>
         <version>1.5</version>
         <configuration>
+          <addTestClassPath>true</addTestClassPath>
           <projectsDirectory>src/it</projectsDirectory>
           <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
           <pomIncludes>
@@ -164,15 +165,15 @@
               </plugin>
             </reportPlugins>
           </configuration>
-        </plugin>      
+        </plugin>
     </plugins>
-    
+
   </build>
-  
- <!-- 
-  
-  
-  ================================  
+
+ <!--
+
+
+  ================================
   Project information
   -->
   <name>Apache Whisker::Plugin(Maven)</name>
