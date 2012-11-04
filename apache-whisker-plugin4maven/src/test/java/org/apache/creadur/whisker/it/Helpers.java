@@ -24,6 +24,10 @@ import java.io.File;
 
 public class Helpers {
 
+    public static AnyLineContainsCheck aLineContainsResource(String name) {
+        return new AnyLineContainsCheck(name);
+    }
+
     public static AnyLineContainsCheck aLineContainsCDDL1() {
         return new AnyLineContainsCheck("COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0");
     }
