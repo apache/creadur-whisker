@@ -554,6 +554,26 @@ and use the plain license text.
         </answer>
     </faq>
 
+    <faq id='when-copyright-notice-vs-notice'>
+        <question>Should I use a copyright-notice or a notice?</question>
+        <answer>
+            <p>
+ If the copyright claim belongs in the <code>LICENSE</code> document then
+ use a <code>copyright-notice</code>.
+            </p><p>
+ If the copyright claim belongs in the <code>NOTICE</code>
+ document then include it within a <code>notice</code>.
+            </p>
+            <p>
+ Learn about copyright notices <a href='#what-copyright-notice'>here</a>.
+            </p>
+            <p>
+ Read about the different between a <code>NOTICE</code>
+ and a copyright notice <a href='#notice-vs-copyright-notice'>here</a>.
+            </p>
+        </answer>
+    </faq>
+
 
     <faq id='sample-meta-data'>
         <question>Are any samples available?</question>
