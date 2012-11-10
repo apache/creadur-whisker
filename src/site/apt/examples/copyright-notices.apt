@@ -767,3 +767,86 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     ...
 +---------------------------------------+
 
+** Contents
+
+ Let's assume (for clarity) that the distribution contains
+ only three works:
+
+  * <<<cddl.txt>>>
+
+  * <<<mit.txt>>>
+
+  * <<<apache.txt>>>
+
+ all in the root directory and all licensed from <The Example Org>.
+
+ As noted above, the primary license (CDDL 1.0) needs neither <<<notice>>>
+ nor <<<<copyright-notice>>>
+
++---------------------------------------+
+    ...
+    <within dir='.'>
+        <with-license id='osi:CDDL-1.0'>
+            <by-organisation id='example.org'>
+                <resource name='cddl.txt'/>
+            </by-organisation>
+        </with-license>
+        ...
++---------------------------------------+
+
+ The MIT License usually requires a <<<copyright-notice>>>. Consulting
+ the license text, we find the copyright claim is
+ <Copyright (c) 2525 The Example Project>. This should be entered as
+ a <<<copyright-notice>>> child of the <<<with-license>>>, so that
+ this appears before the plain MIT text in the generated <<<LICENSE>>>.
+
++---------------------------------------+
+    ...
+        <with-license id='osi:mit'>
+            <copyright-notice>Copyright (c) 2525 The Example Project</copyright-notice>
+            <by-organisation id='example.org'>
+                <resource name='mit.txt'/>
+            </by-organisation>
+        </with-license>
+        ...
++---------------------------------------+
+
+ In contrast, the Apache License, Version 2 has a retention clause
+ and typically has a <<<NOTICE>>> which must be redistributed. Consulting
+ the <<<apache.org>>> release, we find a <<<NOTICE>>> containing
+
+
++---------------------------------------+
+Copyright (c) 2525 The Example Project http://example.org
++---------------------------------------+
+
+ So, back in the <<<notices>>> we need to add a <<<notice>>>
+ then reference by id in the <<<resource>>>:
+
++---------------------------------------+
+    <notices>
+      <notice id='example.org'>
+      Copyright (c) 2525 The Example Project http://example.org
+      </notice>
+    </notices>
+    ...
+    <within dir='.'>
+        ...
+        <with-license id='osi:AL2'>
+            <by-organisation id='example.org'>
+                <resource name='apache.txt' notice='example.org'/>
+            </by-organisation>
+        </with-license>
+        ...
++---------------------------------------+
+
+
+* And Finally
+
+** The Complete Descriptor
+
+** The Generated Documents
+
+*** LICENSE
+
+*** NOTICE
