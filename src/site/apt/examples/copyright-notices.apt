@@ -142,7 +142,19 @@ All About Copyright Notices
  and one which requires a <<<notice>>>
  ({{{http://www.apache.org/licenses/LICENSE-2.0.html}Apache License, Version 2}}).
 
- Begin by adding definitions for these licenses
+** Definitions
+
+*** Define Licenses
+
+ Begin by adding definitions for the licenses for the
+ works contained in the distribution:
+
+  * CDDL 1.0 (primary, <<<copyright-notice>>> not required)
+
+  * MIT License (<<<copyright-notice>>> required)
+
+  * Apache License, Version 2 (<<<notice>>> required)
+
 
 +---------------------------------------+
 <manifest>
@@ -714,6 +726,44 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </text>
         </license>
     </licenses>
+    ...
++---------------------------------------+
+
+*** Define Organisations
+
+  Let's assume (for clarity) that <The Example Project> has licensed
+  each of the works distributed. So, only need to define one
+  {{{../faq.html#what-is-org}organisation}}:
+
++---------------------------------------+
+    ...
+    </licenses>
+    <organisations>
+        <organisation
+           id='example.org'
+           name='The Example Project'
+           url='http://example.org/'
+        />
+    </organisations>
+    ...
++---------------------------------------+
+
+*** Define Primary License, Organisation, Notice and Copyright Notice
+
+  Add {{{../faq.html#why-ids}references}} to the main license (CDDL 1.0)
+  and organisation (<The Example Project>).
+
+  The CDDL 1.0 has no
+  {{{../faq.html#when-notice-needed}retention clause}} so no
+  <<<primary-notice>>> needs to be added, and includes no copyright
+  claim so no <<<<copyright-notice>>> is needed either.
+
++---------------------------------------+
+    ...
+    </organisations>
+    <primary-license id='osi:CDDL-1.0'/>
+    <primary-notice/>
+    <primary-organisation id='example.org'/>
     ...
 +---------------------------------------+
 
