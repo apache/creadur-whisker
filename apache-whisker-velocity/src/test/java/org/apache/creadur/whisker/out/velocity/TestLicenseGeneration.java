@@ -18,23 +18,11 @@
  */
 package org.apache.creadur.whisker.out.velocity;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import junit.framework.TestCase;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.creadur.whisker.app.Result;
-import org.apache.creadur.whisker.model.ByOrganisation;
 import org.apache.creadur.whisker.model.Descriptor;
-import org.apache.creadur.whisker.model.License;
-import org.apache.creadur.whisker.model.Organisation;
-import org.apache.creadur.whisker.model.Resource;
-import org.apache.creadur.whisker.model.WithLicense;
-import org.apache.creadur.whisker.model.WithinDirectory;
-
-import junit.framework.TestCase;
 
 public class TestLicenseGeneration extends TestCase {
 
@@ -90,10 +78,22 @@ public class TestLicenseGeneration extends TestCase {
         assertTrue("Expect secondary copyright to be presented: " + writerFactory.firstOutputFor(Result.LICENSE),
                 StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
                         builder.getSecondaryCopyright()));
+        verifyThatResourceNameIsWritten();
+
+    }
+
+    private void verifyThatResourceNameIsWritten() {
         assertTrue("Expect resource to be indicated: " + writerFactory.firstOutputFor(Result.LICENSE),
                 StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
                         builder.getResourceName()));
+    }
 
+    public void testPrimaryOrganisationSecondaryLicense() throws Exception {
+        subject.generate(
+                builder.withSecondaryLicensePrimaryOrganisationInDirectory("lib").build(),
+                writerFactory);
+        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
+        verifyThatResourceNameIsWritten();
     }
 
 }

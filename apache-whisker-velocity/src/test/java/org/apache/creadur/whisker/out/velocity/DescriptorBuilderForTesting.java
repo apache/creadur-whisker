@@ -38,6 +38,8 @@ public class DescriptorBuilderForTesting {
     String primaryLicenseText = "This is the primary license text";
     Organisation thirdPartyOrg = new Organisation("third-party", "thirdparty.org", "http://thirdparty.org");
     License primaryLicense = new License(false, primaryLicenseText, Collections.<String> emptyList(), "example.org", "http://example.org", "Example License");
+    License secondaryLicense = new License(false, "This is the secondary license text", Collections.<String> emptyList(), "example.org:secondary", "http://example.org/secondary", "Example Secondary License");
+
     String primaryOrgName = "example.org";
     String primaryNotice = "The primary notice.";
     Collection<WithinDirectory> contents = new ArrayList<WithinDirectory>();
@@ -137,6 +139,12 @@ public class DescriptorBuilderForTesting {
 
     public DescriptorBuilderForTesting withPrimaryCopyrightNotice(String primaryCopyrightNotice) {
         this.primaryCopyrightNotice = primaryCopyrightNotice;
+        return this;
+    }
+
+    public DescriptorBuilderForTesting withSecondaryLicensePrimaryOrganisationInDirectory(
+            String directoryName) {
+        addDirectory(secondaryLicense, primaryOrganisation(), directoryName);
         return this;
     }
 
