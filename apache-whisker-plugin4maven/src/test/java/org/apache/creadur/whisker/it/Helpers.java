@@ -72,6 +72,10 @@ public class Helpers {
                 "COMMON DEVELOPMENT AND DISTRIBUTION LICENSE Version 1.0 (CDDL-1.0)");
     }
 
+    public static Check noLineContains(String value) {
+        return new NoLineContainsCheck(value);
+    }
+
     public static Check aLineContains(String value) {
         return new AnyLineContainsCheck(value);
     }
