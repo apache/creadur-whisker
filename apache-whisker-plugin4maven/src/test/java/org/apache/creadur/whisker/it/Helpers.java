@@ -19,6 +19,7 @@
 package org.apache.creadur.whisker.it;
 
 import static org.apache.creadur.whisker.it.Not.not;
+import static org.apache.creadur.whisker.it.CheckHelpers.*;
 
 import java.io.File;
 
@@ -41,7 +42,9 @@ public class Helpers {
     }
 
     public static Check aLineContainsCDDL1() {
-        return new AnyLineContainsCheck("COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0");
+        return aLineContainsEither(
+                "COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0",
+                "COMMON DEVELOPMENT AND DISTRIBUTION LICENSE Version 1.0 (CDDL-1.0)");
     }
 
     public static Check aLineContains(String value) {

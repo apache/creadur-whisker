@@ -35,7 +35,7 @@ public class LicenseVerifier {
         this.checks = new ArrayList<Check>();
     }
 
-    public LicenseVerifier expectThat(final AnyLineContainsCheck check) {
+    public LicenseVerifier expectThat(final Check check) {
         this.checks.add(check);
         return this;
     }
