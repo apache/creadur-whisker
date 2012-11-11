@@ -67,8 +67,8 @@ public class Helpers {
         return fileIsMissing(basedir, PATH_TO_LICENSE_FILE);
     }
 
-    public static LicenseVerifier licenseIn(File basedir) {
-        return new LicenseVerifier(new File(basedir, PATH_TO_LICENSE_FILE));
+    public static FileVerifier licenseIn(File basedir) {
+        return new FileVerifier(new File(basedir, PATH_TO_LICENSE_FILE), "LICENSE");
     }
 
     public static Results results() {

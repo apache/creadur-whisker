@@ -19,45 +19,33 @@
 package org.apache.creadur.whisker.it;
 
 import static org.apache.creadur.whisker.it.CheckHelpers.*;
+import static org.apache.creadur.whisker.it.Not.*;
 
-import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class LicenseVerifier {
+public class AnyCheck implements Check {
 
-    final File licenseFile;
     final List<Check> checks;
 
-
-    public LicenseVerifier(final File licenseFile) {
-        this.licenseFile = licenseFile;
-        this.checks = new ArrayList<Check>();
+    public AnyCheck(Collection<Check> checks) {
+        super();
+        this.checks = new ArrayList<Check>(checks);
     }
 
-    public LicenseVerifier expectThat(final Check check) {
-        this.checks.add(check);
-        return this;
-    }
-
-    public String failures() throws Exception {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(
-                new FileInputStream(licenseFile), "UTF-8"));
-        try {
-            String line = null;
-            do {
-                line = checkLine(reader.readLine());
-            } while (line != null);
-        } finally {
-            reader.close();
-        }
-
-        final Results results = new Results().titled("FAILURES in LICENSE:");
-        return to(results).report(checks).collate();
-    }
-
-    private String checkLine(final String line) {
+    public void check(final String line) {
         doCheck(line).with(checks);
-        return line;
     }
+
+    public boolean hasPassed() {
+        return checks.size() == 0 || anyPassed(checks);
+    }
+
+    public void report(final Results results) {
+       if (not(hasPassed())) {
+           to(results).report(checks);
+       }
+    }
+
 }
