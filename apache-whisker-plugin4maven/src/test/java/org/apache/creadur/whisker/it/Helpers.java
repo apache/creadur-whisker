@@ -28,6 +28,18 @@ public class Helpers {
         return new AnyLineContainsCheck(name);
     }
 
+    public static AnyLineContainsCheck aLineContainsCopyrightNotice(String copyrightNotice) {
+        return new AnyLineContainsCheck(copyrightNotice);
+    }
+
+    public static AnyLineContainsCheck aLineContainsAL2() {
+        return new AnyLineContainsCheck("Version 2.0, January 2004");
+    }
+
+    public static AnyLineContainsCheck aLineContainsMIT() {
+        return new AnyLineContainsCheck("Permission is hereby granted, free of charge, to any person");
+    }
+
     public static AnyLineContainsCheck aLineContainsCDDL1() {
         return new AnyLineContainsCheck("COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0");
     }
