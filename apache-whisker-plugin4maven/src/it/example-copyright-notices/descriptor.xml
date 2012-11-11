@@ -792,8 +792,10 @@
     <!-- Consulting the release of the Apache licensed work, we discover
       (and add) the NOTICE -->
     <notice id='example.org'>
-      Copyright (c) 2525 The Example Project
-      http://example.org
+      Copyright (c) 9595 The Example Project
+
+      This product includes software developed at
+      The Example Foundation (http://example.org/).
     </notice>
   </notices>
   <!-- To keep this example simple, assume all works are licensed by the

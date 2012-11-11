@@ -38,5 +38,9 @@ if (results.hasFailed()) {
      license.expectThat(aLineContainsResource("mit.txt"))
      license.expectThat(aLineContainsAL2())
      //license.expectThat(aLineContainsResource("apache.txt"))
-     return license.failures()
+     notice = noticeIn(basedir)
+     notice.expectThat(aLineContains("Copyright (c) 9595 The Example Project"))
+     notice.expectThat(aLineContains("This product includes software developed at"))
+     notice.expectThat(aLineContains("The Example Foundation (http://example.org/)."))
+     return aggregate(license.failures(), notice.failures())
 }

@@ -25,6 +25,29 @@ import java.io.File;
 
 public class Helpers {
 
+    private static final String PATH_TO_LICENSE_FILE = "target/LICENSE";
+
+    private static final String PATH_TO_NOTICE_FILE = "target/NOTICE";
+
+    public static String aggregate(final String firstFailureReport,
+            final String secondFailureReport) {
+        final String result;
+        if (firstFailureReport == null) {
+            if (secondFailureReport == null) {
+                result = null;
+            } else {
+                result = secondFailureReport;
+            }
+        } else {
+            if (secondFailureReport == null) {
+                result = firstFailureReport;
+            } else {
+                result = firstFailureReport + "\n\n" + secondFailureReport;
+            }
+        }
+        return result;
+    }
+
     public static Check aLineContainsResource(String name) {
         return new AnyLineContainsCheck(name);
     }
@@ -53,10 +76,8 @@ public class Helpers {
         return new AnyLineContainsCheck(value);
     }
 
-    private static final String PATH_TO_LICENSE_FILE = "target/LICENSE";
-
     public static boolean noticeIsMissing(File basedir) {
-        return fileIsMissing(basedir, "target/NOTICE");
+        return fileIsMissing(basedir, PATH_TO_NOTICE_FILE);
     }
 
     private static boolean fileIsMissing(File basedir, final String string) {
@@ -69,6 +90,10 @@ public class Helpers {
 
     public static FileVerifier licenseIn(File basedir) {
         return new FileVerifier(new File(basedir, PATH_TO_LICENSE_FILE), "LICENSE");
+    }
+
+    public static FileVerifier noticeIn(File basedir) {
+        return new FileVerifier(new File(basedir, PATH_TO_NOTICE_FILE), "NOTICE");
     }
 
     public static Results results() {
