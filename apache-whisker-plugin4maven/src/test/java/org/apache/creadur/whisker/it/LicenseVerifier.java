@@ -18,6 +18,8 @@
  */
 package org.apache.creadur.whisker.it;
 
+import static org.apache.creadur.whisker.it.CheckHelpers.*;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +27,12 @@ import java.util.List;
 public class LicenseVerifier {
 
     final File licenseFile;
-    final List<AnyLineContainsCheck> checks;
+    final List<Check> checks;
 
 
     public LicenseVerifier(final File licenseFile) {
         this.licenseFile = licenseFile;
-        this.checks = new ArrayList<AnyLineContainsCheck>();
+        this.checks = new ArrayList<Check>();
     }
 
     public LicenseVerifier expectThat(final AnyLineContainsCheck check) {
@@ -50,17 +52,12 @@ public class LicenseVerifier {
             reader.close();
         }
 
-        Results result = new Results().titled("FAILURES in LICENSE:");
-        for (AnyLineContainsCheck check:checks) {
-            check.report(result);
-        }
-        return result.report();
+        final Results results = new Results().titled("FAILURES in LICENSE:");
+        return to(results).report(checks).collate();
     }
 
     private String checkLine(final String line) {
-        for (AnyLineContainsCheck check:checks) {
-            check.check(line);
-        }
+        doCheck(line).with(checks);
         return line;
     }
 }

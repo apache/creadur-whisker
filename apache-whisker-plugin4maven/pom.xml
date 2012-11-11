@@ -87,6 +87,12 @@
       <artifactId>apache-whisker-velocity</artifactId>
       <version>${project.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+    </dependency>
+
   </dependencies>
 
 

@@ -24,27 +24,27 @@ import java.io.File;
 
 public class Helpers {
 
-    public static AnyLineContainsCheck aLineContainsResource(String name) {
+    public static Check aLineContainsResource(String name) {
         return new AnyLineContainsCheck(name);
     }
 
-    public static AnyLineContainsCheck aLineContainsCopyrightNotice(String copyrightNotice) {
+    public static Check aLineContainsCopyrightNotice(String copyrightNotice) {
         return new AnyLineContainsCheck(copyrightNotice);
     }
 
-    public static AnyLineContainsCheck aLineContainsAL2() {
+    public static Check aLineContainsAL2() {
         return new AnyLineContainsCheck("Version 2.0, January 2004");
     }
 
-    public static AnyLineContainsCheck aLineContainsMIT() {
+    public static Check aLineContainsMIT() {
         return new AnyLineContainsCheck("Permission is hereby granted, free of charge, to any person");
     }
 
-    public static AnyLineContainsCheck aLineContainsCDDL1() {
+    public static Check aLineContainsCDDL1() {
         return new AnyLineContainsCheck("COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0");
     }
 
-    public static AnyLineContainsCheck aLineContains(String value) {
+    public static Check aLineContains(String value) {
         return new AnyLineContainsCheck(value);
     }
 

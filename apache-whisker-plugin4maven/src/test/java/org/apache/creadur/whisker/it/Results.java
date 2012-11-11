@@ -35,7 +35,7 @@ public class Results {
         return this;
     }
 
-    public String report() {
+    public String collate() {
         final String result;
         if (failed) {
             endLine();

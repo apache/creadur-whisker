@@ -20,7 +20,7 @@ package org.apache.creadur.whisker.it;
 
 import static org.apache.creadur.whisker.it.Not.*;
 
-public class AnyLineContainsCheck {
+public class AnyLineContainsCheck implements Check {
 
     final String value;
 

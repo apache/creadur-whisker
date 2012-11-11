@@ -15,7 +15,7 @@
   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
   KIND, either express or implied.  See the License for the
   specific language governing permissions and limitations
-  under the License.    
+  under the License.
 --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -57,7 +57,7 @@
         <artifactId>commons-cli</artifactId>
         <version>1.2</version>
       </dependency>
-  
+
       <dependency>
           <groupId>commons-io</groupId>
           <artifactId>commons-io</artifactId>
@@ -68,6 +68,12 @@
           <groupId>commons-logging</groupId>
           <artifactId>commons-logging-api</artifactId>
           <version>1.1</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>3.2.1</version>
       </dependency>
 
       <dependency>
@@ -82,6 +88,7 @@
         <version>2.5.1</version>
         <scope>test</scope>
       </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -100,14 +107,14 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <target.jdk>1.5</target.jdk>
     <junit.version>3.8.1</junit.version>
-<!-- 
+<!--
     Custom distributions
     ====================
     override these values. You might do this by adding a profile to your local settings.xml.
      -->
     <whisker.site.url>file:stage</whisker.site.url>
     <whisker.site.name>Whisker Website</whisker.site.name>
-    <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>   
+    <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
   </properties>
 
   <!-- ================================ Build information -->
@@ -226,7 +233,7 @@
 	              <artifactId>maven-project-info-reports-plugin</artifactId>
 	              <version>2.4</version>
 	            </plugin>
-	  
+
 	          </reportPlugins>
 	        </configuration>
 	      </plugin>
@@ -248,14 +255,14 @@
     <plugins>
     </plugins>
   </build>
-  
+
   <!-- ================================ Project information -->
-  
+
   <name>Apache Whisker</name>
   <description>Apache Whisker wrangles legal documentation for composed applications.</description>
   <url>http://creadur.apache.org/whisker/</url>
   <inceptionYear>2011</inceptionYear>
-  
+
   <licenses>
     <license>
       <name>Apache License, Version 2</name>
@@ -301,14 +308,14 @@
         <name>${whisker.site.name}</name>
         <url>${whisker.site.url}</url>
     </site>
-  </distributionManagement>  
-  
+  </distributionManagement>
+
   <scm>
   	<url>http://svn.apache.org/repos/asf/creadur/whisker/trunk</url>
   	<connection>scm:svn:http://svn.apache.org/repos/asf/creadur/whisker/trunk</connection>
   	<developerConnection>scm:svn:https://svn.apache.org/repos/asf/creadur/whisker/trunk</developerConnection>
   </scm>
-  
+
   <ciManagement>
     <system>Buildbot</system>
     <url>http://ci.apache.org/builders/whisker-trunk</url>
