@@ -34,11 +34,13 @@ public class Helpers {
     }
 
     public static Check aLineContainsAL2() {
-        return new AnyLineContainsCheck("Version 2.0, January 2004");
+        return containsBothLines("Apache License", "Version 2.0, January 2004");
     }
 
     public static Check aLineContainsMIT() {
-        return new AnyLineContainsCheck("Permission is hereby granted, free of charge, to any person");
+        return containsBothLines(
+                "Permission is hereby granted, free of charge, to any person",
+                "The above copyright notice and this permission notice");
     }
 
     public static Check aLineContainsCDDL1() {
