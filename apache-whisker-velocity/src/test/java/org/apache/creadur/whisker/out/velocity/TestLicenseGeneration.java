@@ -40,26 +40,14 @@ public class TestLicenseGeneration extends TestCase {
 
     StringResultWriterFactory writerFactory;
     VelocityEngine subject;
-    String primaryLicenseText = "This is the primary license text";
-    Organisation thirdPartyOrg = new Organisation("third-party", "thirdparty.org", "http://thirdparty.org");
-    License primaryLicense = new License(false, primaryLicenseText, Collections.<String> emptyList(), "example.org", "http://example.org", "Example License");
-    String primaryOrg = "example.org";
-    String primaryNotice = "The primary notice.";
-    Collection<WithinDirectory> contents = new ArrayList<WithinDirectory>();
-    Map<String, License> licenses = new HashMap<String, License>();
-    Map<String, String> notices = new HashMap<String, String>();
-    Map<String, Organisation> organisations = new HashMap<String, Organisation>();
-    String secondaryCopyright;
-    String resourceName;
+    DescriptorBuilderForTesting builder;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        resourceName = "resource";
-        secondaryCopyright = "Copyright (c) this is secondary";
         writerFactory = new StringResultWriterFactory();
         subject = new VelocityEngine(new EmptyLog());
-        primaryLicense.storeIn(licenses);
+        builder = new DescriptorBuilderForTesting();
     }
 
     @Override
@@ -67,58 +55,21 @@ public class TestLicenseGeneration extends TestCase {
         super.tearDown();
     }
 
-    private void addDirectory(License license, final Organisation org,
-            final String directoryName) {
-        final WithinDirectory withinDirectory = buildDirectory(license, org,
-                directoryName);
-        contents.add(withinDirectory);
-    }
-
-    private Collection<Resource> buildResources() {
-        String noticeId = "notice:id";
-        notices.put(noticeId, "Some notice text");
-        Collection<Resource> resources = new ArrayList<Resource>();
-        String source = "";
-        resources.add(new Resource(resourceName, noticeId, source));
-        return resources;
-    }
-
-    private WithinDirectory buildDirectory(License license,
-            final Organisation org, final String directoryName) {
-        Collection<ByOrganisation> byOrgs = new ArrayList<ByOrganisation>();
-        Collection<Resource> resources = buildResources();
-        byOrgs.add(new ByOrganisation(org, resources));
-
-        Collection<WithLicense> withLicenses = new ArrayList<WithLicense>();
-        Map<String, String> params = Collections.emptyMap();
-        withLicenses.add(new WithLicense(license, secondaryCopyright, params, byOrgs));
-
-        Collection<ByOrganisation> publicDomain = Collections.emptyList();
-
-        final WithinDirectory withinDirectory = new WithinDirectory(directoryName, withLicenses, publicDomain);
-        return withinDirectory;
-    }
 
     public void testThatWhenThereAreNoThirdPartyContentsFooterIsNotShown() throws Exception {
-        Descriptor work =
-                new Descriptor(primaryLicense, primaryOrg,  primaryNotice,
-                        licenses, notices, organisations, contents);
+        Descriptor work = builder.build();
 
         subject.generate(work, writerFactory);
 
         assertTrue("Check that work is suitable for this test", work.isPrimaryOnly());
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
         assertEquals("When no third party contents, expect that only the license text is output",
-                primaryLicenseText,
+                builder.getPrimaryLicenseText(),
                 writerFactory.firstOutputFor(Result.LICENSE).trim());
     }
 
     public void testThatFooterIsShownWhenThereAreThirdPartyContents() throws Exception {
-        addDirectory(primaryLicense, thirdPartyOrg, "lib");
-
-        Descriptor work =
-                new Descriptor(primaryLicense, primaryOrg,  primaryNotice,
-                        licenses, notices, organisations, contents);
+        Descriptor work = builder.withPrimaryLicenseAndThirdPartyOrgInDirectory("lib").build();
 
         assertFalse("Check that work is suitable for this test", work.isPrimaryOnly());
 
@@ -131,21 +82,18 @@ public class TestLicenseGeneration extends TestCase {
     }
 
     public void testSecondaryCopyrightNoticeForPrimaryLicense() throws Exception {
-        final String primaryCopyrightNotice = "Copyright (c) this is primary";
-        addDirectory(primaryLicense, new Organisation(primaryOrg, "primary.org", "http://example.org"), "lib");
-        Descriptor work =
-                new Descriptor(primaryLicense, primaryCopyrightNotice, primaryOrg,  primaryNotice,
-                        licenses, notices, organisations, contents);
+        Descriptor work = builder.withPrimaryCopyrightNotice().withPrimaryLicenseAndOrgInDirectory("lib").build();
 
         subject.generate(work, writerFactory);
 
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
         assertTrue("Expect secondary copyright to be presented: " + writerFactory.firstOutputFor(Result.LICENSE),
                 StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
-                        secondaryCopyright));
+                        builder.getSecondaryCopyright()));
         assertTrue("Expect resource to be indicated: " + writerFactory.firstOutputFor(Result.LICENSE),
                 StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
-                        resourceName));
+                        builder.getResourceName()));
 
     }
+
 }
