@@ -40,7 +40,7 @@ if (results.hasFailed()) {
      license.expectThat(noLineContains("Copyright (c) 9595 The Example Project"))
      license.expectThat(noLineContains("This product includes software developed at"))
      license.expectThat(noLineContains("The Example Foundation (http://example.org/)."))
-     //license.expectThat(aLineContainsResource("apache.txt"))
+     license.expectThat(aLineContainsResource("apache.txt"))
      notice = noticeIn(basedir)
      notice.expectThat(aLineContains("Copyright (c) 9595 The Example Project"))
      notice.expectThat(aLineContains("This product includes software developed at"))

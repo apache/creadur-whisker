@@ -70,9 +70,11 @@ public class TestLicenseGeneration extends TestCase {
     }
 
     public void testSecondaryCopyrightNoticeForPrimaryLicense() throws Exception {
-        Descriptor work = builder.withPrimaryCopyrightNotice().withPrimaryLicenseAndOrgInDirectory("lib").build();
-
-        subject.generate(work, writerFactory);
+        subject.generate(
+                builder
+                .withSecondaryCopyrightNotice()
+                .withPrimaryCopyrightNotice()
+                .withPrimaryLicenseAndOrgInDirectory("lib").build(), writerFactory);
 
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
         assertTrue("Expect secondary copyright to be presented: " + writerFactory.firstOutputFor(Result.LICENSE),
@@ -88,12 +90,41 @@ public class TestLicenseGeneration extends TestCase {
                         builder.getResourceName()));
     }
 
+    private void verifyThatResourceNameIsNotWritten() {
+        assertFalse("Expect resource to be indicated: " + writerFactory.firstOutputFor(Result.LICENSE),
+                StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
+                        builder.getResourceName()));
+    }
+
     public void testPrimaryOrganisationSecondaryLicense() throws Exception {
         subject.generate(
                 builder.withSecondaryLicensePrimaryOrganisationInDirectory("lib").build(),
                 writerFactory);
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
+
         verifyThatResourceNameIsWritten();
+
+    }
+
+    public void testIgnorePrimaryOrganisationPrimaryLicense() throws Exception {
+        subject.generate(
+                builder.withPrimaryLicenseAndOrgInDirectory("lib").build(),
+                writerFactory);
+        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
+        verifyThatResourceNameIsNotWritten();
+
+    }
+
+    public void testIgnorePrimaryOrganisationPrimaryLicensePrimaryCopyrightNotice() throws Exception {
+        subject.generate(
+                builder
+                    .withPrimaryCopyrightNotice()
+                    .withPrimaryLicenseAndOrgInDirectory("lib")
+                    .build(),
+                writerFactory);
+        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
+        verifyThatResourceNameIsNotWritten();
+
     }
 
 }

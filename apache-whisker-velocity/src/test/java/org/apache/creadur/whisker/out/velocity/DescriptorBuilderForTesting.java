@@ -46,13 +46,12 @@ public class DescriptorBuilderForTesting {
     Map<String, License> licenses = new HashMap<String, License>();
     Map<String, String> notices = new HashMap<String, String>();
     Map<String, Organisation> organisations = new HashMap<String, Organisation>();
-    String secondaryCopyright;
+    String secondaryCopyright = null;
     String resourceName;
     String primaryCopyrightNotice = null;
 
     public DescriptorBuilderForTesting() {
         resourceName = "resource";
-        secondaryCopyright = "Copyright (c) this is secondary";
         primaryLicense.storeIn(licenses);
     }
 
@@ -145,6 +144,15 @@ public class DescriptorBuilderForTesting {
     public DescriptorBuilderForTesting withSecondaryLicensePrimaryOrganisationInDirectory(
             String directoryName) {
         addDirectory(secondaryLicense, primaryOrganisation(), directoryName);
+        return this;
+    }
+
+    public DescriptorBuilderForTesting withSecondaryCopyrightNotice() {
+        return withSecondaryCopyrightNotice("Copyright (c) this is secondary");
+    }
+
+    public DescriptorBuilderForTesting withSecondaryCopyrightNotice(final String secondaryCopyright) {
+        this.secondaryCopyright = secondaryCopyright;
         return this;
     }
 

@@ -224,6 +224,7 @@ public class VelocityReports implements LogChute {
         final VelocityContext context = new VelocityContext();
         context.put("work", work);
         context.put("indent", new Indentation());
+        context.put("helper", new RenderingHelper(work));
         return context;
     }
 
