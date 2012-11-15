@@ -52,6 +52,8 @@ Parameterising a Template for a License Family
 
        * an {{{./3rd-party-group.html}informal group}}
 
+   * All about {{{./copyright-notices.html}copyright notices}}
+
 
 
   or dive into sample meta-data:
@@ -73,6 +75,8 @@ Parameterising a Template for a License Family
       * a for- or non-profit {{{./3rd-party-corporate-sample.xml}corporation}}
 
       * an informal {{{./3rd-party-group-sample.xml}group}}
+
+   * {{{./copyright-notices-sample.xml}copyright notices}}
 
 
  If you're using an IDE then see the

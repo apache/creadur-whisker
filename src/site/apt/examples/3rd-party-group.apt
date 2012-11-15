@@ -51,6 +51,8 @@ With A Third Party Work by an Informal Group
      featuring the
      {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
 
+   * All about {{{./copyright-notices.html}copyright notices}}
+
 
   or dive into sample meta-data:
 
@@ -71,6 +73,8 @@ With A Third Party Work by an Informal Group
       * a for- or non-profit {{{./3rd-party-corporate-sample.xml}corporation}}
 
       * an informal {{{./3rd-party-group-sample.xml}group}}
+
+   * {{{./copyright-notices-sample.xml}copyright notices}}
 
  Whisker treats individual maintainers,
  groups, for- and non-profit corporations as {{{../faq.html#what-is-org}organisations}},

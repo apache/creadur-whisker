@@ -103,6 +103,8 @@ What Is Apache Whisker?
 
       * an informal {{{./examples/3rd-party-group-sample.xml}group}}
 
+   * {{{./examples/copyright-notices-sample.xml}copyright notices}}
+
  or browse the {{{./faq.html}FAQ}}.
 
  A warm welcome is guaranteed on our
@@ -122,5 +124,7 @@ What Is Apache Whisker?
      {{{./faq.html#what-is-license-family}license family}},
      featuring the
      {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
+
+ * All about {{{./examples/copyright-notices.html}copyright notices}}
 
 
