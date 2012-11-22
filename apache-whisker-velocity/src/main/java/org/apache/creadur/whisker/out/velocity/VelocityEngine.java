@@ -22,6 +22,7 @@ import java.util.Collection;
 
 import org.apache.commons.logging.Log;
 import org.apache.creadur.whisker.app.AbstractEngine;
+import org.apache.creadur.whisker.app.Configuration;
 import org.apache.creadur.whisker.app.ResultWriterFactory;
 import org.apache.creadur.whisker.app.analysis.LicenseAnalyst;
 import org.apache.creadur.whisker.model.Descriptor;
@@ -49,14 +50,16 @@ public class VelocityEngine extends AbstractEngine {
      * Generates a template, and writes result using given factory.
      * @param withBase not null
      * @param writerFactory not null
+     * @param configuration not null
      * @return this engine, not null
      * @throws Exception when generation fails
-     * @see AbstractEngine#skeleton(Collection, ResultWriterFactory)
+     * @see AbstractEngine#skeleton(Collection, ResultWriterFactory, Configuration)
      */
     @Override
     public final AbstractEngine skeleton(
             final Collection<Directory> withBase,
-            final ResultWriterFactory writerFactory)
+            final ResultWriterFactory writerFactory,
+            final Configuration configuration)
                 throws Exception {
         reporter(writerFactory).generateTemplate(withBase);
         return this;
@@ -75,14 +78,16 @@ public class VelocityEngine extends AbstractEngine {
      * Generates a validation report, and writes result using given factory.
      * @param analyst not null
      * @param writerFactory not null
+     * @param configuration not null
      * @return this, not null
      * @throws Exception when validation fails
-     * @see AbstractEngine#validate(LicenseAnalyst, ResultWriterFactory)
+     * @see AbstractEngine#validate(LicenseAnalyst, ResultWriterFactory, Configuration)
      */
     @Override
     public final AbstractEngine validate(
             final LicenseAnalyst analyst,
-            final ResultWriterFactory writerFactory) throws Exception {
+            final ResultWriterFactory writerFactory,
+            final Configuration configuration) throws Exception {
         reporter(writerFactory).validate(analyst);
         return this;
     }
@@ -91,14 +96,16 @@ public class VelocityEngine extends AbstractEngine {
      * Generates a directories report, and writes result using given factory.
      * @param directories not null
      * @param writerFactory not null
+     * @param configuration not null
      * @return this, not null
      * @throws Exception when reporting fails
-     * @see AbstractEngine#report(java.util.Collection, ResultWriterFactory)
+     * @see AbstractEngine#report(java.util.Collection, ResultWriterFactory, Configuration)
      */
     @Override
     public final AbstractEngine report(
             final Collection<Directory> directories,
-            final ResultWriterFactory writerFactory) throws Exception {
+            final ResultWriterFactory writerFactory,
+            final Configuration configuration) throws Exception {
         reporter(writerFactory).report(directories);
         return this;
     }
@@ -107,14 +114,16 @@ public class VelocityEngine extends AbstractEngine {
      * Generates documents, and writes results using given factory.
      * @param work not null
      * @param writerFactory not null
+     * @param configuration not null
      * @return this, not null
      * @throws Exception when generation fails.
-     * @see AbstractEngine#generate(Descriptor, ResultWriterFactory)
+     * @see AbstractEngine#generate(Descriptor, ResultWriterFactory, Configuration)
      */
     @Override
     public final AbstractEngine generate(
             final Descriptor work,
-            final ResultWriterFactory writerFactory) throws Exception {
+            final ResultWriterFactory writerFactory,
+            final Configuration configuration) throws Exception {
         reporter(writerFactory).generate(work);
         return this;
     }

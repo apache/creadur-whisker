@@ -18,6 +18,8 @@
  */
 package org.apache.creadur.whisker.out.velocity;
 
+import static org.apache.creadur.whisker.app.ConfigurationBuilder.*;
+
 import junit.framework.TestCase;
 
 import org.apache.commons.lang3.StringUtils;
@@ -47,7 +49,7 @@ public class TestLicenseGeneration extends TestCase {
     public void testThatWhenThereAreNoThirdPartyContentsFooterIsNotShown() throws Exception {
         Descriptor work = builder.build();
 
-        subject.generate(work, writerFactory);
+        subject.generate(work, writerFactory, aConfiguration().build());
 
         assertTrue("Check that work is suitable for this test", work.isPrimaryOnly());
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
@@ -61,7 +63,7 @@ public class TestLicenseGeneration extends TestCase {
 
         assertFalse("Check that work is suitable for this test", work.isPrimaryOnly());
 
-        subject.generate(work, writerFactory);
+        subject.generate(work, writerFactory, aConfiguration().build());
 
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
         assertTrue("Expect information when third party contents present: " + writerFactory.firstOutputFor(Result.LICENSE),
@@ -74,7 +76,7 @@ public class TestLicenseGeneration extends TestCase {
                 builder
                 .withSecondaryCopyrightNotice()
                 .withPrimaryCopyrightNotice()
-                .withPrimaryLicenseAndOrgInDirectory("lib").build(), writerFactory);
+                .withPrimaryLicenseAndOrgInDirectory("lib").build(), writerFactory, aConfiguration().build());
 
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
         assertTrue("Expect secondary copyright to be presented: " + writerFactory.firstOutputFor(Result.LICENSE),
@@ -99,7 +101,7 @@ public class TestLicenseGeneration extends TestCase {
     public void testPrimaryOrganisationSecondaryLicense() throws Exception {
         subject.generate(
                 builder.withSecondaryLicensePrimaryOrganisationInDirectory("lib").build(),
-                writerFactory);
+                writerFactory, aConfiguration().build());
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
 
         verifyThatResourceNameIsWritten();
@@ -109,7 +111,7 @@ public class TestLicenseGeneration extends TestCase {
     public void testIgnorePrimaryOrganisationPrimaryLicense() throws Exception {
         subject.generate(
                 builder.withPrimaryLicenseAndOrgInDirectory("lib").build(),
-                writerFactory);
+                writerFactory, aConfiguration().build());
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
         verifyThatResourceNameIsNotWritten();
 
@@ -121,7 +123,7 @@ public class TestLicenseGeneration extends TestCase {
                     .withPrimaryCopyrightNotice()
                     .withPrimaryLicenseAndOrgInDirectory("lib")
                     .build(),
-                writerFactory);
+                writerFactory, aConfiguration().build());
         assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
         verifyThatResourceNameIsNotWritten();
 

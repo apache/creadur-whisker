@@ -18,6 +18,8 @@
  */
 package org.apache.creadur.whisker.app;
 
+import static org.apache.creadur.whisker.app.ConfigurationBuilder.*;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
@@ -159,8 +161,16 @@ public class Whisker {
      * @return this, not null
      */
     private Whisker skeleton() throws Exception {
-        engine.skeleton(directories(), getWriterFactory());
+        engine.skeleton(directories(), getWriterFactory(), configuration());
         return this;
+    }
+
+    /**
+     * Builds a populated configuration.
+     * @return not null
+     */
+    private Configuration configuration() {
+        return aConfiguration().build();
     }
 
     /**
@@ -169,7 +179,7 @@ public class Whisker {
      * @throws Exception when the report creation fails
      */
     private Whisker report() throws Exception {
-        engine.report(directories(), getWriterFactory());
+        engine.report(directories(), getWriterFactory(), configuration());
         return this;
     }
 
@@ -179,7 +189,7 @@ public class Whisker {
      * @throws Exception when the generation fails
      */
     private Whisker generate() throws Exception {
-        engine.generate(new LicenseAnalyst().validate(load(getLicenseDescriptor())), getWriterFactory());
+        engine.generate(new LicenseAnalyst().validate(load(getLicenseDescriptor())), getWriterFactory(), configuration());
         return this;
     }
 
@@ -189,7 +199,7 @@ public class Whisker {
      * @throws Exception when the validation fails
      */
     private Whisker validate() throws Exception {
-        engine.validate(new LicenseAnalyst(directories()).analyse(load(getLicenseDescriptor())), getWriterFactory());
+        engine.validate(new LicenseAnalyst(directories()).analyse(load(getLicenseDescriptor())), getWriterFactory(), configuration());
         return this;
     }
 

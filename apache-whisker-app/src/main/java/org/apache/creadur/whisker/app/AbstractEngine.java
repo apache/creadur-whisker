@@ -33,41 +33,46 @@ public abstract class AbstractEngine {
      * Writes templates to help create meta-data.
      * @param withBase from this base, not null
      * @param writerFactory not null
+     * @param configuration not null
      * @return this
      * @throws Exception when creation fails
      */
     public abstract AbstractEngine skeleton(
             Collection<Directory> withBase,
-            ResultWriterFactory writerFactory) throws Exception;
+            ResultWriterFactory writerFactory, Configuration configuration) throws Exception;
 
     /**
      * Reports validations.
      * @param analyst not null
      * @param writerFactory not null
+     * @param configuration not null
      * @return not null
      * @throws Exception when report creation fails
      */
     public abstract AbstractEngine validate(LicenseAnalyst analyst,
-            ResultWriterFactory writerFactory) throws Exception;
+            ResultWriterFactory writerFactory, Configuration configuration) throws Exception;
 
     /**
      * Writes a report describing the directories present.
      * @param directories not null
      * @param writerFactory not null
+     * @param configuration not null
      * @return this
      * @throws Exception when report creation fails
      */
     public abstract AbstractEngine report(
             final Collection<Directory> directories,
-            ResultWriterFactory writerFactory) throws Exception;
+            ResultWriterFactory writerFactory, Configuration configuration) throws Exception;
 
     /**
      * Writes legal documents.
      * @param work not null
      * @param writerFactory not null
+     * @param configuration not null
      * @return this
      * @throws Exception when report creation fails
      */
     public abstract AbstractEngine generate(final Descriptor work,
-            ResultWriterFactory writerFactory) throws Exception;
+            ResultWriterFactory writerFactory, Configuration configuration) throws Exception;
+
 }
