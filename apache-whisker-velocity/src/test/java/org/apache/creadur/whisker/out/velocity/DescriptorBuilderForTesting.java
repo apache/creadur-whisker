@@ -49,6 +49,7 @@ public class DescriptorBuilderForTesting {
     String secondaryCopyright = null;
     String resourceName;
     String primaryCopyrightNotice = null;
+    public String sourceUrl = "";
 
     public DescriptorBuilderForTesting() {
         resourceName = "resource";
@@ -110,8 +111,7 @@ public class DescriptorBuilderForTesting {
         String noticeId = "notice:id";
         notices.put(noticeId, "Some notice text");
         Collection<Resource> resources = new ArrayList<Resource>();
-        String source = "";
-        resources.add(new Resource(resourceName, noticeId, source));
+        resources.add(new Resource(resourceName, noticeId, sourceUrl));
         return resources;
     }
 
@@ -153,6 +153,11 @@ public class DescriptorBuilderForTesting {
 
     public DescriptorBuilderForTesting withSecondaryCopyrightNotice(final String secondaryCopyright) {
         this.secondaryCopyright = secondaryCopyright;
+        return this;
+    }
+
+    public DescriptorBuilderForTesting withSourceURL() {
+        sourceUrl = "http://example.org/bogus";
         return this;
     }
 

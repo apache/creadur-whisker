@@ -37,7 +37,7 @@ Within the $directory.Name directory
         by $organisation.Name #if ($organisation.URL) $organisation.URL #end
 
 #foreach( $resource in $organisation.Resources)
-            $resource.Name
+            $resource.Name $helper.sourceUrl($resource)
 #end
 #end
 #end
@@ -56,7 +56,7 @@ $indent.indent(12,$license.CopyrightNotice) $indent.indent(12, $license.Text)
         from $organisation.Name #if ($organisation.URL) $organisation.URL #end
 
 #foreach( $resource in $organisation.Resources)
-            $resource.Name
+            $resource.Name $helper.sourceUrl($resource)
 #end
 #end
 #end

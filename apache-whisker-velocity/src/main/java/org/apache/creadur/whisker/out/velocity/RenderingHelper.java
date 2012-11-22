@@ -18,8 +18,11 @@
  */
 package org.apache.creadur.whisker.out.velocity;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.creadur.whisker.app.Configuration;
 import org.apache.creadur.whisker.model.ByOrganisation;
 import org.apache.creadur.whisker.model.Descriptor;
+import org.apache.creadur.whisker.model.Resource;
 import org.apache.creadur.whisker.model.WithLicense;
 
 /**
@@ -33,12 +36,18 @@ public class RenderingHelper {
     private final Descriptor work;
 
     /**
+     * Configuration for the rendering.
+     */
+    private final Configuration configuration;
+
+    /**
      * Constructs a helper for the given work.
      * @param work not null
      */
-    public RenderingHelper(final Descriptor work) {
+    public RenderingHelper(final Descriptor work, final Configuration configuration) {
         super();
         this.work = work;
+        this.configuration = configuration;
     }
 
     /**
@@ -85,5 +94,23 @@ public class RenderingHelper {
      */
     public boolean isNot(boolean claim) {
         return !claim;
+    }
+
+    /**
+     * Renders the resource source URL
+     * based on configuration setting suitable
+     * for the license file.
+     * @param resource not null
+     * @return not null, possible empty string
+     */
+    public String sourceUrl(final Resource resource) {
+        final String result;
+        final String source = resource.getSource();
+        if (StringUtils.isBlank(source) || isNot(configuration.includeSourceURLsInLicense())) {
+            result = "";
+        } else {
+            result = " from " + source;
+        }
+        return result;
     }
 }

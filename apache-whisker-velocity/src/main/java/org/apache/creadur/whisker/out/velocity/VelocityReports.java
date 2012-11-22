@@ -25,6 +25,7 @@ import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
+import org.apache.creadur.whisker.app.Configuration;
 import org.apache.creadur.whisker.app.ResultWriterFactory;
 import org.apache.creadur.whisker.app.analysis.LicenseAnalyst;
 import org.apache.creadur.whisker.model.Descriptor;
@@ -167,9 +168,11 @@ public class VelocityReports implements LogChute {
     /**
      * Reports on work.
      * @param work not null
+     * @param configuration not null
      * @throws Exception when generation fails
      */
-    public final void generate(final Descriptor work) throws Exception {
+    public final void generate(final Descriptor work,
+            final Configuration configuration) throws Exception {
         final List<Product> products = new ArrayList<Product>();
         for (Product product: PRODUCTS_THAT_GENERATE_LICENSING_MATERIALS) {
             switch (product) {
@@ -184,7 +187,7 @@ public class VelocityReports implements LogChute {
 
         }
         final Product[] pruductArray = new Product[products.size()];
-        merge(products.toArray(pruductArray), context(work));
+        merge(products.toArray(pruductArray), context(work, configuration));
     }
 
     /**
@@ -218,13 +221,15 @@ public class VelocityReports implements LogChute {
     /**
      * Creates a context, and loads it for descriptor work.
      * @param work not null
+     * @param configuration not null
      * @return not null
      */
-    private VelocityContext context(final Descriptor work) {
+    private VelocityContext context(final Descriptor work,
+            final Configuration configuration) {
         final VelocityContext context = new VelocityContext();
         context.put("work", work);
         context.put("indent", new Indentation());
-        context.put("helper", new RenderingHelper(work));
+        context.put("helper", new RenderingHelper(work, configuration));
         return context;
     }
 

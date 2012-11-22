@@ -124,7 +124,7 @@ public class VelocityEngine extends AbstractEngine {
             final Descriptor work,
             final ResultWriterFactory writerFactory,
             final Configuration configuration) throws Exception {
-        reporter(writerFactory).generate(work);
+        reporter(writerFactory).generate(work, configuration);
         return this;
     }
 }
