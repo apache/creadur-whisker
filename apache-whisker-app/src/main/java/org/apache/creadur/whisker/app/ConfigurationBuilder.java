@@ -71,4 +71,14 @@ public class ConfigurationBuilder {
         return this;
     }
 
+    /**
+     * Adjusts the configuration.
+     * @param licenseConfiguration not null
+     * @return this builder, not null
+     */
+    public ConfigurationBuilder with(final LicenseConfiguration licenseConfiguration) {
+        includeSourceUrlsInLicense = licenseConfiguration.includeSourceUrlsInLicense();
+        return this;
+    }
+
 }

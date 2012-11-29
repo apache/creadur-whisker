@@ -18,6 +18,7 @@
  */
 package org.apache.creadur.whisker.app;
 
+import static org.apache.creadur.whisker.app.LicenseConfiguration.*;
 import static org.apache.creadur.whisker.app.ConfigurationBuilder.*;
 
 import java.io.IOException;
@@ -46,6 +47,26 @@ public class Whisker {
     private ResultWriterFactory writerFactory;
     /** Pluggable templating. */
     private AbstractEngine engine;
+    /** Configuration options for license rendering */
+    private LicenseConfiguration licenseConfiguration = DEFAULT_LICENSE_CONFIGURATION;
+
+    /**
+     * Gets the configuration options for license rendering.
+     * @return not null
+     */
+    public LicenseConfiguration getLicenseConfiguration() {
+        return licenseConfiguration;
+    }
+
+    /**
+     * Sets the configuration options for license rendering.
+     * @param licenseConfiguration not null
+     * @return this, not null
+     */
+    public Whisker setLicenseConfiguration(final LicenseConfiguration licenseConfiguration) {
+        this.licenseConfiguration = notNull(licenseConfiguration);
+        return this;
+    }
 
     /**
      * Gets the factory that builds product {@link Writer}s.
@@ -169,8 +190,8 @@ public class Whisker {
      * Builds a populated configuration.
      * @return not null
      */
-    private Configuration configuration() {
-        return aConfiguration().build();
+    public Configuration configuration() {
+        return aConfiguration().with(licenseConfiguration).build();
     }
 
     /**
