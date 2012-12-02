@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.plugin.maven;
 
@@ -22,74 +22,101 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.maven.plugin.logging.Log;
 
 /**
- * 
+ * Adapts commons logging calls to Maven.
  */
 public class MojoToJCLLog implements org.apache.commons.logging.Log {
-    
+
+    /** Maven's log */
     private final Log log;
 
-    public MojoToJCLLog(Log log) {
+    /**
+     * Constructs a log than delegates to Maven.
+     * @param log not null
+     */
+    public MojoToJCLLog(final Log log) {
         super();
         this.log = log;
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#debug(java.lang.Object)
      */
-    public void debug(Object message) {
+    public void debug(final Object message) {
         log.debug(ObjectUtils.toString(message));
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
+     * @param t cause
      * @see org.apache.commons.logging.Log#debug(java.lang.Object, java.lang.Throwable)
      */
-    public void debug(Object message, Throwable t) {
+    public void debug(final Object message, final Throwable t) {
         log.debug(ObjectUtils.toString(message), t);
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#error(java.lang.Object)
      */
-    public void error(Object message) {
+    public void error(final Object message) {
         log.error(ObjectUtils.toString(message));
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
+     * @param t cause
      * @see org.apache.commons.logging.Log#error(java.lang.Object, java.lang.Throwable)
      */
-    public void error(Object message, Throwable t) {
+    public void error(final Object message, final Throwable t) {
         log.error(ObjectUtils.toString(message), t);
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#fatal(java.lang.Object)
      */
-    public void fatal(Object message) {
+    public void fatal(final Object message) {
         log.error(ObjectUtils.toString(message));
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
+     * @param t cause
      * @see org.apache.commons.logging.Log#fatal(java.lang.Object, java.lang.Throwable)
      */
-    public void fatal(Object message, Throwable t) {
+    public void fatal(final Object message, final Throwable t) {
         log.error(ObjectUtils.toString(message), t);
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#info(java.lang.Object)
      */
-    public void info(Object message) {
+    public void info(final Object message) {
         log.info(ObjectUtils.toString(message));
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
+     * @param t cause
      * @see org.apache.commons.logging.Log#info(java.lang.Object, java.lang.Throwable)
      */
-    public void info(Object message, Throwable t) {
+    public void info(final Object message, final Throwable t) {
         log.info(ObjectUtils.toString(message), t);
     }
 
     /**
+     * Delegates to Maven.
+     * @return true when debug is enabled in Maven
      * @see org.apache.commons.logging.Log#isDebugEnabled()
      */
     public boolean isDebugEnabled() {
@@ -97,6 +124,8 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     }
 
     /**
+     * Delegates to Maven.
+     * @return true when error is enabled in Maven
      * @see org.apache.commons.logging.Log#isErrorEnabled()
      */
     public boolean isErrorEnabled() {
@@ -104,6 +133,8 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     }
 
     /**
+     * Delegates to Maven.
+     * @return true when error is enabled in Maven
      * @see org.apache.commons.logging.Log#isFatalEnabled()
      */
     public boolean isFatalEnabled() {
@@ -111,6 +142,8 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     }
 
     /**
+     * Delegates to Maven.
+     * @return true when info is enabled in Maven
      * @see org.apache.commons.logging.Log#isInfoEnabled()
      */
     public boolean isInfoEnabled() {
@@ -118,6 +151,8 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     }
 
     /**
+     * Delegates to Maven.
+     * @return true when trace is enabled in Maven
      * @see org.apache.commons.logging.Log#isTraceEnabled()
      */
     public boolean isTraceEnabled() {
@@ -125,6 +160,8 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     }
 
     /**
+     * Delegates to Maven.
+     * @return true when warn is enabled in Maven
      * @see org.apache.commons.logging.Log#isWarnEnabled()
      */
     public boolean isWarnEnabled() {
@@ -132,31 +169,40 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#trace(java.lang.Object)
      */
-    public void trace(Object message) {
+    public void trace(final Object message) {
         log.debug(ObjectUtils.toString(message));
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
+     * @param t cause
      * @see org.apache.commons.logging.Log#trace(java.lang.Object, java.lang.Throwable)
      */
-    public void trace(Object message, Throwable t) {
+    public void trace(final Object message, final Throwable t) {
         log.debug(ObjectUtils.toString(message), t);
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
      * @see org.apache.commons.logging.Log#warn(java.lang.Object)
      */
-    public void warn(Object message) {
+    public void warn(final Object message) {
         log.warn(ObjectUtils.toString(message));
     }
 
     /**
+     * Delegates to Maven.
+     * @param message possibly null
+     * @param t cause
      * @see org.apache.commons.logging.Log#warn(java.lang.Object, java.lang.Throwable)
      */
-    public void warn(Object message, Throwable t) {
+    public void warn(final Object message, final Throwable t) {
         log.warn(ObjectUtils.toString(message), t);
     }
-
 }

@@ -14,7 +14,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License. 
+ * under the License.
  */
 package org.apache.creadur.whisker.plugin.maven;
 
@@ -22,7 +22,6 @@ import java.io.File;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.creadur.whisker.app.Act;
 import org.apache.creadur.whisker.app.Whisker;
 import org.apache.creadur.whisker.app.load.StreamableResourceFactory;
@@ -43,7 +42,7 @@ public class GenerateMojo extends AbstractMojo {
      * @parameter default-value="${project.build.directory}"
      */
     private File outputDirectory;
-    
+
     /**
      * The licensing materials will be encoding thus.
      * @parameter property="outputEncoding" default-value="${project.build.sourceEncoding}"
@@ -53,17 +52,19 @@ public class GenerateMojo extends AbstractMojo {
     /**
      * This file contains a description of the licensing qualities of
      * the expected contents of the assembled application.
-     * 
+     *
      * @required
      * @parameter property="apacheWhiskerDescriptor"
      */
     private File descriptor;
-    
+
     /**
      * Generate licensing related materials such as LICENSE and NOTICE documents.
+     * @throws MojoExecutionException when Whisker fails,
+     * or when configured cannot be executed
      * @see org.apache.maven.plugin.Mojo#execute()
      */
-    public void execute() throws MojoExecutionException, MojoFailureException { 
+    public void execute() throws MojoExecutionException {
         if (descriptor.exists()) {
             if (descriptor.canRead()) {
                  try {
