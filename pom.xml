@@ -107,12 +107,25 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <target.jdk>1.5</target.jdk>
     <junit.version>3.8.1</junit.version>
-<!--
-    Custom distributions
-    ====================
-    override these values. You might do this by adding a profile to your local settings.xml.
-     -->
-    <whisker.site.url>file:stage</whisker.site.url>
+    <!--
+    Publication to the website is a two phase operation:
+
+     1. Deploy to local stage: mvn site:deploy
+     2. Publish to Apache CMS: mvn scm-publish:publish-scm
+
+    This will only work when the origin for scm-publish:publish-scm
+    is the target for site:deploy.
+
+    SO MAKE SURE THAT THE FOLLOWING PROPERTIES RESOLVE TO THE SAME
+    DIRECTORY:
+
+     * scmpublish.content
+     * whisker.site.url
+
+    -->
+    <whisker.site.local>stage</whisker.site.local>
+    <scmpublish.content>${whisker.site.local}</scmpublish.content>
+    <whisker.site.url>file:${whisker.site.local}</whisker.site.url>
     <whisker.site.name>Whisker Website</whisker.site.name>
     <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
   </properties>
@@ -148,7 +161,7 @@
 	            <plugin>
 	              <groupId>org.apache.maven.plugins</groupId>
 	              <artifactId>maven-javadoc-plugin</artifactId>
-	              <version>2.8.1</version>
+	              <version>2.9</version>
 	            </plugin>
 	            <plugin>
 	              <groupId>org.apache.maven.plugins</groupId>
@@ -249,11 +262,28 @@
 	            </goals>
 	          </execution>
 	        </executions>
-	      </plugin>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-scm-publish-plugin</artifactId>
+            <version>1.0-beta-2</version>
+            <extensions>true</extensions>
+            <configuration>
+              <!-- svn location for publication -->
+              <pubScmUrl>scm:svn:https://svn.apache.org/repos/asf/creadur/site/trunk/content/whisker/</pubScmUrl>
+            </configuration>
+          </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
     </plugins>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+         <artifactId>wagon-ssh</artifactId>
+         <version>1.0-beta-7</version>
+      </extension>
+    </extensions>
   </build>
 
   <!-- ================================ Project information -->
