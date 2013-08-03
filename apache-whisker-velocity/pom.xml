@@ -15,7 +15,7 @@
   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
   KIND, either express or implied.  See the License for the
   specific language governing permissions and limitations
-  under the License.    
+  under the License.
 -->
 <project
   xmlns="http://maven.apache.org/POM/4.0.0"
@@ -30,7 +30,6 @@
     <version>0.1-SNAPSHOT</version>
   </parent>
 
-  <groupId>org.apache.creadur.whisker</groupId>
   <artifactId>apache-whisker-velocity</artifactId>
   <packaging>jar</packaging>
 
@@ -39,40 +38,40 @@
         <groupId>org.apache.velocity</groupId>
         <artifactId>velocity</artifactId>
     </dependency>
-  
+
     <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
     </dependency>
-      
+
     <dependency>
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
     </dependency>
-    
+
     <dependency>
         <groupId>commons-logging</groupId>
         <artifactId>commons-logging-api</artifactId>
     </dependency>
-      
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>org.jmock</groupId>
       <artifactId>jmock-junit3</artifactId>
       <scope>test</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-scan</artifactId>
       <version>${project.version}</version>
     </dependency>
-    
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-model</artifactId>
@@ -83,13 +82,13 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-app</artifactId>
       <version>${project.version}</version>
-    </dependency>    
+    </dependency>
   </dependencies>
 
- <!-- 
-  
-  
-  ================================  
+ <!--
+
+
+  ================================
   Project information
   -->
   <name>Apache Whisker::Output(velocity)</name>

@@ -15,7 +15,7 @@
   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
   KIND, either express or implied.  See the License for the
   specific language governing permissions and limitations
-  under the License.    
+  under the License.
 -->
 <project
   xmlns="http://maven.apache.org/POM/4.0.0"
@@ -30,7 +30,6 @@
     <version>0.1-SNAPSHOT</version>
   </parent>
 
-  <groupId>org.apache.creadur.whisker</groupId>
   <artifactId>apache-whisker-app</artifactId>
   <packaging>jar</packaging>
 
@@ -39,44 +38,44 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
     </dependency>
- 
+
     <dependency>
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
     </dependency>
-          
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-scan</artifactId>
       <version>${project.version}</version>
     </dependency>
 
-    
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-xml</artifactId>
       <version>${project.version}</version>
     </dependency>
 
-    
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-model</artifactId>
       <version>${project.version}</version>
     </dependency>
-    
+
   </dependencies>
 
- <!-- 
-  
-  
-  ================================  
+ <!--
+
+
+  ================================
   Project information
   -->
   <name>Apache Whisker::App</name>
