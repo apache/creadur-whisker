@@ -111,7 +111,13 @@ Build
                   </manifestEntries>
                 </transformer>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer">
-                    <addHeader>true</addHeader>
+                  <addHeader>true</addHeader>
+                </transformer>
+                 <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
+                  <resource>META-INF/LICENSE</resource>
+                  <file>LICENSE</file>
                 </transformer>
               </transformers>
             </configuration>
