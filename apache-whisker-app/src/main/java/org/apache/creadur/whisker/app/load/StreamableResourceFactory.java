@@ -65,7 +65,7 @@ public final class StreamableResourceFactory {
      * builds an instance that streams, on demand,
      * from the classpath. Otherwise, builds an
      * instances that streams from the file system.
-     * @param resourceName
+     * @param resourceName source stream name.
      * @return not null
      */
     public StreamableResource streamFromResource(final String resourceName) {

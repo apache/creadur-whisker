@@ -70,7 +70,7 @@ public final class Main {
     /**
      * Bootstraps application.
      * @param args not null
-     * @throws Exception when application unexpectedly fails
+     * @throws Exception when application fails unexpectedly
      */
     public static void main(final String[] args) throws Exception {
         System.exit(new Main(app()).run(args));
@@ -196,7 +196,7 @@ public final class Main {
      * @param args not null
      * @return true when command line contains option for help,
      * false otherwise
-     * @throws ParseException
+     * @throws ParseException in case options could not be read properly.
      */
     public boolean printHelp(String[] args) throws ParseException {
         final CommandLineOption help = CommandLineOption.PRINT_HELP;

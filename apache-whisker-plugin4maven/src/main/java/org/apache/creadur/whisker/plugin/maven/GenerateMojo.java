@@ -20,42 +20,39 @@ package org.apache.creadur.whisker.plugin.maven;
 
 import java.io.File;
 
-import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.creadur.whisker.app.Act;
 import org.apache.creadur.whisker.app.Whisker;
 import org.apache.creadur.whisker.app.load.StreamableResourceFactory;
 import org.apache.creadur.whisker.app.out.WriteResultsIntoDirectoryFactory;
 import org.apache.creadur.whisker.out.velocity.VelocityEngine;
-
+import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.*;
 
 /**
  * Generates licensing related materials such as LICENSE and NOTICE documents
- * for assembled applications.
- * @goal generate
+ * for assembled applications. The plugin is not bound to a specific lifecycle phase.
  */
+@Mojo(name = "generate")
 public class GenerateMojo extends AbstractMojo {
 
     /**
      * Destination for generated materials
-     *
-     * @parameter default-value="${project.build.directory}"
      */
+	@Parameter(defaultValue = "${project.build.directory}")
     private File outputDirectory;
 
     /**
      * The licensing materials will be encoding thus.
-     * @parameter property="outputEncoding" default-value="${project.build.sourceEncoding}"
      */
+	@Parameter(property = "outputEncoding", defaultValue = "${project.build.sourceEncoding}")
     private String outputEncoding;
 
     /**
      * This file contains a description of the licensing qualities of
      * the expected contents of the assembled application.
-     *
-     * @required
-     * @parameter property="apacheWhiskerDescriptor"
      */
+	@Parameter(property = "apacheWhiskerDescriptor", required = true)
     private File descriptor;
 
     /**

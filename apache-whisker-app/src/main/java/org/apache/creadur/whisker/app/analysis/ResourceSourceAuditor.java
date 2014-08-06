@@ -104,7 +104,6 @@ public final class ResourceSourceAuditor extends Visitor {
      * @see Visitor#visit(Resource)
      */
     @Override
-    @SuppressWarnings("PMD.EmptyIfStmt")
     public void visit(final Resource resource) {
         if (lastLicense == null) {
             throw new IllegalArgumentException(
@@ -120,8 +119,6 @@ public final class ResourceSourceAuditor extends Visitor {
             } else {
                 resourcesMissingSource.add(pair);
             }
-        } else {
-            // Source not required
         }
     }
 

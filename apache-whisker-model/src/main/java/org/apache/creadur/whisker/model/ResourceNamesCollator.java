@@ -75,12 +75,9 @@ public class ResourceNamesCollator extends Visitor {
      * @param resource not null
      */
     @Override
-    @SuppressWarnings("PMD.EmptyIfStmt")
     public void visit(final Resource resource) {
-        if (this.resources.add(new ImmutablePair<WithinDirectory, Resource>(
+        if (!this.resources.add(new ImmutablePair<WithinDirectory, Resource>(
                 this.lastDirectory, resource))) {
-            // Fine
-        } else {
             // Already added
             if (this.lastDirectory == null) {
                 // Issue with logic which will result in a null pointer later
@@ -89,6 +86,6 @@ public class ResourceNamesCollator extends Visitor {
             }
             this.duplicates.add(new ImmutablePair<WithinDirectory, Resource>(
                     this.lastDirectory, resource));
-        }
+      }
     }
 }

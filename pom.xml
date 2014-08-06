@@ -29,7 +29,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>13</version>
+    <version>14</version>
   </parent>
 
   <dependencyManagement>
@@ -49,7 +49,7 @@
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
-        <version>3.0</version>
+        <version>3.3.2</version>
       </dependency>
 
       <dependency>
@@ -61,7 +61,7 @@
       <dependency>
           <groupId>commons-io</groupId>
           <artifactId>commons-io</artifactId>
-          <version>2.1</version>
+          <version>2.4</version>
       </dependency>
 
       <dependency>
@@ -85,7 +85,7 @@
       <dependency>
         <groupId>org.jmock</groupId>
         <artifactId>jmock-junit3</artifactId>
-        <version>2.5.1</version>
+        <version>2.6.0</version>
         <scope>test</scope>
       </dependency>
 
@@ -106,7 +106,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <target.jdk>1.5</target.jdk>
-    <junit.version>3.8.1</junit.version>
+    <junit.version>3.8.2</junit.version>
     <!--
     Publication to the website is a two phase operation:
 
@@ -132,6 +132,7 @@
 
   <!-- ================================ Build information -->
   <build>
+  <defaultGoal>clean install</defaultGoal>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -145,7 +146,7 @@
         <plugin>
 	        <groupId>org.apache.maven.plugins</groupId>
 	        <artifactId>maven-site-plugin</artifactId>
-	        <version>3.1</version>
+	        <version>3.4</version>
 	        <configuration>
 	          <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
 	          <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
@@ -156,17 +157,17 @@
 	            <plugin>
 	              <groupId>org.apache.maven.plugins</groupId>
 	              <artifactId>maven-checkstyle-plugin</artifactId>
-	              <version>2.9.1</version>
+	              <version>2.12.1</version>
 	            </plugin>
 	            <plugin>
 	              <groupId>org.apache.maven.plugins</groupId>
 	              <artifactId>maven-javadoc-plugin</artifactId>
-	              <version>2.9</version>
+	              <version>2.9.1</version>
 	            </plugin>
 	            <plugin>
 	              <groupId>org.apache.maven.plugins</groupId>
 	              <artifactId>maven-jxr-plugin</artifactId>
-	              <version>2.3</version>
+	              <version>2.4</version>
 	              <configuration>
 	                <aggregate>true</aggregate>
 	                <linkJavadoc>true</linkJavadoc>
@@ -175,11 +176,11 @@
 	            <plugin>
 	              <groupId>org.apache.maven.plugins</groupId>
 	              <artifactId>maven-surefire-report-plugin</artifactId>
-	              <version>2.12</version>
+	              <version>2.17</version>
 	            </plugin>
 	            <plugin>
 	              <artifactId>maven-pmd-plugin</artifactId>
-	              <version>2.7.1</version>
+	              <version>3.1</version>
 	              <configuration>
 	                <linkXRef>true</linkXRef>
 	                <sourceEncoding>utf-8</sourceEncoding>
@@ -195,7 +196,7 @@
 	            <plugin>
 	              <groupId>org.apache.maven.plugins</groupId>
 	              <artifactId>maven-changes-plugin</artifactId>
-	              <version>2.7.1</version>
+	              <version>2.10</version>
 	              <reportSets>
 	                <reportSet>
 	                  <reports>
@@ -208,13 +209,13 @@
 	            <plugin>
 	              <groupId>org.codehaus.mojo</groupId>
 	              <artifactId>jdepend-maven-plugin</artifactId>
-	              <version>2.0-beta-2</version>
+	              <version>2.0</version>
 	            </plugin>
 	            <!-- cobertura plugin -->
 	            <plugin>
 	              <groupId>org.codehaus.mojo</groupId>
 	              <artifactId>cobertura-maven-plugin</artifactId>
-	              <version>2.5.1</version>
+	              <version>2.6</version>
 	            </plugin>
 	            <!-- catch code tags -->
 	            <plugin>
@@ -239,12 +240,12 @@
 	            <plugin>
 	              <groupId>org.codehaus.mojo</groupId>
 	              <artifactId>findbugs-maven-plugin</artifactId>
-	              <version>2.5</version>
+	              <version>3.0.0</version>
 	            </plugin>
 	            <plugin>
 	              <groupId>org.apache.maven.plugins</groupId>
 	              <artifactId>maven-project-info-reports-plugin</artifactId>
-	              <version>2.4</version>
+	              <version>2.7</version>
 	            </plugin>
 
 	          </reportPlugins>
@@ -266,7 +267,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-scm-publish-plugin</artifactId>
-            <version>1.0-beta-2</version>
+            <version>1.1</version>
             <extensions>true</extensions>
             <configuration>
               <!-- svn location for publication -->
@@ -281,7 +282,7 @@
       <extension>
         <groupId>org.apache.maven.wagon</groupId>
          <artifactId>wagon-ssh</artifactId>
-         <version>1.0-beta-7</version>
+         <version>2.6</version>
       </extension>
     </extensions>
   </build>
@@ -315,6 +316,16 @@
     <system>JIRA</system>
     <url>https://issues.apache.org/jira/browse/WHISKER</url>
   </issueManagement>
+  
+	<!-- TODO
+	<ciManagement>
+	        <system>Jenkins</system>
+	        <url>http://ci.apache.org/builders/whisker_trunk</url>
+	        Jenkins builds are at:
+	        https://builds.apache.org/job/Creadur-Whisker/ - check Java5 compliance and run all tests
+	        https://builds.apache.org/job/Creadur-Whisker-Site/ - generate mvn site
+	</ciManagement>
+	 -->
 
   <mailingLists>
     <mailingList>

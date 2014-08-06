@@ -69,7 +69,7 @@ public class Whisker {
     }
 
     /**
-     * Gets the factory that builds product {@link Writer}s.
+     * Gets the factory that builds product {@link java.io.Writer}s.
      * @return factory
      */
     public final ResultWriterFactory getWriterFactory() {
@@ -77,7 +77,7 @@ public class Whisker {
     }
 
     /**
-     * Sets the factory that builds product {@link Writer}s.
+     * Sets the factory that builds product {@link java.io.Writer}s.
      * @param writerFactory not null
      * @return this, not null
      */

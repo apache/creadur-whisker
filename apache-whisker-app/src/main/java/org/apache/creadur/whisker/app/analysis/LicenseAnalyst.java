@@ -209,14 +209,11 @@ public class LicenseAnalyst {
      * @param directory not null
      * @param collator not null
      */
-    @SuppressWarnings("PMD.EmptyIfStmt")
     private void analyseExtraLicenses(final Directory directory,
             final ResourceNamesCollator collator) {
         final Collection<String> actualResources = directory.getContents();
         for (final String resourceLicense: collator.getNames()) {
-            if (actualResources.contains(resourceLicense)) {
-                // Fine
-            } else {
+            if (!actualResources.contains(resourceLicense)) {
                 getExtraLicenses().add(
                         new ResourceDescription(
                                 directory.getName(),
@@ -230,14 +227,11 @@ public class LicenseAnalyst {
      * @param directory not null
      * @param collator not null
      */
-    @SuppressWarnings("PMD.EmptyIfStmt")
     private void analyseMissingLicenses(final Directory directory,
             final ResourceNamesCollator collator) {
         final Collection<String> licensedResources = collator.getNames();
         for (final String actualResource: directory.getContents()) {
-            if (licensedResources.contains(actualResource)) {
-                // Fine
-            } else {
+            if (!licensedResources.contains(actualResource)) {
                 getMissingLicenses().add(
                         new ResourceDescription(
                                 directory.getName(),

@@ -30,8 +30,8 @@ public class MissingIDException extends InvalidXmlException {
     
     /**
      * Constructs an instance.
-     * @param organisationElementName not null
-     * @param name not null
+     * @param linkedElement not null
+     * @param linkingElement not null
      * @param id not null
      */
     public MissingIDException(final String linkedElement, final String linkingElement,

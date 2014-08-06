@@ -70,8 +70,8 @@ public class NoticeCollator extends Visitor {
     }
 
     /**
-     * @param notices
-     * @return
+     * @param notices map of notice-id and notices.
+     * @return list of notices.
      */
     public Set<String> notices(final Map<String, String> notices) {
         final Set<String> results = new HashSet<String>();

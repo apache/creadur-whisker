@@ -120,10 +120,10 @@ public class Resource implements Comparable<Resource>, ContentElement {
     }
 
     /**
-     * Based on name.
+     * Comparison happens based on name.
      * @see java.lang.Comparable#compareTo(java.lang.Object)
-     * @param other
-     * @return comparison based on name
+     * @param other resource to compare to.
+     * @return result of comparison based on name
      */
     public int compareTo(final Resource other) {
         return getName().compareTo(other.getName());

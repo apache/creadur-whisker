@@ -41,8 +41,9 @@ public class RenderingHelper {
     private final Configuration configuration;
 
     /**
-     * Constructs a helper for the given work.
+     * Constructs a helper for the given work and configuration.
      * @param work not null
+     * @param configuration not null
      */
     public RenderingHelper(final Descriptor work, final Configuration configuration) {
         super();
