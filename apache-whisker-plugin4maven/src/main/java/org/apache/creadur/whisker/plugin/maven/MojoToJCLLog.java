@@ -18,7 +18,7 @@
  */
 package org.apache.creadur.whisker.plugin.maven;
 
-import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.maven.plugin.logging.Log;
 
 /**
@@ -44,7 +44,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#debug(java.lang.Object)
      */
     public void debug(final Object message) {
-        log.debug(ObjectUtils.toString(message));
+        log.debug(new ToStringBuilder(message).toString());
     }
 
     /**
@@ -54,7 +54,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#debug(java.lang.Object, java.lang.Throwable)
      */
     public void debug(final Object message, final Throwable t) {
-        log.debug(ObjectUtils.toString(message), t);
+        log.debug(new ToStringBuilder(message).toString(), t);
     }
 
     /**
@@ -63,7 +63,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#error(java.lang.Object)
      */
     public void error(final Object message) {
-        log.error(ObjectUtils.toString(message));
+        log.error(new ToStringBuilder(message).toString());
     }
 
     /**
@@ -73,7 +73,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#error(java.lang.Object, java.lang.Throwable)
      */
     public void error(final Object message, final Throwable t) {
-        log.error(ObjectUtils.toString(message), t);
+        log.error(new ToStringBuilder(message).toString(), t);
     }
 
     /**
@@ -82,7 +82,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#fatal(java.lang.Object)
      */
     public void fatal(final Object message) {
-        log.error(ObjectUtils.toString(message));
+        log.error(new ToStringBuilder(message).toString());
     }
 
     /**
@@ -92,7 +92,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#fatal(java.lang.Object, java.lang.Throwable)
      */
     public void fatal(final Object message, final Throwable t) {
-        log.error(ObjectUtils.toString(message), t);
+        log.error(new ToStringBuilder(message).toString(), t);
     }
 
     /**
@@ -101,7 +101,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#info(java.lang.Object)
      */
     public void info(final Object message) {
-        log.info(ObjectUtils.toString(message));
+        log.info(new ToStringBuilder(message).toString());
     }
 
     /**
@@ -111,7 +111,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#info(java.lang.Object, java.lang.Throwable)
      */
     public void info(final Object message, final Throwable t) {
-        log.info(ObjectUtils.toString(message), t);
+        log.info(new ToStringBuilder(message).toString(), t);
     }
 
     /**
@@ -174,7 +174,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#trace(java.lang.Object)
      */
     public void trace(final Object message) {
-        log.debug(ObjectUtils.toString(message));
+        log.debug(new ToStringBuilder(message).toString());
     }
 
     /**
@@ -184,7 +184,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#trace(java.lang.Object, java.lang.Throwable)
      */
     public void trace(final Object message, final Throwable t) {
-        log.debug(ObjectUtils.toString(message), t);
+        log.debug(new ToStringBuilder(message).toString(), t);
     }
 
     /**
@@ -193,7 +193,7 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#warn(java.lang.Object)
      */
     public void warn(final Object message) {
-        log.warn(ObjectUtils.toString(message));
+        log.warn(new ToStringBuilder(message).toString());
     }
 
     /**
@@ -203,6 +203,6 @@ public class MojoToJCLLog implements org.apache.commons.logging.Log {
      * @see org.apache.commons.logging.Log#warn(java.lang.Object, java.lang.Throwable)
      */
     public void warn(final Object message, final Throwable t) {
-        log.warn(ObjectUtils.toString(message), t);
+        log.warn(new ToStringBuilder(message).toString(), t);
     }
 }
