@@ -101,7 +101,7 @@
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <target.jdk>1.5</target.jdk>
+    <target.jdk>1.6</target.jdk>
     <junit.version>3.8.2</junit.version>
     <!--
     Publication to the website is a two phase operation:
@@ -283,7 +283,7 @@
         <configuration>
           <signature>
             <groupId>org.codehaus.mojo.signature</groupId>
-            <artifactId>java15</artifactId>
+            <artifactId>java16</artifactId>
             <version>1.0</version>
           </signature>
         </configuration>
