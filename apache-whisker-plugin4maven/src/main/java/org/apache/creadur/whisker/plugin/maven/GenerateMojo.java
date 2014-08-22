@@ -33,7 +33,7 @@ import org.apache.maven.plugins.annotations.*;
  * Generates licensing related materials such as LICENSE and NOTICE documents
  * for assembled applications. The plugin is not bound to a specific lifecycle phase.
  */
-@Mojo(name = "generate")
+@Mojo(name = "generate", requiresProject = false)
 public class GenerateMojo extends AbstractMojo {
 
     /**
