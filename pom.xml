@@ -124,6 +124,7 @@
     <whisker.site.url>file:${whisker.site.local}</whisker.site.url>
     <whisker.site.name>Whisker Website</whisker.site.name>
     <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
+    <mavenPluginPluginVersion>3.3</mavenPluginPluginVersion>
   </properties>
   <!-- ================================ Build information -->
   <build>
