@@ -360,7 +360,8 @@
   </organization>
   <!-- ================================ Environment -->
   <prerequisites>
-    <maven>3.0.2</maven>
+    <!-- This is the version of Maven required to build this project -->
+    <maven>3.0.5</maven>
   </prerequisites>
   <issueManagement>
     <system>JIRA</system>
