@@ -240,7 +240,8 @@
               <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
-                <version>3.0.0</version>
+                <!-- Cannot upgrade to 3.0.0 because it requires Java 7 -->
+                <version>2.5.5</version>
               </plugin>
               <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
