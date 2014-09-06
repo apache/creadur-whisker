@@ -73,6 +73,21 @@ Build
 -->
   <build>
     <finalName>apache-whisker-${project.version}</finalName>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.rat</groupId>
+          <artifactId>apache-rat-plugin</artifactId>
+          <configuration>
+            <excludes>
+              <exclude>dependency-reduced-pom.xml</exclude>
+              <exclude>src/main/resources/META-INF/jdom_LICENSE</exclude>
+              <exclude>src/main/resources/META-INF/jdom_NOTICE</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -107,33 +122,6 @@ Build
       </plugin>
     </plugins>
   </build>
-  <profiles>
-    <profile>
-      <id>rat</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.rat</groupId>
-            <artifactId>apache-rat-plugin</artifactId>
-            <configuration>
-              <excludes>
-                <exclude>dependency-reduced-pom.xml</exclude>
-                <exclude>src/main/resources/META-INF/jdom_LICENSE</exclude>
-                <exclude>src/main/resources/META-INF/jdom_NOTICE</exclude>
-              </excludes>
-            </configuration>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>check</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
   <!--
 
 
