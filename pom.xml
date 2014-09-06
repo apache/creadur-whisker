@@ -285,13 +285,28 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
         <version>1.11</version>
-        <configuration>
-          <signature>
-            <groupId>org.codehaus.mojo.signature</groupId>
-            <artifactId>java16</artifactId>
-            <version>1.0</version>
-          </signature>
-        </configuration>
+        <executions>
+          <execution>
+            <!-- This checks the source code of our project -->
+            <id>check-java-compatibility</id>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <configuration>
+              <!--
+                Note that we cannot use our ${target.jdk} property here, so we
+                must change the artifactId of the signature manually when we
+                decide to move to a higher version of Java
+              -->
+              <signature>
+                <groupId>org.codehaus.mojo.signature</groupId>
+                <artifactId>java16</artifactId>
+                <version>1.0</version>
+              </signature>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
     <extensions>
