@@ -115,6 +115,8 @@
     <whisker.site.name>Whisker Website</whisker.site.name>
     <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
     <mavenPluginPluginVersion>3.3</mavenPluginPluginVersion>
+    <!-- Cannot upgrade to 3.0.0 because it requires Java 7 -->
+    <findbugsPluginVersion>2.5.5</findbugsPluginVersion>
   </properties>
   <!-- ================================ Build information -->
   <build>
@@ -236,8 +238,7 @@
               <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
-                <!-- Cannot upgrade to 3.0.0 because it requires Java 7 -->
-                <version>2.5.5</version>
+                <version>${findbugsPluginVersion}</version>
               </plugin>
               <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -353,6 +354,18 @@
       </extension>
     </extensions>
   </build>
+  <profiles>
+    <profile>
+      <id>java8</id>
+      <activation>
+        <jdk>[1.8,)</jdk>
+      </activation>
+      <properties>
+        <!-- Findbugs Maven Plugin 2.5.x does not work with Java 8 - use a different version for Java 1.8+ -->
+        <findbugsPluginVersion>3.0.0</findbugsPluginVersion>
+      </properties>
+    </profile>
+  </profiles>
   <!-- ================================ Project information -->
   <name>Apache Whisker</name>
   <description>Apache Whisker wrangles legal documentation for composed applications.</description>
