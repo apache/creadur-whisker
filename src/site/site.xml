@@ -48,7 +48,7 @@
     <menu name='Apache Whisker&trade;' inherit="bottom">
        <item name='Introducing Whisker' href='index.html'/>
        <item name='Meta Data' href='meta-data.html'/>
-       <item name='Maven Plugin' href='apache-whisker-plugin4maven/index.html'/>
+       <item name='Maven Plugin' href='apache-whisker-maven-plugin/index.html'/>
        <item name='Command Line' href='apache-whisker-cli/index.html'/>
        <item name='Javadocs' href='apidocs/index.html'/>
        <item name='Source Cross-ref' href='xref/index.html'/>

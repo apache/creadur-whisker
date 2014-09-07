@@ -26,12 +26,12 @@
   
   
   <groupId>org.apache.creadur.whisker.it</groupId>
-  <artifactId>ThirdPartyCorp</artifactId>
+  <artifactId>In5Minutes</artifactId>
   <version>@project.version@</version>
   
-  <name>Third Party Corp Generation</name>
+  <name>5 Minute Example Generation</name>
   <description>
-  Similar to  3 party corp example. 
+  Similar to  5 Minute example. 
   </description>
   
   <properties>
@@ -43,7 +43,7 @@
     <plugins>
         <plugin>
           <groupId>org.apache.creadur.whisker</groupId>
-            <artifactId>apache-whisker-plugin4maven</artifactId>
+            <artifactId>apache-whisker-maven-plugin</artifactId>
             <version>@project.version@</version>
             <executions>
                 <execution>

@@ -37,7 +37,7 @@ Generation In 5 Minutes
 TODO 
 +---------------------------------------+
 
-* Configure Apache Whisker Plugin4Maven
+* Configure Apache Whisker Maven Plugin
  
 +---------------------------------------+
   ...
@@ -46,7 +46,7 @@ TODO
         ...
         <plugin>
           <groupId>org.apache.creadur.whisker</groupId>
-            <artifactId>apache-whisker-plugin4maven</artifactId>
+            <artifactId>apache-whisker-maven-plugin</artifactId>
             <version>${project.version}</version>
             <executions>
                 <execution>

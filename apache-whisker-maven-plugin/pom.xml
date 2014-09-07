@@ -24,7 +24,7 @@
     <artifactId>apache-whisker</artifactId>
     <version>0.2-SNAPSHOT</version>
   </parent>
-  <artifactId>apache-whisker-plugin4maven</artifactId>
+  <artifactId>apache-whisker-maven-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <dependencies>
     <dependency>
@@ -112,8 +112,7 @@
         <artifactId>maven-plugin-plugin</artifactId>
         <version>${mavenPluginPluginVersion}</version>
         <configuration>
-          <goalPrefix>plugin</goalPrefix>
-          <!-- see already solved bug http://jira.codehaus.org/browse/MNG-5346 describes the problems we experience on Jenkins-CI (20140822)-->
+          <!-- See bug http://jira.codehaus.org/browse/MNG-5346 (which was solved in Maven 3.2.2) describing the problems we experience on Jenkins-CI (20140822)-->
           <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
         </configuration>
         <executions>
@@ -185,7 +184,7 @@
   ================================
   Project information
   -->
-  <name>Apache Whisker::Plugin(Maven)</name>
-  <description>Apache Whisker plugin for Maven.</description>
-  <url>http://creadur.apache.org/whisker/apache-whisker-plugin4maven</url>
+  <name>Apache Whisker::Maven Plugin</name>
+  <description>Apache Whisker Maven Plugin.</description>
+  <url>http://creadur.apache.org/whisker/apache-whisker-maven-plugin</url>
 </project>

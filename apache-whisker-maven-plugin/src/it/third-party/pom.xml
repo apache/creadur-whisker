@@ -26,12 +26,12 @@
   
   
   <groupId>org.apache.creadur.whisker.it</groupId>
-  <artifactId>SimpleGeneration</artifactId>
+  <artifactId>ThirdParty</artifactId>
   <version>@project.version@</version>
   
-  <name>Minimal Generation</name>
+  <name>Third Party Generation</name>
   <description>
-  The very simple example used in 5 min example. 
+  Similar to  3 party example. 
   </description>
   
   <properties>
@@ -43,7 +43,7 @@
     <plugins>
         <plugin>
           <groupId>org.apache.creadur.whisker</groupId>
-            <artifactId>apache-whisker-plugin4maven</artifactId>
+            <artifactId>apache-whisker-maven-plugin</artifactId>
             <version>@project.version@</version>
             <executions>
                 <execution>

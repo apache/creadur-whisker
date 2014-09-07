@@ -25,7 +25,7 @@
 
 Usage
 
- The Apache Whisker plugin allows {{{http://creadur.apache.org/whisker} Whisker}}
+ The Apache Whisker Maven Plugin allows {{{http://creadur.apache.org/whisker} Whisker}}
  features to be integrated into a Maven built project. The following examples
  illustrate the basic usage of this plugin.
 
@@ -52,7 +52,7 @@ Usage
         ...
         <plugin>
           <groupId>org.apache.creadur.whisker</groupId>
-            <artifactId>apache-whisker-plugin4maven</artifactId>
+            <artifactId>apache-whisker-maven-plugin</artifactId>
             <version>${project.version}</version>
             <executions>
                 <execution>

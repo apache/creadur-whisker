@@ -26,12 +26,12 @@
   
   
   <groupId>org.apache.creadur.whisker.it</groupId>
-  <artifactId>In5Minutes</artifactId>
+  <artifactId>HelloWorld</artifactId>
   <version>@project.version@</version>
   
-  <name>5 Minute Example Generation</name>
+  <name>Smoke Test</name>
   <description>
-  Similar to  5 Minute example. 
+  Basic integration test for LICENSE and NOTICE generation. 
   </description>
   
   <properties>
@@ -43,7 +43,7 @@
     <plugins>
         <plugin>
           <groupId>org.apache.creadur.whisker</groupId>
-            <artifactId>apache-whisker-plugin4maven</artifactId>
+            <artifactId>apache-whisker-maven-plugin</artifactId>
             <version>@project.version@</version>
             <executions>
                 <execution>
@@ -60,5 +60,5 @@
         </plugin>
     </plugins>
   </build>
- 
+  
 </project>

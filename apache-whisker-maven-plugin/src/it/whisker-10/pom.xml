@@ -15,7 +15,7 @@
   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
   KIND, either express or implied.  See the License for the
   specific language governing permissions and limitations
-  under the License.    
+  under the License.
 -->
 <project
   xmlns="http://maven.apache.org/POM/4.0.0"
@@ -23,27 +23,27 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 >
   <modelVersion>4.0.0</modelVersion>
-  
-  
+
+
   <groupId>org.apache.creadur.whisker.it</groupId>
-  <artifactId>LicenseFamily</artifactId>
+  <artifactId>PrimaryLicenseWithCopyrightNotice</artifactId>
   <version>@project.version@</version>
-  
-  <name>License Family Generation</name>
+
+  <name>WHISKER-10 mixture copyright notices</name>
   <description>
-  Generate from license template with parameterisation
+  WHISKER-10 a mixture of licenses only some with copyright notices.
   </description>
-  
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <target.jdk>1.5</target.jdk>
   </properties>
-  
+
   <build>
     <plugins>
         <plugin>
           <groupId>org.apache.creadur.whisker</groupId>
-            <artifactId>apache-whisker-plugin4maven</artifactId>
+            <artifactId>apache-whisker-maven-plugin</artifactId>
             <version>@project.version@</version>
             <executions>
                 <execution>
@@ -60,5 +60,5 @@
         </plugin>
     </plugins>
   </build>
- 
+
 </project>

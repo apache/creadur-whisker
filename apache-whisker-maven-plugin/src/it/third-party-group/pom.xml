@@ -26,12 +26,12 @@
   
   
   <groupId>org.apache.creadur.whisker.it</groupId>
-  <artifactId>HelloWorld</artifactId>
+  <artifactId>ThirdPartyCorp</artifactId>
   <version>@project.version@</version>
   
-  <name>Smoke Test</name>
+  <name>Third Party Corp Generation</name>
   <description>
-  Basic integration test for LICENSE and NOTICE generation. 
+  Similar to  3 party corp example. 
   </description>
   
   <properties>
@@ -43,7 +43,7 @@
     <plugins>
         <plugin>
           <groupId>org.apache.creadur.whisker</groupId>
-            <artifactId>apache-whisker-plugin4maven</artifactId>
+            <artifactId>apache-whisker-maven-plugin</artifactId>
             <version>@project.version@</version>
             <executions>
                 <execution>
@@ -60,5 +60,5 @@
         </plugin>
     </plugins>
   </build>
-  
+ 
 </project>

@@ -87,7 +87,7 @@
     <module>apache-whisker-app</module>
     <module>apache-whisker-velocity</module>
     <module>apache-whisker-cli</module>
-    <module>apache-whisker-plugin4maven</module>
+    <module>apache-whisker-maven-plugin</module>
   </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -27,7 +27,7 @@ What Is Apache Whisker?
   Apache Whisker assists assembled applications maintain correct legal 
 documentation. Read more about how Whisker can help {{{../index.html} here}}.
 
-How Can Apache Whisker Plugins For Maven Help?
+How Can Apache Whisker Maven Plugin Help?
 
   {{{http://maven.apache.org}Apache Maven}} is a declarative build management tool, 
 useful not only for building components but also for assembling them into applications.
@@ -46,7 +46,7 @@ useful not only for building components but also for assembling them into applic
 
 * Usage
 
-  General instructions on how to use the Apache Whisker plugin for Maven can be found on the {{{./usage.html}usage page}}. Some more
+  General instructions on how to use the Apache Whisker Maven Plugin can be found on the {{{./usage.html}usage page}}. Some more
   specific use cases are described in the examples given below. 
   
   In case you still have questions regarding the plugin's usage, please have a look at the {{{./faq.html}FAQ}} and feel

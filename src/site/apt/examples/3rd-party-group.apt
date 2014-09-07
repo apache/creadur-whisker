@@ -707,7 +707,7 @@ With A Third Party Work by an Informal Group
     From this meta-data, Whisker (either from the
     {{{../apache-whisker-cli/index.html}command line}} or
     integrated into a
-    {{{../apache-whisker-plugin4maven/index.html}Maven build}})
+    {{{../apache-whisker-maven-plugin/index.html}Maven build}})
     generates a <<<LICENSE>>> similar to:
 
 +---------------------------------------+
