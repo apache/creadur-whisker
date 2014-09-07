@@ -110,6 +110,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
+        <version>${mavenPluginPluginVersion}</version>
         <configuration>
           <goalPrefix>plugin</goalPrefix>
           <!-- see already solved bug http://jira.codehaus.org/browse/MNG-5346 describes the problems we experience on Jenkins-CI (20140822)-->
