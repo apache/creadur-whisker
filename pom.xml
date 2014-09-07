@@ -399,8 +399,10 @@
 	        <system>Jenkins</system>
 	        <url>http://ci.apache.org/builders/whisker_trunk</url>
 	        Jenkins builds are at:
-	        https://builds.apache.org/job/Creadur-Whisker/ - check Java5 compliance and run all tests
+	        https://builds.apache.org/job/Creadur-Whisker/ - check Java6 compliance and run all tests
 	        https://builds.apache.org/job/Creadur-Whisker-Site/ - generate mvn site
+	        https://builds.apache.org/job/Creadur-Whisker-Latest-Jdk/ - check Java8 compliance and run all tests
+	        https://builds.apache.org/job/Creadur-Whisker-Site-Latest-Jdk/ - generate mvn site with mvn3 and Java8.
 	</ciManagement>
 	 -->
   <mailingLists>
