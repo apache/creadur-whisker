@@ -110,7 +110,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
-        <version>${mavenPluginPluginVersion}</version>
         <configuration>
           <!-- See bug http://jira.codehaus.org/browse/MNG-5346 (which was solved in Maven 3.2.2) describing the problems we experience on Jenkins-CI (20140822)-->
           <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
