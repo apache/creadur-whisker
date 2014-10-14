@@ -254,6 +254,11 @@
           <groupId>org.apache.rat</groupId>
           <artifactId>apache-rat-plugin</artifactId>
           <version>0.11</version>
+          <configuration>
+            <excludes>
+              <exclude>src/site/resources/*.dia</exclude>
+            </excludes>
+          </configuration>
         </plugin>
         <!-- instrumentalization for cobertura -->
         <plugin>
