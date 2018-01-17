@@ -253,9 +253,10 @@
         <plugin>
           <groupId>org.apache.rat</groupId>
           <artifactId>apache-rat-plugin</artifactId>
-          <version>0.11</version>
+          <version>0.12</version>
           <configuration>
             <excludes>
+              <exclude>README.md</exclude>
               <exclude>.travis.yml</exclude>
               <exclude>src/site/resources/*.dia</exclude>
             </excludes>
