@@ -370,8 +370,7 @@
         <jdk>[1.8,)</jdk>
       </activation>
       <properties>
-        <!-- Findbugs Maven Plugin 2.5.x does not work with Java 8 - use a different version for Java 1.8+ -->
-        <findbugsPluginVersion>3.0.0</findbugsPluginVersion>
+        <findbugsPluginVersion>3.0.5</findbugsPluginVersion>
       </properties>
     </profile>
   </profiles>
