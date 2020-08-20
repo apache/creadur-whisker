@@ -434,9 +434,9 @@
     </site>
   </distributionManagement>
   <scm>
-    <url>http://svn.apache.org/repos/asf/creadur/whisker/trunk</url>
-    <connection>scm:svn:http://svn.apache.org/repos/asf/creadur/whisker/trunk</connection>
-    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/creadur/whisker/trunk</developerConnection>
+    <connection>scm:git:https://gitbox.apache.org/repos/asf/creadur-whisker.git</connection>
+    <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/creadur-whisker.git</developerConnection>
+    <url>https://gitbox.apache.org/repos/asf?p=creadur-whisker.git</url>
   </scm>
   <ciManagement>
     <system>Buildbot</system>
