@@ -400,17 +400,10 @@
     <system>JIRA</system>
     <url>https://issues.apache.org/jira/browse/WHISKER</url>
   </issueManagement>
-  <!-- TODO
-	<ciManagement>
-	        <system>Jenkins</system>
-	        <url>http://ci.apache.org/builders/whisker_trunk</url>
-	        Jenkins builds are at:
-	        https://builds.apache.org/job/Creadur-Whisker/ - check Java6 compliance and run all tests
-	        https://builds.apache.org/job/Creadur-Whisker-Site/ - generate mvn site
-	        https://builds.apache.org/job/Creadur-Whisker-Latest-Jdk/ - check Java8 compliance and run all tests
-	        https://builds.apache.org/job/Creadur-Whisker-Site-Latest-Jdk/ - generate mvn site with mvn3 and Java8.
-	</ciManagement>
-	 -->
+  <ciManagement>
+    <system>/</system>
+    <url>https://ci-builds.apache.org/job/Creadur/job/Creadur-Tentacles/</url>
+  </ciManagement>
   <mailingLists>
     <mailingList>
       <name>Whisker development at Apache Creadur project</name>
@@ -438,8 +431,4 @@
     <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/creadur-whisker.git</developerConnection>
     <url>https://gitbox.apache.org/repos/asf?p=creadur-whisker.git</url>
   </scm>
-  <ciManagement>
-    <system>Buildbot</system>
-    <url>http://ci.apache.org/builders/whisker-trunk</url>
-  </ciManagement>
 </project>
