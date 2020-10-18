@@ -40,7 +40,7 @@ pipeline {
 
     tools {
         maven 'maven_3_latest'
-        jdk 'JDK 1.8 (latest)'
+        jdk 'jdk_1.8_latest'
     }
 
     options {
