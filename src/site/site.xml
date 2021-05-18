@@ -17,7 +17,7 @@
   specific language governing permissions and limitations
   under the License.
 -->
-<project name="Apache Whisker&trade;">
+<project name="Apache Whisker&amp;trade;">
   <bannerRight>
     <title>The Apache Software Foundation</title>
     <name>The Apache Software Foundation</name>
@@ -34,10 +34,7 @@
 
   <body>
     <head>
-        <link
-            href='http://fonts.googleapis.com/css?family=Mate+SC'
-            rel='stylesheet'
-            type='text/css'/>
+        <link href="http://fonts.googleapis.com/css?family=Mate+SC" rel="stylesheet" type="text/css"/>
     </head>
     <breadcrumbs>
       <item name="Apache" href="http://www.apache.org/"/>
@@ -45,7 +42,7 @@
       <item name="Whisker" href="http://creadur.apache.org/whisker/"/>
     </breadcrumbs>
 
-    <menu name='Apache Whisker&trade;' inherit="bottom">
+    <menu name='Apache Whisker&amp;trade;' inherit="bottom">
        <item name='Introducing Whisker' href='index.html'/>
        <item name='Meta Data' href='meta-data.html'/>
        <item name='Maven Plugin' href='apache-whisker-maven-plugin/index.html'/>
@@ -76,7 +73,7 @@
         <item name='Copyright Notices' href='examples/copyright-notices-sample.xml'/>
     </menu>
 
-    <menu name="Apache Creadur &trade;" inherit="bottom">
+    <menu name="Apache Creadur &amp;trade;" inherit="bottom">
 		<item name='Creadur Project Home' href="http://creadur.apache.org"/>
 		<item name='Apache Rat' href="http://creadur.apache.org/rat"/>
 		<item name='Apache Tentacles' href="http://creadur.apache.org/tentacles"/>
