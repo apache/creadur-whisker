@@ -24,104 +24,79 @@
     <src>https://www.apache.org/images/asf_logo_wide.jpg</src>
     <href>https://www.apache.org/</href>
   </bannerRight>
-
   <poweredBy>
-      <logo name="Maven"
-            href="https://maven.apache.org/"
-            img="https://maven.apache.org/images/logos/maven-feather.png"/>
-
+    <logo name="Maven" href="https://maven.apache.org/" img="https://maven.apache.org/images/logos/maven-feather.png"/>
   </poweredBy>
-
   <body>
-    <head>
-       <![CDATA[<link href="https://fonts.googleapis.com/css?family=Mate+SC" type="text/css" rel="stylesheet" />]]>
-    </head>
+    <head><![CDATA[<link href="https://fonts.googleapis.com/css?family=Mate+SC" type="text/css" rel="stylesheet" />]]></head>
     <breadcrumbs>
       <item name="Apache" href="http://www.apache.org/"/>
       <item name="Creadur" href="http://creadur.apache.org/"/>
       <item name="Whisker" href="http://creadur.apache.org/whisker/"/>
     </breadcrumbs>
-
-    <menu name='Apache Whisker&amp;trade;' inherit="bottom">
-       <item name='Introducing Whisker' href='index.html'/>
-       <item name='Meta Data' href='meta-data.html'/>
-       <item name='Maven Plugin' href='apache-whisker-maven-plugin/index.html'/>
-       <item name='Command Line' href='apache-whisker-cli/index.html'/>
-       <item name='Javadocs' href='apidocs/index.html'/>
-       <item name='Source Cross-ref' href='xref/index.html'/>
-       <item name="FAQ" href="faq.html"/>
+    <menu name="Apache Whisker&amp;trade;" inherit="bottom">
+      <item name="Introducing Whisker" href="index.html"/>
+      <item name="Meta Data" href="meta-data.html"/>
+      <item name="Maven Plugin" href="apache-whisker-maven-plugin/index.html"/>
+      <item name="Command Line" href="apache-whisker-cli/index.html"/>
+      <item name="Javadocs" href="apidocs/index.html"/>
+      <item name="Source Cross-ref" href="xref/index.html"/>
+      <item name="FAQ" href="faq.html"/>
     </menu>
-
-    <menu name='Examples'>
-        <item name="In 5 Minutes" href="examples/in-5-mins.html"/>
-        <item name="3rd Party (Individual)" href="examples/3rd-party-individual.html"/>
-        <item name="3rd Party (Corporate)" href="examples/3rd-party-corporate.html"/>
-        <item name="3rd Party (Group)" href="examples/3rd-party-group.html"/>
-        <item name="License Family" href="examples/license-family.html"/>
-        <item name="Copyright Notices" href="examples/copyright-notices.html"/>
+    <menu name="Examples">
+      <item name="In 5 Minutes" href="examples/in-5-mins.html"/>
+      <item name="3rd Party (Individual)" href="examples/3rd-party-individual.html"/>
+      <item name="3rd Party (Corporate)" href="examples/3rd-party-corporate.html"/>
+      <item name="3rd Party (Group)" href="examples/3rd-party-group.html"/>
+      <item name="License Family" href="examples/license-family.html"/>
+      <item name="Copyright Notices" href="examples/copyright-notices.html"/>
     </menu>
-
-    <menu name='Sample Meta Data'>
-        <item name="Apache James" href="examples/james.xml"/>
-        <item name="Public Domain" href="examples/public-domain.xml"/>
-        <item name="Template License" href="examples/template-license.xml"/>
-        <item name='License Family' href='examples/license-family-sample.xml'/>
-        <item name="3rd Party (Individual)" href="examples/3rd-party-individual-sample.xml"/>
-        <item name="3rd Party (Corporate)" href="examples/3rd-party-corporate-sample.xml"/>
-        <item name="3rd Party (Group)" href="examples/3rd-party-group-sample.xml"/>
-        <item name="MIT License" href="examples/in-5-mins-sample.xml"/>
-        <item name='Copyright Notices' href='examples/copyright-notices-sample.xml'/>
+    <menu name="Sample Meta Data">
+      <item name="Apache James" href="examples/james.xml"/>
+      <item name="Public Domain" href="examples/public-domain.xml"/>
+      <item name="Template License" href="examples/template-license.xml"/>
+      <item name="License Family" href="examples/license-family-sample.xml"/>
+      <item name="3rd Party (Individual)" href="examples/3rd-party-individual-sample.xml"/>
+      <item name="3rd Party (Corporate)" href="examples/3rd-party-corporate-sample.xml"/>
+      <item name="3rd Party (Group)" href="examples/3rd-party-group-sample.xml"/>
+      <item name="MIT License" href="examples/in-5-mins-sample.xml"/>
+      <item name="Copyright Notices" href="examples/copyright-notices-sample.xml"/>
     </menu>
-
     <menu name="Apache Creadur &amp;trade;" inherit="bottom">
-		<item name='Creadur Project Home' href="http://creadur.apache.org"/>
-		<item name='Apache Rat' href="http://creadur.apache.org/rat"/>
-		<item name='Apache Tentacles' href="http://creadur.apache.org/tentacles"/>
-		<item name='Security' href='http://www.apache.org/security/'/>
-		<item name='License' href='http://www.apache.org/licenses/'/>
-		<item name='Sponsorship' href='http://www.apache.org/foundation/sponsorship.html'/>
-		<item name='Thanks' href='http://www.apache.org/foundation/thanks.html'/>
-	</menu>
-
+      <item name="Creadur Project Home" href="http://creadur.apache.org"/>
+      <item name="Apache Rat" href="http://creadur.apache.org/rat"/>
+      <item name="Apache Tentacles" href="http://creadur.apache.org/tentacles"/>
+      <item name="Security" href="http://www.apache.org/security/"/>
+      <item name="License" href="http://www.apache.org/licenses/"/>
+      <item name="Sponsorship" href="http://www.apache.org/foundation/sponsorship.html"/>
+      <item name="Thanks" href="http://www.apache.org/foundation/thanks.html"/>
+    </menu>
     <menu name="The Apache Software Foundation" inherit="bottom">
-        <item name='About the Foundation'
-            href="http://www.apache.org/foundation"/>
-        <item name='The projects'
-            href="http://projects.apache.org"/>
-        <item name='The people'
-            href="http://people.apache.org"/>
-        <item name='How we work'
-            href='http://www.apache.org/foundation/how-it-works.html'/>
-        <item name='Our history'
-            href='http://www.apache.org/foundation/how-it-works.html#history'/>
-        <item name='News'
-            href='http://blogs.apache.org/foundation/'/>
+      <item name="About the Foundation" href="http://www.apache.org/foundation"/>
+      <item name="The projects" href="http://projects.apache.org"/>
+      <item name="The people" href="http://people.apache.org"/>
+      <item name="How we work" href="http://www.apache.org/foundation/how-it-works.html"/>
+      <item name="Our history" href="http://www.apache.org/foundation/how-it-works.html#history"/>
+      <item name="News" href="http://blogs.apache.org/foundation/"/>
     </menu>
-
     <menu name="Contribute" inherit="bottom">
-      <item name="Get Involved" href='http://www.apache.org/foundation/getinvolved.html'/>
+      <item name="Get Involved" href="http://www.apache.org/foundation/getinvolved.html"/>
     </menu>
-
     <menu name="Committer Info" inherit="bottom">
-      <item name="Committers' FAQ" href='http://www.apache.org/dev/committers.html'/>
-      <item name='New Committers Guide' href='http://www.apache.org/dev/new-committers-guide.html'/>
-      <item name='Plant Apache' href='http://planet.apache.org/committers/'/>
-      <item name='Community' href='http://community.apache.org/'/>
-      <item name='Legal' href='http://www.apache.org/legal/'/>
-      <item name='Branding' href='http://www.apache.org/foundation/marks/'/>
-      <item name='Media Relations' href='http://www.apache.org/press/'/>
+      <item name="Committers' FAQ" href="http://www.apache.org/dev/committers.html"/>
+      <item name="New Committers Guide" href="http://www.apache.org/dev/new-committers-guide.html"/>
+      <item name="Plant Apache" href="http://planet.apache.org/committers/"/>
+      <item name="Community" href="http://community.apache.org/"/>
+      <item name="Legal" href="http://www.apache.org/legal/"/>
+      <item name="Branding" href="http://www.apache.org/foundation/marks/"/>
+      <item name="Media Relations" href="http://www.apache.org/press/"/>
     </menu>
-
-
-    <menu ref='reports'/>
-
-    <footer>Copyright &#169; 2012 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.
+    <menu ref="reports"/>
+    <footer>Copyright © 2012 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.
       Apache Creadur, Creadur, Apache Rat, Apache Tentacles, Apache Whisker, Apache and the Apache feather logo are trademarks
       of The Apache Software Foundation.
       All other marks mentioned may be trademarks or registered trademarks of their respective owners.
       This is user documentation, not legal advice.
       </footer>
-
   </body>
-
 </project>
