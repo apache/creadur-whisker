@@ -93,6 +93,14 @@ pipeline {
                 sh 'mvn site:site'
             }
         }
+
+        stage('Print available updates') {
+            steps {
+                echo 'Show available plugin and dependency updates'
+                sh 'mvn clean versions:display-dependency-updates versions:display-plugin-updates enforcer:display-info -U -B'
+            }
+        }
+
     }
 
     // Send out notifications on unsuccessful builds.
