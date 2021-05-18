@@ -94,7 +94,7 @@
     <target.jdk>1.8</target.jdk>
     <junit.version>4.13.2</junit.version>
     <!-- This is the version of Maven required to use the Maven Plugin for this project -->
-    <mavenVersion>2.2.1</mavenVersion>
+    <mavenVersion>3.0.5</mavenVersion>
     <!--
     Publication to the website is a two phase operation:
 
