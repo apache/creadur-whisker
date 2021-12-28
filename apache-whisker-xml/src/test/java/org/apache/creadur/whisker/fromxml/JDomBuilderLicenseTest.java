@@ -19,10 +19,10 @@
 package org.apache.creadur.whisker.fromxml;
 
 import org.apache.creadur.whisker.model.License;
-import org.jdom.CDATA;
-import org.jdom.Element;
 
 import junit.framework.TestCase;
+import org.jdom2.CDATA;
+import org.jdom2.Element;
 
 /**
  * 

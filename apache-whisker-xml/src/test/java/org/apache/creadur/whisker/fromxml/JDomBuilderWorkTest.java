@@ -31,9 +31,9 @@ import junit.framework.TestCase;
 import org.apache.creadur.whisker.model.License;
 import org.apache.creadur.whisker.model.Organisation;
 import org.apache.creadur.whisker.model.WithinDirectory;
-import org.jdom.CDATA;
-import org.jdom.Document;
-import org.jdom.Element;
+import org.jdom2.CDATA;
+import org.jdom2.Document;
+import org.jdom2.Element;
 
 /**
  * 

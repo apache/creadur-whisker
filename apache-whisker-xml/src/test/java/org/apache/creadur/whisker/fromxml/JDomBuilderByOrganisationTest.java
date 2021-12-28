@@ -27,7 +27,7 @@ import junit.framework.TestCase;
 import org.apache.creadur.whisker.model.ByOrganisation;
 import org.apache.creadur.whisker.model.Organisation;
 import org.apache.creadur.whisker.model.Resource;
-import org.jdom.Element;
+import org.jdom2.Element;
 
 /**
  * 

@@ -27,9 +27,9 @@ import org.apache.creadur.whisker.model.ByOrganisation;
 import org.apache.creadur.whisker.model.License;
 import org.apache.creadur.whisker.model.Organisation;
 import org.apache.creadur.whisker.model.WithinDirectory;
-import org.jdom.Element;
 
 import junit.framework.TestCase;
+import org.jdom2.Element;
 
 /**
  * 
@@ -55,9 +55,6 @@ public class JDomBuilderWithDirectoryTest extends TestCase {
        }
     }
 
-    /**
-     * @param numberOfOrgs
-     */
     private void checkWithinLicenses(final int numberOfOrgs) {
         final Map<String, License> licenses = new HashMap<String, License>();
         final Map<String, Organisation> organisations = new HashMap<String, Organisation> ();
@@ -69,11 +66,6 @@ public class JDomBuilderWithDirectoryTest extends TestCase {
         assertEquals("Builder should set licenses", numberOfOrgs, result.getLicenses().size());
     }
 
-    /**
-     * @param numberOfOrgs
-     * @param organisations
-     * @return
-     */
     @SuppressWarnings("unchecked")
     private Element withLicense(int numberOfLicenses,
             final Map<String, License> licenses) {
@@ -92,9 +84,6 @@ public class JDomBuilderWithDirectoryTest extends TestCase {
         }
     }
     
-    /**
-     * @param numberOfOrgs
-     */
     private void checkWithinPublicDomain(final int numberOfOrgs) {
         final Map<String, License> licenses = new HashMap<String, License>();
         final Map<String, Organisation> organisations = new HashMap<String, Organisation> ();
@@ -122,9 +111,6 @@ public class JDomBuilderWithDirectoryTest extends TestCase {
         }
     }
 
-    /**
-     * @param numberOfOrgs
-     */
     private void checkPublicDomainOrg(int numberOfOrgs) {
         final Map<String, Organisation> organisations = new HashMap<String, Organisation> ();
         final Element element = withPublicDomain(numberOfOrgs, organisations);
@@ -135,11 +121,6 @@ public class JDomBuilderWithDirectoryTest extends TestCase {
         assertEquals("Expected one organisation per child of public domain",numberOfOrgs, results.size());
     }
 
-    /**
-     * @param numberOfOrgs
-     * @param organisations
-     * @return
-     */
     private Element withPublicDomain(int numberOfOrgs,
             final Map<String, Organisation> organisations) {
         final Element publicDomain = new Element("public-domain");

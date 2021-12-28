@@ -18,31 +18,16 @@
  */
 package org.apache.creadur.whisker.fromxml;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.creadur.whisker.model.*;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.creadur.whisker.model.ByOrganisation;
-import org.apache.creadur.whisker.model.License;
-import org.apache.creadur.whisker.model.Organisation;
-import org.apache.creadur.whisker.model.Resource;
-import org.apache.creadur.whisker.model.WithLicense;
-import org.apache.creadur.whisker.model.WithinDirectory;
-import org.apache.creadur.whisker.model.Descriptor;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
+import java.util.*;
 
 /**
  * Builds a model from xml using JDOM.
