@@ -20,7 +20,6 @@ package org.apache.creadur.whisker.cli;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
-import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.Options;
 
@@ -131,14 +130,14 @@ public enum CommandLineOption {
      */
     @SuppressWarnings("static-access")
     public Option create() {
-        final OptionBuilder builder = OptionBuilder
-            .isRequired(required)
-            .withDescription(getDescription())
-            .withLongOpt(getLongName());
+        final Option.Builder builder = Option.builder(String.valueOf(getShortName()));
+            builder.required(required)
+                    .desc(getDescription())
+                    .longOpt(getLongName());
         if (argument != null) {
-            builder.hasArg().withArgName(argument);
+            builder.hasArg().argName(argument);
         }
-        return builder.create(getShortName());
+        return builder.build();
     }
 
     /**

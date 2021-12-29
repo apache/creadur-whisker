@@ -18,13 +18,7 @@
  */
 package org.apache.creadur.whisker.cli;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.GnuParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.MissingOptionException;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.*;
 import org.apache.creadur.whisker.app.Act;
 import org.apache.creadur.whisker.app.Whisker;
 import org.apache.creadur.whisker.app.load.StreamableResourceFactory;
@@ -98,11 +92,11 @@ public final class Main {
 
     /**
      * Creates a parser for command line parameters.
-     * Use GNU-style.
+     * Use GNU-style/default style.
      * @return not null
      */
     private CommandLineParser parser() {
-        return new GnuParser();
+        return new DefaultParser();
     }
 
     /**
