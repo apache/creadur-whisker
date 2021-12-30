@@ -120,7 +120,7 @@
     <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
     <mavenPluginPluginVersion>3.6.1</mavenPluginPluginVersion>
     <!-- Cannot upgrade to 3.0.0 because it requires Java 7 -->
-    <findbugsPluginVersion>2.5.5</findbugsPluginVersion>
+    <findbugsPluginVersion>3.0.5</findbugsPluginVersion>
   </properties>
   <!-- reporting plugins are configured according to new mvn3 standard -->
   <!-- Until Maven finds a way to allow inheritance, duplicated in plugin4maven -->
