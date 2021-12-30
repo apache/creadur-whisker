@@ -27,7 +27,7 @@
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
-    <version>23</version>
+    <version>24</version>
   </parent>
   <dependencyManagement>
     <dependencies>
@@ -92,6 +92,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <target.jdk>1.8</target.jdk>
+    <!-- taken from https://maven.apache.org/guides/mini/guide-reproducible-builds.html -->
+    <project.build.outputTimestamp>10</project.build.outputTimestamp>
     <junit.version>4.13.2</junit.version>
     <!-- This is the version of Maven required to use the Maven Plugin for this project -->
     <mavenVersion>3.0.5</mavenVersion>
