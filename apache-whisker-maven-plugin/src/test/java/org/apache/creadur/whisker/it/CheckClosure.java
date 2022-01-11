@@ -18,7 +18,7 @@
  */
 package org.apache.creadur.whisker.it;
 
-import org.apache.commons.collections.Closure;
+import org.apache.commons.collections4.Closure;
 
 public abstract class CheckClosure implements Closure {
 

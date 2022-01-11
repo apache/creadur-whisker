@@ -32,13 +32,11 @@ import org.apache.creadur.whisker.model.Descriptor;
 import org.apache.creadur.whisker.scan.Directory;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
-import org.apache.velocity.runtime.RuntimeServices;
-import org.apache.velocity.runtime.log.LogChute;
 
 /**
  * Wraps velocity engine.
  */
-public class VelocityReports implements LogChute {
+public class VelocityReports {
     /** XML generation template. */
     private static final Product[] PRODUCTS_THAT_GENERATE_TEMPLATES
         = {Product.XML_TEMPLATE};
@@ -69,100 +67,11 @@ public class VelocityReports implements LogChute {
         this.writerFactory = writerFactory;
         this.log = log;
         engine = new VelocityEngine();
-        engine.setProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM, this);
         engine.setProperty(VelocityEngine.RESOURCE_LOADER, "classpath");
         engine.setProperty("classpath.resource.loader.class",
             "org.apache.velocity.runtime.resource.loader."
                 + "ClasspathResourceLoader");
         engine.init();
-    }
-
-    /**
-     * Unused.
-     * @param services unused
-     * @see LogChute#init(RuntimeServices)
-     */
-    public final void init(final RuntimeServices services) { }
-
-    /**
-     * Indicates whether logging is enabled.
-     * @param level at this level
-     * @return true when log level is enabled, false otherwise
-     * @see LogChute#isLevelEnabled(int)
-     */
-    public final boolean isLevelEnabled(final int level) {
-        switch (level) {
-            case DEBUG_ID:
-                return log.isDebugEnabled();
-            case TRACE_ID:
-                return log.isTraceEnabled();
-            case INFO_ID:
-                return log.isInfoEnabled();
-            case WARN_ID:
-                return log.isWarnEnabled();
-            case ERROR_ID:
-                return log.isErrorEnabled();
-            default:
-                return false;
-        }
-    }
-
-    /**
-     * Logs a message.
-     * @param level at level
-     * @param message possibly null
-     * @see LogChute#log(int, String)
-     */
-    public final void log(final int level, final String message) {
-        switch (level) {
-            case DEBUG_ID:
-                log.debug(message);
-                break;
-            case TRACE_ID:
-                log.trace(message);
-                break;
-            case INFO_ID:
-                log.info(message);
-                break;
-            case WARN_ID:
-                log.warn(message);
-                break;
-            case ERROR_ID:
-                log.error(message);
-                break;
-            default:
-                log.trace(message);
-        }
-    }
-
-    /**
-     * Logs a message from Velocity.
-     * @param level log level
-     * @param message possibly null
-     * @param throwable possibly null
-     * @see LogChute#log(int, String, Throwable)
-     */
-    public final void log(final int level,
-            final String message, final Throwable throwable) {
-        switch (level) {
-            case DEBUG_ID:
-                log.debug(message, throwable);
-                break;
-            case TRACE_ID:
-                log.trace(message, throwable);
-                break;
-            case INFO_ID:
-                log.info(message, throwable);
-                break;
-            case WARN_ID:
-                log.warn(message, throwable);
-                break;
-            case ERROR_ID:
-                log.error(message, throwable);
-                break;
-            default:
-                log.trace(message, throwable);
-        }
     }
 
     /**

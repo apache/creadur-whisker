@@ -18,7 +18,7 @@
  */
 package org.apache.creadur.whisker.out.velocity;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.creadur.whisker.app.Configuration;
 import org.apache.creadur.whisker.model.ByOrganisation;
 import org.apache.creadur.whisker.model.Descriptor;

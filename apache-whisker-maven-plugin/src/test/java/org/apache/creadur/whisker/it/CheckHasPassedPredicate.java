@@ -19,8 +19,8 @@
 package org.apache.creadur.whisker.it;
 
 
-import org.apache.commons.collections.Predicate;
-import org.apache.commons.collections.functors.NotPredicate;
+import org.apache.commons.collections4.Predicate;
+import org.apache.commons.collections4.functors.NotPredicate;
 
 public class CheckHasPassedPredicate implements Predicate {
 

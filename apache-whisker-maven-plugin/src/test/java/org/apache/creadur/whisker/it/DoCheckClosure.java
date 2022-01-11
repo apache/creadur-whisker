@@ -19,7 +19,7 @@
 package org.apache.creadur.whisker.it;
 
 
-import static org.apache.commons.collections.CollectionUtils.*;
+import static org.apache.commons.collections4.CollectionUtils.*;
 
 import java.util.Collection;
 

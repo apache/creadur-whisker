@@ -19,7 +19,7 @@
 package org.apache.creadur.whisker.it;
 
 
-import static org.apache.commons.collections.CollectionUtils.*;
+import static org.apache.commons.collections4.CollectionUtils.*;
 import static org.apache.creadur.whisker.it.CheckHasPassedPredicate.*;
 import static org.apache.creadur.whisker.it.Not.*;
 
