@@ -246,7 +246,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.10.0</version>
+          <version>3.11.0</version>
           <configuration>
             <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
             <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
