@@ -1,7 +1,6 @@
 # Apache Creadur Whisker
 
 [![Jenkins Build Status](https://ci-builds.apache.org/buildStatus/icon?job=Creadur%2FCreadur-Whisker)](https://ci-builds.apache.org/job/Creadur/job/Creadur-Whisker/)
-[![Travis Build Status](https://app.travis-ci.com/apache/creadur-whisker.svg?branch=master)](https://app.travis-ci.com/apache/creadur-whisker)
 
 ## What is Whisker?
 
