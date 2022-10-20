@@ -260,7 +260,6 @@
           <configuration>
             <excludes>
               <exclude>README.md</exclude>
-              <exclude>.travis.yml</exclude>
               <exclude>src/site/resources/*.dia</exclude>
             </excludes>
           </configuration>
