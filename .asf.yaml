@@ -1,0 +1,11 @@
+github:
+  description: "Apache Creadur Whisker"
+  homepage: https://creadur.apache.org/whisker
+  labels:
+    - maven
+    - java
+    - cli
+    - licensechecker 
+    - apache
+    - creadur
+    - whisker 
