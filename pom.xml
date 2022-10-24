@@ -259,6 +259,7 @@
           <version>0.15</version>
           <configuration>
             <excludes>
+              <exclude>.asf.yaml</exclude>
               <exclude>README.md</exclude>
               <exclude>src/site/resources/*.dia</exclude>
             </excludes>
