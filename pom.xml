@@ -118,7 +118,7 @@
     <whisker.site.url>file:${whisker.site.local}</whisker.site.url>
     <whisker.site.name>Whisker Website</whisker.site.name>
     <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
-    <mavenPluginPluginVersion>3.6.4</mavenPluginPluginVersion>
+    <mavenPluginPluginVersion>3.7.0</mavenPluginPluginVersion>
     <!-- Cannot upgrade to 3.0.0 because it requires Java 7 -->
     <findbugsPluginVersion>3.0.5</findbugsPluginVersion>
   </properties>
