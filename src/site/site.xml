@@ -30,9 +30,9 @@
   <body>
     <head><![CDATA[<link href="https://fonts.googleapis.com/css?family=Mate+SC" type="text/css" rel="stylesheet" />]]></head>
     <breadcrumbs>
-      <item name="Apache" href="http://www.apache.org/"/>
-      <item name="Creadur" href="http://creadur.apache.org/"/>
-      <item name="Whisker" href="http://creadur.apache.org/whisker/"/>
+      <item name="Apache" href="https://www.apache.org/"/>
+      <item name="Creadur" href="https://creadur.apache.org/"/>
+      <item name="Whisker" href="https://creadur.apache.org/whisker/"/>
     </breadcrumbs>
     <menu name="Apache Whisker&amp;trade;" inherit="bottom">
       <item name="Introducing Whisker" href="index.html"/>
@@ -63,36 +63,36 @@
       <item name="Copyright Notices" href="examples/copyright-notices-sample.xml"/>
     </menu>
     <menu name="Apache Creadur &amp;trade;" inherit="bottom">
-      <item name="Creadur Project Home" href="http://creadur.apache.org"/>
-      <item name="Apache Rat" href="http://creadur.apache.org/rat"/>
-      <item name="Apache Tentacles" href="http://creadur.apache.org/tentacles"/>
-      <item name="Security" href="http://www.apache.org/security/"/>
-      <item name="License" href="http://www.apache.org/licenses/"/>
-      <item name="Sponsorship" href="http://www.apache.org/foundation/sponsorship.html"/>
-      <item name="Thanks" href="http://www.apache.org/foundation/thanks.html"/>
+      <item name="Creadur Project Home" href="https://creadur.apache.org"/>
+      <item name="Apache Rat" href="https://creadur.apache.org/rat"/>
+      <item name="Apache Tentacles" href="https://creadur.apache.org/tentacles"/>
+      <item name="Security" href="https://www.apache.org/security/"/>
+      <item name="License" href="https://www.apache.org/licenses/"/>
+      <item name="Sponsorship" href="https://www.apache.org/foundation/sponsorship.html"/>
+      <item name="Thanks" href="https://www.apache.org/foundation/thanks.html"/>
     </menu>
     <menu name="The Apache Software Foundation" inherit="bottom">
-      <item name="About the Foundation" href="http://www.apache.org/foundation"/>
-      <item name="The projects" href="http://projects.apache.org"/>
-      <item name="The people" href="http://people.apache.org"/>
-      <item name="How we work" href="http://www.apache.org/foundation/how-it-works.html"/>
-      <item name="Our history" href="http://www.apache.org/foundation/how-it-works.html#history"/>
-      <item name="News" href="http://blogs.apache.org/foundation/"/>
+      <item name="About the Foundation" href="https://www.apache.org/foundation"/>
+      <item name="The projects" href="https://projects.apache.org"/>
+      <item name="The people" href="https://people.apache.org"/>
+      <item name="How we work" href="https://www.apache.org/foundation/how-it-works.html"/>
+      <item name="Our history" href="https://www.apache.org/foundation/how-it-works.html#history"/>
+      <item name="News" href="https://blogs.apache.org/foundation/"/>
     </menu>
     <menu name="Contribute" inherit="bottom">
-      <item name="Get Involved" href="http://www.apache.org/foundation/getinvolved.html"/>
+      <item name="Get Involved" href="https://www.apache.org/foundation/getinvolved.html"/>
     </menu>
     <menu name="Committer Info" inherit="bottom">
-      <item name="Committers' FAQ" href="http://www.apache.org/dev/committers.html"/>
-      <item name="New Committers Guide" href="http://www.apache.org/dev/new-committers-guide.html"/>
-      <item name="Plant Apache" href="http://planet.apache.org/committers/"/>
-      <item name="Community" href="http://community.apache.org/"/>
-      <item name="Legal" href="http://www.apache.org/legal/"/>
-      <item name="Branding" href="http://www.apache.org/foundation/marks/"/>
-      <item name="Media Relations" href="http://www.apache.org/press/"/>
+      <item name="Committers' FAQ" href="https://www.apache.org/dev/committers.html"/>
+      <item name="New Committers Guide" href="https://www.apache.org/dev/new-committers-guide.html"/>
+      <item name="Planet Apache" href="https://planet.apache.org/committers/"/>
+      <item name="Community" href="https://community.apache.org/"/>
+      <item name="Legal" href="https://www.apache.org/legal/"/>
+      <item name="Branding" href="https://www.apache.org/foundation/marks/"/>
+      <item name="Media Relations" href="https://www.apache.org/press/"/>
     </menu>
     <menu ref="reports"/>
-    <footer>Copyright © 2012 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.
+    <footer>Copyright © 2012-2022 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.
       Apache Creadur, Creadur, Apache Rat, Apache Tentacles, Apache Whisker, Apache and the Apache feather logo are trademarks
       of The Apache Software Foundation.
       All other marks mentioned may be trademarks or registered trademarks of their respective owners.
