@@ -1,6 +1,8 @@
 # Apache Creadur Whisker
 
-[![Jenkins Build Status](https://ci-builds.apache.org/buildStatus/icon?job=Creadur%2FCreadur-Whisker)](https://ci-builds.apache.org/job/Creadur/job/Creadur-Whisker/)
+ASF: [![Jenkins Build Status](https://ci-builds.apache.org/buildStatus/icon?job=Creadur%2FCreadur-Whisker)](https://ci-builds.apache.org/job/Creadur/job/Creadur-Whisker/)
+
+GA: [![Github Action master branch status](https://github.com/apache/creadur-whisker/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/apache/creadur-whisker/actions)
 
 ## What is Whisker?
 
