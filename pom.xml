@@ -262,6 +262,7 @@
               <exclude>**/.mvn/**</exclude>
               <exclude>.asf.yaml</exclude>
               <exclude>README.md</exclude>
+              <exclude>**/src/site/javadocFont/**</exclude>
               <exclude>src/site/resources/*.dia</exclude>
             </excludes>
           </configuration>
