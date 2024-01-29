@@ -65,8 +65,8 @@ The <action> type attribute can be add,update,fix,remove.
       <action issue="WHISKER-13" type="fix" dev="dennisl">
         Fixes error during site generation with Java8 and maven plugin version 3.3.
       </action>
-      <action issue="WHISKER-22" type="add" dev="pottlinger">
-        Update webpage to not load fonts from GoogleFonts and include privacy link in main menu.
+      <action issue="WHISKER-14" type="add" dev="dennisl">
+        Change artifactId/goalPrefix of Maven plugin to comply with expected apache-whisker-maven-plugin.
       </action>
       <action issue="WHISKER-22" type="add" dev="pottlinger">
         Update webpage to not load fonts from GoogleFonts and include privacy link in main menu.
