@@ -58,8 +58,16 @@ The <action> type attribute can be add,update,fix,remove.
         TODO: WHISKER-xx: collect all dependabot updates for release 0.3.
       </action>
     </release>
+    Error during site generation with Java8
+
     -->
     <release version="0.2-SNAPSHOT" date="xxxx-yy-zz" description="Current SNAPSHOT - release to be done">
+      <action issue="WHISKER-13" type="fix" dev="dennisl">
+        Fixes error during site generation with Java8 and maven plugin version 3.3.
+      </action>
+      <action issue="WHISKER-22" type="add" dev="pottlinger">
+        Update webpage to not load fonts from GoogleFonts and include privacy link in main menu.
+      </action>
       <action issue="WHISKER-22" type="add" dev="pottlinger">
         Update webpage to not load fonts from GoogleFonts and include privacy link in main menu.
       </action>
