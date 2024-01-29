@@ -77,7 +77,7 @@ pipeline {
             steps {
                 echo 'Building the whole project'
                 // clean package -B -U -e -fae -V for making sure it just builds
-                sh 'mvn -B -U -V clean deploy'
+                sh './mvnw -B -U -V clean deploy'
             }
             post {
                 always {
@@ -90,7 +90,7 @@ pipeline {
         stage('Ensure site build works') {
             steps {
                 echo 'Verify site build is okay ....'
-                sh 'mvn site:site'
+                sh './mvnw site:site'
             }
         }
 
