@@ -9,3 +9,6 @@ github:
     - apache
     - creadur
     - whisker 
+notifications:
+  commits: commits@creadur.apache.org
+
