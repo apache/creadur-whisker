@@ -22,16 +22,16 @@
 ~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-What Is Apache Whisker?
+What Is Apache Whisker&#8482;?
 
   Apache Whisker assists assembled applications maintain correct legal
   documentation.
 
-  Apache Whisker is part of the {{{http://creadur.apache.org}Apache Creadur}}
+  Apache Whisker is part of the {{{https://creadur.apache.org}Apache Creadur}}
   language- and build-agnostic suite of tools for auditing and comprehending
   software distributions. Our community develops
-  {{{http://www.opensource.org/} open source software}} the
-  {{{http://www.apache.org/foundation/how-it-works.html} Apache Way}}.
+  {{{https://www.opensource.org/} open source software}} the
+  {{{https://www.apache.org/foundation/how-it-works.html} Apache Way}}.
 
   Whisker just helps to maintain information more efficiently, and is
   {{{./faq.html#what-whisker-is-not}no substitute}}
@@ -123,7 +123,7 @@ What Is Apache Whisker?
  * {{{./examples/license-family.html}Parameterising a template}} for a
      {{{./faq.html#what-is-license-family}license family}},
      featuring the
-     {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
+     {{{https://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
 
  * All about {{{./examples/copyright-notices.html}copyright notices}}
 
