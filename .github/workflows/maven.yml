@@ -33,10 +33,11 @@ jobs:
 # Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
 #
 # Java 17 disabled, because we are running into https://bugs.openjdk.java.net/browse/JDK-8270866
-        java: [8, 11, 16]
+        java: [8, 11, 16, 21]
       fail-fast: false
 
     runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }}-JDK${{ matrix.java }}
 
     steps:
       - name: Checkout
@@ -64,4 +65,3 @@ jobs:
 # The workflow is not valid. .github/workflows/maven.yml (Line: 55, Col: 1): Unexpected value 'notifications'
 #notifications:
 #   jobs: commits@creadur.apache.org
-
