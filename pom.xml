@@ -97,6 +97,8 @@
     <junit.version>4.13.2</junit.version>
     <!-- This is the version of Maven required to use the Maven Plugin for this project -->
     <mavenVersion>3.0.5</mavenVersion>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <!--
     Publication to the website is a two phase operation:
 
@@ -119,7 +121,6 @@
     <whisker.site.name>Whisker Website</whisker.site.name>
     <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
     <mavenPluginPluginVersion>3.13.1</mavenPluginPluginVersion>
-    <!-- Cannot upgrade to 3.0.0 because it requires Java 7 -->
     <findbugsPluginVersion>3.0.5</findbugsPluginVersion>
   </properties>
   <!-- reporting plugins are configured according to new mvn3 standard -->
@@ -233,10 +234,6 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <source>${target.jdk}</source>
-            <target>${target.jdk}</target>
-          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
