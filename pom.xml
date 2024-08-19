@@ -120,7 +120,7 @@
     <whisker.site.url>file:${whisker.site.local}</whisker.site.url>
     <whisker.site.name>Whisker Website</whisker.site.name>
     <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
-    <mavenPluginPluginVersion>3.13.1</mavenPluginPluginVersion>
+    <mavenPluginPluginVersion>3.14.0</mavenPluginPluginVersion>
     <findbugsPluginVersion>3.0.5</findbugsPluginVersion>
   </properties>
   <!-- reporting plugins are configured according to new mvn3 standard -->
