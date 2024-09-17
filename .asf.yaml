@@ -9,6 +9,10 @@ github:
     - apache
     - creadur
     - whisker 
+  autolink_jira:
+    - RAT
+    - WHISKER
+    - TENTACLES
 notifications:
   commits: commits@creadur.apache.org
 
