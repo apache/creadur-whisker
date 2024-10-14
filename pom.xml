@@ -93,7 +93,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <target.jdk>1.8</target.jdk>
     <!-- taken from https://maven.apache.org/guides/mini/guide-reproducible-builds.html -->
-    <project.build.outputTimestamp>10</project.build.outputTimestamp>
+    <!-- MSITE-1018, WHISKER-26: nil out timestamp in order to get current build timestamp -->
+    <project.build.outputTimestamp>a</project.build.outputTimestamp>
     <junit.version>4.13.2</junit.version>
     <!-- This is the version of Maven required to use the Maven Plugin for this project -->
     <mavenVersion>3.0.5</mavenVersion>
