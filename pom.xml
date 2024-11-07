@@ -414,13 +414,13 @@
       <subscribe>dev-subscribe@creadur.apache.org</subscribe>
       <unsubscribe>dev-unsubscribe@creadur.apache.org</unsubscribe>
       <post>dev@creadur.apache.org</post>
-      <archive>http://mail-archives.apache.org/mod_mbox/creadur-dev/</archive>
+      <archive>https://lists.apache.org/list.html?dev@creadur.apache.org</archive>
     </mailingList>
     <mailingList>
       <name>Whisker commits at Apache Creadur project</name>
       <subscribe>commits-subscribe@creadur.apache.org</subscribe>
       <unsubscribe>commits-unsubscribe@creadur.apache.org</unsubscribe>
-      <archive>http://mail-archives.apache.org/mod_mbox/creadur-commits/</archive>
+      <archive>https://lists.apache.org/list.html?commits@creadur.apache.org</archive>
     </mailingList>
   </mailingLists>
   <distributionManagement>
