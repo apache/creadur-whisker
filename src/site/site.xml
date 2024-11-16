@@ -68,7 +68,7 @@
       <item name="Apache Tentacles" href="https://creadur.apache.org/tentacles"/>
       <item name="Security" href="https://www.apache.org/security/"/>
       <item name="License" href="https://www.apache.org/licenses/"/>
-      <item name='Privacy' href='https://privacy.apache.org/policies/privacy-policy-public.html'/>
+      <item name="Privacy" href="https://privacy.apache.org/policies/privacy-policy-public.html"/>
       <item name="Sponsorship" href="https://www.apache.org/foundation/sponsorship.html"/>
       <item name="Thanks" href="https://www.apache.org/foundation/thanks.html"/>
     </menu>

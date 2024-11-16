@@ -21,8 +21,8 @@
   <body>
     <menu name="Overview">
       <item name="Introduction" href="index.html"/>
-      </menu> 
-    <menu ref='parent'/>
-    <menu ref='reports'/>
+    </menu>
+    <menu ref="parent"/>
+    <menu ref="reports"/>
   </body>
 </project>
