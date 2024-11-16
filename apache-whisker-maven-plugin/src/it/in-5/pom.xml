@@ -17,48 +17,38 @@
   specific language governing permissions and limitations
   under the License.    
 -->
-<project
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
-  
   <groupId>org.apache.creadur.whisker.it</groupId>
   <artifactId>In5Minutes</artifactId>
   <version>@project.version@</version>
-  
   <name>5 Minute Example Generation</name>
   <description>
   Similar to  5 Minute example. 
   </description>
-  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <target.jdk>1.5</target.jdk>
   </properties>
-  
   <build>
     <plugins>
-        <plugin>
-          <groupId>org.apache.creadur.whisker</groupId>
-            <artifactId>apache-whisker-maven-plugin</artifactId>
-            <version>@project.version@</version>
-            <executions>
-                <execution>
-                    <id>generate-stuff</id>
-                    <phase>package</phase>
-                    <goals>
-                        <goal>generate</goal>
-                    </goals>
-                </execution>
-            </executions>
-            <configuration>
-                <descriptor>descriptor.xml</descriptor>
-            </configuration>
-        </plugin>
+      <plugin>
+        <groupId>org.apache.creadur.whisker</groupId>
+        <artifactId>apache-whisker-maven-plugin</artifactId>
+        <version>@project.version@</version>
+        <executions>
+          <execution>
+            <id>generate-stuff</id>
+            <phase>package</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <descriptor>descriptor.xml</descriptor>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
- 
 </project>

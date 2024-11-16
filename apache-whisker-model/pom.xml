@@ -19,29 +19,24 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
     <groupId>org.apache.creadur.whisker</groupId>
     <artifactId>apache-whisker</artifactId>
     <version>0.2-SNAPSHOT</version>
   </parent>
-
   <artifactId>apache-whisker-model</artifactId>
   <packaging>jar</packaging>
-
   <dependencies>
     <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
     </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
-
   <!--
 
 
@@ -51,5 +46,4 @@
   <name>Apache Whisker::Model</name>
   <description>Models licensing meta-data.</description>
   <url>http://creadur.apache.org/whisker/apache-whisker-model</url>
-
 </project>
