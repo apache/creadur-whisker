@@ -86,7 +86,7 @@ public enum CommandLineOption {
      * @param argument possibly null
      * @param isAct is this argument an act?
      */
-    private CommandLineOption(final String longName,
+    CommandLineOption(final String longName,
             final char shortName,
             final String description,
             final boolean required,

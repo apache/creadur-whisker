@@ -149,8 +149,8 @@ public class License implements Comparable<License> {
     private boolean parametersMatch(final Map<String, String> parameters,
             final Collection<String> expectedParameters) {
         final Set<String> keySet = parameters.keySet();
-        return (keySet.containsAll(expectedParameters) && expectedParameters
-                .containsAll(keySet));
+        return keySet.containsAll(expectedParameters) && expectedParameters
+                .containsAll(keySet);
     }
 
     /**

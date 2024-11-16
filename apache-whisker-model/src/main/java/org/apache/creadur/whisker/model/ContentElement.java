@@ -27,6 +27,6 @@ public interface ContentElement {
      * Accepts a visit.
      * @param visitor possibly null
      */
-    public void accept(Visitor visitor);
+    void accept(Visitor visitor);
 
 }

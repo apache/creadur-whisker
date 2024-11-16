@@ -72,26 +72,26 @@ public abstract class Visitor {
      * @param directory not null
      */
     public void visit(final WithinDirectory directory) {
-    };
+    }
 
     /**
      * Visits {@link WithLicense}.
      * @param license not null
      */
     public void visit(final WithLicense license) {
-    };
+    }
 
     /**
      * Visits {@link ByOrganisation}.
      * @param byOrganisation not null
      */
     public void visit(final ByOrganisation byOrganisation) {
-    };
+    }
 
     /**
      * Visits {@link Resource}.
      * @param resource not null
      */
     public void visit(final Resource resource) {
-    };
+    }
 }

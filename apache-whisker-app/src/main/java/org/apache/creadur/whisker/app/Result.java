@@ -42,7 +42,7 @@ public enum Result {
      * Constructs an instance.
      * @param name not null
      */
-    private Result(final String name) {
+    Result(final String name) {
         this.name = name;
     }
 

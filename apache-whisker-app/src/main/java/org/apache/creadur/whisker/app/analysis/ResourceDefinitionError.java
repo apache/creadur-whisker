@@ -38,7 +38,7 @@ public enum ResourceDefinitionError {
      * Constructs an error with the given description.
      * @param description not null
      */
-    private ResourceDefinitionError(final String description) {
+    ResourceDefinitionError(final String description) {
         this.description = description;
     }
 
@@ -46,7 +46,7 @@ public enum ResourceDefinitionError {
      * Gets a description suitable for display.
      * @return not null
      */
-    public final String getDescription() {
+    public String getDescription() {
         return description;
     }
 }

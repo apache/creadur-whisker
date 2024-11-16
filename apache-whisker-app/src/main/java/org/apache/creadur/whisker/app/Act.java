@@ -40,7 +40,7 @@ public enum Act {
      * @param isSourceRequired true when source is require,
      * false otherwise
      */
-    private Act(final boolean isSourceRequired) {
+    Act(final boolean isSourceRequired) {
         this.isSourceRequired = isSourceRequired;
     }
 

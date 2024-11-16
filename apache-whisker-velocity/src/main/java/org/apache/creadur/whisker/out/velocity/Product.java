@@ -61,7 +61,7 @@ public enum Product {
      * @param template not null
      * @param result not null
      */
-    private Product(final String template, final Result result) {
+    Product(final String template, final Result result) {
         this.template = template;
         this.result = result;
     }
