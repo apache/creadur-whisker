@@ -60,6 +60,9 @@ The <action> type attribute can be add,update,fix,remove.
     </release>
     -->
     <release version="0.2-SNAPSHOT" date="xxxx-yy-zz" description="Current SNAPSHOT - release to be done">
+      <action issue="WHISKER-27" type="fix" dev="pottlinger">
+        Fix build warning and ensure Maven >=3.0.5 is used to build the project.
+      </action>
       <action issue="WHISKER-20" type="fix" dev="pottlinger">
         Update Jdom to 2.0.6.1 in order to fix CVE CVE-2021-33813.
       </action>
