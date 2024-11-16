@@ -311,6 +311,20 @@
               <fail>true</fail>
             </configuration>
           </execution>
+          <!-- This is the version of Maven required to build this project -->
+          <execution>
+            <id>enforce-maven</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>3.0.5</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
         </executions>
         <dependencies>
           <dependency>
@@ -396,10 +410,6 @@
     <url>https://www.apache.org</url>
   </organization>
   <!-- ================================ Environment -->
-  <prerequisites>
-    <!-- This is the version of Maven required to build this project -->
-    <maven>3.0.5</maven>
-  </prerequisites>
   <issueManagement>
     <system>JIRA</system>
     <url>https://issues.apache.org/jira/browse/WHISKER</url>
