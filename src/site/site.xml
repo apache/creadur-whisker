@@ -23,15 +23,23 @@
     <artifactId>maven-fluido-skin</artifactId>
     <!-- version is managed in pom.xml in order to be grabbed by dependabot -->
   </skin>
-  <bannerRight>
-    <title>The Apache Software Foundation</title>
-    <name>The Apache Software Foundation</name>
-    <src>https://www.apache.org/images/asf_logo_wide.jpg</src>
-    <href>https://www.apache.org/</href>
-  </bannerRight>
+  <bannerLeft name="Apache Whisker" href="https://www.apache.org/">
+    <image src="https://www.apache.org/img/asf_logo.png" alt="The Apache Software Foundation"/>
+  </bannerLeft>
   <poweredBy>
-    <logo name="Maven" href="https://maven.apache.org/" img="https://maven.apache.org/images/logos/maven-feather.png"/>
+    <logo name="Maven" href="https://maven.apache.org/">
+      <image src="https://maven.apache.org/images/logos/maven-feather.png"/>
+    </logo>
   </poweredBy>
+  <custom>
+    <fluidoSkin>
+      <gitHub>
+        <projectId>apache/creadur-whisker</projectId>
+        <ribbonOrientation>right</ribbonOrientation>
+        <ribbonColor>blue</ribbonColor>
+      </gitHub>
+    </fluidoSkin>
+  </custom>
   <body>
     <head><![CDATA[<link href="https://creadur.apache.org/font/matesc.css" type="text/css" rel="stylesheet" />]]></head>
     <breadcrumbs>
@@ -105,4 +113,4 @@
       This is user documentation, not legal advice.
       </footer>
   </body>
-</site
+</site>
