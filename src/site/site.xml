@@ -17,7 +17,12 @@
   specific language governing permissions and limitations
   under the License.
 -->
-<project name="Apache Whisker&amp;trade;">
+<site xmlns="http://maven.apache.org/SITE/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SITE/2.0.0 https://maven.apache.org/xsd/site-2.0.0.xsd" name="Apache Whisker&amp;trade;">
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <!-- version is managed in pom.xml in order to be grabbed by dependabot -->
+  </skin>
   <bannerRight>
     <title>The Apache Software Foundation</title>
     <name>The Apache Software Foundation</name>
@@ -100,4 +105,4 @@
       This is user documentation, not legal advice.
       </footer>
   </body>
-</project>
+</site
