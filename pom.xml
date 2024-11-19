@@ -106,20 +106,7 @@
     <maven.compiler.source>${target.jdk}</maven.compiler.source>
     <maven.compiler.target>${target.jdk}</maven.compiler.target>
     <!--
-    Publication to the website is a two phase operation:
-
-     1. Deploy to local stage: mvn site:deploy
-     2. Publish to Apache CMS: mvn scm-publish:publish-scm
-
-    This will only work when the origin for scm-publish:publish-scm
-    is the target for site:deploy.
-
-    SO MAKE SURE THAT THE FOLLOWING PROPERTIES RESOLVE TO THE SAME
-    DIRECTORY:
-
-     * scmpublish.content
-     * whisker.site.url
-
+    See creadur-site repo for more details about publication
     -->
     <whisker.site.local>stage</whisker.site.local>
     <scmpublish.content>${whisker.site.local}</scmpublish.content>
@@ -152,7 +139,6 @@
         <artifactId>maven-jxr-plugin</artifactId>
         <version>3.6.0</version>
         <configuration>
-          <aggregate>true</aggregate>
           <linkJavadoc>true</linkJavadoc>
         </configuration>
       </plugin>
@@ -166,7 +152,6 @@
         <version>3.26.0</version>
         <configuration>
           <linkXRef>true</linkXRef>
-          <sourceEncoding>utf-8</sourceEncoding>
           <minimumTokens>100</minimumTokens>
           <targetJdk>${target.jdk}</targetJdk>
           <excludes>
@@ -206,18 +191,43 @@
         <artifactId>taglist-maven-plugin</artifactId>
         <version>3.2.1</version>
         <configuration>
-          <tags>
-            <tag>TODO</tag>
-            <tag>todo</tag>
-            <tag>FIXME</tag>
-            <tag>fixme</tag>
-            <tag>REFACTOR</tag>
-            <tag>refactor</tag>
-            <tag>REVIEW</tag>
-            <tag>review</tag>
-            <tag>@todo</tag>
-            <tag>@deprecated</tag>
-          </tags>
+          <tagListOptions>
+            <tagClasses>
+              <tagClass>
+                <displayName>TODOs</displayName>
+                <tags>
+                  <tag>
+                    <matchString>todo</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>fixme</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>refactor</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>review</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>@todo</matchString>
+                    <matchType>exact</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>@deprecated</matchString>
+                    <matchType>exact</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>@Deprecated</matchString>
+                    <matchType>exact</matchType>
+                  </tag>
+                </tags>
+              </tagClass>
+            </tagClasses>
+          </tagListOptions>
         </configuration>
       </plugin>
       <plugin>
@@ -281,16 +291,6 @@
               </goals>
             </execution>
           </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-scm-publish-plugin</artifactId>
-          <version>3.3.0</version>
-          <extensions>true</extensions>
-          <configuration>
-            <!-- svn location for publication -->
-            <pubScmUrl>scm:svn:https://svn.apache.org/repos/asf/creadur/site/trunk/content/whisker/</pubScmUrl>
-          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
