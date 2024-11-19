@@ -38,7 +38,7 @@
 
 <!-- Collections organisation descriptions -->
 <!ELEMENT organisations (organisation*)>
-<!-- Descibres an upstream organisation -->
+<!-- Describes an upstream organisation -->
 <!ELEMENT organisation EMPTY>
 <!ATTLIST organisation id ID #REQUIRED>
 <!ATTLIST organisation name CDATA #REQUIRED>
@@ -557,7 +557,7 @@
     </license>
     <!-- The MIT License often requires a copyright-notice (but not a notice). -->
     <license name='MIT License' id='osi:mit'
-      url='http://www.opensource.org/licenses/mit-license.php'>
+      url='https://www.opensource.org/licenses/mit-license.php'>
       <text>
         Permission is hereby granted, free of charge, to any person obtaining
         a copy of this software and associated documentation files (the
@@ -582,10 +582,10 @@
         WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       </text>
     </license>
-    <!-- The Apache License, Version 2 typicaly requires a notice (but not
+    <!-- The Apache License, Version 2 typically requires a notice (but not
       a copyright-notice). -->
     <license name='Apache License, Version 2' id='osi:AL2'
-      url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+      url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
       <text>
         Apache License
         Version 2.0, January 2004
@@ -795,7 +795,7 @@
       Copyright (c) 9595 The Example Project
 
       This product includes software developed at
-      The Example Foundation (http://example.org/).
+      The Example Foundation (https://example.org/).
     </notice>
   </notices>
   <!-- To keep this example simple, assume all works are licensed by the
@@ -803,7 +803,7 @@
     are very similar. -->
   <organisations>
     <organisation id='example.org' name='The Example Project'
-      url='http://example.org/' />
+      url='https://example.org/' />
   </organisations>
   <!-- For this illustrative example, the primary license requires neither
     notice nor copyright-notice. -->
