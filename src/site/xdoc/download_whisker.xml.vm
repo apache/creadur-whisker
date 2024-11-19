@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<document>
+  <properties>
+    <title>Downloads</title>
+  </properties>
+  <body>
+    <section name="Download ${project.name}">
+      <subsection name="Using a Mirror">
+        <p>
+          We recommend you use a mirror to download our release
+          builds, but you <strong>must</strong> <a href="https://www.apache.org/info/verification.html">verify the integrity</a> of
+          the downloaded files using signatures downloaded from our main
+          distribution directories. Recent releases (48 hours) may not yet
+          be available from the mirrors.
+        </p>
+        <p>
+          You are currently using <b>[preferred]</b>.  If you
+          encounter a problem with this mirror, please select another
+          mirror.  If all mirrors are failing, there are <i>backup</i>
+          mirrors (at the end of the mirrors list) that should be
+          available.
+          <br/>
+          [if-any logo]<a href="[link]"><img align="right" src="[logo]" border="0"/></a>[end]
+        </p>
+        <form action="[location]" method="get" id="SelectMirror">
+          <p>
+            Other mirrors:
+            <select name="Preferred">
+              [if-any http]
+              [for http]<option value="[http]">[http]</option>[end]
+              [end]
+              [if-any ftp]
+              [for ftp]<option value="[ftp]">[ftp]</option>[end]
+              [end]
+              [if-any backup]
+              [for backup]<option value="[backup]">[backup] (backup)</option>[end]
+              [end]
+            </select>
+            <input type="submit" value="Change"/>
+          </p>
+        </form>
+        <p>
+          The <a href="https://www.apache.org/dist/creadur/KEYS">KEYS</a>
+          file links to the code signing keys used to sign the
+          product.  The <code>PGP</code> link downloads the OpenPGP
+          compatible signature from our main site.  The
+          <code>SHA512</code> links download the checksum from the main site.
+        </p>
+      </subsection>
+    </section>
+    <section name="Latest release of ${project.name} is ${previousRatVersion}">
+      <subsection name="Binaries">
+        <table>
+          <tr>
+            <td>
+              <a href="[preferred]/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-bin.tar.bz2">apache-rat-${previousRatVersion}-bin.tar.bz2</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-bin.tar.bz2.sha512">sha512</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-bin.tar.bz2.asc">pgp</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="[preferred]/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-bin.tar.gz">apache-rat-${previousRatVersion}-bin.tar.gz</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-bin.tar.gz.sha512">sha512</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-bin.tar.gz.asc">pgp</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="[preferred]/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-bin.zip">apache-rat-${previousRatVersion}-bin.zip</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-bin.zip.sha512">sha512</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-bin.zip.asc">pgp</a>
+            </td>
+          </tr>
+        </table>
+      </subsection>
+      <subsection name="Source">
+        <table>
+          <tr>
+            <td>
+              <a href="[preferred]/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-src.tar.bz2">apache-rat-${previousRatVersion}-src.tar.bz2</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-src.tar.bz2.sha512">sha512</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-src.tar.bz2.asc">pgp</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="[preferred]/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-src.tar.gz">apache-rat-${previousRatVersion}-src.tar.gz</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-src.tar.gz.sha512">sha512</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-src.tar.gz.asc">pgp</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="[preferred]/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-src.zip">apache-rat-${previousRatVersion}-src.zip</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-src.zip.sha512">sha512</a>
+            </td>
+            <td>
+              <a href="https://www.apache.org/dist/creadur/apache-rat-${previousRatVersion}/apache-rat-${previousRatVersion}-src.zip.asc">pgp</a>
+            </td>
+          </tr>
+        </table>
+      </subsection>
+    </section>
+    <div class="section">
+      <h2><a name="Apache_Creadur_Rat_${currentSnapshotRatVersion}"/>${project.name} ${currentSnapshotRatVersion}</h2>
+      <div class="section">
+        <h3><a name="Snapshots"/>Snapshots</h3>
+        <table border="0" class="bodyTable">
+          <tr class="a">
+            <td colspan="4">
+              <a class="externalLink" href="https://repository.apache.org/content/repositories/snapshots/org/apache/rat">${project.name} ${currentSnapshotRatVersion}</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <section name="Archives">
+      <p>
+          Older releases can be obtained from the archives.
+        </p>
+      <ul>
+        <li class="download">
+          <a href="[preferred]/creadur/">browse download area</a>
+        </li>
+        <li>
+          <a href="https://archive.apache.org/dist/creadur/">archives...</a>
+        </li>
+        <li>
+          <a href="https://archive.apache.org/dist/incubator/rat/">Incubator archives...</a>
+        </li>
+      </ul>
+    </section>
+  </body>
+</document>
