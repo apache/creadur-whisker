@@ -105,9 +105,7 @@
     <mavenVersion>3.0.5</mavenVersion>
     <maven.compiler.source>${target.jdk}</maven.compiler.source>
     <maven.compiler.target>${target.jdk}</maven.compiler.target>
-    <!--
-    See creadur-site repo for more details about publication
-    -->
+    <!-- See creadur-site repo for more details about publication -->
     <whisker.site.local>stage</whisker.site.local>
     <scmpublish.content>${whisker.site.local}</scmpublish.content>
     <whisker.site.url>file:${whisker.site.local}</whisker.site.url>
@@ -115,6 +113,9 @@
     <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
     <mavenPluginPluginVersion>3.15.1</mavenPluginPluginVersion>
     <findbugsPluginVersion>3.0.5</findbugsPluginVersion>
+    <!-- placeholders used in the download script need to be adapted manually before releasing -->
+    <latestWhiskerRelease>0.1</latestWhiskerRelease>
+    <currentSnapshotVersion>0.2-SNAPSHOT</currentSnapshotVersion>
   </properties>
   <!-- reporting plugins are configured according to new mvn3 standard -->
   <!-- Until Maven finds a way to allow inheritance, duplicated in plugin4maven -->
