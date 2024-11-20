@@ -147,6 +147,7 @@ limitations under the License.
         <table border="0" class="bodyTable">
           <tr class="a">
             <td colspan="4">
+              <!--https://repository.apache.org/content/groups/snapshots/org/apache/creadur/whisker/apache-whisker-cli/-->
               <a class="externalLink" href="https://repository.apache.org/content/repositories/snapshots/org/apache/creadur/whisker">${project.name} ${currentSnapshotVersion}</a>
             </td>
           </tr>
