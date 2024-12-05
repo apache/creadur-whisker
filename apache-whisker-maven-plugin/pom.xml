@@ -176,7 +176,6 @@
         <configuration>
           <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
           <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
-          <relativizeDecorationLinks>false</relativizeDecorationLinks>
         </configuration>
       </plugin>
     </plugins>
