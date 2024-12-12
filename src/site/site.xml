@@ -56,6 +56,7 @@
       <item name="Source Cross-ref" href="xref/index.html"/>
       <item name="FAQ" href="faq.html"/>
       <item name="Downloads" href="/download_whisker.cgi"/>
+      <item name="Changes" href="/changes.html"/>
     </menu>
     <menu name="Examples">
       <item name="In 5 Minutes" href="examples/in-5-mins.html"/>
