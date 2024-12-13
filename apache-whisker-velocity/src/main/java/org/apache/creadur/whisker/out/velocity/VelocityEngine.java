@@ -31,7 +31,7 @@ import org.apache.creadur.whisker.scan.Directory;
 /**
  * Uses Apache Velocity to implement {@link AbstractEngine}.
  *
- * @see <a href='http://velocity.apache.org'>Apache Velocity</a>
+ * @see <a href='https://velocity.apache.org'>Apache Velocity</a>
  */
 public class VelocityEngine extends AbstractEngine {
     /** Not null. */

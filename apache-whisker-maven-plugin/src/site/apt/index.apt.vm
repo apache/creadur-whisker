@@ -29,18 +29,18 @@ documentation. Read more about how Whisker can help {{{../index.html} here}}.
 
 How Can Apache Whisker Maven Plugin Help?
 
-  {{{http://maven.apache.org}Apache Maven}} is a declarative build management tool, 
+  {{{https://maven.apache.org}Apache Maven}} is a declarative build management tool,
 useful not only for building components but also for assembling them into applications.
 
  * Whisker {{{./generate-mojo.html} generates}} licensing materials for assembled applications.
- 
- 
+
+
 * Goals Overview
 
-  The {{{http://creadur.apache.org/whisker} Apache Whisker}} plugin for Maven 
+  The {{{http://creadur.apache.org/whisker} Apache Whisker}} plugin for Maven
   supports the follow goal:
   
-    * {{{./generate-mojo.html}apache-whisker4:generate}} generates licensing related materials 
+    * {{{./generate-mojo.html}apache-whisker:generate}} generates licensing related materials
     such as <<<LICENSE>>> and <<<NOTICE>>> documents for assembled applications.
     
 

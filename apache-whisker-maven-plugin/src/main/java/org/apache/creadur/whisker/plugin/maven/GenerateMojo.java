@@ -73,7 +73,7 @@ public class GenerateMojo extends AbstractMojo {
                     throw new MojoExecutionException("Whisker failed to generate materials: " + e.getMessage(), e);
                 }
             } else {
-                throw new MojoExecutionException("Read permission requires on Whisker descriptor file: " + descriptor);
+                throw new MojoExecutionException("Read permission required on Whisker descriptor file: " + descriptor);
             }
         } else {
             throw new MojoExecutionException("Whisker descriptor file is missing: " + descriptor);

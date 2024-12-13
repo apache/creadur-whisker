@@ -69,13 +69,7 @@
       <version>${project.version}</version>
     </dependency>
   </dependencies>
-  <!--
-
-
-  ================================
-  Project information
-  -->
   <name>Apache Whisker::Output(velocity)</name>
   <description>Outputs results using velocity.</description>
-  <url>http://creadur.apache.org/whisker/apache-whisker-velocity</url>
+  <url>https://creadur.apache.org/whisker/apache-whisker-velocity</url>
 </project>

@@ -46,13 +46,7 @@
       <version>${project.version}</version>
     </dependency>
   </dependencies>
-  <!--
-
-
-  ================================
-  Project information
-  -->
   <name>Apache Whisker::XML</name>
   <description>Reads model from xml.</description>
-  <url>http://creadur.apache.org/whisker/apache-whisker-xml</url>
+  <url>https://creadur.apache.org/whisker/apache-whisker-xml</url>
 </project>
