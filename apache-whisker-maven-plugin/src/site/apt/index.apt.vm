@@ -37,7 +37,7 @@ useful not only for building components but also for assembling them into applic
 
 * Goals Overview
 
-  The {{{http://creadur.apache.org/whisker} Apache Whisker}} plugin for Maven
+  The {{{https://creadur.apache.org/whisker} Apache Whisker}} plugin for Maven
   supports the follow goal:
   
     * {{{./generate-mojo.html}apache-whisker:generate}} generates licensing related materials
