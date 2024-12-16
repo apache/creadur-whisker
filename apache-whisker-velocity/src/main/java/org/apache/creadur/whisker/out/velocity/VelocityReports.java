@@ -33,6 +33,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 /**
  * Wraps velocity engine.
@@ -69,8 +70,7 @@ public class VelocityReports {
         engine = new VelocityEngine();
         engine.setProperty(VelocityEngine.RESOURCE_LOADER, "classpath");
         engine.setProperty("resource.loader.classpath.class",
-            "org.apache.velocity.runtime.resource.loader."
-                + "ClasspathResourceLoader");
+                ClasspathResourceLoader.class.getName());
         engine.init();
     }
 
