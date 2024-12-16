@@ -22,7 +22,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.charset.Charset;
 
+import org.apache.commons.io.charset.CharsetEncoders;
 import org.apache.commons.io.output.FileWriterWithEncoding;
 import org.apache.creadur.whisker.app.Result;
 import org.apache.creadur.whisker.app.ResultWriterFactory;
@@ -62,7 +64,9 @@ public final class WriteResultsIntoDirectoryFactory
     public Writer writerFor(final Result result)
             throws IOException {
         return new BufferedWriter(
-                new FileWriterWithEncoding(
-                        result.within(directory), encoding));
+                FileWriterWithEncoding.builder()
+                        .setFile(result.within(directory))
+                        .setCharset(encoding)
+                        .get());
     }
 }
