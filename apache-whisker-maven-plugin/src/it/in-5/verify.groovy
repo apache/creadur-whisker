@@ -90,4 +90,4 @@ assert !six
 assert seven
 assert eight
     
-return true;
+return true

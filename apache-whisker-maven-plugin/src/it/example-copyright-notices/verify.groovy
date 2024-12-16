@@ -19,7 +19,7 @@
 
 import static org.apache.creadur.whisker.it.Helpers.*
 
-results = results();
+results = results()
 
 if (noticeIsMissing(basedir)) {
     results.fail("NOTICE is missing")
@@ -29,7 +29,7 @@ if (licenseIsMissing(basedir)) {
 }
 
 if (results.hasFailed()) {
-    return results.report().every();
+    return results.report()
 } else {
      license = licenseIn(basedir)
      license.expectThat(aLineContainsCDDL1())
