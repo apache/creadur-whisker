@@ -29,7 +29,7 @@ if (licenseIsMissing(basedir)) {
 }
 
 if (results.hasFailed()) {
-    return results.report();
+    return results.report().every();
 } else {
      license = licenseIn(basedir)
      license.expectThat(aLineContainsCDDL1())
