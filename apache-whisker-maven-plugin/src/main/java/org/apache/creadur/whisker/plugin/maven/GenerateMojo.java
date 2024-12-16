@@ -63,10 +63,11 @@ public class GenerateMojo extends AbstractMojo {
      */
     public void execute() throws MojoExecutionException {
         if (descriptor.exists()) {
+            getLog().info("Reading descriptor from " + descriptor);
             if (descriptor.canRead()) {
                  try {
                     new Whisker().setLicenseDescriptor(new StreamableResourceFactory().streamFromFileResource(descriptor))
-                        .setEngine(new VelocityEngine(new MojoToJCLLog(getLog())))
+                        .setEngine(new VelocityEngine())
                         .setWriterFactory(new WriteResultsIntoDirectoryFactory(outputDirectory, outputEncoding))
                         .setAct(Act.GENERATE).act();
                 } catch (Exception e) {
@@ -76,6 +77,7 @@ public class GenerateMojo extends AbstractMojo {
                 throw new MojoExecutionException("Read permission requires on Whisker descriptor file: " + descriptor);
             }
         } else {
+            getLog().error("No descriptor found " + descriptor);
             throw new MojoExecutionException("Whisker descriptor file is missing: " + descriptor);
         }
     }

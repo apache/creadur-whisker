@@ -24,12 +24,13 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.Log;
 import org.apache.creadur.whisker.app.Configuration;
 import org.apache.creadur.whisker.app.ResultWriterFactory;
 import org.apache.creadur.whisker.app.analysis.LicenseAnalyst;
 import org.apache.creadur.whisker.model.Descriptor;
 import org.apache.creadur.whisker.scan.Directory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 
@@ -37,6 +38,9 @@ import org.apache.velocity.app.VelocityEngine;
  * Wraps velocity engine.
  */
 public class VelocityReports {
+    /** The logger. */
+    private static final Logger LOGGER = LogManager.getLogger();
+
     /** XML generation template. */
     private static final Product[] PRODUCTS_THAT_GENERATE_TEMPLATES
         = {Product.XML_TEMPLATE};
@@ -54,18 +58,14 @@ public class VelocityReports {
     private final ResultWriterFactory writerFactory;
     /** Merges templates, not null. */
     private final VelocityEngine engine;
-    /** Logs messages, not null. */
-    private final Log log;
 
     /**
      * Constructs a reporter using Apache Velocity.
      * @param writerFactory not null
-     * @param log not null
      */
     public VelocityReports(
-            final ResultWriterFactory writerFactory, final Log log) {
+            final ResultWriterFactory writerFactory) {
         this.writerFactory = writerFactory;
-        this.log = log;
         engine = new VelocityEngine();
         engine.setProperty(VelocityEngine.RESOURCE_LOADER, "classpath");
         engine.setProperty("classpath.resource.loader.class",
@@ -95,8 +95,8 @@ public class VelocityReports {
 
 
         }
-        final Product[] pruductArray = new Product[products.size()];
-        merge(products.toArray(pruductArray), context(work, configuration));
+        final Product[] productArray = new Product[products.size()];
+        merge(products.toArray(productArray), context(work, configuration));
     }
 
     /**
