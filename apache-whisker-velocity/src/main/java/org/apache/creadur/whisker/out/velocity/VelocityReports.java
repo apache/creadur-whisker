@@ -68,7 +68,7 @@ public class VelocityReports {
         this.writerFactory = writerFactory;
         engine = new VelocityEngine();
         engine.setProperty(VelocityEngine.RESOURCE_LOADER, "classpath");
-        engine.setProperty("classpath.resource.loader.class",
+        engine.setProperty("resource.loader.classpath.class",
             "org.apache.velocity.runtime.resource.loader."
                 + "ClasspathResourceLoader");
         engine.init();
