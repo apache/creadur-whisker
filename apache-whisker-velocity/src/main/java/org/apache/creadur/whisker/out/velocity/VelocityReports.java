@@ -68,12 +68,8 @@ public class VelocityReports {
             final ResultWriterFactory writerFactory) {
         this.writerFactory = writerFactory;
         engine = new VelocityEngine();
-        // in case you are irritated by the remaining warning:
-        // [WARNING] configuration key 'resource.loader' has been deprecated in favor of 'resource.loaders'
-        // This cannot be fixed as it comes from within velocity itself:
-        // https://stackoverflow.com/questions/73026164/velocity-warnings-about-deprecated-keys-that-i-dont-even-use
-        engine.setProperty(VelocityEngine.RESOURCE_LOADER, "classpath");
-        engine.setProperty("resource.loader.classpath.class",
+        engine.setProperty("resource.loaders", "class");
+        engine.setProperty("resource.loader.class.class",
                 ClasspathResourceLoader.class.getName());
         engine.init();
     }
