@@ -171,7 +171,7 @@ public class JDomBuilderWorkTest extends TestCase {
     public void testMapOrganisationsFindOrganisationDefinedInDocument() throws Exception {
         for (int i=1;i<256;i++) {
             checkMapOrganisationsWith(i);
-        };
+        }
     }
 
     /**
@@ -242,7 +242,7 @@ public class JDomBuilderWorkTest extends TestCase {
                         new Element("primary-license").setAttribute("id", "The primary ID")
                         .addContent(
                                 new Element("copyright-notice").addContent(copyrightNoticeSet)))));
-        assertEquals("Builder should set primary copyright notice", result, copyrightNoticeSet);
+        assertEquals("Builder should set primary copyright notice", copyrightNoticeSet, result);
     }
 
     public void testBuildPrimaryCopyright() throws Exception {
@@ -257,7 +257,7 @@ public class JDomBuilderWorkTest extends TestCase {
                         .addContent(
                                 new Element("copyright-notice").addContent(copyrightNoticeSet))))
                                 ).getPrimaryCopyrightNotice();
-        assertEquals("Builder should set primary copyright notice", result, copyrightNoticeSet);
+        assertEquals("Builder should set primary copyright notice", copyrightNoticeSet, result);
     }
     
     public void testThrowsMissingIDExceptionWhenPrimaryLicenseMissing() throws Exception {
@@ -322,7 +322,7 @@ public class JDomBuilderWorkTest extends TestCase {
     public void testCollectDirectoriesDefinedInDocument() throws Exception {
         for (int i=1;i<256;i++) {
             checkCollectDirectoriesWith(i);
-        };
+        }
     }
 
     /**

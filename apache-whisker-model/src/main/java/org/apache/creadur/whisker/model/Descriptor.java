@@ -319,7 +319,7 @@ public class Descriptor {
      */
     public boolean isPrimaryOnly() {
         final boolean result;
-        if (contents.size() > 0) {
+        if (!contents.isEmpty()) {
             final LicenseAndOrganisationCollator collator = new LicenseAndOrganisationCollator();
             for (final WithinDirectory directory : contents) {
                 directory.accept(collator);
