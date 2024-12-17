@@ -64,6 +64,7 @@ limitations under the License.
         </p>
       </subsection>
     </section>
+    <!-- Craft this page once a new release is out as release 0.1 cannot be found anywhere ....
     <section name="Latest release of ${project.name} is ${latestWhiskerRelease}">
       <subsection name="Binaries">
         <table>
@@ -139,7 +140,7 @@ limitations under the License.
           </tr>
         </table>
       </subsection>
-    </section>
+    </section-->
     <div class="section">
       <h2><a name="Apache_Creadur_Whisker_${currentSnapshotVersion}"/>${project.name} ${currentSnapshotVersion}</h2>
       <div class="section">
