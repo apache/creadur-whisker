@@ -65,7 +65,7 @@ TODO: REPLACE WITH PROPER LICENSE!
         <organisation 
             id='bogus.org' 
             name='Replace This With Correct Orgs' 
-            url='http://bogus.example.org/'/>  
+            url='https://bogus.example.org/'/>
     </organisations>
     <primary-license id='Bogus'/>
     

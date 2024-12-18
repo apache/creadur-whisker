@@ -60,6 +60,12 @@ The <action> type attribute can be add,update,fix,remove.
     </release>
     -->
     <release version="0.2-SNAPSHOT" date="xxxx-yy-zz" description="Current SNAPSHOT - release to be done">
+      <action issue="WHISKER-26" type="add" dev="pottlinger">
+        Migrate to new doxia 2.x tech stack and improve webpage and add missing Maven documentation and more project reports.
+      </action>
+      <action issue="WHISKER-23" type="add" dev="pottlinger">
+        Add a download page to the current project webpage. As v0.1 is not officially available anymore only the current SNAPSHOT can be downloaded.
+      </action>
       <action issue="WHISKER-27" type="fix" dev="pottlinger">
         Fix build warning and ensure Maven >=3.0.5 is used to build the project.
       </action>
