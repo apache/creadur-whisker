@@ -34,7 +34,7 @@ public class TestAnyCheck extends TestCase  {
     protected void setUp() throws Exception {
         super.setUp();
         results = new Results();
-        checks = new ArrayList<Check>();
+        checks = new ArrayList<>();
     }
 
     protected void tearDown() throws Exception {

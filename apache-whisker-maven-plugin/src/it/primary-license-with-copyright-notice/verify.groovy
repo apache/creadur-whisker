@@ -48,4 +48,4 @@ assert dependent
 assert resource
 
 
-return true;
+return true

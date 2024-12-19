@@ -30,7 +30,7 @@ public enum LicenseConfiguration {
     /**
      * Default to include source URLs.
      */
-    public static LicenseConfiguration DEFAULT_LICENSE_CONFIGURATION = INCLUDE_SOURCE_URLS;
+    public static final LicenseConfiguration DEFAULT_LICENSE_CONFIGURATION = INCLUDE_SOURCE_URLS;
 
     /**
      * Replaces null with DEFAULT_LICENSE_CONFIGURATION.
