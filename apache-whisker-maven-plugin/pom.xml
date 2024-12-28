@@ -135,6 +135,7 @@
       <plugin>
         <artifactId>maven-invoker-plugin</artifactId>
         <configuration>
+          <goal>-X</goal>
           <addTestClassPath>true</addTestClassPath>
           <projectsDirectory>src/it</projectsDirectory>
           <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
