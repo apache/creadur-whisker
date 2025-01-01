@@ -46,25 +46,25 @@ public class TestRenderingHelper extends TestCase {
     public void testSourceWithSourceUrlsConfiguration() {
         subject = new RenderingHelper(work,
                 aConfiguration().withSourceURLsInLicense().build());
-        assertEquals(subject.sourceUrl(resourceWithSourceUrl), " from " + A_SOURCE_URL);
+        assertEquals(" from " + A_SOURCE_URL, subject.sourceUrl(resourceWithSourceUrl));
     }
 
     public void testSourceNoSourceUrlsConfiguration() {
         subject = new RenderingHelper(work,
                 aConfiguration().noSourceURLsInLicense().build());
-        assertEquals(subject.sourceUrl(resourceWithSourceUrl), "");
+        assertEquals("", subject.sourceUrl(resourceWithSourceUrl));
     }
 
     public void testNoSourceWithSourceUrlsConfiguration() {
         subject = new RenderingHelper(work,
                 aConfiguration().withSourceURLsInLicense().build());
-        assertEquals(subject.sourceUrl(resourceNoSourceUrl), "");
+        assertEquals("", subject.sourceUrl(resourceNoSourceUrl));
     }
 
     public void testNoSourceNoSourceUrlsConfiguration() {
         subject = new RenderingHelper(work,
                 aConfiguration().noSourceURLsInLicense().build());
-        assertEquals(subject.sourceUrl(resourceNoSourceUrl), "");
+        assertEquals("", subject.sourceUrl(resourceNoSourceUrl));
     }
 
 }

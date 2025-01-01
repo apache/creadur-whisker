@@ -62,7 +62,9 @@ public final class WriteResultsIntoDirectoryFactory
     public Writer writerFor(final Result result)
             throws IOException {
         return new BufferedWriter(
-                new FileWriterWithEncoding(
-                        result.within(directory), encoding));
+                FileWriterWithEncoding.builder()
+                        .setFile(result.within(directory))
+                        .setCharset(encoding)
+                        .get());
     }
 }
