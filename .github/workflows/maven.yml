@@ -23,6 +23,9 @@ on:
 #      - dependabot/**
   pull_request:
 
+env:
+  DEVELOCITY_ACCESS_KEY: ${{ secrets.DEVELOCITY_ACCESS_KEY }}
+
 jobs:
   build:
 
