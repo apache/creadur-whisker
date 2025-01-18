@@ -47,7 +47,7 @@
       <item name="Creadur" href="https://creadur.apache.org/"/>
       <item name="Whisker" href="https://creadur.apache.org/whisker/"/>
     </breadcrumbs>
-    <menu name="Apache Whisker&#x2122;" inherit="bottom">
+    <menu name="Apache Whisker™" inherit="bottom">
       <item name="Introducing Whisker" href="index.html"/>
       <item name="Meta Data" href="meta-data.html"/>
       <item name="Maven Plugin" href="apache-whisker-maven-plugin/index.html"/>
@@ -77,7 +77,7 @@
       <item name="MIT License" href="examples/in-5-mins-sample.xml"/>
       <item name="Copyright Notices" href="examples/copyright-notices-sample.xml"/>
     </menu>
-    <menu name="Apache Creadur&#x2122;" inherit="bottom">
+    <menu name="Apache Creadur™" inherit="bottom">
       <item name="Creadur Project Home" href="https://creadur.apache.org"/>
       <item name="Apache Rat" href="https://creadur.apache.org/rat"/>
       <item name="Apache Tentacles" href="https://creadur.apache.org/tentacles"/>
