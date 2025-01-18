@@ -66,6 +66,9 @@ The <action> type attribute can be add,update,fix,remove.
       <action issue="WHISKER-23" type="add" dev="pottlinger">
         Add a download page to the current project webpage. As v0.1 is not officially available anymore only the current SNAPSHOT can be downloaded.
       </action>
+      <action issue="WHISKER-29" type="add" dev="pottlinger" due-to="clayjohnson">
+        Integrate Creadur Whisker into the updated develocity.apache.org instance.
+      </action>
       <action issue="WHISKER-27" type="fix" dev="pottlinger">
         Fix build warning and ensure Maven >=3.0.5 is used to build the project.
       </action>
