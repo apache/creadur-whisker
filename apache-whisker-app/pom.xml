@@ -56,13 +56,7 @@
       <version>${project.version}</version>
     </dependency>
   </dependencies>
-  <!--
-
-
-  ================================
-  Project information
-  -->
   <name>Apache Whisker::App</name>
   <description>Whisker core application.</description>
-  <url>http://creadur.apache.org/whisker/apache-whisker-app</url>
+  <url>https://creadur.apache.org/whisker/apache-whisker-app</url>
 </project>

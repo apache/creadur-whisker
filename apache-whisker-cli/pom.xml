@@ -121,13 +121,7 @@ Build
       </plugin>
     </plugins>
   </build>
-  <!--
-
-
-  ================================
-  Project information
-  -->
   <name>Apache Whisker::Command Line Interface</name>
   <description>Command line interface for Apache Whisker.</description>
-  <url>http://creadur.apache.org/whisker/apache-whisker-cli</url>
+  <url>https://creadur.apache.org/whisker/apache-whisker-cli</url>
 </project>

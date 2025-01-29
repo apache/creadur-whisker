@@ -24,7 +24,7 @@
 
 With A Third Party Work by an Informal Group
 
- {{{http://creadur.apache.org/whisker} Apache Whisker}} is based around
+ {{{https://creadur.apache.org/whisker} Apache Whisker}} is based around
  {{{../meta-data.html}meta-data}} describing the licensing qualities
  of documents included within
  {{{../faq.html#complex-software-applications}complex software distributions}}.
@@ -49,7 +49,7 @@ With A Third Party Work by an Informal Group
    * {{{./license-family.html}Parameterising a template}} for a
      {{{../faq.html#what-is-license-family}license family}},
      featuring the
-     {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
+     {{{https://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
 
    * All about {{{./copyright-notices.html}copyright notices}}
 
@@ -122,7 +122,7 @@ With A Third Party Work by an Informal Group
 +---------------------------------------+
 
   Let's say that the
-  {{{http://www.apache.org/licenses/LICENSE-2.0.html}Apache License, Version 2}}
+  {{{https://www.apache.org/licenses/LICENSE-2.0.html}Apache License, Version 2}}
   is the {{{../faq.html#what-is-primary}primary license}}
   for the project, but <<<foo>>> opts not to
   {{{../faq.html#notice-needed-for-al2}include a primary notice}}.
@@ -136,7 +136,7 @@ With A Third Party Work by an Informal Group
         <license
             name='Apache License, Version 2'
             id='osi:AL2'
-            url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+            url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
                            Version 2.0, January 2004
@@ -339,7 +339,7 @@ With A Third Party Work by an Informal Group
         <organisation
             id='apache.org'
             name='The Apache Software Foundation'
-            url='http://www.apache.org/'/>
+            url='https://www.apache.org/'/>
     </organisations>
     ...
     <primary-organisation id='apache.org'/>
@@ -410,7 +410,7 @@ With A Third Party Work by an Informal Group
         <organisation
            id='example.org'
            name='The Legion of the Bouncy Example'
-           url='http://example.org/'
+           url='https://example.org/'
         />
     </organisations>
     <primary-license>...</primary-license>
@@ -493,7 +493,7 @@ With A Third Party Work by an Informal Group
         <license
             name='Apache License, Version 2'
             id='osi:AL2'
-            url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+            url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
                            Version 2.0, January 2004
@@ -679,11 +679,11 @@ With A Third Party Work by an Informal Group
         <organisation
             id='apache.org'
             name='The Apache Software Foundation'
-            url='http://www.apache.org/'/>
+            url='https://www.apache.org/'/>
         <organisation
            id='example.org'
            name='The Legion of the Bouncy Example'
-           url='http://example.org/'
+           url='https://example.org/'
         />
     </organisations>
     <primary-license id='osi:AL2'/>
@@ -893,8 +893,8 @@ With A Third Party Work by an Informal Group
 
 This distribution contains third party resources.
 Within the . directory
-    licensed under the Apache License, Version 2 http://www.apache.org/licenses/LICENSE-2.0.txt  (as above)
-        from The Legion of the Bouncy Example  http://example.org/
+    licensed under the Apache License, Version 2 https://www.apache.org/licenses/LICENSE-2.0.txt  (as above)
+        from The Legion of the Bouncy Example  https://example.org/
             boo.png
 
 

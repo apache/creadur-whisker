@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -12,7 +14,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-./mvnw clean site:site site:stage
-cp -rvf target/staging/* ../creadur-site/WHISKER-26/
-cp -rvf src/site/javadocFont/* ../creadur-site/WHISKER-26/apidocs/
+
+# Wrapper script around mirrors.cgi script
+# (we must change to that directory in order for python to pick up the
+#  python includes correctly)
+cd /www/www.apache.org/dyn/mirrors
+/www/www.apache.org/dyn/mirrors/mirrors.cgi $*

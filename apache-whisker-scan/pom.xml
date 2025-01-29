@@ -33,13 +33,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <!--
-
-
-  ================================
-  Project information
-  -->
   <name>Apache Whisker::Scan</name>
   <description>Scans directories for resources</description>
-  <url>http://creadur.apache.org/whisker/apache-whisker-scan</url>
+  <url>https://creadur.apache.org/whisker/apache-whisker-scan</url>
 </project>

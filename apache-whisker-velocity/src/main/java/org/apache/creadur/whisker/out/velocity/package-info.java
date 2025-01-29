@@ -17,7 +17,7 @@
  * under the License.
  */
 /**
- * Uses <a href='http://velocity.apache.org'>Apache Velocity</a>
+ * Uses <a href='https://velocity.apache.org'>Apache Velocity</a>
  * templating engine to generate reports.
  */
 package org.apache.creadur.whisker.out.velocity;
