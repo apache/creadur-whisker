@@ -13,6 +13,6 @@ github:
     - RAT
     - WHISKER
     - TENTACLES
-notifications:
-  commits: commits@creadur.apache.org
 
+notifications:
+  commits:      commits@creadur.apache.org
