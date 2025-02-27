@@ -95,8 +95,8 @@ public class VelocityReports {
 
 
         }
-        final Product[] pruductArray = new Product[products.size()];
-        merge(products.toArray(pruductArray), context(work, configuration));
+        final Product[] productArray = new Product[products.size()];
+        merge(products.toArray(productArray), context(work, configuration));
     }
 
     /**

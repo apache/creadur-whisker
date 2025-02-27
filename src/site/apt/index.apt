@@ -39,7 +39,7 @@ What Is Apache Whisker&#8482;?
   {{{./faq.html#what-this-documentation-is-not}legal advice}},
   and readers are assumed to have a practical understanding of the relevant laws.
 
-  Learn about copyright and software licensing {{{../faq.html#more-resources'}here}}.
+  Learn about copyright and software licensing {{{https://www.apache.org/foundation/license-faq.html}here}}.
 
 * How Can Whisker Help?
 
@@ -108,7 +108,7 @@ What Is Apache Whisker&#8482;?
  or browse the {{{./faq.html}FAQ}}.
 
  A warm welcome is guaranteed on our
- {{{../mail-lists.html}mail lists}}.
+ {{{../mailing-lists.html}mail lists}}.
 
 ** More Examples
 
