@@ -49,7 +49,7 @@ maintained by a corporation.
 
 <!-- Collections organisation descriptions -->
 <!ELEMENT organisations (organisation*)>
-<!-- Descibres an upstream organisation -->
+<!-- Describes an upstream organisation -->
 <!ELEMENT organisation EMPTY>
 <!ATTLIST organisation id ID #REQUIRED>
 <!ATTLIST organisation name CDATA #REQUIRED>
@@ -312,12 +312,12 @@ and individual maintainers.
         <organisation 
             id='apache.org' 
             name='The Apache Software Foundation' 
-            url='http://www.apache.org/'/>  
+            url='https://www.apache.org/'/>
     <!-- The corporation from whom the dependency included in the distribution is licensed -->
         <organisation
            id='example.org'
            name='The Example Foundation'
-           url='http://example.org/'
+           url='https://example.org/'
         />
     </organisations>
     <!--
