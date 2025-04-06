@@ -36,7 +36,7 @@ public class TestLicenseGenerationSourceURLs extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         writerFactory = new StringResultWriterFactory();
-        subject = new VelocityEngine(new EmptyLog());
+        subject = new VelocityEngine();
         builder = new DescriptorBuilderForTesting().withSourceURL();
         work = builder.withPrimaryLicenseAndThirdPartyOrgInDirectory(".").build();
     }

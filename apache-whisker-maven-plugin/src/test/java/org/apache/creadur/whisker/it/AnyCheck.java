@@ -39,7 +39,7 @@ public class AnyCheck implements Check {
     }
 
     public boolean hasPassed() {
-        return checks.size() == 0 || anyPassed(checks);
+        return checks.isEmpty() || anyPassed(checks);
     }
 
     public void report(final Results results) {
