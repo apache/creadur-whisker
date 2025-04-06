@@ -63,6 +63,9 @@ The <action> type attribute can be: add,update,fix,remove.
       <action issue="WHISKER-18" type="fix" dev="pottlinger">
         Migrate to log4j2. Minimal Maven set to >=3.1.0 to benefit from slf4j log bridging to log errors to console by default as before.
       </action>
+      <action issue="WHISKER-29" type="add" dev="pottlinger" due-to="clayjohnson">
+        Integrate Creadur Whisker into the updated develocity.apache.org instance.
+      </action>
       <action issue="WHISKER-27" type="fix" dev="pottlinger">
         Fix build warning and ensure Maven >=3.0.5 is used to build the project.
       </action>
