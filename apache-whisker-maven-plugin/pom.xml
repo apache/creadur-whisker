@@ -64,27 +64,22 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-scan</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-model</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-app</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-xml</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-velocity</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -190,10 +185,6 @@
       </plugin>
     </plugins>
   </build>
-  <!--
-  ================================
-  Project information
-  -->
   <name>Apache Whisker::Maven Plugin</name>
   <description>Apache Whisker Maven Plugin.</description>
   <url>https://creadur.apache.org/whisker/apache-whisker-maven-plugin</url>

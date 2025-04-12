@@ -60,26 +60,17 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-scan</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-model</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-app</artifactId>
-      <version>${project.version}</version>
     </dependency>
   </dependencies>
-  <!--
-
-
-  ================================
-  Project information
-  -->
   <name>Apache Whisker::Output(velocity)</name>
   <description>Outputs results using velocity.</description>
-  <url>http://creadur.apache.org/whisker/apache-whisker-velocity</url>
+  <url>https://creadur.apache.org/whisker/apache-whisker-velocity</url>
 </project>

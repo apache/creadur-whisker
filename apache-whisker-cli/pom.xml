@@ -43,34 +43,24 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-scan</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-xml</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-model</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-velocity</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-app</artifactId>
-      <version>${project.version}</version>
     </dependency>
   </dependencies>
-  <!--
-
-=================================
-Build
--->
   <build>
     <finalName>apache-whisker-${project.version}</finalName>
     <pluginManagement>
@@ -121,13 +111,7 @@ Build
       </plugin>
     </plugins>
   </build>
-  <!--
-
-
-  ================================
-  Project information
-  -->
   <name>Apache Whisker::Command Line Interface</name>
   <description>Command line interface for Apache Whisker.</description>
-  <url>http://creadur.apache.org/whisker/apache-whisker-cli</url>
+  <url>https://creadur.apache.org/whisker/apache-whisker-cli</url>
 </project>
