@@ -24,7 +24,7 @@ import org.apache.creadur.whisker.app.Act;
 import org.apache.creadur.whisker.app.Whisker;
 import org.apache.creadur.whisker.app.load.StreamableResourceFactory;
 import org.apache.creadur.whisker.app.out.WriteResultsIntoDirectoryFactory;
-import org.apache.creadur.whisker.out.velocity.VelocityEngine;
+import org.apache.creadur.whisker.out.velocity.LoggingVelocityEngine;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.*;
@@ -67,7 +67,7 @@ public class GenerateMojo extends AbstractMojo {
             if (descriptor.canRead()) {
                  try {
                     new Whisker().setLicenseDescriptor(new StreamableResourceFactory().streamFromFileResource(descriptor))
-                        .setEngine(new VelocityEngine())
+                        .setEngine(new LoggingVelocityEngine())
                         .setWriterFactory(new WriteResultsIntoDirectoryFactory(outputDirectory, outputEncoding))
                         .setAct(Act.GENERATE).act();
                 } catch (Exception e) {

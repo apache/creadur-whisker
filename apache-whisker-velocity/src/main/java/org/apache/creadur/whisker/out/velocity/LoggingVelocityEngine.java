@@ -33,13 +33,13 @@ import org.apache.logging.log4j.LogManager;
  *
  * @see <a href='http://velocity.apache.org'>Apache Velocity</a>
  */
-public class VelocityEngine extends AbstractEngine {
+public class LoggingVelocityEngine extends AbstractEngine {
     private static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * Constructs an engine running on Apache Velocity.
      */
-    public VelocityEngine() {
+    public LoggingVelocityEngine() {
         super();
     }
 

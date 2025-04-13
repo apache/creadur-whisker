@@ -29,14 +29,14 @@ import org.apache.creadur.whisker.model.Descriptor;
 public class TestLicenseGeneration extends TestCase {
 
     StringResultWriterFactory writerFactory;
-    VelocityEngine subject;
+    LoggingVelocityEngine subject;
     DescriptorBuilderForTesting builder;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         writerFactory = new StringResultWriterFactory();
-        subject = new VelocityEngine();
+        subject = new LoggingVelocityEngine();
         builder = new DescriptorBuilderForTesting();
     }
 
