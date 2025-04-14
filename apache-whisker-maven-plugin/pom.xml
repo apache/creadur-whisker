@@ -138,7 +138,6 @@
             <pomInclude>*/pom.xml</pomInclude>
           </pomIncludes>
           <settingsFile>src/it/settings.xml</settingsFile>
-          <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
           <postBuildHookScript>verify</postBuildHookScript>
         </configuration>
         <executions>
