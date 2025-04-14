@@ -129,6 +129,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-invoker-plugin</artifactId>
+        <version>3.9.0</version>
         <configuration>
           <goal>-X</goal>
           <addTestClassPath>true</addTestClassPath>
