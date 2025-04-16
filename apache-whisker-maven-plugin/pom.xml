@@ -138,7 +138,7 @@
           <pomIncludes>
             <pomInclude>*/pom.xml</pomInclude>
           </pomIncludes>
-          <settingsFile>src/it/settings.xml</settingsFile>
+          <!-- settingsFile>src/it/settings.xml</settingsFile -->
           <postBuildHookScript>verify</postBuildHookScript>
         </configuration>
         <executions>
