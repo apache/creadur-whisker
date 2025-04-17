@@ -17,8 +17,8 @@
  * under the License. 
  */
 
-File license = new File(basedir, "target/LICENSE");
-File notice = new File(basedir, "target/NOTICE");
+File license = new File(basedir, "target/LICENSE")
+File notice = new File(basedir, "target/NOTICE")
 
 assert license.exists()
 assert !notice.exists()
@@ -37,4 +37,4 @@ while (line != null) {
 assert copyright
 
     
-return true;
+return true

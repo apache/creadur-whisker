@@ -37,13 +37,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <!--
-
-
-  ================================
-  Project information
-  -->
   <name>Apache Whisker::Model</name>
   <description>Models licensing meta-data.</description>
-  <url>http://creadur.apache.org/whisker/apache-whisker-model</url>
+  <url>https://creadur.apache.org/whisker/apache-whisker-model</url>
 </project>
