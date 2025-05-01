@@ -22,15 +22,11 @@ public enum Latch {
 
     UP, DOWN;
 
-    private Latch() {}
+    Latch() {}
 
     public Latch push() {
         final Latch result;
-        if (this == DOWN) {
-            result = this;
-        } else {
-            result = DOWN;
-        }
+        result = DOWN;
         return result;
     }
 }

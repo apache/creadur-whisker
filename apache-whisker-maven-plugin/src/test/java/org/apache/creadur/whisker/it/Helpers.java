@@ -33,11 +33,7 @@ public class Helpers {
             final String secondFailureReport) {
         final String result;
         if (firstFailureReport == null) {
-            if (secondFailureReport == null) {
-                result = null;
-            } else {
-                result = secondFailureReport;
-            }
+            result = secondFailureReport;
         } else {
             if (secondFailureReport == null) {
                 result = firstFailureReport;

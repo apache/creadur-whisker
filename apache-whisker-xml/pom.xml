@@ -43,7 +43,6 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>apache-whisker-model</artifactId>
-      <version>${project.version}</version>
     </dependency>
   </dependencies>
   <name>Apache Whisker::XML</name>

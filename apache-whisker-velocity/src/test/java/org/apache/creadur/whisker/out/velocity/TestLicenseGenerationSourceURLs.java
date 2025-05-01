@@ -28,7 +28,7 @@ import org.apache.creadur.whisker.model.Descriptor;
 public class TestLicenseGenerationSourceURLs extends TestCase {
 
     StringResultWriterFactory writerFactory;
-    VelocityEngine subject;
+    LoggingVelocityEngine subject;
     DescriptorBuilderForTesting builder;
     Descriptor work;
 
@@ -36,7 +36,7 @@ public class TestLicenseGenerationSourceURLs extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         writerFactory = new StringResultWriterFactory();
-        subject = new VelocityEngine(new EmptyLog());
+        subject = new LoggingVelocityEngine();
         builder = new DescriptorBuilderForTesting().withSourceURL();
         work = builder.withPrimaryLicenseAndThirdPartyOrgInDirectory(".").build();
     }

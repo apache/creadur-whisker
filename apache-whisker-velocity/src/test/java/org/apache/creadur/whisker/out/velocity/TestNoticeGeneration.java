@@ -37,7 +37,7 @@ import junit.framework.TestCase;
 public class TestNoticeGeneration extends TestCase {
 
     StringResultWriterFactory writerFactory;
-    VelocityEngine subject;
+    LoggingVelocityEngine subject;
     License primaryLicense = new License(false, "This is the license text", Collections.<String> emptyList(), "example.org", "http://example.org", "Example License");
     String primaryOrg = "example.org";
     String primaryNotice = "The primary notice.";
@@ -50,7 +50,7 @@ public class TestNoticeGeneration extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         writerFactory = new StringResultWriterFactory();
-        subject = new VelocityEngine(new EmptyLog());
+        subject = new LoggingVelocityEngine();
         primaryLicense.storeIn(licenses);
     }
 

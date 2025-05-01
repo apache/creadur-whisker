@@ -123,13 +123,8 @@ public class ByOrganisation implements Comparable<ByOrganisation>, ContentElemen
         }
         final ByOrganisation other = (ByOrganisation) obj;
         if (this.organisation == null) {
-            if (other.organisation != null) {
-                return false;
-            }
-        } else if (!this.organisation.equals(other.organisation)) {
-            return false;
-        }
-        return true;
+            return other.organisation == null;
+        } else return this.organisation.equals(other.organisation);
     }
 
     /**
