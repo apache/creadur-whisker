@@ -18,7 +18,8 @@
  */
 package org.apache.creadur.whisker.cli;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.apache.commons.cli.AlreadySelectedException;
 import org.apache.commons.cli.ParseException;
@@ -27,19 +28,22 @@ import org.apache.creadur.whisker.app.StreamableResource;
 import org.apache.creadur.whisker.app.Whisker;
 import org.apache.creadur.whisker.app.load.StreamableClassPathResource;
 import org.apache.creadur.whisker.app.load.StreamableFileNameResource;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class TestCommandParsing extends TestCase {
+class TestCommandParsing {
 
     private static final String LONG_OPT = "--";
     private static final String SHORT_OPT = "-";
     private Main subject;
 
-    @Override
-    protected void setUp() throws Exception {
+    @BeforeEach
+    void setUp() throws Exception {
         subject = new Main(new Whisker());
     }
 
-    public void testGenerateAndAuditAreMutuallyExclusive() throws Exception {
+    @Test
+    void generateAndAuditAreMutuallyExclusive() throws Exception {
         try {
             subject.configure(
                 args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH",
@@ -52,7 +56,8 @@ public class TestCommandParsing extends TestCase {
         }
     }
 
-    public void testGenerateAndSkeletonAreMutuallyExclusive() throws Exception {
+    @Test
+    void generateAndSkeletonAreMutuallyExclusive() throws Exception {
         try {
             subject.configure(
                 args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH",
@@ -65,7 +70,8 @@ public class TestCommandParsing extends TestCase {
         }
     }
 
-    public void testSkeletonAndAuditAreMutuallyExclusive() throws Exception {
+    @Test
+    void skeletonAndAuditAreMutuallyExclusive() throws Exception {
         try {
             subject.configure(
                 args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH",
@@ -79,15 +85,18 @@ public class TestCommandParsing extends TestCase {
     }
 
 
-    public void testSetGenerateAct() throws Exception {
+    @Test
+    void setGenerateAct() throws Exception {
         checkSetActForOption(Act.GENERATE, CommandLineOption.ACT_TO_GENERATE);
     }
 
-    public void testSetAuditAct() throws Exception {
+    @Test
+    void setAuditAct() throws Exception {
         checkSetActForOption(Act.AUDIT, CommandLineOption.ACT_TO_AUDIT);
     }
 
-    public void testSetSkeletonAct() throws Exception {
+    @Test
+    void setSkeletonAct() throws Exception {
         checkSetActForOption(Act.SKELETON, CommandLineOption.ACT_TO_SKELETON);
     }
 
@@ -99,21 +108,23 @@ public class TestCommandParsing extends TestCase {
      */
     private void checkSetActForOption(Act act, CommandLineOption option)
             throws ParseException {
-        assertEquals(act + " arg should set property on Whisker", act, subject.configure(
+        assertEquals(act, subject.configure(
                 args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH",
-                        shortOpt(CommandLineOption.SOURCE.getShortName()), "path", longOpt(option.getLongName()))).getAct());
-        assertEquals(act + "Audit arg should set property on Whisker", act, subject.configure(
+                        shortOpt(CommandLineOption.SOURCE.getShortName()), "path", longOpt(option.getLongName()))).getAct(), act + " arg should set property on Whisker");
+        assertEquals(act, subject.configure(
                 args(longOpt(CommandLineOption.LICENSE_DESCRIPTION.getLongName()), "PATH",
-                        shortOpt(CommandLineOption.SOURCE.getShortName()), "path", shortOpt(option.getShortName()))).getAct());
+                        shortOpt(CommandLineOption.SOURCE.getShortName()), "path", shortOpt(option.getShortName()))).getAct(), act + "Audit arg should set property on Whisker");
     }
 
-    public void testSetSourceByCli() throws Exception {
+    @Test
+    void setSourceByCli() throws Exception {
         checkSourceWithPath("/some/path");
         checkSourceWithPath("/");
         checkSourceWithPath("relative");
     }
 
-    public void testAuditRequiresSource() throws Exception {
+    @Test
+    void auditRequiresSource() throws Exception {
         try {
             subject.configure(args(
                     longOpt(CommandLineOption.ACT_TO_AUDIT.getLongName()),
@@ -134,14 +145,16 @@ public class TestCommandParsing extends TestCase {
 
 
     private void checkSource(String aPath, String arg) throws ParseException {
-        assertEquals("Source arg should set property on Whisker", aPath,
+        assertEquals(aPath,
                 subject.configure(args(arg, aPath,
                         longOpt(CommandLineOption.ACT_TO_AUDIT.getLongName()),
-                        shortOpt(CommandLineOption.LICENSE_DESCRIPTION.getShortName()), "Whatever/bin")).getSource());
+                        shortOpt(CommandLineOption.LICENSE_DESCRIPTION.getShortName()), "Whatever/bin")).getSource(),
+                "Source arg should set property on Whisker");
     }
 
 
-    public void testSetLicenseDescriptorShortByCLI() throws Exception {
+    @Test
+    void setLicenseDescriptorShortByCLI() throws Exception {
         exerciseShortLicenseDescriptionWithPath("/some/path");
         exerciseShortLicenseDescriptionWithPath("another/path");
         exerciseShortLicenseDescriptionWithPath("short");
@@ -149,7 +162,8 @@ public class TestCommandParsing extends TestCase {
         exerciseShortLicenseDescriptionWithPath("http://url.style/path");
     }
 
-    public void testSetLicenseDescriptorLongByCLI() throws Exception {
+    @Test
+    void setLicenseDescriptorLongByCLI() throws Exception {
         exerciseLongLicenseDescriptionWithPath("/some/path");
         exerciseLongLicenseDescriptionWithPath("another/path");
         exerciseLongLicenseDescriptionWithPath("short");
@@ -201,8 +215,9 @@ public class TestCommandParsing extends TestCase {
                         args(arg, aPath, longOpt(CommandLineOption.ACT_TO_GENERATE.getLongName())))
                             .getLicenseDescriptor();
 
-        assertEquals("License descriptor arg should set property on Whisker", aPath,
-                name(streamableResource));
+        assertEquals(aPath,
+                name(streamableResource),
+                "License descriptor arg should set property on Whisker");
     }
 
     private String name(final StreamableResource streamableResource) {

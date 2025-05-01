@@ -18,37 +18,41 @@
  */
 package org.apache.creadur.whisker.fromxml;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.apache.creadur.whisker.model.Resource;
 
-import junit.framework.TestCase;
 import org.jdom2.Element;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * 
  */
-public class JDomBuilderResourceTest extends TestCase {
+class JDomBuilderResourceTest {
 
     private JDomBuilder subject;
-    
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+
+    @BeforeEach
+    void setUp() throws Exception {
         subject = new JDomBuilder();
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
-    public void testBuildResourceWithNameNoticeAndSourceTrimsSpacesBeforeValue() throws Exception {
+    @Test
+    void buildResourceWithNameNoticeAndSourceTrimsSpacesBeforeValue() throws Exception {
         checkResourceBuild(" name", "name", 
                 "  notice", "notice",
                 "   source", "source");        
     }
 
 
-    public void testBuildResourceWithNameNoticeAndSourceTrimsSpaces() throws Exception {        
+    @Test
+    void buildResourceWithNameNoticeAndSourceTrimsSpaces() throws Exception {        
         checkResourceBuild(" name   ", "name", 
                 "  notice    ", "notice", "  " +
                 "   source   ", "source");   
@@ -56,32 +60,38 @@ public class JDomBuilderResourceTest extends TestCase {
     }
 
 
-    public void testBuildResourceWithNameNoticeAndSourceTrimsSpacesAfterValue() throws Exception {
+    @Test
+    void buildResourceWithNameNoticeAndSourceTrimsSpacesAfterValue() throws Exception {
         checkResourceBuild("name   ", "name", 
                 "notice    ", "notice", "  " +
                 "source   ", "source");  
     }
 
 
-    public void testBuildResourceWithNameNoticeAndSourceTrimsWithSpacesInValue() throws Exception {
+    @Test
+    void buildResourceWithNameNoticeAndSourceTrimsWithSpacesInValue() throws Exception {
         checkResourceBuild(" n  ame   ", "n  ame", 
                 "  not ic e    ", "not ic e", "  " +
                 "sour  ce   ", "sour  ce");  
     }
 
-    public void testBuildResourceWithNameNoticeAndSourceSpacesInVaule() throws Exception {
+    @Test
+    void buildResourceWithNameNoticeAndSourceSpacesInVaule() throws Exception {
         checkResourceBuildWithoutSurroundingSpace("a name", "a notice", "some source");
     }
-    
-    public void testBuildResourceWithNameNoticeAndSourceLowers() throws Exception {
+
+    @Test
+    void buildResourceWithNameNoticeAndSourceLowers() throws Exception {
         checkResourceBuildWithoutSurroundingSpace("name", "notice", "source");
     }
 
-    public void testBuildResourceWithNameNoticeAndSourceCaps() throws Exception {
+    @Test
+    void buildResourceWithNameNoticeAndSourceCaps() throws Exception {
         checkResourceBuildWithoutSurroundingSpace("NOTICE", "NOTICE", "SOURCE");
     }
 
-    public void testThrowsIllegalArgumentWhenElementIsNotResource() throws Exception {
+    @Test
+    void throwsIllegalArgumentWhenElementIsNotResource() throws Exception {
         try {
             subject.resource(
                 new Element("bogus")
@@ -129,9 +139,9 @@ public class JDomBuilderResourceTest extends TestCase {
                     .setAttribute("name", nameValue)
                     .setAttribute("notice", noticeValue)
                     .setAttribute("source", sourceValue));
-        assertNotNull("Expected builder to build", result);
-        assertEquals("Name value set from xml attribute", expectedNameValue, result.getName());
-        assertEquals("Notice value set from xml attribute", expectedNoticeValue, result.getNoticeId());
-        assertEquals("Source value set from xml attribute", expectedSourceValue, result.getSource());
+        assertNotNull(result, "Expected builder to build");
+        assertEquals(expectedNameValue, result.getName(), "Name value set from xml attribute");
+        assertEquals(expectedNoticeValue, result.getNoticeId(), "Notice value set from xml attribute");
+        assertEquals(expectedSourceValue, result.getSource(), "Source value set from xml attribute");
     }
 }

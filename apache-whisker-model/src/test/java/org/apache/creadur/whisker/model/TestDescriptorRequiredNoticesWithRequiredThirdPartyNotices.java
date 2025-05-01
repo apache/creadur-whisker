@@ -18,15 +18,19 @@
  */
 package org.apache.creadur.whisker.model;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class TestDescriptorRequiredNoticesWithRequiredThirdPartyNotices extends TestCase {
+class TestDescriptorRequiredNoticesWithRequiredThirdPartyNotices {
 
     License primaryLicense = new License(false, "This is the license text", Collections.<String> emptyList(), "example.org", "http://example.org", "Example License");
     String primaryOrg = "example.org";
@@ -37,9 +41,9 @@ public class TestDescriptorRequiredNoticesWithRequiredThirdPartyNotices extends 
     Map<String, Organisation> organisations = new HashMap<String, Organisation>();
     
     Descriptor subject;
-    
-    protected void setUp() throws Exception {
-        super.setUp();
+
+    @BeforeEach
+    void setUp() throws Exception {
         primaryLicense.storeIn(licenses);
         String noticeId = "notice:id";
         notices.put(noticeId, "Some notice text");
@@ -62,39 +66,43 @@ public class TestDescriptorRequiredNoticesWithRequiredThirdPartyNotices extends 
         contents.add(new WithinDirectory(".", withLicenses, publicDomain));
     }
 
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
-    public void testNoticeRequiredWhenPrimaryNoticeExists() throws Exception {
+    @Test
+    void noticeRequiredWhenPrimaryNoticeExists() throws Exception {
         subject = 
                 new Descriptor(primaryLicense, primaryOrg,  primaryNotice, 
                         licenses, notices, organisations, contents);
-        assertTrue("When primary notices exists and third party notices needed then display is required", 
-                subject.isNoticeRequired());        
+        assertTrue(subject.isNoticeRequired(), 
+                "When primary notices exists and third party notices needed then display is required");        
     }
 
-    public void testNoticeRequiredWhenPrimaryNoticeIsNullAndThirdPartyNotices() throws Exception {
+    @Test
+    void noticeRequiredWhenPrimaryNoticeIsNullAndThirdPartyNotices() throws Exception {
         subject = 
                 new Descriptor(primaryLicense, primaryOrg,  null, 
                         licenses, notices, organisations, contents);
-        assertTrue("When no other notices exist and third party notices needed then display is required", 
-                subject.isNoticeRequired());        
+        assertTrue(subject.isNoticeRequired(), 
+                "When no other notices exist and third party notices needed then display is required");        
     }
 
-    public void testNoticeRequiredWhenPrimaryNoticeIsEmptyAndThirdPartyNotices() throws Exception {
+    @Test
+    void noticeRequiredWhenPrimaryNoticeIsEmptyAndThirdPartyNotices() throws Exception {
         subject = 
                 new Descriptor(primaryLicense, primaryOrg,  "", 
                         licenses, notices, organisations, contents);
-        assertTrue("When no other notices exist and third party notices needed then display is required", 
-                subject.isNoticeRequired());        
+        assertTrue(subject.isNoticeRequired(), 
+                "When no other notices exist and third party notices needed then display is required");        
     }
 
-    public void testNoticeRequiredWhenPrimaryNoticeIsWhitespaceAndThirdPartyNotices() throws Exception {
+    @Test
+    void noticeRequiredWhenPrimaryNoticeIsWhitespaceAndThirdPartyNotices() throws Exception {
         subject = 
                 new Descriptor(primaryLicense, primaryOrg,  "   ", 
                         licenses, notices, organisations, contents);
-        assertTrue("When no other notices exist and third party notices needed then display is required", 
-                subject.isNoticeRequired());        
+        assertTrue(subject.isNoticeRequired(), 
+                "When no other notices exist and third party notices needed then display is required");        
     }
 }
