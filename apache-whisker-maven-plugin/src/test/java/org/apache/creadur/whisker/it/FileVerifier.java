@@ -21,6 +21,7 @@ package org.apache.creadur.whisker.it;
 import static org.apache.creadur.whisker.it.CheckHelpers.*;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class FileVerifier {
 
     public String failures() throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(
-                new FileInputStream(licenseFile), "UTF-8"));
+                new FileInputStream(licenseFile), StandardCharsets.UTF_8));
         try {
             String line = null;
             do {

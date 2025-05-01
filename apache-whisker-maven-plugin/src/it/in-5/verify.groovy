@@ -20,7 +20,7 @@
 assert !new File(basedir, "target/NOTICE").exists()
 
 def license = new File(basedir, "target/LICENSE")
-assert license.exists()  
+assert license.exists()
 
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream(license), "UTF-8"))  
 
@@ -90,4 +90,4 @@ assert !six
 assert seven
 assert eight
     
-return true;
+return true

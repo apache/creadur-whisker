@@ -23,7 +23,6 @@
   <artifactId>apache-whisker</artifactId>
   <version>0.2-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <dependencies/>
   <parent>
     <groupId>org.apache</groupId>
     <artifactId>apache</artifactId>
@@ -31,6 +30,31 @@
   </parent>
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>apache-whisker-scan</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>apache-whisker-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>apache-whisker-app</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>apache-whisker-xml</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>apache-whisker-velocity</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.apache.velocity</groupId>
         <artifactId>velocity-engine-core</artifactId>
@@ -57,9 +81,11 @@
         <version>2.19.0</version>
       </dependency>
       <dependency>
-        <groupId>commons-logging</groupId>
-        <artifactId>commons-logging-api</artifactId>
-        <version>1.1</version>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-bom</artifactId>
+        <version>2.24.3</version>
+        <scope>import</scope>
+        <type>pom</type>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -78,6 +104,21 @@
         <version>2.13.1</version>
         <scope>test</scope>
       </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>${log4j2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-to-slf4j</artifactId>
+        <version>${log4j2.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <modules>
@@ -90,6 +131,7 @@
     <module>apache-whisker-maven-plugin</module>
   </modules>
   <properties>
+    <log4j2.version>2.24.3</log4j2.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <target.jdk>1.8</target.jdk>
     <!-- taken from https://maven.apache.org/guides/mini/guide-reproducible-builds.html -->
@@ -228,6 +270,13 @@
     </plugins>
   </reporting>
   <!-- ================================ Build information -->
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
   <build>
     <defaultGoal>clean install</defaultGoal>
     <pluginManagement>
@@ -257,7 +306,9 @@
           <version>0.16.1</version>
           <configuration>
             <excludes>
+              <exclude>**/log4j*.xml</exclude>
               <exclude>**/.mvn/**</exclude>
+              <exclude>**/invoker.properties/**</exclude>
               <exclude>.asf.yaml</exclude>
               <exclude>README.md</exclude>
               <exclude>**/src/site/javadocFont/**</exclude>
@@ -320,7 +371,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.0.5</version>
+                  <version>3.1.0</version>
                 </requireMavenVersion>
               </rules>
             </configuration>

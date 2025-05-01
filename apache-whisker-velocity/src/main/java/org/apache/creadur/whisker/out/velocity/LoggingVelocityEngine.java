@@ -20,30 +20,27 @@ package org.apache.creadur.whisker.out.velocity;
 
 import java.util.Collection;
 
-import org.apache.commons.logging.Log;
 import org.apache.creadur.whisker.app.AbstractEngine;
 import org.apache.creadur.whisker.app.Configuration;
 import org.apache.creadur.whisker.app.ResultWriterFactory;
 import org.apache.creadur.whisker.app.analysis.LicenseAnalyst;
 import org.apache.creadur.whisker.model.Descriptor;
 import org.apache.creadur.whisker.scan.Directory;
-
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 /**
  * Uses Apache Velocity to implement {@link AbstractEngine}.
  *
  * @see <a href='http://velocity.apache.org'>Apache Velocity</a>
  */
-public class VelocityEngine extends AbstractEngine {
-    /** Not null. */
-    private final Log log;
+public class LoggingVelocityEngine extends AbstractEngine {
+    private static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * Constructs an engine running on Apache Velocity.
-     * @param log not null
      */
-    public VelocityEngine(final Log log) {
+    public LoggingVelocityEngine() {
         super();
-        this.log = log;
     }
 
     /**
@@ -71,7 +68,7 @@ public class VelocityEngine extends AbstractEngine {
      * @return a reporter, not null
      */
     private VelocityReports reporter(final ResultWriterFactory writerFactory) {
-        return new VelocityReports(writerFactory, log);
+        return new VelocityReports(writerFactory);
     }
 
     /**

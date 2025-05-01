@@ -20,10 +20,10 @@ package org.apache.creadur.whisker.it;
 
 public interface Check {
 
-    public abstract void check(String line);
+    void check(String line);
 
-    public abstract boolean hasPassed();
+    boolean hasPassed();
 
-    public abstract void report(Results result);
+    void report(Results result);
 
 }
