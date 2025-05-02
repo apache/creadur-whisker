@@ -16,3 +16,4 @@
 ./mvnw clean site:site site:stage
 cp -rvf target/staging/* ../creadur-site/whisker/
 cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/testapidocs/
