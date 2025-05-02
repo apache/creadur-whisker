@@ -14,5 +14,5 @@
 # limitations under the License.
 #
 ./mvnw clean site:site site:stage
-cp -rvf target/staging/* ../creadur-site/WHISKER-26/
-cp -rvf src/site/javadocFont/* ../creadur-site/WHISKER-26/apidocs/
+cp -rvf target/staging/* ../creadur-site/whisker/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apidocs/
