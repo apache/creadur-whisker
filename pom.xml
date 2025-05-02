@@ -38,6 +38,11 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>2.0.1</version>
+      </dependency>
+      <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>apache-whisker-scan</artifactId>
         <version>${project.version}</version>
@@ -149,22 +154,7 @@
     <mavenVersion>3.0.5</mavenVersion>
     <maven.compiler.source>${target.jdk}</maven.compiler.source>
     <maven.compiler.target>${target.jdk}</maven.compiler.target>
-    <!--
-    Publication to the website is a two phase operation:
-
-     1. Deploy to local stage: mvn site:deploy
-     2. Publish to Apache CMS: mvn scm-publish:publish-scm
-
-    This will only work when the origin for scm-publish:publish-scm
-    is the target for site:deploy.
-
-    SO MAKE SURE THAT THE FOLLOWING PROPERTIES RESOLVE TO THE SAME
-    DIRECTORY:
-
-     * scmpublish.content
-     * whisker.site.url
-
-    -->
+    <!-- See creadur-site repo for more details about publication -->
     <whisker.site.local>stage</whisker.site.local>
     <scmpublish.content>${whisker.site.local}</scmpublish.content>
     <whisker.site.url>file:${whisker.site.local}</whisker.site.url>
@@ -172,6 +162,9 @@
     <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
     <mavenPluginPluginVersion>3.15.1</mavenPluginPluginVersion>
     <findbugsPluginVersion>3.0.5</findbugsPluginVersion>
+    <!-- placeholders used in the download script need to be adapted manually before releasing -->
+    <latestWhiskerRelease>0.1</latestWhiskerRelease>
+    <currentSnapshotVersion>0.2-SNAPSHOT</currentSnapshotVersion>
   </properties>
   <!-- reporting plugins are configured according to new mvn3 standard -->
   <!-- Until Maven finds a way to allow inheritance, duplicated in plugin4maven -->
@@ -199,21 +192,19 @@
         <artifactId>maven-jxr-plugin</artifactId>
         <version>3.6.0</version>
         <configuration>
-          <aggregate>true</aggregate>
           <linkJavadoc>true</linkJavadoc>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>3.5.2</version>
+        <version>3.5.3</version>
       </plugin>
       <plugin>
         <artifactId>maven-pmd-plugin</artifactId>
         <version>3.26.0</version>
         <configuration>
           <linkXRef>true</linkXRef>
-          <sourceEncoding>utf-8</sourceEncoding>
           <minimumTokens>100</minimumTokens>
           <targetJdk>${target.jdk}</targetJdk>
           <excludes>
@@ -226,11 +217,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changes-plugin</artifactId>
-        <version>2.12.1</version>
+        <version>3.0.0-M2</version>
         <reportSets>
           <reportSet>
             <reports>
-              <report>changes-report</report>
+              <report>changes</report>
+              <report>jira-changes</report>
             </reports>
           </reportSet>
         </reportSets>
@@ -253,18 +245,43 @@
         <artifactId>taglist-maven-plugin</artifactId>
         <version>3.2.1</version>
         <configuration>
-          <tags>
-            <tag>TODO</tag>
-            <tag>todo</tag>
-            <tag>FIXME</tag>
-            <tag>fixme</tag>
-            <tag>REFACTOR</tag>
-            <tag>refactor</tag>
-            <tag>REVIEW</tag>
-            <tag>review</tag>
-            <tag>@todo</tag>
-            <tag>@deprecated</tag>
-          </tags>
+          <tagListOptions>
+            <tagClasses>
+              <tagClass>
+                <displayName>TODOs</displayName>
+                <tags>
+                  <tag>
+                    <matchString>todo</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>fixme</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>refactor</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>review</matchString>
+                    <matchType>ignoreCase</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>@todo</matchString>
+                    <matchType>exact</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>@deprecated</matchString>
+                    <matchType>exact</matchType>
+                  </tag>
+                  <tag>
+                    <matchString>@Deprecated</matchString>
+                    <matchType>exact</matchType>
+                  </tag>
+                </tags>
+              </tagClass>
+            </tagClasses>
+          </tagListOptions>
         </configuration>
       </plugin>
       <plugin>
@@ -275,7 +292,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>3.6.2</version>
+        <version>3.9.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <version>2.3</version>
       </plugin>
     </plugins>
   </reporting>
@@ -308,11 +330,10 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.12.1</version>
+          <version>3.21.0</version>
           <configuration>
             <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
             <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
-            <relativizeDecorationLinks>false</relativizeDecorationLinks>
           </configuration>
         </plugin>
         <plugin>
@@ -343,16 +364,6 @@
               </goals>
             </execution>
           </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-scm-publish-plugin</artifactId>
-          <version>3.3.0</version>
-          <extensions>true</extensions>
-          <configuration>
-            <!-- svn location for publication -->
-            <pubScmUrl>scm:svn:https://svn.apache.org/repos/asf/creadur/site/trunk/content/whisker/</pubScmUrl>
-          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>

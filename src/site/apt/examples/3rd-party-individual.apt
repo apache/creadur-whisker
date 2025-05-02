@@ -24,7 +24,7 @@
 
 With An Individual Third Party Work
 
- {{{http://creadur.apache.org/whisker} Apache Whisker}} is based around
+ {{{https://creadur.apache.org/whisker} Apache Whisker}} is based around
  {{{../meta-data.html}meta-data}} describing the licensing qualities
  of documents included within
  {{{../faq.html#complex-software-applications}complex software distributions}}.
@@ -121,7 +121,7 @@ With An Individual Third Party Work
 +---------------------------------------+
 
   Let's say that the
-  {{{http://www.apache.org/licenses/LICENSE-2.0.html}Apache License, Version 2}}
+  {{{https://www.apache.org/licenses/LICENSE-2.0.html}Apache License, Version 2}}
   is the {{{../faq.html#what-is-primary}primary license}}
   for the project, but <<<foo>>> opts not to
   {{{../faq.html#notice-needed-for-al2}include a primary notice}}.
@@ -135,7 +135,7 @@ With An Individual Third Party Work
         <license
             name='Apache License, Version 2'
             id='osi:AL2'
-            url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+            url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
                            Version 2.0, January 2004
@@ -326,7 +326,7 @@ With An Individual Third Party Work
 
   Let's assume that our project <<<foo>>> is here at Apache. So the
   {{{../faq.html#what-is-primary}primary organisation}} is the
-  {{{http://www.apache.org/foundation}Apache Software Foundation}}.
+  {{{https://www.apache.org/foundation}Apache Software Foundation}}.
   This organisation is described once in <<<organisations>>> (above) then
   referenced by id as the
   <<<primary-organisation>>> (below).
@@ -338,7 +338,7 @@ With An Individual Third Party Work
         <organisation
             id='apache.org'
             name='The Apache Software Foundation'
-            url='http://www.apache.org/'/>
+            url='https://www.apache.org/'/>
     </organisations>
     ...
     <primary-organisation id='apache.org'/>
@@ -405,7 +405,7 @@ With An Individual Third Party Work
         <organisation
            id='person:Sam.Smith'
            name='Sam Smith'
-           url='http://example.org/~samsmith'
+           url='https://example.org/~samsmith'
         />
     </organisations>
     <primary-license>...</primary-license>
@@ -486,7 +486,7 @@ With An Individual Third Party Work
         <license
             name='Apache License, Version 2'
             id='osi:AL2'
-            url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+            url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
                            Version 2.0, January 2004
@@ -672,11 +672,11 @@ With An Individual Third Party Work
         <organisation
             id='apache.org'
             name='The Apache Software Foundation'
-            url='http://www.apache.org/'/>
+            url='https://www.apache.org/'/>
         <organisation
            id='person:Sam.Smith'
            name='Sam Smith'
-           url='http://example.org/~samsmith'
+           url='https://example.org/~samsmith'
         />
     </organisations>
     <primary-license id='osi:AL2'/>
@@ -885,8 +885,8 @@ With An Individual Third Party Work
 
 This distribution contains third party resources.
 Within the . directory
-    licensed under the Apache License, Version 2 http://www.apache.org/licenses/LICENSE-2.0.txt  (as above)
-        from Sam Smith  http://example.org/~samsmith
+    licensed under the Apache License, Version 2 https://www.apache.org/licenses/LICENSE-2.0.txt  (as above)
+        from Sam Smith  https://example.org/~samsmith
             boo.png
 
 +---------------------------------------+

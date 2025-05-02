@@ -24,7 +24,7 @@
 
 Parameterising a Template for a License Family
 
- {{{http://creadur.apache.org/whisker} Apache Whisker}} is based around
+ {{{https://creadur.apache.org/whisker} Apache Whisker}} is based around
  {{{../meta-data.html}meta-data}} describing the licensing qualities
  of documents included within
  {{{../faq.html#complex-software-applications}complex software distributions}}.
@@ -134,7 +134,7 @@ Parameterising a Template for a License Family
         <license
             name='Apache License, Version 2'
             id='osi:AL2'
-            url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+            url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
                            Version 2.0, January 2004
@@ -325,7 +325,7 @@ Parameterising a Template for a License Family
 
   Let's assume that our project <<<foo>>> is here at Apache. So the
   {{{../faq.html#what-is-primary}primary organisation}} is the
-  {{{http://www.apache.org/foundation}Apache Software Foundation}}.
+  {{{https://www.apache.org/foundation}Apache Software Foundation}}.
   This organisation is described once in <<<organisations>>> (above) then
   referenced by id as the
   <<<primary-organisation>>> (below).
@@ -337,7 +337,7 @@ Parameterising a Template for a License Family
         <organisation
             id='apache.org'
             name='The Apache Software Foundation'
-            url='http://www.apache.org/'/>
+            url='https://www.apache.org/'/>
     </organisations>
     ...
     <primary-organisation id='apache.org'/>
@@ -378,7 +378,7 @@ Parameterising a Template for a License Family
 
   Let's add <<<boo.png>>> to the distribution,
   licensed with the
-  {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
+  {{{https://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
   from the (hypothetical) <Example Project>. The license shipped is
 
 +---------------------------------------+
@@ -407,9 +407,9 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +---------------------------------------+
 
   Consulting the
-  {{{http://opensource.org/licenses/index.html}open source initiative}},
+  {{{https://opensource.org/licenses/index.html}open source initiative}},
   we find this corresponds to the
-  {{{http://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
+  {{{https://opensource.org/licenses/BSD-2-Clause}BSD (2 Clause) license}}
   template
 
 +---------------------------------------+
@@ -454,7 +454,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <license
             id='osi:BSD2'
             name='BSD (2 Clause)'
-            url='http://opensource.org/licenses/BSD-2-Clause'
+            url='https://opensource.org/licenses/BSD-2-Clause'
             >
             <template>
                 <parameter-name>YEAR</parameter-name>
@@ -514,7 +514,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <organisation
            id='example.org'
            name='The Example Project'
-           url='http://example.org/'
+           url='https://example.org/'
         />
     </organisations>
     ...
@@ -621,7 +621,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <license
             name='Apache License, Version 2'
             id='osi:AL2'
-            url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+            url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
                            Version 2.0, January 2004
@@ -804,7 +804,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <license
             id='osi:BSD2'
             name='BSD (2 Clause)'
-            url='http://opensource.org/licenses/BSD-2-Clause'
+            url='https://opensource.org/licenses/BSD-2-Clause'
             >
             <template>
                 <parameter-name>YEAR</parameter-name>
@@ -842,11 +842,11 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <organisation
             id='apache.org'
             name='The Apache Software Foundation'
-            url='http://www.apache.org/'/>
+            url='https://www.apache.org/'/>
         <organisation
            id='example.org'
            name='The Example Project'
-           url='http://example.org/'
+           url='https://example.org/'
         />
     </organisations>
     <primary-license id='osi:AL2'/>
@@ -1068,7 +1068,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 This distribution contains third party resources.
 Within the . directory
-    licensed under the BSD (2 Clause) http://opensource.org/licenses/BSD-2-Clause  (as follows)
+    licensed under the BSD (2 Clause) https://opensource.org/licenses/BSD-2-Clause  (as follows)
 
 
             Copyright (c) 2000-2010, The Example Project
@@ -1095,7 +1095,7 @@ Within the . directory
             NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
             EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-        from The Example Project  http://example.org/
+        from The Example Project  https://example.org/
             boo.png
 
 +---------------------------------------+

@@ -25,16 +25,16 @@
 
 Usage
 
- The Apache Whisker Maven Plugin allows {{{http://creadur.apache.org/whisker} Whisker}}
+ The Apache Whisker Maven Plugin allows {{{https://creadur.apache.org/whisker} Whisker}}
  features to be integrated into a Maven built project. The following examples
  illustrate the basic usage of this plugin.
 
 * Generate Licensing Documents From Meta-Data
 
- {{{http://creadur.apache.org/whisker} Apache Whisker}} generates licensing
+ {{{https://creadur.apache.org/whisker} Apache Whisker}} generates licensing
  documentation (for example, <<<LICENSE>>> and <<<NOTICE>>> documents) from
  a meta-data document. Read more about this format 
- {{{http://creadur.apache.org/whisker/meta-data.html} here}} (in the Whisker 
+ {{{https://creadur.apache.org/whisker/meta-data.html} here}} (in the Whisker
  documentation).
  
  Configure the path (to the meta-data describing the licensing)

@@ -49,7 +49,7 @@ maintained by an informal group.
 
 <!-- Collections organisation descriptions -->
 <!ELEMENT organisations (organisation*)>
-<!-- Descibres an upstream organisation -->
+<!-- Describes an upstream organisation -->
 <!ELEMENT organisation EMPTY>
 <!ATTLIST organisation id ID #REQUIRED>
 <!ATTLIST organisation name CDATA #REQUIRED>
@@ -114,7 +114,7 @@ those licenses would be added here.
         <license 
             name='Apache License, Version 2' 
             id='osi:AL2' 
-            url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+            url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
                            Version 2.0, January 2004
@@ -311,7 +311,7 @@ and individual maintainers.
         <organisation 
             id='apache.org' 
             name='The Apache Software Foundation' 
-            url='http://www.apache.org/'/>  
+            url='https://www.apache.org/'/>
     <!-- 
         The informal group from whom the dependency 
         included in the distribution is licensed 
@@ -319,7 +319,7 @@ and individual maintainers.
         <organisation
            id='example.org'
            name='The Legion of the Bouncy Example'
-           url='http://example.org/'
+           url='https://example.org/'
         />
     </organisations>
     <!--
