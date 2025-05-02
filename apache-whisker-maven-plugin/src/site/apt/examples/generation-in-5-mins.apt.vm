@@ -24,7 +24,7 @@
 
 Generation In 5 Minutes
 
- {{{http://creadur.apache.org/whisker} Apache Whisker}} generates licensing
+ {{{https://creadur.apache.org/whisker} Apache Whisker}} generates licensing
  documentation (for example, <<<LICENSE>>> and <<<NOTICE>>> documents) from
  meta-data.
  
@@ -68,4 +68,3 @@ TODO
  
 +---------------------------------------+
 
- 

@@ -31,7 +31,7 @@ import org.apache.logging.log4j.LogManager;
 /**
  * Uses Apache Velocity to implement {@link AbstractEngine}.
  *
- * @see <a href='http://velocity.apache.org'>Apache Velocity</a>
+ * @see <a href='https://velocity.apache.org'>Apache Velocity</a>
  */
 public class LoggingVelocityEngine extends AbstractEngine {
     private static final Logger LOGGER = LogManager.getLogger();

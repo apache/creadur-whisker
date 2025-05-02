@@ -45,7 +45,7 @@
 
 <!-- Collections organisation descriptions -->
 <!ELEMENT organisations (organisation*)>
-<!-- Descibres an upstream organisation -->
+<!-- Describes an upstream organisation -->
 <!ELEMENT organisation EMPTY>
 <!ATTLIST organisation id ID #REQUIRED>
 <!ATTLIST organisation name CDATA #REQUIRED>
@@ -99,7 +99,7 @@
         <license 
             name='Day Specification License with Addendum' 
             id='DaySpecLicensePlusAddendum'
-            url='http://www.day.com/content/dam/day/downloads/jsr283/LICENSE.txt'>
+            url='https://www.day.com/content/dam/day/downloads/jsr283/LICENSE.txt'>
             <text>
 Day Management AG ("Licensor") is willing to license this specification to you ONLY UPON 
 THE CONDITION THAT YOU ACCEPT ALL OF THE TERMS CONTAINED IN THIS LICENSE AGREEMENT 
@@ -236,7 +236,7 @@ and use a Compliant Implementation.
             </text>
 </license>
         <license name='COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0' id='CDDL'
-        url='http://www.opensource.org/licenses/CDDL-1.0' requires-source='yes'>
+        url='https://www.opensource.org/licenses/CDDL-1.0' requires-source='yes'>
         <text>
 COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
 
@@ -621,7 +621,7 @@ of liability.
         </text>
         </license>
         <license name='MIT License' id='MIT' 
-            url='http://www.opensource.org/licenses/mit-license.php'>
+            url='https://www.opensource.org/licenses/mit-license.php'>
             <text>
 Permission is hereby granted, free  of charge, to any person obtaining
 a  copy  of this  software  and  associated  documentation files  (the
@@ -697,7 +697,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         </text>
         </license>
         <license name='BSD (3-clause)' id='BSD3ClauseGeneric'
-            url='http://www.opensource.org/licenses/BSD-3-Clause'>
+            url='https://www.opensource.org/licenses/BSD-3-Clause'>
             <text>
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions
@@ -726,7 +726,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         </license>
         
         <license name='BSD (3-clause)' id ='BSD3Clause' 
-            url='http://www.opensource.org/licenses/BSD-3-Clause'>
+            url='https://www.opensource.org/licenses/BSD-3-Clause'>
                 <template>
                     <parameter-name>organisation</parameter-name>
                 </template>
@@ -755,7 +755,7 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             </text>
         </license>
-        <license name='Bouncy Castle Licence' id='BouncyCastleLicense' url='http://www.bouncycastle.org/licence.html'>
+        <license name='Bouncy Castle Licence' id='BouncyCastleLicense' url='https://www.bouncycastle.org/licence.html'>
             <text>
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
 and associated documentation files (the "Software"), to deal in the Software without restriction, 
@@ -774,7 +774,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTI
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             </text>         
         </license>
-        <license name='Apache License, Version 2' id='ApacheLicenseVersion2' url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+        <license name='Apache License, Version 2' id='ApacheLicenseVersion2' url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
                            Version 2.0, January 2004
@@ -1002,12 +1002,12 @@ The following provides more details on the cryptographic software
 used (note that this software is not included in the distribution):
 
   * The PBE Encryption facilities require the Java Cryptography 
-    extensions: http://java.sun.com/javase/technologies/security/.
+    extensions: https://java.sun.com/javase/technologies/security/.
 
 ---------------------------------
 
 Distributions of this software may include software developed by
-The Apache Software Foundation (http://www.apache.org/).
+The Apache Software Foundation (https://www.apache.org/).
 
 ---------------------------------
 
@@ -1055,19 +1055,19 @@ without prior written authorization of the copyright holder.
         <organisation 
             id='SpringFramework' 
             name='The Spring Framework Project' 
-            url='http://www.springframework.org'/>
+            url='https://www.springframework.org'/>
         <organisation
             id='Boilerpipe'
             name='Boilerpipe'
-            url='http://code.google.com/p/boilerpipe/'/>
+            url='https://code.google.com/p/boilerpipe/'/>
         <organisation
             id='person:John.Cowan'
             name='John Cowan'
-            url='http://home.ccil.org/~cowan/XML/tagsoup/'
+            url='https://home.ccil.org/~cowan/XML/tagsoup/'
         />
         <organisation
             id='TheLegionoftheBouncyCastle'
-            url='http://www.bouncycastle.org/'
+            url='https://www.bouncycastle.org/'
             name='The Legion of the Bouncy Castle'
             />
         <organisation
@@ -1076,7 +1076,7 @@ without prior written authorization of the copyright holder.
         <organisation
             id='serp.sourceforge.net'
             name = "The Serp Project" 
-            url='http://serp.sourceforge.net/'/>
+            url='https://serp.sourceforge.net/'/>
         <organisation
             id='person:Drew.Noakes'
             name='Drew Noakes'/>
@@ -1086,45 +1086,45 @@ without prior written authorization of the copyright holder.
         <organisation
             id='TheAOPAlliance'
             name='The AOP Alliance' 
-            url='http://aopalliance.sourceforge.net/'/>
+            url='https://aopalliance.sourceforge.net/'/>
         <organisation 
             id='apache.org' 
             name='The Apache Software Foundation' 
-            url='http://www.apache.org/'/>  
+            url='https://www.apache.org/'/>
         <organisation 
             id='TanukiSoftware' 
             name='Tanuki Software' 
-            url='http://www.tanukisoftware.com/'/>  
+            url='https://www.tanukisoftware.com/'/>
         <organisation 
             id='OW2' 
             name='OW2' 
-            url='http://www.ow2.org/'/>  
+            url='https://www.ow2.org/'/>
         <organisation
             id='qos.ch'
             name='QOS.ch'
-            url='http://www.qos.ch'/>
+            url='https://www.qos.ch'/>
         <organisation
             id='jboss.org'
             name='JBoss, a division of Red Hat, Inc.'
-            url='http://www.jboss.org'
+            url='https://www.jboss.org'
             />
         <organisation
             id='oracle.com'
             name='Oracle'
-            url='http://www.oracle.com'
+            url='https://www.oracle.com'
             />
         <organisation
             id='fusesource.org'
             name='FuseSource' 
-            url='http://www.fusesource.org'/>
+            url='https://www.fusesource.org'/>
         <organisation 
             id='day.com' 
             name='Day Software' 
-            url='http://www.day.com'/>
+            url='https://www.day.com'/>
         <organisation 
             id='jasypt.org'
             name='The JASYPT team'
-            url='http://www.jasypt.org'/>
+            url='https://www.jasypt.org'/>
             
     </organisations>
     <primary-license id='ApacheLicenseVersion2'/>
@@ -1137,7 +1137,7 @@ Apache JAMES Server
 Copyright 1999-${year} The Apache Software Foundation
 
 This product includes software developed at
-The Apache Software Foundation (http://www.apache.org/).
+The Apache Software Foundation (https://www.apache.org/).
     </primary-notice>
     <primary-organisation id='apache.org'/>
     
@@ -1294,7 +1294,7 @@ The Apache Software Foundation (http://www.apache.org/).
         </with-license>
         <with-license id='CDDL'>
             <by-organisation id='oracle.com'>
-                <resource name='mail-1.4.4.jar' source='http://kenai.com/projects/javamail/downloads'/>
+                <resource name='mail-1.4.4.jar' source='https://kenai.com/projects/javamail/downloads'/>
             </by-organisation>
         </with-license>
         <with-license id='MIT'>
@@ -1446,7 +1446,7 @@ All rights reserved.
         <with-license 
             id='BouncyCastleLicense'>
             <copyright-notice>
-            Copyright (c) 2000 - 2011 The Legion Of The Bouncy Castle (http://www.bouncycastle.org)
+            Copyright (c) 2000 - 2011 The Legion Of The Bouncy Castle (https://www.bouncycastle.org)
             </copyright-notice>
             <by-organisation id='TheLegionoftheBouncyCastle'>
                 <resource name='bcmail-jdk15-1.45.jar'/>

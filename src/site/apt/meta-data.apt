@@ -138,7 +138,7 @@ Apache Whisker Meta-Data Model
 
 <!-- Collections organisation descriptions -->
 <!ELEMENT organisations (organisation*)>
-<!-- Descibres an upstream organisation -->
+<!-- Describes an upstream organisation -->
 <!ELEMENT organisation EMPTY>
 <!ATTLIST organisation id ID #REQUIRED>
 <!ATTLIST organisation name CDATA #REQUIRED>

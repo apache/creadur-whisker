@@ -49,7 +49,7 @@ maintained by an informal group.
 
 <!-- Collections organisation descriptions -->
 <!ELEMENT organisations (organisation*)>
-<!-- Descibres an upstream organisation -->
+<!-- Describes an upstream organisation -->
 <!ELEMENT organisation EMPTY>
 <!ATTLIST organisation id ID #REQUIRED>
 <!ATTLIST organisation name CDATA #REQUIRED>
@@ -113,7 +113,7 @@ be given more prominence when legal documents are
 generated.
      -->
         <license name='MIT License' id='osi:mit' 
-            url='http://www.opensource.org/licenses/mit-license.php'>
+            url='https://www.opensource.org/licenses/mit-license.php'>
             <text>
 Permission is hereby granted, free  of charge, to any person obtaining
 a  copy  of this  software  and  associated  documentation files  (the
@@ -142,7 +142,7 @@ dependencies aggregated within the distribution.
          <license 
             name='Apache License, Version 2' 
             id='osi:AL2' 
-            url='http://www.apache.org/licenses/LICENSE-2.0.txt'>
+            url='https://www.apache.org/licenses/LICENSE-2.0.txt'>
 <text>
                                  Apache License
                            Version 2.0, January 2004
@@ -340,7 +340,7 @@ This sample example defines only two organisations.
         <organisation 
             id='example.org' 
             name='The Hypothetical Example Foundation' 
-            url='http://www.example.org'/>
+            url='https://www.example.org'/>
     <!--
     A third party who licenses a resource aggregated within the
     distribution. 
@@ -348,7 +348,7 @@ This sample example defines only two organisations.
         <organisation 
             id='apache.org' 
             name='Apache Software Foundation' 
-            url='http://www.apache.org'/>
+            url='https://www.apache.org'/>
     </organisations>
     <!--
 The ID links back into the license section. 
