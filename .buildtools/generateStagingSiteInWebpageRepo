@@ -14,9 +14,43 @@
 # limitations under the License.
 #
 ./mvnw clean site:site site:stage
+
+echo "Copying site resources into asf-site repo"
 cp -rvf target/staging/* ../creadur-site/whisker/
+
 echo "Copying JS/CSS resources into generated reports"
 cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-verlocity/apidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-app/apidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-xml/apidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-scan/apidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-model/apidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-maven-plugin/apidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-cli/apidocs/
+
 cp -rvf src/site/javadocFont/* ../creadur-site/whisker/testapidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-verlocity/testapidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-app/testapidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-xml/testapidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-scan/testapidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-model/testapidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-maven-plugin/testapidocs/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-cli/testapidocs/
+
 cp -rvf src/site/javadocFont/* ../creadur-site/whisker/xref/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-velocity/xref/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-app/xref/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-xml/xref/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-scan/xref/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-model/xref/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-maven-plugin/xref/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-cli/xref/
+
 cp -rvf src/site/javadocFont/* ../creadur-site/whisker/xref-test/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-velocity/xref-test/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-app/xref-test/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-xml/xref-test/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-scan/xref-test/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-model/xref-test/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-maven-plugin/xref-test/
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-cli/xref-test/
