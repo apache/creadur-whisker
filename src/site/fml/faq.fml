@@ -307,7 +307,7 @@ If it were, probably a language like
             </p>
             <p>
 There are currently no known plugins. If you know of a plugin please
-<a href='./mail-lists.html'>let us know</a> or
+<a href='./mailing-lists.html'>let us know</a> or
 <a href='./source-repository.html'>contribute a patch</a> for this documentation.
             </p>
         </answer>
@@ -640,7 +640,7 @@ an informal <a href='./examples/3rd-party-group-sample.xml'>group</a>
       <p>If you have a use case where an unnecessary <code>NOTICE</code> is generated,
       or when a <code>NOTICE</code> isn't generated when it is needed please open an
       <a href='./issue-tracking.html'>issue</a> or let us know
-      <a href='./mail-lists.html'>on list</a>.</p>
+      <a href='./mailing-lists.html'>on list</a>.</p>
       </answer>
     </faq>
     <faq id="when-source-links">
