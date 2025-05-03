@@ -639,7 +639,7 @@ an informal <a href='./examples/3rd-party-group-sample.xml'>group</a>
       </ul>
       <p>If you have a use case where an unnecessary <code>NOTICE</code> is generated,
       or when a <code>NOTICE</code> isn't generated when it is needed please open an
-      <a href='./issue-tracking.html'>issue</a> or let us know
+      <a href='./issue-management.html'>issue</a> or let us know
       <a href='./mailing-lists.html'>on list</a>.</p>
       </answer>
     </faq>
