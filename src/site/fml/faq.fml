@@ -308,7 +308,7 @@ If it were, probably a language like
             <p>
 There are currently no known plugins. If you know of a plugin please
 <a href='./mailing-lists.html'>let us know</a> or
-<a href='./source-repository.html'>contribute a patch</a> for this documentation.
+<a href='./scm.html'>contribute a patch</a> for this documentation.
             </p>
         </answer>
     </faq>

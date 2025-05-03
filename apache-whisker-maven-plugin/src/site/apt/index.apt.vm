@@ -60,7 +60,7 @@ useful not only for building components but also for assembling them into applic
   entire debug logs, POMs or most preferably little demo projects attached to the issue are very much appreciated.
   
   Of course, patches are very welcome, too. Contributors can check out the project from our
-  {{{./source-repository.html}source repository}}. Apache Whisker is developed collaboratively
+  {{{./scm.html}source repository}}. Apache Whisker is developed collaboratively
   by the {{{http://creadur.apache.org}Apache Creadur}} {{{http://community.apache.org/}community}}.
   We create and maintain a range of {{{http://www.opensource.org}open source}} software tools
   which assist in the audit, review and comprehension of software distributions. Please 
