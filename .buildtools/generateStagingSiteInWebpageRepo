@@ -1,3 +1,4 @@
+#!/bin/bash
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -21,38 +22,16 @@ echo "DONE."
 
 echo "Copying JS/CSS resources into generated reports"
 cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-velocity/apidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-app/apidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-xml/apidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-scan/apidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-model/apidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-maven-plugin/apidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-cli/apidocs/ > /dev/null
-
 cp -rvf src/site/javadocFont/* ../creadur-site/whisker/testapidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-velocity/testapidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-app/testapidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-xml/testapidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-scan/testapidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-model/testapidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-maven-plugin/testapidocs/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-cli/testapidocs/ > /dev/null
-
 cp -rvf src/site/javadocFont/* ../creadur-site/whisker/xref/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-velocity/xref/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-app/xref/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-xml/xref/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-scan/xref/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-model/xref/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-maven-plugin/xref/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-cli/xref/ > /dev/null
-
 cp -rvf src/site/javadocFont/* ../creadur-site/whisker/xref-test/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-velocity/xref-test/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-app/xref-test/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-xml/xref-test/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-scan/xref-test/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-model/xref-test/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-maven-plugin/xref-test/ > /dev/null
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apache-whisker-cli/xref-test/ > /dev/null
+
+for module in "apache-whisker-velocity" "apache-whisker-app" "apache-whisker-xml" "apache-whisker-scan" "apache-whisker-model" "apache-whisker-maven-plugin" "apache-whisker-cli"
+ do
+  cp -rvf src/site/javadocFont/* ../creadur-site/whisker/$module/apidocs/ > /dev/null
+  cp -rvf src/site/javadocFont/* ../creadur-site/whisker/$module/testapidocs/ > /dev/null
+  cp -rvf src/site/javadocFont/* ../creadur-site/whisker/$module/xref/ > /dev/null
+  cp -rvf src/site/javadocFont/* ../creadur-site/whisker/$module/xref-test/ > /dev/null
+ done
+
 echo "DONE."
