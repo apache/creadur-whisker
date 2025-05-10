@@ -507,4 +507,27 @@
     <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/creadur-whisker.git</developerConnection>
     <url>https://gitbox.apache.org/repos/asf?p=creadur-whisker.git</url>
   </scm>
+  <developers>
+    <developer>
+      <id>rdonkin</id>
+      <name>Robert Burrell Donkin</name>
+      <email>rdonkin@apache.org</email>
+    </developer>
+    <developer>
+      <id>dennisl</id>
+      <name>Dennis Lundberg</name>
+      <email>dennisl@apache.org</email>
+    </developer>
+    <developer>
+      <id>pottlinger</id>
+      <name>Philipp Ottlinger</name>
+      <email>pottlinger@apache.org</email>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>sebbASF</name>
+      <email>sebb@apache.org</email>
+    </contributor>
+  </contributors>
 </project>

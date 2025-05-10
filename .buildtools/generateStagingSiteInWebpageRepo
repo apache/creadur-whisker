@@ -1,3 +1,4 @@
+#!/bin/bash
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -14,5 +15,23 @@
 # limitations under the License.
 #
 ./mvnw clean site:site site:stage
-cp -rvf target/staging/* ../creadur-site/whisker/
-cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apidocs/
+
+echo "Copying site resources into asf-site repo"
+cp -rvf target/staging/* ../creadur-site/whisker/ > /dev/null
+echo "DONE."
+
+echo "Copying JS/CSS resources into generated reports"
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/apidocs/ > /dev/null
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/testapidocs/ > /dev/null
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/xref/ > /dev/null
+cp -rvf src/site/javadocFont/* ../creadur-site/whisker/xref-test/ > /dev/null
+
+for module in "apache-whisker-velocity" "apache-whisker-app" "apache-whisker-xml" "apache-whisker-scan" "apache-whisker-model" "apache-whisker-maven-plugin" "apache-whisker-cli"
+ do
+  cp -rvf src/site/javadocFont/* ../creadur-site/whisker/$module/apidocs/ > /dev/null
+  cp -rvf src/site/javadocFont/* ../creadur-site/whisker/$module/testapidocs/ > /dev/null
+  cp -rvf src/site/javadocFont/* ../creadur-site/whisker/$module/xref/ > /dev/null
+  cp -rvf src/site/javadocFont/* ../creadur-site/whisker/$module/xref-test/ > /dev/null
+ done
+
+echo "DONE."
