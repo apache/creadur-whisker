@@ -19,6 +19,7 @@
 package org.apache.creadur.whisker.out.velocity;
 
 import static org.apache.creadur.whisker.app.ConfigurationBuilder.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,10 +32,11 @@ import org.apache.creadur.whisker.model.Descriptor;
 import org.apache.creadur.whisker.model.License;
 import org.apache.creadur.whisker.model.Organisation;
 import org.apache.creadur.whisker.model.WithinDirectory;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import junit.framework.TestCase;
-
-public class TestNoticeGeneration extends TestCase {
+class TestNoticeGeneration {
 
     StringResultWriterFactory writerFactory;
     LoggingVelocityEngine subject;
@@ -46,38 +48,38 @@ public class TestNoticeGeneration extends TestCase {
     Map<String, String> notices = new HashMap<String, String>();
     Map<String, Organisation> organisations = new HashMap<String, Organisation>();
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
         writerFactory = new StringResultWriterFactory();
         subject = new LoggingVelocityEngine();
         primaryLicense.storeIn(licenses);
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
-    public void testThatWhenThereAreNoThirdPartyNoticesHeaderIsNotShown() throws Exception {
+    @Test
+    void thatWhenThereAreNoThirdPartyNoticesHeaderIsNotShown() throws Exception {
         Descriptor work =
                 new Descriptor(primaryLicense, primaryOrg,  primaryNotice,
                         licenses, notices, organisations, contents);
 
         subject.generate(work, writerFactory, aConfiguration().build());
 
-        assertEquals("Only one request for NOTICE writer", 1, writerFactory.requestsFor(Result.NOTICE));
-        assertEquals("When no third party notices, expect that only the primary notice is output", primaryNotice, writerFactory.firstOutputFor(Result.NOTICE).trim());
+        assertEquals(1, writerFactory.requestsFor(Result.NOTICE), "Only one request for NOTICE writer");
+        assertEquals(primaryNotice, writerFactory.firstOutputFor(Result.NOTICE).trim(), "When no third party notices, expect that only the primary notice is output");
     }
 
-    public void testThatNoticeOutputIsSkippedWhenThereAreNoNotices() throws Exception {
+    @Test
+    void thatNoticeOutputIsSkippedWhenThereAreNoNotices() throws Exception {
         Descriptor work =
                 new Descriptor(primaryLicense, primaryOrg,  "",
                         licenses, notices, organisations, contents);
 
         subject.generate(work, writerFactory, aConfiguration().build());
 
-        assertEquals("No requests for NOTICE writer", 0, writerFactory.requestsFor(Result.NOTICE));
+        assertEquals(0, writerFactory.requestsFor(Result.NOTICE), "No requests for NOTICE writer");
     }
 
 }
