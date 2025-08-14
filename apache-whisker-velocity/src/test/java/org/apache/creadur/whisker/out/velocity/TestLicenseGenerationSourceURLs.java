@@ -19,36 +19,39 @@
 package org.apache.creadur.whisker.out.velocity;
 
 import static org.apache.creadur.whisker.app.ConfigurationBuilder.aConfiguration;
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.creadur.whisker.app.Result;
 import org.apache.creadur.whisker.model.Descriptor;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class TestLicenseGenerationSourceURLs extends TestCase {
+class TestLicenseGenerationSourceURLs {
 
     StringResultWriterFactory writerFactory;
     LoggingVelocityEngine subject;
     DescriptorBuilderForTesting builder;
     Descriptor work;
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
         writerFactory = new StringResultWriterFactory();
         subject = new LoggingVelocityEngine();
         builder = new DescriptorBuilderForTesting().withSourceURL();
         work = builder.withPrimaryLicenseAndThirdPartyOrgInDirectory(".").build();
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
-    public void testNoSourceUrlsConfiguration() throws Exception {
+    @Test
+    void noSourceUrlsConfiguration() throws Exception {
         subject.generate(work, writerFactory, aConfiguration().noSourceURLsInLicense().build());
-        assertFalse(failureMessage(), outputContainsSourceUrl());
+        assertFalse(outputContainsSourceUrl(), failureMessage());
 
     }
 
@@ -61,10 +64,11 @@ public class TestLicenseGenerationSourceURLs extends TestCase {
         return "Expect information when third party contents present: " + writerFactory.firstOutputFor(Result.LICENSE);
     }
 
-    public void testWithSourceUrlsConfiguration() throws Exception {
+    @Test
+    void withSourceUrlsConfiguration() throws Exception {
         subject.generate(work, writerFactory, aConfiguration().withSourceURLsInLicense().build());
 
-        assertTrue(failureMessage(), outputContainsSourceUrl());
+        assertTrue(outputContainsSourceUrl(), failureMessage());
 
     }
 }
