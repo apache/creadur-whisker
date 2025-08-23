@@ -18,39 +18,44 @@
  */
 package org.apache.creadur.whisker.fromxml;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.apache.creadur.whisker.model.Organisation;
 
-import junit.framework.TestCase;
 import org.jdom2.Element;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * 
  */
-public class JDomBuilderOrganisationTest extends TestCase {
+class JDomBuilderOrganisationTest {
     private JDomBuilder subject;
-    
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+
+    @BeforeEach
+    void setUp() throws Exception {
         subject = new JDomBuilder();
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
-    public void testOrganisationSetsIdNameUrl() throws Exception {
+    @Test
+    void organisationSetsIdNameUrl() throws Exception {
         final Organisation result = subject.organisation(
                 new Element("organisation")
                 .setAttribute("name", "a name")
                 .setAttribute("url", "an url")
                 .setAttribute("id", "an id"));
-        assertNotNull("Builder should build an organisation", result);
+        assertNotNull(result, "Builder should build an organisation");
         
     }
-    
-    public void testThrowIllegalArgumentWhenResourceIsNotOrganisation() throws Exception {
+
+    @Test
+    void throwIllegalArgumentWhenResourceIsNotOrganisation() throws Exception {
         try {
             subject.organisation(
                 new Element("bogus")
