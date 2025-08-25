@@ -284,11 +284,12 @@
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>3.9.0</version>
       </plugin>
+<!-- Diabled until https://github.com/apache/maven-changelog-plugin/issues/200 is fixed
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
         <version>2.3</version>
-      </plugin>
+      </plugin-->
     </plugins>
   </reporting>
   <!-- ================================ Build information -->
