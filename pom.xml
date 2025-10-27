@@ -138,7 +138,7 @@
     <whisker.site.url>file:${whisker.site.local}</whisker.site.url>
     <whisker.site.name>Whisker Website</whisker.site.name>
     <whisker.site.id>org.apache.creadur.whisker.site</whisker.site.id>
-    <mavenPluginPluginVersion>3.15.1</mavenPluginPluginVersion>
+    <mavenPluginPluginVersion>3.15.2</mavenPluginPluginVersion>
     <findbugsPluginVersion>3.0.5</findbugsPluginVersion>
     <!-- placeholders used in the download script need to be adapted manually before releasing -->
     <latestWhiskerRelease>0.1</latestWhiskerRelease>
