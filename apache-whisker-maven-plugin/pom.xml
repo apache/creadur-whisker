@@ -30,7 +30,7 @@
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-plugin-api</artifactId>
-      <version>3.9.9</version>
+      <version>3.9.11</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -144,7 +144,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-invoker-plugin</artifactId>
-        <version>3.9.0</version>
+        <version>3.9.1</version>
         <configuration>
           <goal>-X</goal>
           <addTestClassPath>true</addTestClassPath>

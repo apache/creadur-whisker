@@ -36,8 +36,9 @@ jobs:
 # Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
 #
 # Java 17 disabled, because we are running into https://bugs.openjdk.java.net/browse/JDK-8270866
+# WHISKER-31: Build failures on Windows 8,11,17:
 #        java: [8, 11, 17, 21]
-        java: [21]
+        java: [21, 25]
       fail-fast: false
 
     runs-on: ${{ matrix.os }}
@@ -45,9 +46,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Configura artifact caching
+      - name: Configure artifact caching
         uses: actions/cache@v4
         with:
           path: ~/.m2/repository
@@ -56,9 +57,9 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
-          distribution: temurin 
+          distribution: 'temurin' 
           java-version: ${{ matrix.java }}
           cache: 'maven'
 
