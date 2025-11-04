@@ -21,23 +21,26 @@ package org.apache.creadur.whisker.app.load;
 import java.io.InputStream;
 
 import org.apache.creadur.whisker.app.StreamableResource;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class TestStreamableResourceFactory extends TestCase {
+class TestStreamableResourceFactory {
 
     StreamableResourceFactory subject;
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
         subject = new StreamableResourceFactory();
     }
 
-    public void testWhenResourceExistsOnClasspathThisResourceShouldBeStreamed() throws Exception {
-        StreamableResource streamableResource = subject.streamFromResource("junit/framework/TestCase.class");
+    @Test
+    void whenResourceExistsOnClasspathThisResourceShouldBeStreamed() throws Exception {
+        StreamableResource streamableResource = subject.streamFromResource("org/junit/jupiter/api/Test.class");
         assertNotNull(streamableResource);
-        InputStream in = streamableResource.open();
-        assertFalse(in.read() == -1);
+        try(InputStream in = streamableResource.open()) {
+            assertNotEquals(-1, in.read());
+        };
     }
 }
