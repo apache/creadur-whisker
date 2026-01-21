@@ -19,112 +19,118 @@
 package org.apache.creadur.whisker.out.velocity;
 
 import static org.apache.creadur.whisker.app.ConfigurationBuilder.*;
-
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.creadur.whisker.app.Result;
 import org.apache.creadur.whisker.model.Descriptor;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class TestLicenseGeneration extends TestCase {
+class TestLicenseGeneration {
 
     StringResultWriterFactory writerFactory;
     LoggingVelocityEngine subject;
     DescriptorBuilderForTesting builder;
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
         writerFactory = new StringResultWriterFactory();
         subject = new LoggingVelocityEngine();
         builder = new DescriptorBuilderForTesting();
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
 
-    public void testThatWhenThereAreNoThirdPartyContentsFooterIsNotShown() throws Exception {
+    @Test
+    void thatWhenThereAreNoThirdPartyContentsFooterIsNotShown() throws Exception {
         Descriptor work = builder.build();
 
         subject.generate(work, writerFactory, aConfiguration().build());
 
-        assertTrue("Check that work is suitable for this test", work.isPrimaryOnly());
-        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
-        assertEquals("When no third party contents, expect that only the license text is output",
-                builder.getPrimaryLicenseText(),
-                writerFactory.firstOutputFor(Result.LICENSE).trim());
+        assertTrue(work.isPrimaryOnly(), "Check that work is suitable for this test");
+        assertEquals(1, writerFactory.requestsFor(Result.LICENSE), "Only one request for LICENSE writer");
+        assertEquals(builder.getPrimaryLicenseText(),
+                writerFactory.firstOutputFor(Result.LICENSE).trim(),
+                "When no third party contents, expect that only the license text is output");
     }
 
-    public void testThatFooterIsShownWhenThereAreThirdPartyContents() throws Exception {
+    @Test
+    void thatFooterIsShownWhenThereAreThirdPartyContents() throws Exception {
         Descriptor work = builder.withPrimaryLicenseAndThirdPartyOrgInDirectory("lib").build();
 
-        assertFalse("Check that work is suitable for this test", work.isPrimaryOnly());
+        assertFalse(work.isPrimaryOnly(), "Check that work is suitable for this test");
 
         subject.generate(work, writerFactory, aConfiguration().build());
 
-        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
-        assertTrue("Expect information when third party contents present: " + writerFactory.firstOutputFor(Result.LICENSE),
-                StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
-                        "This distribution contains third party resources."));
+        assertEquals(1, writerFactory.requestsFor(Result.LICENSE), "Only one request for LICENSE writer");
+        assertTrue(StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
+                        "This distribution contains third party resources."),
+                "Expect information when third party contents present: " + writerFactory.firstOutputFor(Result.LICENSE));
     }
 
-    public void testSecondaryCopyrightNoticeForPrimaryLicense() throws Exception {
+    @Test
+    void secondaryCopyrightNoticeForPrimaryLicense() throws Exception {
         subject.generate(
                 builder
                 .withSecondaryCopyrightNotice()
                 .withPrimaryCopyrightNotice()
                 .withPrimaryLicenseAndOrgInDirectory("lib").build(), writerFactory, aConfiguration().build());
 
-        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
-        assertTrue("Expect secondary copyright to be presented: " + writerFactory.firstOutputFor(Result.LICENSE),
-                StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
-                        builder.getSecondaryCopyright()));
+        assertEquals(1, writerFactory.requestsFor(Result.LICENSE), "Only one request for LICENSE writer");
+        assertTrue(StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
+                        builder.getSecondaryCopyright()),
+                "Expect secondary copyright to be presented: " + writerFactory.firstOutputFor(Result.LICENSE));
         verifyThatResourceNameIsWritten();
 
     }
 
     private void verifyThatResourceNameIsWritten() {
-        assertTrue("Expect resource to be indicated: " + writerFactory.firstOutputFor(Result.LICENSE),
-                StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
-                        builder.getResourceName()));
+        assertTrue(StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
+                        builder.getResourceName()),
+                "Expect resource to be indicated: " + writerFactory.firstOutputFor(Result.LICENSE));
     }
 
     private void verifyThatResourceNameIsNotWritten() {
-        assertFalse("Expect resource to be indicated: " + writerFactory.firstOutputFor(Result.LICENSE),
-                StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
-                        builder.getResourceName()));
+        assertFalse(StringUtils.contains(writerFactory.firstOutputFor(Result.LICENSE),
+                        builder.getResourceName()),
+                "Expect resource to be indicated: " + writerFactory.firstOutputFor(Result.LICENSE));
     }
 
-    public void testPrimaryOrganisationSecondaryLicense() throws Exception {
+    @Test
+    void primaryOrganisationSecondaryLicense() throws Exception {
         subject.generate(
                 builder.withSecondaryLicensePrimaryOrganisationInDirectory("lib").build(),
                 writerFactory, aConfiguration().build());
-        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
+        assertEquals(1, writerFactory.requestsFor(Result.LICENSE), "Only one request for LICENSE writer");
 
         verifyThatResourceNameIsWritten();
 
     }
 
-    public void testIgnorePrimaryOrganisationPrimaryLicense() throws Exception {
+    @Test
+    void ignorePrimaryOrganisationPrimaryLicense() throws Exception {
         subject.generate(
                 builder.withPrimaryLicenseAndOrgInDirectory("lib").build(),
                 writerFactory, aConfiguration().build());
-        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
+        assertEquals(1, writerFactory.requestsFor(Result.LICENSE), "Only one request for LICENSE writer");
         verifyThatResourceNameIsNotWritten();
 
     }
 
-    public void testIgnorePrimaryOrganisationPrimaryLicensePrimaryCopyrightNotice() throws Exception {
+    @Test
+    void ignorePrimaryOrganisationPrimaryLicensePrimaryCopyrightNotice() throws Exception {
         subject.generate(
                 builder
                     .withPrimaryCopyrightNotice()
                     .withPrimaryLicenseAndOrgInDirectory("lib")
                     .build(),
                 writerFactory, aConfiguration().build());
-        assertEquals("Only one request for LICENSE writer", 1, writerFactory.requestsFor(Result.LICENSE));
+        assertEquals(1, writerFactory.requestsFor(Result.LICENSE), "Only one request for LICENSE writer");
         verifyThatResourceNameIsNotWritten();
 
     }
