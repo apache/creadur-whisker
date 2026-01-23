@@ -97,7 +97,7 @@ pipeline {
         stage('Print available updates') {
             steps {
                 echo 'Show available plugin and dependency updates'
-                sh 'mvn versions:display-dependency-updates versions:display-plugin-updates enforcer:display-info -U -B'
+                sh './mvnw versions:display-dependency-updates versions:display-plugin-updates enforcer:display-info -U -B'
             }
         }
 
