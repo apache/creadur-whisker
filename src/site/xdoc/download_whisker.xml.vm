@@ -73,10 +73,10 @@ limitations under the License.
               <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.tar.bz2">apache-rat-${latestWhiskerRelease}-bin.tar.bz2</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.tar.bz2.sha512">sha512</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.tar.bz2.sha512">sha512</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.tar.bz2.asc">pgp</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.tar.bz2.asc">pgp</a>
             </td>
           </tr>
           <tr>
@@ -84,10 +84,10 @@ limitations under the License.
               <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.tar.gz">apache-rat-${latestWhiskerRelease}-bin.tar.gz</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.tar.gz.sha512">sha512</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.tar.gz.sha512">sha512</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.tar.gz.asc">pgp</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.tar.gz.asc">pgp</a>
             </td>
           </tr>
           <tr>
@@ -95,10 +95,10 @@ limitations under the License.
               <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.zip">apache-rat-${latestWhiskerRelease}-bin.zip</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.zip.sha512">sha512</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.zip.sha512">sha512</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.zip.asc">pgp</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-bin.zip.asc">pgp</a>
             </td>
           </tr>
         </table>
@@ -110,10 +110,10 @@ limitations under the License.
               <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.tar.bz2">apache-rat-${latestWhiskerRelease}-src.tar.bz2</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.tar.bz2.sha512">sha512</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.tar.bz2.sha512">sha512</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.tar.bz2.asc">pgp</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.tar.bz2.asc">pgp</a>
             </td>
           </tr>
           <tr>
@@ -121,10 +121,10 @@ limitations under the License.
               <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.tar.gz">apache-rat-${latestWhiskerRelease}-src.tar.gz</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.tar.gz.sha512">sha512</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.tar.gz.sha512">sha512</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-whisker-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.tar.gz.asc">pgp</a>
+              <a href="[preferred]/creadur/apache-whisker-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.tar.gz.asc">pgp</a>
             </td>
           </tr>
           <tr>
@@ -132,10 +132,10 @@ limitations under the License.
               <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.zip">apache-rat-${latestWhiskerRelease}-src.zip</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.zip.sha512">sha512</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.zip.sha512">sha512</a>
             </td>
             <td>
-              <a href="https://www.apache.org/dist/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.zip.asc">pgp</a>
+              <a href="[preferred]/creadur/apache-rat-${latestWhiskerRelease}/apache-rat-${latestWhiskerRelease}-src.zip.asc">pgp</a>
             </td>
           </tr>
         </table>
