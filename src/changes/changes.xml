@@ -60,6 +60,9 @@ The <action> type attribute can be: add,update,fix,remove.
     </release>
     -->
     <release version="0.2-SNAPSHOT" date="xxxx-yy-zz" description="Current SNAPSHOT - release to be done">
+      <action issue="WHISKER-32" type="add" dev="pottlinger">
+        Adapt download page to comply with current ASF rules, checksums are not downloaded via CDN, but downloads.apache.org directly.
+      </action>
       <action issue="WHISKER-26" type="add" dev="pottlinger">
         Migrate to new doxia 2.x tech stack and improve webpage and add missing Maven documentation and more project reports.
       </action>
