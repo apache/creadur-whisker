@@ -18,42 +18,50 @@
  */
 package org.apache.creadur.whisker.model;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestDescriptorPrimaryOnly extends TestCase {
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestDescriptorPrimaryOnly {
 
     DescriptorBuilderForTesting builder;
     Descriptor subject;
 
-    protected void setUp() throws Exception {
-        super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
         builder = new DescriptorBuilderForTesting();
         builder.withThirdParty().withDirectory(".");
     }
 
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
-    public void testIsPrimaryOnlyWithThirdPartyResources() throws Exception {
+    @Test
+    void isPrimaryOnlyWithThirdPartyResources() throws Exception {
         subject = builder.build();
         builder.withThirdPartyDirectory("lib");
-        assertFalse("Work is not primary only when third party resources exist.", subject.isPrimaryOnly());
+        assertFalse(subject.isPrimaryOnly(), "Work is not primary only when third party resources exist.");
     }
 
-    public void testIsPrimaryOnlyWithoutThirdPartyResources() throws Exception {
+    @Test
+    void isPrimaryOnlyWithoutThirdPartyResources() throws Exception {
         subject = builder.build();
-        assertTrue("Work is primary only when no third party resources exist.",
-                subject.isPrimaryOnly());
+        assertTrue(subject.isPrimaryOnly(),
+                "Work is primary only when no third party resources exist.");
     }
 
-    public void testIsPrimaryOnlyWithoutResources() throws Exception {
+    @Test
+    void isPrimaryOnlyWithoutResources() throws Exception {
         subject = builder.build();
 
         builder.contents.clear();
 
-        assertTrue("Work is primary only when no third party resources exist.",
-                subject.isPrimaryOnly());
+        assertTrue(subject.isPrimaryOnly(),
+                "Work is primary only when no third party resources exist.");
     }
 
 }

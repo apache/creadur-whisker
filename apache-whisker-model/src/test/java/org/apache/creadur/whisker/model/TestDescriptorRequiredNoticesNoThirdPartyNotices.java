@@ -18,15 +18,20 @@
  */
 package org.apache.creadur.whisker.model;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class TestDescriptorRequiredNoticesNoThirdPartyNotices extends TestCase {
+class TestDescriptorRequiredNoticesNoThirdPartyNotices {
 
     License primaryLicense = new License(false, "This is the license text", Collections.<String> emptyList(), "example.org", "http://example.org", "Example License");
     String primaryOrg = "example.org";
@@ -37,44 +42,48 @@ public class TestDescriptorRequiredNoticesNoThirdPartyNotices extends TestCase {
     Map<String, Organisation> organisations = new HashMap<String, Organisation>();
     
     Descriptor subject;
-    
-    protected void setUp() throws Exception {
-        super.setUp();
+
+    @BeforeEach
+    void setUp() throws Exception {
         primaryLicense.storeIn(licenses);
     }
 
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
-    public void testNoticeRequiredWhenPrimaryNoticeExists() throws Exception {
+    @Test
+    void noticeRequiredWhenPrimaryNoticeExists() throws Exception {
         subject = 
                 new Descriptor(primaryLicense, primaryOrg,  primaryNotice, 
                         licenses, notices, organisations, contents);
-        assertTrue("When primary notices exists, even if there are not other notices display is required", subject.isNoticeRequired());        
+        assertTrue(subject.isNoticeRequired(), "When primary notices exists, even if there are not other notices display is required");        
     }
 
-    public void testNoticeNotRequiredWhenPrimaryNoticeIsNullAndNoNotices() throws Exception {
+    @Test
+    void noticeNotRequiredWhenPrimaryNoticeIsNullAndNoNotices() throws Exception {
         subject = 
                 new Descriptor(primaryLicense, primaryOrg,  null, 
                         licenses, notices, organisations, contents);
-        assertFalse("When no other notices exist and no primary notice, display is not required", 
-                subject.isNoticeRequired());        
+        assertFalse(subject.isNoticeRequired(), 
+                "When no other notices exist and no primary notice, display is not required");        
     }
 
-    public void testNoticeNotRequiredWhenPrimaryNoticeIsEmptyAndNoNotices() throws Exception {
+    @Test
+    void noticeNotRequiredWhenPrimaryNoticeIsEmptyAndNoNotices() throws Exception {
         subject = 
                 new Descriptor(primaryLicense, primaryOrg,  "", 
                         licenses, notices, organisations, contents);
-        assertFalse("When no other notices exist and no primary notice, display is not required", 
-                subject.isNoticeRequired());        
+        assertFalse(subject.isNoticeRequired(), 
+                "When no other notices exist and no primary notice, display is not required");        
     }
 
-    public void testNoticeNotRequiredWhenPrimaryNoticeIsWhitespaceAndNoNotices() throws Exception {
+    @Test
+    void noticeNotRequiredWhenPrimaryNoticeIsWhitespaceAndNoNotices() throws Exception {
         subject = 
                 new Descriptor(primaryLicense, primaryOrg,  "   ", 
                         licenses, notices, organisations, contents);
-        assertFalse("When no other notices exist and no primary notice, display is not required", 
-                subject.isNoticeRequired());        
+        assertFalse(subject.isNoticeRequired(), 
+                "When no other notices exist and no primary notice, display is not required");        
     }
 }
