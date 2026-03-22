@@ -60,6 +60,9 @@ The <action> type attribute can be: add,update,fix,remove.
     </release>
     -->
     <release version="0.2-SNAPSHOT" date="xxxx-yy-zz" description="Current SNAPSHOT - release to be done">
+      <action issue="WHISKER-33" type="add" dev="pottlinger">
+        Enable reproducible build and keep a changing timestamp for webpage generation.
+      </action>
       <action issue="WHISKER-32" type="add" dev="pottlinger">
         Adapt download page to comply with current ASF rules, checksums are not downloaded via CDN, but downloads.apache.org directly.
       </action>
