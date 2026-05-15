@@ -5,15 +5,28 @@ github:
     - maven
     - java
     - cli
-    - licensechecker 
+    - licensechecker
     - apache
     - creadur
-    - whisker 
+    - whisker
   autolink_jira:
     - RAT
     - WHISKER
     - TENTACLES
   del_branch_on_merge: true
 
+  rulesets:
+    - name: "Default Branch Protection"
+      type: branch
+      branches:
+        includes:
+          - "~DEFAULT_BRANCH"
+          - "release/*"
+          - "rel/*"
+        excludes: []
+      bypass_teams:
+        - root
+      restrict_deletion: true
+      restrict_force_push: true
 notifications:
-  commits:      commits@creadur.apache.org
+  commits: commits@creadur.apache.org
