@@ -18,31 +18,34 @@
  */
 package org.apache.creadur.whisker.fromxml;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.apache.creadur.whisker.model.License;
 
-import junit.framework.TestCase;
 import org.jdom2.CDATA;
 import org.jdom2.Element;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * 
  */
-public class JDomBuilderLicenseTest extends TestCase {
+class JDomBuilderLicenseTest {
 
     private JDomBuilder subject;
-    
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+
+    @BeforeEach
+    void setUp() throws Exception {
         subject = new JDomBuilder();
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
-    
-    public void testLicenseWithNameUrl() throws Exception {
+
+    @Test
+    void licenseWithNameUrl() throws Exception {
         checkSetNameUrlId("a name", "some url", "some id");
         checkSetNameUrlId("name", "url", "id");
         checkSetNameUrlId("NAME", "URL", "ID");
@@ -60,37 +63,42 @@ public class JDomBuilderLicenseTest extends TestCase {
                     .setAttribute("name", nameValue)
                     .setAttribute("url", urlValue)
                     .setAttribute("id", idValue));
-        assertNotNull("Builder should build", result);
-        assertEquals("Set id", idValue, result.getId());
-        assertEquals("Set url", urlValue, result.getURL());
-        assertEquals("Set name", nameValue, result.getName());
-    }
-    
-    public void testLicenseRequiresSourceTrue() throws Exception {
-        assertTrue("Expected required source to be set", licenseWithSource("yes").isSourceRequired());
-    }
-    
-    public void testLicenseRequiresSourceTrueAllCaps() throws Exception {
-        assertTrue("Expected required source to be set even when yes is in all caps case. This is against the schema.", 
-                licenseWithSource("YES").isSourceRequired());
-    }
-    
-    public void testLicenseRequiresSourceTrueMixedCase() throws Exception {
-        assertTrue("Expected required source to be set even when yes is in mixed case. This is against the schema.", 
-                licenseWithSource("Yes").isSourceRequired());
+        assertNotNull(result, "Builder should build");
+        assertEquals(idValue, result.getId(), "Set id");
+        assertEquals(urlValue, result.getURL(), "Set url");
+        assertEquals(nameValue, result.getName(), "Set name");
     }
 
-    public void testLicenseRequiresSourceFalse() throws Exception {
-        assertFalse("Expected required source to be set", licenseWithSource("no").isSourceRequired());
+    @Test
+    void licenseRequiresSourceTrue() throws Exception {
+        assertTrue(licenseWithSource("yes").isSourceRequired(), "Expected required source to be set");
     }
-    
-    public void testLicenseRequiresSourceDefault() throws Exception {
+
+    @Test
+    void licenseRequiresSourceTrueAllCaps() throws Exception {
+        assertTrue(licenseWithSource("YES").isSourceRequired(), 
+                "Expected required source to be set even when yes is in all caps case. This is against the schema.");
+    }
+
+    @Test
+    void licenseRequiresSourceTrueMixedCase() throws Exception {
+        assertTrue(licenseWithSource("Yes").isSourceRequired(), 
+                "Expected required source to be set even when yes is in mixed case. This is against the schema.");
+    }
+
+    @Test
+    void licenseRequiresSourceFalse() throws Exception {
+        assertFalse(licenseWithSource("no").isSourceRequired(), "Expected required source to be set");
+    }
+
+    @Test
+    void licenseRequiresSourceDefault() throws Exception {
         final License result = subject.license(new Element("license")
             .setAttribute("name", "name Value")
             .setAttribute("url", "urlValue")
             .setAttribute("id", "idValue"));
-        assertNotNull("Builder should build", result);
-        assertFalse("Expected to default to false", result.isSourceRequired());
+        assertNotNull(result, "Builder should build");
+        assertFalse(result.isSourceRequired(), "Expected to default to false");
     }
     
     /**
@@ -103,35 +111,38 @@ public class JDomBuilderLicenseTest extends TestCase {
             .setAttribute("url", "urlValue")
             .setAttribute("id", "idValue")
             .setAttribute("requires-source", requireSourceValue));
-        assertNotNull("Builder should build", result);
+        assertNotNull(result, "Builder should build");
         return result;
     }
-    
-    public void testLicenseNoParameters() throws Exception {
+
+    @Test
+    void licenseNoParameters() throws Exception {
         final License result = subject.license(new Element("license")
             .setAttribute("name", "name Value")
             .setAttribute("url", "urlValue")
             .setAttribute("id", "idValue")
             .setContent(new Element("template")));
-        assertNotNull("Builder should build", result);
-        assertNotNull("Builder should always set parameters even when empty", result.getExpectedParameters());
-        assertTrue("No parameters in template so collection should be empty", result.getExpectedParameters().isEmpty());
+        assertNotNull(result, "Builder should build");
+        assertNotNull(result.getExpectedParameters(), "Builder should always set parameters even when empty");
+        assertTrue(result.getExpectedParameters().isEmpty(), "No parameters in template so collection should be empty");
     }
 
-    public void testLicenseOneParameter() throws Exception {
+    @Test
+    void licenseOneParameter() throws Exception {
         final String parameterName = "whatever";
         final License result = subject.license(new Element("license")
             .setAttribute("name", "name Value")
             .setAttribute("url", "urlValue")
             .setAttribute("id", "idValue")
             .setContent(new Element("template").setContent(new Element("parameter-name").setContent(new CDATA(parameterName)))));
-        assertNotNull("Builder should build", result);
-        assertNotNull("Builder should always set parameters even when empty", result.getExpectedParameters());
-        assertEquals("One parameters in template", 1, result.getExpectedParameters().size());
-        assertEquals("Parameter name should be set from xml", parameterName, result.getExpectedParameters().iterator().next());
+        assertNotNull(result, "Builder should build");
+        assertNotNull(result.getExpectedParameters(), "Builder should always set parameters even when empty");
+        assertEquals(1, result.getExpectedParameters().size(), "One parameters in template");
+        assertEquals(parameterName, result.getExpectedParameters().iterator().next(), "Parameter name should be set from xml");
     }
 
-    public void testLicenseTwoParameters() throws Exception {
+    @Test
+    void licenseTwoParameters() throws Exception {
         final String parameterName = "whatever";
         final License result = subject.license(new Element("license")
             .setAttribute("name", "name Value")
@@ -141,21 +152,22 @@ public class JDomBuilderLicenseTest extends TestCase {
                 .addContent(new Element("parameter-name").setContent(new CDATA(parameterName)))
                 .addContent(new Element("parameter-name").setContent(new CDATA(parameterName + "2")))
                 ));
-        assertNotNull("Builder should build", result);
-        assertNotNull("Builder should always set parameters even when empty", result.getExpectedParameters());
-        assertEquals("One parameters in template", 2, result.getExpectedParameters().size());
+        assertNotNull(result, "Builder should build");
+        assertNotNull(result.getExpectedParameters(), "Builder should always set parameters even when empty");
+        assertEquals(2, result.getExpectedParameters().size(), "One parameters in template");
     }
 
-    
-    public void testLicenseBaseText() throws Exception {
+
+    @Test
+    void licenseBaseText() throws Exception {
         final String text = "Some text";
         final License result = subject.license(new Element("license")
             .setAttribute("name", "name Value")
             .setAttribute("url", "urlValue")
             .setAttribute("id", "idValue")
             .setContent(new Element("text").setContent(new CDATA(text))));
-        assertNotNull("Builder should build", result);
-        assertEquals("Expected base text to be set", text, result.getText());
+        assertNotNull(result, "Builder should build");
+        assertEquals(text, result.getText(), "Expected base text to be set");
     }
 
 }

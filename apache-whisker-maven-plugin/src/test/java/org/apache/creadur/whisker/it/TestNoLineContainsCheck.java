@@ -18,21 +18,26 @@
  */
 package org.apache.creadur.whisker.it;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class TestNoLineContainsCheck extends TestCase {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestNoLineContainsCheck {
 
     private static final String CHECKED_FOR_VALUE = "some value";
 
     NoLineContainsCheck subject;
     Results results;
 
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         subject = new NoLineContainsCheck(CHECKED_FOR_VALUE);
         results = new Results();
     }
 
-    public void testNullLine() {
+    @Test
+    void nullLine() {
         subject.check(null);
         assertTrue(subject.hasPassed());
         subject.report(results);
@@ -40,7 +45,8 @@ public class TestNoLineContainsCheck extends TestCase {
         assertNull(results.collate());
     }
 
-    public void testDifferentLine() {
+    @Test
+    void differentLine() {
         subject.check("something different");
         assertTrue(subject.hasPassed());
         subject.report(results);
@@ -48,7 +54,8 @@ public class TestNoLineContainsCheck extends TestCase {
         assertNull(results.collate());
     }
 
-    public void testSameLine() {
+    @Test
+    void sameLine() {
         subject.check(CHECKED_FOR_VALUE);
         assertFalse(subject.hasPassed());
         subject.report(results);
@@ -56,7 +63,8 @@ public class TestNoLineContainsCheck extends TestCase {
         assertTrue(results.collate().contains(NoLineContainsCheck.WARNING + CHECKED_FOR_VALUE));
     }
 
-    public void testLineContainingText() {
+    @Test
+    void lineContainingText() {
         subject.check("prefix " + CHECKED_FOR_VALUE + " suffix");
         assertFalse(subject.hasPassed());
         subject.report(results);

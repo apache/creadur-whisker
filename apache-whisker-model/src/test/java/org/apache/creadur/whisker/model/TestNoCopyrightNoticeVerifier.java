@@ -18,22 +18,29 @@
  */
 package org.apache.creadur.whisker.model;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestNoCopyrightNoticeVerifier extends TestCase {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestNoCopyrightNoticeVerifier {
 
     NoCopyrightNoticeVerifier subject;
 
-    public void setUp() throws Exception {
+    @BeforeEach
+    void setUp() throws Exception {
         subject = new NoCopyrightNoticeVerifier();
     }
 
-    public void testWithLicenseNoCopyrightNotice() throws Exception {
+    @Test
+    void withLicenseNoCopyrightNotice() throws Exception {
         new WithLicenseBuilderForTesting().withNoCopyrightNotice().build().accept(subject);
         assertFalse(subject.isCopyrightNoticePresent());
     }
 
-    public void testWithLicenseWithCopyrightNotice() throws Exception {
+    @Test
+    void withLicenseWithCopyrightNotice() throws Exception {
         new WithLicenseBuilderForTesting().withCopyrightNotice().build().accept(subject);
         assertTrue(subject.isCopyrightNoticePresent());
     }
