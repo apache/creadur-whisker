@@ -4,6 +4,8 @@ ASF: [![Jenkins Build Status](https://ci-builds.apache.org/buildStatus/icon?job=
 
 GA: [![Github Action master branch status](https://github.com/apache/creadur-whisker/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/apache/creadur-whisker/actions)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=apache_creadur-whisker&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=apache_creadur-whisker)
+
 [![Revved up by Develocity](https://img.shields.io/badge/Revved%20up%20by-Develocity-06A0CE?logo=Gradle&labelColor=02303A)](https://develocity.apache.org/scans?search.buildToolType=maven&search.rootProjectNames=Apache%20Whisker&search.timeZoneId=Europe%2FBerlin)
 
 ## What is Whisker?
