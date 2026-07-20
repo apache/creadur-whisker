@@ -375,6 +375,14 @@
             </execution>
           </executions>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+            <!-- We need to append to the existing arguments in order for code coverage to work -->
+            <argLine>${argLine}</argLine>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
