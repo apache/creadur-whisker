@@ -19,13 +19,14 @@
 package org.apache.creadur.whisker.out.velocity;
 
 import static org.apache.creadur.whisker.app.ConfigurationBuilder.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.apache.creadur.whisker.model.Descriptor;
 import org.apache.creadur.whisker.model.Resource;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import junit.framework.TestCase;
-
-public class TestRenderingHelper extends TestCase {
+class TestRenderingHelper {
 
     private static final String A_SOURCE_URL = "http://example.org/sample";
 
@@ -36,32 +37,35 @@ public class TestRenderingHelper extends TestCase {
 
     Descriptor work;
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
         resourceWithSourceUrl = new Resource("a name", "an:id", A_SOURCE_URL);
         resourceNoSourceUrl = new Resource("a name", "an:id", null);
     }
 
-    public void testSourceWithSourceUrlsConfiguration() {
+    @Test
+    void sourceWithSourceUrlsConfiguration() {
         subject = new RenderingHelper(work,
                 aConfiguration().withSourceURLsInLicense().build());
         assertEquals(" from " + A_SOURCE_URL, subject.sourceUrl(resourceWithSourceUrl));
     }
 
-    public void testSourceNoSourceUrlsConfiguration() {
+    @Test
+    void sourceNoSourceUrlsConfiguration() {
         subject = new RenderingHelper(work,
                 aConfiguration().noSourceURLsInLicense().build());
         assertEquals("", subject.sourceUrl(resourceWithSourceUrl));
     }
 
-    public void testNoSourceWithSourceUrlsConfiguration() {
+    @Test
+    void noSourceWithSourceUrlsConfiguration() {
         subject = new RenderingHelper(work,
                 aConfiguration().withSourceURLsInLicense().build());
         assertEquals("", subject.sourceUrl(resourceNoSourceUrl));
     }
 
-    public void testNoSourceNoSourceUrlsConfiguration() {
+    @Test
+    void noSourceNoSourceUrlsConfiguration() {
         subject = new RenderingHelper(work,
                 aConfiguration().noSourceURLsInLicense().build());
         assertEquals("", subject.sourceUrl(resourceNoSourceUrl));

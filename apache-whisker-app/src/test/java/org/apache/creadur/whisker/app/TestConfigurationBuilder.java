@@ -18,29 +18,35 @@
  */
 package org.apache.creadur.whisker.app;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestConfigurationBuilder extends TestCase {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestConfigurationBuilder {
 
     ConfigurationBuilder subject;
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
         subject = ConfigurationBuilder.aConfiguration();
     }
 
 
-    public void testWithNoSourceURLsInLicense() {
+    @Test
+    void withNoSourceURLsInLicense() {
         assertFalse(subject.noSourceURLsInLicense().build().includeSourceURLsInLicense());
     }
 
-    public void testSourceURLsInLicenseDefault() {
+    @Test
+    void sourceURLsInLicenseDefault() {
         assertTrue(subject.withSourceURLsInLicense().build().includeSourceURLsInLicense());
     }
 
 
-    public void testWithSourceURLsInLicense() {
+    @Test
+    void withSourceURLsInLicense() {
         assertTrue(subject.withSourceURLsInLicense().build().includeSourceURLsInLicense());
     }
 

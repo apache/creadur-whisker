@@ -18,6 +18,9 @@
  */
 package org.apache.creadur.whisker.fromxml;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,28 +31,29 @@ import org.apache.creadur.whisker.model.License;
 import org.apache.creadur.whisker.model.Organisation;
 import org.apache.creadur.whisker.model.WithinDirectory;
 
-import junit.framework.TestCase;
 import org.jdom2.Element;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * 
  */
-public class JDomBuilderWithDirectoryTest extends TestCase {
+class JDomBuilderWithDirectoryTest {
 
     private JDomBuilder subject;
-    
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+
+    @BeforeEach
+    void setUp() throws Exception {
         subject = new JDomBuilder();
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
-        
-    public void testBuildWithinDirectorySetsLicenses() throws Exception {
+
+    @Test
+    void buildWithinDirectorySetsLicenses() throws Exception {
        for(int i=0;i<101;i++) {
            checkWithinLicenses(i);
        }
@@ -61,9 +65,9 @@ public class JDomBuilderWithDirectoryTest extends TestCase {
         final Element element = withLicense(numberOfOrgs, licenses);
         final WithinDirectory result = subject.withinDirectory(
                 element.setAttribute("dir", "a name"), licenses, organisations);
-        assertNotNull("Builder should build", result);
-        assertNotNull("Builder should build licenses", result.getLicenses());
-        assertEquals("Builder should set licenses", numberOfOrgs, result.getLicenses().size());
+        assertNotNull(result, "Builder should build");
+        assertNotNull(result.getLicenses(), "Builder should build licenses");
+        assertEquals(numberOfOrgs, result.getLicenses().size(), "Builder should set licenses");
     }
 
     @SuppressWarnings("unchecked")
@@ -77,8 +81,9 @@ public class JDomBuilderWithDirectoryTest extends TestCase {
         }
         return element;
     }
-    
-    public void testBuildWithinDirectorySetsPublicDomain() throws Exception {
+
+    @Test
+    void buildWithinDirectorySetsPublicDomain() throws Exception {
         for (int i=0;i<101;i++) {
             checkWithinPublicDomain(i);
         }
@@ -90,22 +95,24 @@ public class JDomBuilderWithDirectoryTest extends TestCase {
         final Element element = withPublicDomain(numberOfOrgs, organisations);
         final WithinDirectory result = subject.withinDirectory(
                 element.setAttribute("dir", "a name"), licenses, organisations);
-        assertNotNull("Builder should build", result);
-        assertNotNull("Builder should build public domain", result.getPublicDomain());
-        assertEquals("Builder should set public domain", numberOfOrgs, result.getPublicDomain().size());
+        assertNotNull(result, "Builder should build");
+        assertNotNull(result.getPublicDomain(), "Builder should build public domain");
+        assertEquals(numberOfOrgs, result.getPublicDomain().size(), "Builder should set public domain");
     }
-    
-    public void testBuildWithinDirectorySetsDirectoryName() throws Exception {
+
+    @Test
+    void buildWithinDirectorySetsDirectoryName() throws Exception {
         final Map<String, License> licenses = new HashMap<String, License>();
         final Map<String, Organisation> organisations = new HashMap<String, Organisation> ();
         final String expected = "a name";
         final WithinDirectory result = subject.withinDirectory(
                 new Element("within").setAttribute("dir", expected), licenses, organisations);
-        assertNotNull("Builder should build", result);
-        assertEquals("Builder should set name from dir", expected, result.getName());
+        assertNotNull(result, "Builder should build");
+        assertEquals(expected, result.getName(), "Builder should set name from dir");
     }
-    
-    public void testCollectPublicDomainOrgs() throws Exception {
+
+    @Test
+    void collectPublicDomainOrgs() throws Exception {
         for (int i=0;i<256;i++) {
             checkPublicDomainOrg(i);
         }
@@ -117,8 +124,8 @@ public class JDomBuilderWithDirectoryTest extends TestCase {
         final Collection<ByOrganisation> results = subject.publicDomain(
                 organisations,
                 element);
-        assertNotNull("Expected builder to build", results);
-        assertEquals("Expected one organisation per child of public domain",numberOfOrgs, results.size());
+        assertNotNull(results, "Expected builder to build");
+        assertEquals(numberOfOrgs, results.size(), "Expected one organisation per child of public domain");
     }
 
     private Element withPublicDomain(int numberOfOrgs,

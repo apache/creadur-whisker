@@ -18,32 +18,37 @@
  */
 package org.apache.creadur.whisker.app;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class TestWhisker extends TestCase {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestWhisker {
 
     Whisker subject;
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
         subject = new Whisker();
     }
 
-    public void testSetNullLicenseConfiguration() {
+    @Test
+    void setNullLicenseConfiguration() {
         assertEquals(
-                subject.setLicenseConfiguration(null).getLicenseConfiguration(),
-                LicenseConfiguration.DEFAULT_LICENSE_CONFIGURATION);
+                LicenseConfiguration.DEFAULT_LICENSE_CONFIGURATION,
+                subject.setLicenseConfiguration(null).getLicenseConfiguration());
     }
 
-    public void testMinimalLicenseConfigurationConfiguresNoSourceUrls() {
+    @Test
+    void minimalLicenseConfigurationConfiguresNoSourceUrls() {
         assertFalse(
                 subject
                     .setLicenseConfiguration(LicenseConfiguration.MINIMAL)
                     .configuration().includeSourceURLsInLicense());
     }
 
-    public void testIncludeSourceUrlsLicenseConfigurationConfiguresNoSourceUrls() {
+    @Test
+    void includeSourceUrlsLicenseConfigurationConfiguresNoSourceUrls() {
         assertTrue(
                 subject
                     .setLicenseConfiguration(LicenseConfiguration.INCLUDE_SOURCE_URLS)
