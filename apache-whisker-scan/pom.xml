@@ -26,13 +26,6 @@
   </parent>
   <artifactId>apache-whisker-scan</artifactId>
   <packaging>jar</packaging>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
   <name>Apache Whisker::Scan</name>
   <description>Scans directories for resources</description>
   <url>https://creadur.apache.org/whisker/apache-whisker-scan</url>

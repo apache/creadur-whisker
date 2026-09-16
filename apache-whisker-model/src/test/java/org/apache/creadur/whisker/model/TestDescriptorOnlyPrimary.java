@@ -18,26 +18,31 @@
  */
 package org.apache.creadur.whisker.model;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class TestDescriptorOnlyPrimary extends TestCase {
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class TestDescriptorOnlyPrimary {
 
     DescriptorBuilderForTesting builder;
     Descriptor subject;
 
-    protected void setUp() throws Exception {
-        super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
         builder = new DescriptorBuilderForTesting();
     }
 
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
-    public void testIsOnlyPrimaryWithSubsidaryCopyrightNotice() throws Exception {
+    @Test
+    void isOnlyPrimaryWithSubsidaryCopyrightNotice() throws Exception {
         builder.withSubsidaryCopyrightNotice().withThirdParty().withDirectory(".");
         subject = builder.build();
-        assertFalse("Work is not only primary when subsidary copyright notices exist.",
-                subject.isOnlyPrimary(builder.contents.iterator().next()));
+        assertFalse(subject.isOnlyPrimary(builder.contents.iterator().next()),
+                "Work is not only primary when subsidary copyright notices exist.");
     }
 }

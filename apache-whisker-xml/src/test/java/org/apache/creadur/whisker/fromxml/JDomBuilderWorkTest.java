@@ -18,6 +18,8 @@
  */
 package org.apache.creadur.whisker.fromxml;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -26,44 +28,45 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import junit.framework.TestCase;
-
 import org.apache.creadur.whisker.model.License;
 import org.apache.creadur.whisker.model.Organisation;
 import org.apache.creadur.whisker.model.WithinDirectory;
 import org.jdom2.CDATA;
 import org.jdom2.Document;
 import org.jdom2.Element;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * 
  */
-public class JDomBuilderWorkTest extends TestCase {
+class JDomBuilderWorkTest {
 
     private JDomBuilder subject;
-    
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+
+    @BeforeEach
+    void setUp() throws Exception {
         subject = new JDomBuilder();
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
 
-    public void testMapNoticesIsEmptyWhenDocumentHasNoNotices() throws Exception {
+    @Test
+    void mapNoticesIsEmptyWhenDocumentHasNoNotices() throws Exception {
         final Map<String, String> results = subject.mapNotices(new Document().setRootElement(new Element("manifest")));
-        assertNotNull("Builder should build something", results);
-        assertTrue("Should be empty when no licenses present", results.isEmpty());
+        assertNotNull(results, "Builder should build something");
+        assertTrue(results.isEmpty(), "Should be empty when no licenses present");
     }
-    
-    public void testMapNoticesExpectedToBeImmutable() throws Exception {
+
+    @Test
+    void mapNoticesExpectedToBeImmutable() throws Exception {
         final Map<String, String> results = 
             subject.mapNotices(new Document().setRootElement(new Element("manifest")));
-        assertNotNull("Expected builder to build something", results);
+        assertNotNull(results, "Expected builder to build something");
         try {
             results.put("whatever", "next");
             fail("Expected map to be immutable");
@@ -72,8 +75,9 @@ public class JDomBuilderWorkTest extends TestCase {
         }
     }
 
-    
-    public void testMapNoticesFindsNoticesDefinedInDocument() throws Exception {
+
+    @Test
+    void mapNoticesFindsNoticesDefinedInDocument() throws Exception {
         for (int i=0; i<256; i++) {
             checkMapNoticesWith(i);
         }
@@ -93,25 +97,27 @@ public class JDomBuilderWorkTest extends TestCase {
                     new Element("notice").setAttribute("id", combine(baseId, i)).addContent(new CDATA(combine(baseText, i))));
         }
         final Map<String, String> results = subject.mapNotices(in);
-        assertEquals("One license in map for each in the document", numberOfLicenses, results.size());
+        assertEquals(numberOfLicenses, results.size(), "One license in map for each in the document");
         for (int i=0;i<numberOfLicenses;i++) {
             final String next = results.get(combine(baseId, i));
-            assertNotNull("Expected organisation to be stored", next);
-            assertEquals("Expected correct organisation to be stored", next, combine(baseText, i));
+            assertNotNull(next, "Expected organisation to be stored");
+            assertEquals(next, combine(baseText, i), "Expected correct organisation to be stored");
         }
     }
 
-    
-    public void testMapLicensesIsEmptyWhenDocumentHasNoLicenses() throws Exception {
+
+    @Test
+    void mapLicensesIsEmptyWhenDocumentHasNoLicenses() throws Exception {
         final Map<String, License> results = subject.mapLicenses(new Document().setRootElement(new Element("manifest")));
-        assertNotNull("Builder should build something", results);
-        assertTrue("Should be empty when no licenses present", results.isEmpty());
+        assertNotNull(results, "Builder should build something");
+        assertTrue(results.isEmpty(), "Should be empty when no licenses present");
     }
-    
-    public void testMapLicensesExpectedToBeImmutable() throws Exception {
+
+    @Test
+    void mapLicensesExpectedToBeImmutable() throws Exception {
         final Map<String, License> results = 
             subject.mapLicenses(new Document().setRootElement(new Element("manifest")));
-        assertNotNull("Expected builder to build something", results);
+        assertNotNull(results, "Expected builder to build something");
         try {
             results.put("whatever", new License(true, "", new ArrayList<String>(), "", "", ""));
             fail("Expected map to be immutable");
@@ -119,8 +125,9 @@ public class JDomBuilderWorkTest extends TestCase {
             // Expected
         }
     }
-    
-    public void testMapLicensesFindsLicensesDefinedInDocument() throws Exception {
+
+    @Test
+    void mapLicensesFindsLicensesDefinedInDocument() throws Exception {
         for (int i=0; i<256; i++) {
             checkMapLicensesWith(i);
         }
@@ -140,26 +147,28 @@ public class JDomBuilderWorkTest extends TestCase {
                     new Element("license").setAttribute("id", combine(baseId, i)).setAttribute("name", combine(baseName, i)));
         }
         final Map<String, License> results = subject.mapLicenses(in);
-        assertEquals("One license in map for each in the document", numberOfLicenses, results.size());
+        assertEquals(numberOfLicenses, results.size(), "One license in map for each in the document");
         for (int i=0;i<numberOfLicenses;i++) {
             final License next = results.get(combine(baseId, i));
-            assertNotNull("Expected organisation to be stored", next);
-            assertEquals("Expected correct organisation to be stored", next.getName(), combine(baseName, i));
+            assertNotNull(next, "Expected organisation to be stored");
+            assertEquals(next.getName(), combine(baseName, i), "Expected correct organisation to be stored");
         }
     }
 
-    
-    public void testMapOrganisationsIsEmptyWhenDocumentHasNoOrganisations() throws Exception {
+
+    @Test
+    void mapOrganisationsIsEmptyWhenDocumentHasNoOrganisations() throws Exception {
         final Map<String, Organisation> results = 
             subject.mapOrganisations(new Document().setRootElement(new Element("manifest")));
-        assertNotNull("Expected builder to build something", results);
-        assertTrue("Expected builder to build empty map when document has no documents", results.isEmpty());
+        assertNotNull(results, "Expected builder to build something");
+        assertTrue(results.isEmpty(), "Expected builder to build empty map when document has no documents");
     }
-    
-    public void testMapOrganisationsExpectedToBeImmutable() throws Exception {
+
+    @Test
+    void mapOrganisationsExpectedToBeImmutable() throws Exception {
         final Map<String, Organisation> results = 
             subject.mapOrganisations(new Document().setRootElement(new Element("manifest")));
-        assertNotNull("Expected builder to build something", results);
+        assertNotNull(results, "Expected builder to build something");
         try {
             results.put("whatever", new Organisation("", "", ""));
             fail("Expected map to be immutable");
@@ -167,8 +176,9 @@ public class JDomBuilderWorkTest extends TestCase {
             // Expected
         }
     }
-    
-    public void testMapOrganisationsFindOrganisationDefinedInDocument() throws Exception {
+
+    @Test
+    void mapOrganisationsFindOrganisationDefinedInDocument() throws Exception {
         for (int i=1;i<256;i++) {
             checkMapOrganisationsWith(i);
         }
@@ -188,11 +198,11 @@ public class JDomBuilderWorkTest extends TestCase {
                     new Element("organisation").setAttribute("id", combine(baseId, i)).setAttribute("name", combine(baseName, i)));
         }
         final Map<String, Organisation> results = subject.mapOrganisations(in);
-        assertEquals("One organisation in map for each in the document", numberOfOrganisations, results.size());
+        assertEquals(numberOfOrganisations, results.size(), "One organisation in map for each in the document");
         for (int i=0;i<numberOfOrganisations;i++) {
             final Organisation next = results.get(combine(baseId, i));
-            assertNotNull("Expected organisation to be stored", next);
-            assertEquals("Expected correct organisation to be stored", next.getName(), combine(baseName, i));
+            assertNotNull(next, "Expected organisation to be stored");
+            assertEquals(next.getName(), combine(baseName, i), "Expected correct organisation to be stored");
         }
     }
     
@@ -215,8 +225,9 @@ public class JDomBuilderWorkTest extends TestCase {
             final String id) {
         return new License(false, "", Collections.EMPTY_LIST, id, "noise url", "name").storeIn(licenses);
     }
-    
-    public void testPrimaryLicense() throws Exception {
+
+    @Test
+    void primaryLicense() throws Exception {
         final String id = "The primary ID";
         final Map<String, License> licenses = new HashMap<String, License> ();
         @SuppressWarnings("unchecked")
@@ -225,27 +236,30 @@ public class JDomBuilderWorkTest extends TestCase {
         addLicenseTo(licenses, "noise");
         final License result = subject.primaryLicense(new Document().setRootElement(new Element("manifest").
                 addContent(new Element("primary-license").setAttribute("id", id))), licenses);
-        assertNotNull("Builder should find primary license", result);
-        assertEquals("Builder should find primary licenser", expected, result);
+        assertNotNull(result, "Builder should find primary license");
+        assertEquals(expected, result, "Builder should find primary licenser");
     }
 
-    public void testNoPrimaryCopyright() throws Exception {
+    @Test
+    void noPrimaryCopyright() throws Exception {
         final String primaryCopyrightNotice = subject.primaryCopyrightNotice(new Document().setRootElement(new Element("manifest").
                 addContent(new Element("primary-license").setAttribute("id", "The primary ID"))));
-        assertNull("Builder should only set primary copyright when present", primaryCopyrightNotice);
+        assertNull(primaryCopyrightNotice, "Builder should only set primary copyright when present");
     }
 
-    public void testPrimaryCopyright() throws Exception {
+    @Test
+    void primaryCopyright() throws Exception {
         final String copyrightNoticeSet = "Some Copyright Claim";
         final String result = subject.primaryCopyrightNotice(new Document().setRootElement(new Element("manifest").
                 addContent(
                         new Element("primary-license").setAttribute("id", "The primary ID")
                         .addContent(
                                 new Element("copyright-notice").addContent(copyrightNoticeSet)))));
-        assertEquals("Builder should set primary copyright notice", copyrightNoticeSet, result);
+        assertEquals(copyrightNoticeSet, result, "Builder should set primary copyright notice");
     }
 
-    public void testBuildPrimaryCopyright() throws Exception {
+    @Test
+    void buildPrimaryCopyright() throws Exception {
         final String copyrightNoticeSet = "Some Copyright Claim";
         final String result = subject.build(new Document().setRootElement(
                 new Element("manifest")
@@ -257,10 +271,11 @@ public class JDomBuilderWorkTest extends TestCase {
                         .addContent(
                                 new Element("copyright-notice").addContent(copyrightNoticeSet))))
                                 ).getPrimaryCopyrightNotice();
-        assertEquals("Builder should set primary copyright notice", copyrightNoticeSet, result);
+        assertEquals(copyrightNoticeSet, result, "Builder should set primary copyright notice");
     }
-    
-    public void testThrowsMissingIDExceptionWhenPrimaryLicenseMissing() throws Exception {
+
+    @Test
+    void throwsMissingIDExceptionWhenPrimaryLicenseMissing() throws Exception {
         final String id = "The primary ID";
         final Map<String, License> licenses = new HashMap<String, License> ();
         addLicenseTo(licenses, "noise");
@@ -272,54 +287,60 @@ public class JDomBuilderWorkTest extends TestCase {
             // expected
         }
     }
-    
-    public void testPrimaryNoticeFindsNoticeText() throws Exception {
+
+    @Test
+    void primaryNoticeFindsNoticeText() throws Exception {
         final String noticeText = "Some sort of notice";
         final String result = subject.primaryNotice(new Document().setRootElement(
                 new Element("manifest").addContent(
                         new Element("primary-notice").addContent(new CDATA(noticeText)))));
-        assertEquals("Expected builder to find the text of the primary notice element", noticeText, result);
-    }
-    
-    public void testPrimaryNoticeIsNullWhenThereIsNoNoticeText() throws Exception {
-        final String result = subject.primaryNotice(new Document().setRootElement(
-                new Element("manifest")));
-        assertNull("When there is no primary notice, expect null", result);
+        assertEquals(noticeText, result, "Expected builder to find the text of the primary notice element");
     }
 
-    public void testPrimaryNoticeSubstitutesYearInNoticeText() throws Exception {
+    @Test
+    void primaryNoticeIsNullWhenThereIsNoNoticeText() throws Exception {
+        final String result = subject.primaryNotice(new Document().setRootElement(
+                new Element("manifest")));
+        assertNull(result, "When there is no primary notice, expect null");
+    }
+
+    @Test
+    void primaryNoticeSubstitutesYearInNoticeText() throws Exception {
         final String noticeBaseText = "Some sort of notice";
         final String result = subject.primaryNotice(new Document().setRootElement(
                 new Element("manifest").addContent(
                         new Element("primary-notice").addContent(new CDATA(noticeBaseText + "${year}")))));
-        assertEquals("Expected builder to find the text of the primary notice element", 
-                noticeBaseText + Calendar.getInstance().get(Calendar.YEAR), result);
+        assertEquals(noticeBaseText + Calendar.getInstance().get(Calendar.YEAR), result, "Expected builder to find the text of the primary notice element");
     }
 
-    public void testFindPrimaryOrganisationIdReturnsNullWhenOrganisationUnset() throws Exception {
+    @Test
+    void findPrimaryOrganisationIdReturnsNullWhenOrganisationUnset() throws Exception {
         final String result = subject.primaryOrganisationId(new Document().setRootElement(new Element("manifest")));
-        assertNull("Primary organisation is optional, and null should be returned when unset", result);
+        assertNull(result, "Primary organisation is optional, and null should be returned when unset");
     }
-    
-    public void testFindPrimaryOrganisationIdWhenSet() throws Exception {
+
+    @Test
+    void findPrimaryOrganisationIdWhenSet() throws Exception {
         final String idValue = "An ID value";
         final String result = subject.primaryOrganisationId(
                 new Document().setRootElement(
                         new Element("manifest").addContent(
                                 new Element("primary-organisation").setAttribute("id", idValue))));
-        assertEquals("When set, builder should find value", idValue, result);
+        assertEquals(idValue, result, "When set, builder should find value");
     }
-    
-    public void testCollectContentsReturneEmptyWhenDocumentHasNoContents() throws Exception {
+
+    @Test
+    void collectContentsReturneEmptyWhenDocumentHasNoContents() throws Exception {
         final Collection<WithinDirectory> results = subject.collectContents(
                 new Document().setRootElement(new Element("manifest")), new HashMap<String, License>(),
                 new HashMap<String, Organisation>());
-        assertNotNull("Builder should build something", results);
-        assertTrue("Collection should be empty when there are no contents", results.isEmpty());
+        assertNotNull(results, "Builder should build something");
+        assertTrue(results.isEmpty(), "Collection should be empty when there are no contents");
     }
-    
-    
-    public void testCollectDirectoriesDefinedInDocument() throws Exception {
+
+
+    @Test
+    void collectDirectoriesDefinedInDocument() throws Exception {
         for (int i=1;i<256;i++) {
             checkCollectDirectoriesWith(i);
         }
@@ -339,17 +360,18 @@ public class JDomBuilderWorkTest extends TestCase {
         }
         final Collection<WithinDirectory> results = subject.collectContents(in, new HashMap<String, License>(),
                 new HashMap<String, Organisation>());
-        assertEquals("One organisation in map for each in the document", numberOfDirectories, results.size());
+        assertEquals(numberOfDirectories, results.size(), "One organisation in map for each in the document");
         final Collection<String> dirNames = new HashSet<String>();
         for (final WithinDirectory within:results) {
             dirNames.add(within.getName());
         }
         for (int i=0;i<numberOfDirectories;i++) {
-            assertTrue("", dirNames.contains(combine(baseDir,i)));
+            assertTrue(dirNames.contains(combine(baseDir,i)), "");
         }
     }
-    
-    public void testCollectDirectoriesThrowsDuplicateElementExceptionWhenDirAttributeDuplicated() throws Exception {
+
+    @Test
+    void collectDirectoriesThrowsDuplicateElementExceptionWhenDirAttributeDuplicated() throws Exception {
         final String dir = "duplicate/path";
         try {
             subject.collectContents(

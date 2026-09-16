@@ -18,33 +18,39 @@
  */
 package org.apache.creadur.whisker.cli;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.apache.creadur.whisker.app.Whisker;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import junit.framework.TestCase;
-
-public class TestMain extends TestCase {
+class TestMain {
 
     Main subject;
 
-    @Override
-    protected void setUp() throws Exception {
-       super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
        subject = new Main(new Whisker());
     }
 
-    public void testIsHelpHelp() throws Exception {
+    @Test
+    void isHelpHelp() throws Exception {
         assertTrue(subject.printHelp(args("--help")));
     }
 
-    public void testIsGenerateHelp() throws Exception {
+    @Test
+    void isGenerateHelp() throws Exception {
         assertFalse(subject.printHelp(args("--generate")));
     }
 
-    public void testIsAuditHelp() throws Exception {
+    @Test
+    void isAuditHelp() throws Exception {
         assertFalse(subject.printHelp(args("--audit")));
     }
 
-    public void testIsSkeletonHelp() throws Exception {
+    @Test
+    void isSkeletonHelp() throws Exception {
         assertFalse(subject.printHelp(args("--skeleton")));
     }
 

@@ -18,36 +18,43 @@
  */
 package org.apache.creadur.whisker.it;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class TestAllCheck extends TestCase  {
+class TestAllCheck {
 
     Collection<Check> checks;
     Results results;
     AllCheck subject;
 
 
-    protected void setUp() throws Exception {
-        super.setUp();
+    @BeforeEach
+    void setUp() throws Exception {
         results = new Results();
         checks = new ArrayList<Check>();
     }
 
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
-    public void testNoChecksPass() {
+    @Test
+    void noChecksPass() {
         subject = new AllCheck(Collections.<Check> emptyList());
         subject.check("a line");
         verifyPass();
     }
 
-    public void testOneCheckFail() {
+    @Test
+    void oneCheckFail() {
         final String value = "some value";
         checks.add(new AnyLineContainsCheck(value));
 
@@ -62,7 +69,8 @@ public class TestAllCheck extends TestCase  {
         assertTrue(results.hasFailed());
     }
 
-    public void testOneCheckPass() {
+    @Test
+    void oneCheckPass() {
         final String value = "some value";
         checks.add(new AnyLineContainsCheck(value));
 
@@ -77,7 +85,8 @@ public class TestAllCheck extends TestCase  {
         assertFalse(results.hasFailed());
     }
 
-    public void testTwoChecksPass() {
+    @Test
+    void twoChecksPass() {
         final String value = "some value";
         final String anotherValue = "another value";
         checks.add(new AnyLineContainsCheck(value));
@@ -88,7 +97,8 @@ public class TestAllCheck extends TestCase  {
         verifyPass();
     }
 
-    public void testTwoChecksFail() {
+    @Test
+    void twoChecksFail() {
         final String value = "some value";
         final String anotherValue = "another value";
         checks.add(new AnyLineContainsCheck(value));
@@ -98,7 +108,8 @@ public class TestAllCheck extends TestCase  {
         verifyFail();
     }
 
-    public void testTwoChecksWhenOneMatchFailsAllFail() {
+    @Test
+    void twoChecksWhenOneMatchFailsAllFail() {
         final String value = "some value";
         final String anotherValue = "another value";
         checks.add(new AnyLineContainsCheck(value));

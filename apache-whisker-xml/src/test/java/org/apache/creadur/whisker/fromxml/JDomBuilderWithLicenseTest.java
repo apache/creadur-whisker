@@ -18,39 +18,41 @@
  */
 package org.apache.creadur.whisker.fromxml;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
-import junit.framework.TestCase;
 
 import org.apache.creadur.whisker.model.License;
 import org.apache.creadur.whisker.model.Organisation;
 import org.apache.creadur.whisker.model.WithLicense;
 import org.jdom2.CDATA;
 import org.jdom2.Element;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * 
  */
-public class JDomBuilderWithLicenseTest extends TestCase {
+class JDomBuilderWithLicenseTest {
 
     private JDomBuilder subject;
-    
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+
+    @BeforeEach
+    void setUp() throws Exception {
         subject = new JDomBuilder();
     }
 
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
+    @AfterEach
+    void tearDown() throws Exception {
     }
 
 
-    public void testLicenseFromListThrowsMissingIDWhenEmpty() throws Exception {        
+    @Test
+    void licenseFromListThrowsMissingIDWhenEmpty() throws Exception {        
         final Map<String, License> licenses = new HashMap<String, License>();
         try {
             subject.license(new Element("with-license").setAttribute("id", "id"), licenses);
@@ -59,8 +61,9 @@ public class JDomBuilderWithLicenseTest extends TestCase {
             // expected
         }
     }
-    
-    public void testLicenseFromListThrowsMissingIDWhenIDsAreMismatched() throws Exception {        
+
+    @Test
+    void licenseFromListThrowsMissingIDWhenIDsAreMismatched() throws Exception {        
         final Map<String, License> licenses = new HashMap<String, License>();
         addLicenseTo(licenses, "noise");
         try {
@@ -70,8 +73,9 @@ public class JDomBuilderWithLicenseTest extends TestCase {
             // expected
         }
     }
-    
-    public void testLicenseFromListFindsLicense() throws Exception {
+
+    @Test
+    void licenseFromListFindsLicense() throws Exception {
         final String id = "id";
         
         final Map<String, License> licenses = new HashMap<String, License>();
@@ -81,8 +85,8 @@ public class JDomBuilderWithLicenseTest extends TestCase {
         addLicenseTo(licenses, "noise");
         
         final License output = subject.license(new Element("with-license").setAttribute("id", id), licenses);
-        assertNotNull("Expected builder to build", output);
-        assertEquals("Expected license to be found", expected, output);
+        assertNotNull(output, "Expected builder to build");
+        assertEquals(expected, output, "Expected license to be found");
     }
 
     /**
@@ -96,11 +100,13 @@ public class JDomBuilderWithLicenseTest extends TestCase {
         return new License(false, "", Collections.EMPTY_LIST, id, "noise url", "name").storeIn(licenses);
     }
 
-    public void testBuildLicenseFromElementWithCopyrightNotice() throws Exception {
+    @Test
+    void buildLicenseFromElementWithCopyrightNotice() throws Exception {
         checkSetCopyrightNotice("Some Copyright Text", "Some Copyright Text");
     }
 
-    public void testBuildLicenseFromElementWithCopyrightNoticeTrimSpaces() throws Exception {
+    @Test
+    void buildLicenseFromElementWithCopyrightNoticeTrimSpaces() throws Exception {
         checkSetCopyrightNotice("  Some Copyright Text  ", "Some Copyright Text");
     }
     
@@ -119,11 +125,12 @@ public class JDomBuilderWithLicenseTest extends TestCase {
                     .setAttribute("id", id)
                     .addContent(new Element("copyright-notice").setContent(new CDATA(copyrightNotice)))
                 , licenses, organisations);
-        assertNotNull("Expected builder to build", output);
-        assertEquals("Builder should set copyright notice from xml", expectCopyrightNotice, output.getCopyrightNotice());
+        assertNotNull(output, "Expected builder to build");
+        assertEquals(expectCopyrightNotice, output.getCopyrightNotice(), "Builder should set copyright notice from xml");
     }
-    
-    public void testBuildLicenseFromElementNoCopyrightNoticeNoParameters() throws Exception {
+
+    @Test
+    void buildLicenseFromElementNoCopyrightNoticeNoParameters() throws Exception {
         checkWithElementJustId("some id");
         checkWithElementJustId("id");
         checkWithElementJustId("  some id  ");
@@ -138,46 +145,54 @@ public class JDomBuilderWithLicenseTest extends TestCase {
         final Map<String, Organisation> organisations = new HashMap<String, Organisation>();
         final License expected = addLicenseTo(licenses, id);
         final WithLicense output = subject.withLicense(new Element("with-license").setAttribute("id", id), licenses, organisations);
-        assertNotNull("Expected builder to build", output);
-        assertEquals("Expected builder to find license and set it", expected, output.getLicense());
+        assertNotNull(output, "Expected builder to build");
+        assertEquals(expected, output.getLicense(), "Expected builder to find license and set it");
     }
-    
 
-    public void testBuildLicenseWithParametersIsEmptyWhenNoParameters() throws Exception {
+
+    @Test
+    void buildLicenseWithParametersIsEmptyWhenNoParameters() throws Exception {
         final Map<String, String> results = subject.parameters(
                 new Element("with-license")
                 .addContent(new Element("license-parameters")));
-        assertNotNull("Expected builder to build parameters", results);
-        assertTrue("When there are no parameters, map should be empty", results.isEmpty());
+        assertNotNull(results, "Expected builder to build parameters");
+        assertTrue(results.isEmpty(), "When there are no parameters, map should be empty");
     }
- 
-    
-    public void testBuildLicenseWithOneParameter() throws Exception {
+
+
+    @Test
+    void buildLicenseWithOneParameter() throws Exception {
         checkBuildLicenseWithParameters(1);
     }
 
 
-    public void testBuildLicenseWithTwoParameters() throws Exception {
+    @Test
+    void buildLicenseWithTwoParameters() throws Exception {
         checkBuildLicenseWithParameters(2);
     }
 
-    public void testBuildLicenseWith3Parameters() throws Exception {
+    @Test
+    void buildLicenseWith3Parameters() throws Exception {
         checkBuildLicenseWithParameters(3);
     }
-   
-    public void testBuildLicenseWith4Parameters() throws Exception {
+
+    @Test
+    void buildLicenseWith4Parameters() throws Exception {
         checkBuildLicenseWithParameters(4);
     }
-    
-    public void testBuildLicenseWith7Parameters() throws Exception {
+
+    @Test
+    void buildLicenseWith7Parameters() throws Exception {
         checkBuildLicenseWithParameters(7);
     }
-    
-    public void testBuildLicenseWith11Parameters() throws Exception {
+
+    @Test
+    void buildLicenseWith11Parameters() throws Exception {
         checkBuildLicenseWithParameters(11);
     }
 
-    public void testBuildLicenseWith101Parameters() throws Exception {
+    @Test
+    void buildLicenseWith101Parameters() throws Exception {
         checkBuildLicenseWithParameters(101);
     }
     
@@ -196,14 +211,15 @@ public class JDomBuilderWithLicenseTest extends TestCase {
             .addContent(licenseParametersElement);
         final Map<String, String> results = 
             subject.parameters(input);
-        assertNotNull("Expected builder to build parameters", results);
-        assertEquals("Expected builder to add one name, value pair per parameter", numberOfParameters, results.size());
+        assertNotNull(results, "Expected builder to build parameters");
+        assertEquals(numberOfParameters, results.size(), "Expected builder to add one name, value pair per parameter");
         for (int i=0;i<numberOfParameters;i++) {
-            assertEquals("Value indexed by name", results.get(name(i)), value(i));
+            assertEquals(results.get(name(i)), value(i), "Value indexed by name");
         }
     }
 
-    public void testWithLicenseBuildWithParameters() throws Exception {
+    @Test
+    void withLicenseBuildWithParameters() throws Exception {
         for (int i=0;i<128;i++) {
             checkBuildWithLicenseWithParameters(i);
         }
@@ -229,10 +245,10 @@ public class JDomBuilderWithLicenseTest extends TestCase {
             .addContent(licenseParametersElement);
         final Map<String, String> results = 
             subject.withLicense(input, licenses, organisations).getParameters();
-        assertNotNull("Expected builder to build parameters", results);
-        assertEquals("Expected builder to add one name, value pair per parameter", numberOfParameters, results.size());
+        assertNotNull(results, "Expected builder to build parameters");
+        assertEquals(numberOfParameters, results.size(), "Expected builder to add one name, value pair per parameter");
         for (int i=0;i<numberOfParameters;i++) {
-            assertEquals("Value indexed by name", results.get(name(i)), value(i));
+            assertEquals(results.get(name(i)), value(i), "Value indexed by name");
         }
     }
 
@@ -252,8 +268,9 @@ public class JDomBuilderWithLicenseTest extends TestCase {
     private String value(int i) {
         return "value" + i;
     }
-    
-    public void testBuildLicenseWithParametersThrowsExceptionWhenParameterIsDuplicated() throws Exception {
+
+    @Test
+    void buildLicenseWithParametersThrowsExceptionWhenParameterIsDuplicated() throws Exception {
         try {
             subject.parameters(
                     new Element("with-license")
@@ -269,8 +286,9 @@ public class JDomBuilderWithLicenseTest extends TestCase {
             // expected
         }
     }
-    
-    public void testBuildCollectWithLicenses() throws Exception {
+
+    @Test
+    void buildCollectWithLicenses() throws Exception {
         for (int i=0; i<256; i++) {
             checkCollectWithLicenses(i);
         }
@@ -290,8 +308,8 @@ public class JDomBuilderWithLicenseTest extends TestCase {
         }
         
         final Collection<WithLicense> results = subject.withLicenses(licenses, organisations, parent);
-        assertNotNull("Builder should build", results);
-        assertEquals("Builder should build one with-license for each child", numberOfWithLicenses, results.size());
+        assertNotNull(results, "Builder should build");
+        assertEquals(numberOfWithLicenses, results.size(), "Builder should build one with-license for each child");
     }
 
     /**
