@@ -32,7 +32,7 @@ public class UnexpectedElementException extends InvalidXmlException {
     /**
      * Constructs an instance.
      * @param expectedElement names the element expected not null
-     * @param actualElement names the element that occured not null
+     * @param actualElement names the element that occurred not null
      */
     public UnexpectedElementException(final String expectedElement, final String actualElement) {
         super("Expected '"  + expectedElement + "' element but was " + actualElement);
