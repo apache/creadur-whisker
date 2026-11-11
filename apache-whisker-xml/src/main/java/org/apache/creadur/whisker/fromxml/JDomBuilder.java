@@ -19,12 +19,18 @@
 package org.apache.creadur.whisker.fromxml;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.xml.secure.SecureSAXParserFactory;
 import org.apache.creadur.whisker.model.*;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.input.sax.XMLReaderJDOMFactory;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -47,6 +53,33 @@ public class JDomBuilder {
 	private static final String ORGANISATION_ELEMENT_NAME = "organisation";
 	/** Names the element representing a resource */
 	private static final String RESOURCE_ELEMENT_NAME = "resource";
+
+	/**
+	 * Provide a safely configured way to parse XML files:
+	 * do not fetch external DTDs,
+	 * do not resolve external entities,
+	 * bounded entity expansion.
+	 *
+	 * @return XML parser with secure defaults.
+	 */
+	private static XMLReaderJDOMFactory secureXmlReaderFactory() {
+		return new XMLReaderJDOMFactory() {
+			@Override
+			public XMLReader createXMLReader() throws JDOMException {
+				try {
+					SAXParser parser = SecureSAXParserFactory.newNSInstance().newSAXParser();
+					return parser.getXMLReader();
+				} catch (ParserConfigurationException | SAXException e) {
+					throw new JDOMException("Unable to create secure XML parser", e);
+				}
+			}
+
+			@Override
+			public boolean isValidating() {
+				return false;
+			}
+		};
+	}
 
 	/**
 	 * Builds a resource.
@@ -600,8 +633,14 @@ public class JDomBuilder {
 				organisations, contents);
 	}
 
-	public Descriptor build(final InputStream xmlStream) throws JDOMException,
-			IOException {
-		return build(new SAXBuilder().build(xmlStream));
+	/**
+	 * Builds from the given input stream configured via Apache Commons Secure XML.
+	 * @param xmlStream not null
+	 * @return not null
+	 * @throws JDOMException in case of XML errors.
+	 * @throws IOException in case of general I/O errors.
+	 */
+	public Descriptor build(final InputStream xmlStream) throws JDOMException, IOException {
+		return build(new SAXBuilder(secureXmlReaderFactory()).build(xmlStream));
 	}
 }
