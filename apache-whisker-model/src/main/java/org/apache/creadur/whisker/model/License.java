@@ -238,7 +238,7 @@ public class License implements Comparable<License> {
             return false;
         }
         final License other = (License) obj;
-        return getId().equals(other);
+        return getId().equals(other.getId());
     }
 
     /**
