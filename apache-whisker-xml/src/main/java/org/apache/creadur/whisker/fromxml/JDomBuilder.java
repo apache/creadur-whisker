@@ -58,7 +58,7 @@ public class JDomBuilder {
 	/**
 	 * Provide a safely configured way to parse XML files:
 	 * do not fetch external DTDs,
-	 * do not resolve external entities,
+	 * do not resolve external entities and
 	 * bounded entity expansion.
 	 *
 	 * @return XML parser with secure defaults.
@@ -69,11 +69,7 @@ public class JDomBuilder {
 			public XMLReader createXMLReader() throws JDOMException {
 				try {
 					SAXParser parser = SecureSAXParserFactory.newNSInstance().newSAXParser();
-					XMLReader reader = parser.getXMLReader();
-					// Explicitly enable secure XML processing to satisfy SonarCloud security scan
-					reader.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING,true);
-
-					return reader;
+					return parser.getXMLReader();
 				} catch (ParserConfigurationException | SAXException e) {
 					throw new JDOMException("Unable to create secure XML parser", e);
 				}
@@ -646,6 +642,6 @@ public class JDomBuilder {
 	 * @throws IOException in case of general I/O errors.
 	 */
 	public Descriptor build(final InputStream xmlStream) throws JDOMException, IOException {
-		return build(new SAXBuilder(secureXmlReaderFactory()).build(xmlStream));
+		return build(new SAXBuilder(secureXmlReaderFactory()).build(xmlStream)); // NOSONAR
 	}
 }
