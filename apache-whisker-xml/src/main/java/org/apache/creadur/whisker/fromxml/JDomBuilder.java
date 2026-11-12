@@ -29,6 +29,7 @@ import org.jdom2.input.sax.XMLReaderJDOMFactory;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import java.io.IOException;
@@ -68,7 +69,11 @@ public class JDomBuilder {
 			public XMLReader createXMLReader() throws JDOMException {
 				try {
 					SAXParser parser = SecureSAXParserFactory.newNSInstance().newSAXParser();
-					return parser.getXMLReader();
+					XMLReader reader = parser.getXMLReader();
+					// Explicitly enable secure XML processing to satisfy SonarCloud security scan
+					reader.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING,true);
+
+					return reader;
 				} catch (ParserConfigurationException | SAXException e) {
 					throw new JDOMException("Unable to create secure XML parser", e);
 				}
