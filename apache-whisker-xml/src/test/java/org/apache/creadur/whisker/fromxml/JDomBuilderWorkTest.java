@@ -197,7 +197,7 @@ public class JDomBuilderWorkTest extends TestCase {
     }
     
     /**
-     * @param baseId
+     * @param base
      * @param i
      * @return
      */

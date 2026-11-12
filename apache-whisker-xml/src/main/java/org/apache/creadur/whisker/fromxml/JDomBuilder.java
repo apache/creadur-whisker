@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -143,8 +143,7 @@ public class JDomBuilder {
 	 */
 	public Collection<Resource> collectResources(Element element) {
 		final Collection<Resource> resources = new TreeSet<>();
-		for (Element resourceElement : (List<Element>) element
-				.getChildren("resource")) {
+		for (Element resourceElement : element.getChildren("resource")) {
 			resources.add(new JDomBuilder().resource(resourceElement));
 		}
 		return Collections.unmodifiableCollection(resources);
@@ -214,10 +213,9 @@ public class JDomBuilder {
 	 */
 	public SortedSet<ByOrganisation> collectByOrganisations(
 			final Element parent, final Map<String, Organisation> map) {
-		final SortedSet<ByOrganisation> results = new TreeSet<ByOrganisation>();
+		final SortedSet<ByOrganisation> results = new TreeSet<>();
 		if (parent != null) {
-			for (final Element byOrgElement : (List<Element>) parent
-					.getChildren("by-organisation")) {
+			for (final Element byOrgElement :  parent.getChildren("by-organisation")) {
 				results.add(byOrganisation(byOrgElement, map));
 			}
 		}
@@ -245,8 +243,7 @@ public class JDomBuilder {
 		final Collection<String> results = new HashSet<>();
 		final Element templateElement = element.getChild("template");
 		if (templateElement != null) {
-			for (Element parameterNameElement : (List<Element>) templateElement
-					.getChildren("parameter-name")) {
+			for (Element parameterNameElement : templateElement.getChildren("parameter-name")) {
 				results.add(parameterNameElement.getTextTrim());
 			}
 		}
@@ -276,7 +273,7 @@ public class JDomBuilder {
 	}
 
 	/**
-	 * @return Builds a with-license model from xml.
+	 * @return Builds a with-license model from XML.
 	 * @param element
 	 *            not null
 	 * @param licenses
@@ -325,12 +322,10 @@ public class JDomBuilder {
 	 */
 	public Map<String, String> parameters(Element element)
 			throws DuplicateElementException {
-		final Map<String, String> results = new HashMap<String, String>();
-		final Element licenseParametersElement = element
-				.getChild("license-parameters");
+		final Map<String, String> results = new HashMap<>();
+		final Element licenseParametersElement = element.getChild("license-parameters");
 		if (licenseParametersElement != null) {
-			for (Element parameterElement : (List<Element>) licenseParametersElement
-					.getChildren("parameter")) {
+			for (Element parameterElement : licenseParametersElement.getChildren("parameter")) {
 				final String name = parameterElement.getChild("name")
 						.getTextTrim();
 				if (results.containsKey(name)) {
@@ -357,9 +352,8 @@ public class JDomBuilder {
 	 */
 	public Collection<WithLicense> withLicenses(Map<String, License> licenses,
 			Map<String, Organisation> organisations, Element parent) {
-		final List<WithLicense> results = new ArrayList<WithLicense>();
-		for (Element withLicenseElement : (List<Element>) parent
-				.getChildren("with-license")) {
+		final List<WithLicense> results = new ArrayList<>();
+		for (Element withLicenseElement : parent.getChildren("with-license")) {
 			results.add(new JDomBuilder().withLicense(withLicenseElement,
 					licenses, organisations));
 		}
@@ -409,13 +403,12 @@ public class JDomBuilder {
 	 * @return organisations indexed by id, not null possibly empty
 	 */
 	public Map<String, Organisation> mapOrganisations(Document document) {
-		final Map<String, Organisation> organisationsById = new HashMap<String, Organisation>();
+		final Map<String, Organisation> organisationsById = new HashMap<>();
 
 		final Element childOrganisations = document.getRootElement().getChild(
 				"organisations");
 		if (childOrganisations != null) {
-			final List<Element> organisations = (List<Element>) childOrganisations
-					.getChildren("organisation");
+			final List<Element> organisations = childOrganisations.getChildren("organisation");
 			for (final Element element : organisations) {
 				new JDomBuilder().organisation(element).storeIn(
 						organisationsById);
@@ -436,9 +429,7 @@ public class JDomBuilder {
 		final Element licensesChild = document.getRootElement().getChild(
 				"licenses");
 		if (licensesChild != null) {
-			@SuppressWarnings("unchecked")
-			final List<Element> children = (List<Element>) licensesChild
-					.getChildren();
+			final List<Element> children = licensesChild.getChildren();
 			for (final Element element : children) {
 				new JDomBuilder().license(element).storeIn(results);
 			}
@@ -506,13 +497,11 @@ public class JDomBuilder {
 	 * @return notices indexed by id, immutable, not null, possibly empty
 	 */
 	public Map<String, String> mapNotices(Document document) {
-		final Map<String, String> results = new HashMap<String, String>();
+		final Map<String, String> results = new HashMap<>();
 		final Element noticesElement = document.getRootElement().getChild(
 				"notices");
 		if (noticesElement != null) {
-			@SuppressWarnings("unchecked")
-			final List<Element> children = (List<Element>) noticesElement
-					.getChildren();
+			final List<Element> children = noticesElement.getChildren();
 			for (final Element element : children) {
 				results.put(element.getAttributeValue("id"),
 						element.getTextTrim());
@@ -589,8 +578,7 @@ public class JDomBuilder {
 			final Map<String, License> licenses,
 			final Map<String, Organisation> organisations)
 			throws DuplicateElementException {
-		final Collection<WithinDirectory> results = new TreeSet<WithinDirectory>();
-		@SuppressWarnings("unchecked")
+		final Collection<WithinDirectory> results = new TreeSet<>();
 		final List<Element> children = document.getRootElement().getChildren(
 				"within");
 		for (Element element : children) {
