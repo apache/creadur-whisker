@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -103,7 +103,7 @@ public class License implements Comparable<License> {
     
     /**
      * Gets parameters required by the template
-     * to generate a instance of this license family.
+     * to generate an instance of this license family.
      * @return not null, possibly empty
      */
     public Collection<String> getExpectedParameters() {
@@ -118,11 +118,10 @@ public class License implements Comparable<License> {
      * @throws LicenseTemplateException when the parameter
      * do not fulfill the expectations of the template
      */
-    @SuppressWarnings("unchecked")
     private Map<String, String> validate(final Map<String, String> parameters)
             throws LicenseTemplateException {
         if (parameters == null) {
-            return validate(Collections.EMPTY_MAP);
+            return validate(Collections.emptyMap());
         }
 
         if (this.expectedParameters.isEmpty() && parameters != null

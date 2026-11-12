@@ -1,4 +1,4 @@
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -30,7 +30,7 @@ import java.util.TreeSet;
  */
 public class NoticeCollator extends Visitor {
 
-    private final Map<String, Collection<Resource>> resourcesByNoticeId = new HashMap<String, Collection<Resource>>();
+    private final Map<String, Collection<Resource>> resourcesByNoticeId = new HashMap<>();
 
     /**
      * @return the noticeIds
@@ -47,7 +47,7 @@ public class NoticeCollator extends Visitor {
         final String noticeId = resource.getNoticeId();
         if (noticeId != null) {
             if (!this.resourcesByNoticeId.containsKey(noticeId)) {
-                this.resourcesByNoticeId.put(noticeId, new TreeSet<Resource>());
+                this.resourcesByNoticeId.put(noticeId, new TreeSet<>());
             }
             this.resourcesByNoticeId.get(noticeId).add(resource);
         }
@@ -55,11 +55,11 @@ public class NoticeCollator extends Visitor {
 
     public Map<String, Collection<Resource>> resourceNotices(
             final Map<String, String> notices) {
-        final Map<String, Collection<Resource>> results = new HashMap<String, Collection<Resource>>();
+        final Map<String, Collection<Resource>> results = new HashMap<>();
         for (final Map.Entry<String, Collection<Resource>> entry : this.resourcesByNoticeId
                 .entrySet()) {
             if (notices.containsKey(entry.getKey())) {
-                results.put(notices.get(entry.getKey()), new TreeSet<Resource>(
+                results.put(notices.get(entry.getKey()), new TreeSet<>(
                         entry.getValue()));
             } else {
                 throw new IllegalArgumentException("Notice missing for id "
@@ -74,7 +74,7 @@ public class NoticeCollator extends Visitor {
      * @return list of notices.
      */
     public Set<String> notices(final Map<String, String> notices) {
-        final Set<String> results = new HashSet<String>();
+        final Set<String> results = new HashSet<>();
         for (final String id : getNoticeIds()) {
             if (notices.containsKey(id)) {
                 results.add(notices.get(id));

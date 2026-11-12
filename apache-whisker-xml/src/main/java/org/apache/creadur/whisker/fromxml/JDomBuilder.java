@@ -29,7 +29,6 @@ import org.jdom2.input.sax.XMLReaderJDOMFactory;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import java.io.IOException;
@@ -142,9 +141,8 @@ public class JDomBuilder {
 	 *            JDOM element to collect.
 	 * @return collected resources.
 	 */
-	@SuppressWarnings("unchecked")
 	public Collection<Resource> collectResources(Element element) {
-		final Collection<Resource> resources = new TreeSet<Resource>();
+		final Collection<Resource> resources = new TreeSet<>();
 		for (Element resourceElement : (List<Element>) element
 				.getChildren("resource")) {
 			resources.add(new JDomBuilder().resource(resourceElement));
@@ -214,7 +212,6 @@ public class JDomBuilder {
 	 *            not null
 	 * @return unmodifiable set sort by natural order, not null
 	 */
-	@SuppressWarnings("unchecked")
 	public SortedSet<ByOrganisation> collectByOrganisations(
 			final Element parent, final Map<String, Organisation> map) {
 		final SortedSet<ByOrganisation> results = new TreeSet<ByOrganisation>();
@@ -244,9 +241,8 @@ public class JDomBuilder {
 				element.getAttributeValue("name"));
 	}
 
-	@SuppressWarnings("unchecked")
 	private Collection<String> expectedParameters(final Element element) {
-		final Collection<String> results = new HashSet<String>();
+		final Collection<String> results = new HashSet<>();
 		final Element templateElement = element.getChild("template");
 		if (templateElement != null) {
 			for (Element parameterNameElement : (List<Element>) templateElement
@@ -327,7 +323,6 @@ public class JDomBuilder {
 	 * @throws DuplicateElementException
 	 *             when two parameters shared the same name
 	 */
-	@SuppressWarnings("unchecked")
 	public Map<String, String> parameters(Element element)
 			throws DuplicateElementException {
 		final Map<String, String> results = new HashMap<String, String>();
@@ -360,7 +355,6 @@ public class JDomBuilder {
 	 *            not null
 	 * @return not null, possibly empty
 	 */
-	@SuppressWarnings("unchecked")
 	public Collection<WithLicense> withLicenses(Map<String, License> licenses,
 			Map<String, Organisation> organisations, Element parent) {
 		final List<WithLicense> results = new ArrayList<WithLicense>();
@@ -420,7 +414,6 @@ public class JDomBuilder {
 		final Element childOrganisations = document.getRootElement().getChild(
 				"organisations");
 		if (childOrganisations != null) {
-			@SuppressWarnings("unchecked")
 			final List<Element> organisations = (List<Element>) childOrganisations
 					.getChildren("organisation");
 			for (final Element element : organisations) {
@@ -439,7 +432,7 @@ public class JDomBuilder {
 	 * @return licenses, indexed by id, not null, possibly empty
 	 */
 	public Map<String, License> mapLicenses(Document document) {
-		final Map<String, License> results = new HashMap<String, License>();
+		final Map<String, License> results = new HashMap<>();
 		final Element licensesChild = document.getRootElement().getChild(
 				"licenses");
 		if (licensesChild != null) {
