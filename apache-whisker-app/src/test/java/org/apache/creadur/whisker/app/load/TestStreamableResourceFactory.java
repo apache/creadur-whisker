@@ -24,6 +24,8 @@ import org.apache.creadur.whisker.app.StreamableResource;
 
 import junit.framework.TestCase;
 
+import static org.junit.Assert.assertNotEquals;
+
 public class TestStreamableResourceFactory extends TestCase {
 
     StreamableResourceFactory subject;
@@ -37,7 +39,8 @@ public class TestStreamableResourceFactory extends TestCase {
     public void testWhenResourceExistsOnClasspathThisResourceShouldBeStreamed() throws Exception {
         StreamableResource streamableResource = subject.streamFromResource("junit/framework/TestCase.class");
         assertNotNull(streamableResource);
-        InputStream in = streamableResource.open();
-        assertFalse(in.read() == -1);
+        try(InputStream in = streamableResource.open()) {
+            assertNotEquals(-1, in.read());
+        }
     }
 }

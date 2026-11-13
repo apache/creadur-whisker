@@ -31,12 +31,10 @@ import org.apache.creadur.whisker.model.Descriptor;
 import org.apache.creadur.whisker.scan.Directory;
 import org.apache.creadur.whisker.scan.FromFileSystem;
 
-
 /**
  * High level application, configured as a bean.
  */
 public class Whisker {
-
     /** Operation to be performed. */
     private Act act;
     /** The source on which the operation is to be performed. */
@@ -130,7 +128,7 @@ public class Whisker {
     }
 
     /**
-     * Sets meta-data describing the source licensing.
+     * Sets metadata describing the source licensing.
      * @param licenseDescriptor the licenseDescriptor to set
      * @return this, not null
      */
@@ -177,7 +175,7 @@ public class Whisker {
     }
 
     /**
-     * Creates a template to help create meta-data.
+     * Creates a template to help create metadata.
      * @throws Exception when the report creation fails
      * @return this, not null
      */
@@ -243,29 +241,23 @@ public class Whisker {
                 + ", licenseDescriptor=" + licenseDescriptor + "]";
     }
 
-
     /**
      * Opens a resource as a stream.
      * @param resource not null
      * @return not null
-     * @throws IOException
+     * @throws IOException if resource cannot be opened.
      */
     private InputStream resourceAsStream(final StreamableResource resource) throws IOException {
         return resource.open();
     }
 
-
     /**
-     * Reads meta-data from the given source.
+     * Reads metadata from the given source.
      * @param resource not null
      * @return not null
-     * @throws Exception when meta-data cannot be loaded
+     * @throws Exception when metadata cannot be loaded.
      */
     private Descriptor load(final StreamableResource resource) throws Exception {
-        final InputStream resourceAsStream = resourceAsStream(resource);
-        if (resourceAsStream == null) {
-            throw new IllegalArgumentException("Cannot load " + resource);
-        }
-        return new JDomBuilder().build(resourceAsStream);
+        return new JDomBuilder().build(resourceAsStream(resource));
     }
 }
